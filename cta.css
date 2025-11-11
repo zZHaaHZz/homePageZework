@@ -1,0 +1,86 @@
+.CTA {
+    width: 100%;
+    height: 348px;
+    /* border: 1px solid black; */
+    position: relative;
+    background-image: linear-gradient(#A3C9FF4A);
+    opacity: 0.9;
+    padding: 64px 0px 64px 0px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CTA::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        /* Đường kẻ dọc */
+        repeating-linear-gradient(to right,
+            transparent 0,
+            transparent 66px,
+            #D1E1FF 66px,
+            #D1E1FF 67px),
+        /* Đường kẻ ngang */
+        repeating-linear-gradient(to bottom,
+            transparent 0,
+            transparent 66px,
+            #D1E1FF 66px,
+            #D1E1FF 67px);
+        background-position: -33px  0px, -33px 0px;
+}
+
+.square-cta{
+    position: absolute;
+    width: 66px;
+    height: 66px;
+    background-color: #A3C9FF4A;
+    opacity: 30%;
+}
+.square-cta-1{
+    top: 67px;
+    left: 502px;
+}
+.square-cta-2{
+    top: 67px;
+    left: 838px;
+}
+.square-cta-3{
+    top: 134px;
+    right: 201px;
+}
+.square-cta-4{
+    bottom: 14px;
+    left: 235px;
+}
+.square-cta-5{
+    bottom: 81px;
+    left:  637px;
+}
+.square-cta-6{
+    bottom: 148px;
+    left:  -33px;
+}
+.experience.bottom {
+    bottom: 0px;
+    margin-left: 18%;
+}
+.CTA h1{
+    z-index: 44;
+    font-size: 48px;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.CTA p{
+     z-index: 44;
+     font-family: 'Plus Jakarta Sans', sans-serif;
+     font-size: 24px;
+     font-weight: 500;
+     color: #475467;
+}

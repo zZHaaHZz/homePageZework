@@ -1,0 +1,199 @@
+.hero {
+    width: 100vw; 
+    height: calc(80vw * 1120 / 1440); 
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom, #3C6FFD, #E8EFFF);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vw * 1120 / 1440);
+
+    background-image:
+        /* Đường kẻ dọc */
+        linear-gradient(to right, rgba(255,255,255,0.3) 1px, transparent 1px),
+        /* Đường kẻ ngang */
+        linear-gradient(to bottom, rgba(255,255,255,0.3) 1px, transparent 1px);
+    
+    background-size: calc(100px * 100vw / 1440) calc(100px * 100vw / 1440);
+    background-position: 0 0;
+    mask-image: radial-gradient(ellipse at center,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.3) 30%,
+            rgba(0, 0, 0, 0.15) 50%,
+            rgba(0, 0, 0, 0) 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.3) 30%,
+            rgba(0, 0, 0, 0.15) 50%,
+            rgba(0, 0, 0, 0) 70%);
+}
+
+
+
+.square {
+    position: absolute;
+    width: calc(100vw * 100 / 1440);  
+    height: calc(100vw * 101 / 1440);  
+    background-color: #FFFFFF;
+    opacity: 0.1; 
+}
+.square-1 {
+    top: calc(253 / 1440 * 100vw);
+    left: calc(153 / 1440 * 100vw);
+}
+
+.square-2 {
+    top: calc(153 / 1440 * 100vw);
+    right: calc(73 / 1440 * 100vw);
+}
+
+.square-3 {
+    top: calc(354 / 1440 * 100vw);
+    right: calc(177 / 1440 * 100vw);
+}
+
+.square-4 {
+    top: calc(657 / 1440 * 100vw);
+    left: calc(0 / 1440 * 100vw);
+}
+
+
+.head-line-hero {
+    width: calc(819 * 100vw / 1440);
+    height: calc(158 * 100vw / 1440);
+    position: absolute;
+    top: calc(150 * 100vw / 1440);
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.head-line-hero h2 {
+    font-size: calc(56 * 100vw / 1440);
+    font-weight: bold;
+    margin-bottom: calc(16 * 100vw / 1440);
+}
+
+.head-line-hero p {
+    font-size: calc(20 * 100vw / 1440);
+    font-weight: 500;
+    width: calc(600 * 100vw / 1440);
+    margin: 0 auto;
+}
+
+.experience {
+    transform: translateX(-50%);
+    width: calc(280 * 100vw / 1440);
+    height: calc(60 * 100vw / 1440);
+    background-color: #375DFA;
+    color: #fff;
+    border: calc(2 * 100vw / 1440) solid #fff;
+    border-radius: calc(12 * 100vw / 1440);
+    font-size: calc(18 * 100vw / 1440);
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 66;
+}
+
+.experience.top {
+    position: absolute;
+    top: calc(450 * 80vw / 1440);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.square-5 {
+    position: absolute;
+    bottom: calc(0 / 1440 * 100vw);
+    left: 20%;          
+    width: 60%;       
+    height: calc(450 / 1440 * 90vw);
+    border-radius: calc(12 / 1440 * 100vw) calc(12 / 1440 * 100vw) 0 0;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    box-shadow: 0 0 calc(1 / 1440 * 100vw) calc(1 / 1440 * 100vw) rgba(202, 216, 255, 0.6);
+}
+
+.square-6 {
+    position: absolute;
+    bottom: 14%;
+    left: 23%;
+    width: calc(100 * 100vw / 1440);;
+    height: calc(200 * 100vw / 1440);
+    border-radius: calc(12 * 100vw / 1440);
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    box-shadow: 0 0 calc(2 * 100vw / 1440) calc(2 * 100vw / 1440) rgba(202, 216, 255, 0.6);
+}
+
+.square-7 {
+    position: absolute;
+    bottom: 3%;
+    right: 25%;
+    width: 13%;
+    height: 30%;
+    border-radius: calc(12 * 100vw / 1440);
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    box-shadow: 0 0 calc(2 * 100vw / 1440) calc(2 * 100vw / 1440) rgba(202, 216, 255, 0.6);
+}
+
+.div-img-dashBoard {
+    position: absolute;
+    bottom: -2%;
+    left: 53%;
+    z-index: 1;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 45%;
+    background-size: cover;
+    background-position: center;
+    border-radius: calc(12 * 100vw / 1440) calc(12 * 100vw / 1440) 0 0;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.div-img-dashBoard img {
+    width: calc(800 * 100vw / 1440); 
+    height: auto; 
+    max-width: 100%;
+    display: block;
+}
+.img-customer-ratio {
+    position: absolute;
+    left: 21%;
+    bottom: 7%;
+    z-index: 2;
+    width: 12%;
+    height: 20%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+.img-customer-ratio  img{
+    width: 100%;
+    height: auto;
+}
+.mouse-hero {
+    position: absolute;
+    bottom: 15%;
+    left: 33%;
+    transform: translateX(-50%);
+    width: 4%;
+    height: 5%;
+    border-radius: calc(20 * 100vw / 1440);
+    z-index: 3;
+    overflow: hidden;
+}
+.mouse-hero img{
+    width: 100%;
+    height: auto;
+}

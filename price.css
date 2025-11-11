@@ -1,0 +1,343 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600&display=swap');
+.price-container {
+    width: 100%;
+    height: 1312px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 96px;
+    padding-bottom: 96px;
+    position: relative;
+}
+
+.price-title {
+    width: 1248px;
+    height: 166px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.price-title p {
+    width: 40%;
+    font-size: 18px;
+    color: #475467;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: center;
+}
+
+.price-content {
+    width: 1248px;
+    height: 675px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.price-bottom {
+    width: 1248px;
+    height: 160px;
+
+}
+
+.price-conten-packages {
+    width: 100%;
+    height: 108px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-price-conten-packages h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.left-price-conten-packages p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #475467;
+}
+
+.price-content-container {
+    width: 100%;
+    height: 519px;
+}
+
+
+.menu-price {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background: #5682FD;
+    width: 287px;
+    height: 48px;
+    align-items: center;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.menu-price button {
+    background: #5682FD;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+    width: 96px;
+    height: 40px;
+}
+
+.menu-price button:hover,
+.menu-price button.active {
+    background: #FFFFFF;
+    color: #101828;
+    width: 96px;
+    height: 40px;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+    max-width: 1248px;
+}
+
+
+.product {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 294px;
+    height: 519px;
+    padding: 40px 0px 40px 0px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s, opacity 0.4s;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+/* hiệu ứng cho gói hot */
+.product.hot {
+    border: 2px solid #375DFA;
+    box-shadow: 0 0 15px #5172f7;
+}
+
+.product.hot::after {
+    content: " HOT ";
+    position: absolute;
+    top: -20px;
+    left: 40%;
+    background: linear-gradient(45deg, #ff0000, #ff6b6b);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.name-price {
+    margin-top: 20px;
+    width: 100%;
+    height: 100px;
+}
+
+.product h3 {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.price h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    text-align: center;
+    color: #333;
+}
+
+.name-price h4 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 48px;
+    text-align: center;
+    color: #475467;
+}
+
+.price {
+    color: #101828;
+    font-weight: bold;
+    padding-top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price p {
+    margin-top: 2%;
+}
+
+.product.hot .price {
+    background: linear-gradient(to right, #0058B6, #55BB00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.price-container ul {
+    width: 294px;
+    height: 275px;
+    text-align: left;
+    padding: 40px 24px 40px 24px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+}
+
+.price-container ul li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    color: #475467;
+    font-weight: 500;
+}
+
+.price-container ul li i.fa-check {
+    color: #FF82F9;
+    margin-right: 6px;
+}
+
+.price-container ul li i.fa-xmark {
+    color: #475467;
+    margin-right: 6px;
+}
+
+.btn-bynow {
+    width: 230px;
+    height: 56px;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #D0D5DD;
+}
+
+.btn-bynow-bander {
+    width: 156px
+}
+
+.product.hot .btn-bynow {
+    width: 230px;
+    height: 56px;
+    border-radius: 12px;
+    background-color: #375DFA;
+    border: 1px solid #D0D5DD;
+    color: #fff;
+    /* màu chữ cho nổi bật */
+}
+
+
+.price-bottom {
+    position: relative;
+    width: 1248px;
+    height: 148px;
+    background-image: linear-gradient(to right, rgba(0, 88, 182, 0.9)0%, rgba(29, 171, 80) 100%);
+    border-radius: 20px;
+    padding: 32px 48px 32px 48px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-bottom-box-1 {
+    margin-right: 20px;
+    color: #FFFFFF;
+
+}
+
+.price-bottom-box-2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.price-bottom-box-2 h3 {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.price-bottom-box-2 h2 {
+    font-size: 48px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-style: italic;
+    color: #FFFFFF;
+}
+
+.price-bottom-box-2 p {
+    margin-top: 15px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.price-bottom::after {
+  
+    margin-top: 32px;
+    height: 84px;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-radius: inherit;
+    background-image: linear-gradient(to right,
+            transparent 0%,
+            transparent 27%,
+            white calc(27% + 2px),
+            transparent calc(27% + 4px),
+            transparent 55%,
+            white calc(55% + 2px),
+            transparent calc(55% + 4px));
+    opacity: 0.6;
+
+}
+

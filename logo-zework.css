@@ -1,0 +1,183 @@
+.vertor-ze {
+    position: relative;
+    width: 415px;
+    height: 452px;
+    margin: 50px;
+}
+
+.ze1 {
+    position: absolute;
+    width: 412px;
+    height: 142px;
+    background-color: #EFF3FFBF;
+    top: 0;
+    left: 0;
+    border-radius: 100px;
+}
+
+.ze2 {
+    position: absolute;
+    top: 155px;
+    left: -70px;
+    border-radius: 100px;
+    width: 552px;
+    height: 142px;
+    background-color: #EFF3FFBF;
+    transform: rotate(-50deg);
+}
+
+.ze3 {
+    position: absolute;
+    width: 143px;
+    height: 143px;
+    background-color: #EFF3FFBF;
+    border-radius: 50%;
+    bottom: 0px;
+    right: 0px;
+}
+
+.vertor-logo {
+    position: absolute;
+    right: -100px;
+    top: 0px;
+    z-index: -1;
+}
+
+.vertor-logo2 {
+    position: absolute;
+    left: -100px;
+    z-index: -1;
+    top: 0%;
+}
+
+.vertor-logo3 {
+    width: 686px;
+    height: 685px;
+    position: absolute;
+    left: 15%;
+    z-index: 1;
+    top: -20%;
+    opacity: 0.1;
+}
+
+.vertor-logo3 .ze1 {
+    position: absolute;
+    width: 706px;
+    height: 215px;
+    background-color: #EFF3FFBF;
+    top: -10%;
+    left: -20%;
+    border-radius: 100px;
+}
+
+.vertor-logo3 .ze2 {
+    position: absolute;
+    top: 165px;
+    left: -35px;
+    border-radius: 100px;
+    width: 750px;
+    height: 215px;
+    background-color: #EFF3FFBF;
+    transform: rotate(-50deg);
+}
+
+.vertor-logo3 .ze3 {
+    position: absolute;
+    width: 219px;
+    height: 219px;
+    background-color: #EFF3FFBF;
+    border-radius: 50%;
+    bottom: -30%;
+    right: -50%;
+}
+
+.vertor-logo4 {
+    position: absolute;
+    right: -100px;
+    top: -5%;
+    z-index: -1;
+}
+
+.vertor-logo5 {
+    position: absolute;
+    top: -30px;
+    z-index: 1;
+    opacity: 0.3;
+
+}
+.vertor-logo5 .ze1 {
+    position: absolute;
+    width: 241px;
+    height: 84px;
+    background-color: #EFF3FFBF;
+    top: -15%;
+    left: 10%;
+    border-radius: 100px;
+}
+
+.vertor-logo5 .ze2 {
+    position: absolute;
+    width: 357px;
+    height: 84px;
+    top: 40px;
+    left: -30px;
+    border-radius: 100px;
+    background-color: #EFF3FFBF;
+    transform: rotate(-50deg);
+}
+
+.vertor-logo5 .ze3 {
+    position: absolute;
+    width: 84px;
+    height: 84px;
+    background-color: #EFF3FFBF;
+    border-radius: 50%;
+    bottom: 60%;
+    right: 30%;
+}
+@media (max-width: 1440px){
+    .vertor-ze {
+        position: relative;
+        width: calc(415 / 1440 * 100vw);
+        height: calc(452 / 1440 * 100vw);
+        margin: calc(50 / 1440 * 100vw);
+    }
+
+    .ze1 {
+        position: absolute;
+        width: calc(412 / 1440 * 100vw);
+        height: calc(142 / 1440 * 100vw);
+        background-color: #EFF3FFBF;
+        top: 0;
+        left: 0;
+        border-radius: calc(100 / 1440 * 100vw);
+    }
+
+    .ze2 {
+        position: absolute;
+        top: calc(155 / 1440 * 100vw);
+        left: calc(-70 / 1440 * 100vw);
+        border-radius: calc(100 / 1440 * 100vw);
+        width: calc(552 / 1440 * 100vw);
+        height: calc(142 / 1440 * 100vw);
+        background-color: #EFF3FFBF;
+        transform: rotate(-50deg);
+    }
+
+    .ze3 {
+        position: absolute;
+        width: calc(143 / 1440 * 100vw);
+        height: calc(143 / 1440 * 100vw);
+        background-color: #EFF3FFBF;
+        border-radius: 50%;
+        bottom: 0;
+        right: 0;
+    }
+
+    .vertor-logo {
+        position: absolute;
+        right: calc(-100 / 1440 * 100vw);
+        top: 0;
+        z-index: -1;
+    }
+}

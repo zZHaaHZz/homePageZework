@@ -1,0 +1,131 @@
+.feedback {
+    width: 100%;
+    height: 711px;
+    background-color: #FFF;
+    padding-top: 96px;
+    padding-bottom: 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feedback-title {
+    width: 1248px;
+    height: 85px;
+}
+
+.feedback-title h1 {
+    font-size: 32px;
+    font-weight: 600;
+    text-align: start;
+    color: #101828;
+}
+
+.feedback-title p {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: start;
+    color: #475467;
+    margin-top: 20px;
+}
+
+.feedback-content {
+    position: relative;
+    width: 1248px;
+    height: 394px;
+    background-color: #5682FD;
+    border-radius: 24px;
+    overflow: hidden;
+    padding: 74px 64px 74px 64px;
+}
+
+.feedback-content h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.main-feedback-content {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.main-feedback-content img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+.main-feedback-content h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.main-feedback-content p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+@media (max-width: 1440px) {
+    .feedback {
+        width: 100%;
+        height: calc(711 / 1440 * 100vw);
+        padding-top: calc(96 / 1440 * 100vw);
+        padding-bottom: calc(96 / 1440 * 100vw);
+    }
+
+    .feedback-title {
+        width: calc(1248 / 1440 * 100vw);
+        height: calc(85 / 1440 * 100vw);
+    }
+
+    .feedback-title h1 {
+        font-size: calc(32 / 1440 * 100vw);
+    }
+
+    .feedback-title p {
+        font-size: calc(18 / 1440 * 100vw);
+        font-weight: 500;
+        text-align: start;
+        margin-top: calc(20 / 1440 * 100vw);
+    }
+
+    .feedback-content {
+        position: relative;
+        width: calc(1248 / 1440 * 100vw);
+        height: calc(394 / 1440 * 100vw);
+        border-radius: calc(24 / 1440 * 100vw);
+        overflow: hidden;
+        padding: calc(74 / 1440 * 100vw) calc(64 / 1440 * 100vw);
+    }
+
+    .feedback-content h1 {
+        font-size: calc(28 / 1440 * 100vw);
+    }
+
+    .main-feedback-content {
+        margin-top:calc(50 / 1440 * 100vw);
+        gap: calc(16 / 1440 * 100vw);
+    }
+
+    .main-feedback-content img {
+        width: calc(56 / 1440 * 100vw);
+        height: calc(56 / 1440 * 100vw);
+        border-radius: 50%;
+    }
+
+    .main-feedback-content h2 {
+        font-size: calc(24 / 1440 * 100vw);
+    }
+    .main-feedback-content p {
+        font-size: calc(16 / 1440 * 100vw);
+    }
+}
