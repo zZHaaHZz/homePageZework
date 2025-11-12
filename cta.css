@@ -84,3 +84,25 @@
      font-weight: 500;
      color: #475467;
 }
+@media (max-width: 1440px){
+    .CTA h1{
+        font-size: calc(48 / 1440 * 100vw);
+    }
+    .CTA p{
+     font-size: calc(24 /1440 * 100vw);
+    }
+    .CTA {
+    height: calc(348 /1440 * 100vw);
+    padding: calc(64 /1440 * 100vw) 0px;
+    }
+}
+@media (min-width: 1440px){
+    .experience.bottom {
+    bottom: 0px;
+    margin-left: 18%;
+    max-width: 300px;
+    max-height: 70px;
+    font-size: 1.3rem;
+    margin-left: calc(250 / 1440 * 100vw);
+    }
+}

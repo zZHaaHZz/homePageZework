@@ -12,7 +12,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: false,
-                href: "#"
+                href: "bynow"
             },
             {
                 name: "Khởi nghiệp", price: "559.000",
@@ -25,7 +25,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: true,
-                href: "#"
+                href: "bynow"
             }
         ],
         "6": [
@@ -40,7 +40,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: false,
-                href: "#"
+                href: "bynow"
             },
             {
                 name: "Phổ biến", price: "4.800.000",
@@ -53,7 +53,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: true,
-                href: "#"
+                href: "bynow"
             },
             {
                 name: "Nâng cao", price: "7.425.000",
@@ -66,7 +66,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: false,
-                href: "#"
+                href: "bynow"
             },
             {
                 name: "Cao cấp", price: "9.900.000",
@@ -79,7 +79,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: false,
-                href: "#"
+                href: "bynow"
             }
         ],
         "12": [
@@ -94,7 +94,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: false,
-                href: "#"
+                href: "bynow"
             },
             {
                 name: "Phổ biến", price: "11.880.000",
@@ -107,7 +107,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: true,
-                href: "#"
+                href: "bynow"
             },
             {
                 name: "Nâng cao", price: "7.680.000",
@@ -120,7 +120,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: false,
-                href: "#"
+                href: "bynow"
             },
             {
                 name: "Cao cấp", price: "15.840.000",
@@ -133,7 +133,7 @@
                     { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
                 ],
                 hot: false,
-                href: "#"
+                href: "bynow"
             }
 
         ]
@@ -169,7 +169,7 @@
             </div>
             </div>
             <ul>${descHTML}</ul>
-            <a href="/${p.href}"><button class="btn-bynow">Mua ngay</button></a>
+            <a href="#${p.href}"><button class="btn-bynow">Mua ngay</button></a>
     `;
             container.appendChild(product);
         });

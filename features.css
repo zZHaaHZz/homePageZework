@@ -244,7 +244,7 @@
 
    .box-img-feature {
       width: calc(700 / 1440 * 100vw);
-      height: 100%;
+      height:  auto;
       overflow-x: hidden;
       overflow-y: hidden;
    }

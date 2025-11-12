@@ -22,8 +22,9 @@ const trangChuLinks = document.querySelectorAll('a[href="#trangchu"]');
 trangChuLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault(); // chặn nhảy trang nếu cần
-        alert('Bạn vừa nhấn vào: Trang chủ');
-        // hoặc: window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.location.href='index.html';
     });
 });
 
@@ -50,4 +51,13 @@ const linkLienHe = document.querySelector('.ul-menu a[href="#lienhe"]');
 linkLienHe.addEventListener('click', (e) => {
     e.preventDefault(); // ngăn cuộn mặc định nếu cần
     alert('Bạn vừa nhấn vào: Liên hệ');
+});
+
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('a[href="#bynow"], .btn-bynow-bander');
+  if (btn) {
+    e.preventDefault();
+    alert('Bạn vừa nhấn vào nút Mua ngay!');
+  }
 });

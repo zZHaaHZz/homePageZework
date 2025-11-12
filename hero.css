@@ -33,9 +33,6 @@
             rgba(0, 0, 0, 0.15) 50%,
             rgba(0, 0, 0, 0) 70%);
 }
-
-
-
 .square {
     position: absolute;
     width: calc(100vw * 100 / 1440);  
@@ -95,7 +92,7 @@
     background-color: #375DFA;
     color: #fff;
     border: calc(2 * 100vw / 1440) solid #fff;
-    border-radius: calc(12 * 100vw / 1440);
+    border-radius: 12px;
     font-size: calc(18 * 100vw / 1440);
     font-weight: bold;
     cursor: pointer;
@@ -196,4 +193,28 @@
 .mouse-hero img{
     width: 100%;
     height: auto;
+}
+@media (min-width: 1440px){
+    .head-line-hero h2{
+        font-size: 56px;
+    }
+     .head-line-hero p{
+        font-size: 20px;
+    }
+    .experience {
+        max-width: 300px;
+        max-height: 70px;
+        font-size: 1.3rem;
+    }
+    .hero{
+        max-height: 1120px;
+    }
+    .square {
+        max-width: 100px;  
+        max-height: 100px;   
+    }
+    .square-1 {
+        top: 23%;
+        left: 8%;
+    }
 }

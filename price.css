@@ -43,7 +43,6 @@
 .price-bottom {
     width: 1248px;
     height: 160px;
-
 }
 
 .price-conten-packages {
@@ -257,7 +256,8 @@
 }
 
 .btn-bynow-bander {
-    width: 156px
+    width: 156px;
+    
 }
 
 .product.hot .btn-bynow {
@@ -341,3 +341,196 @@
 
 }
 
+@media (max-width: 1440px){
+    .price-container {
+    width: 100%;
+    height: calc(1312 / 1440 * 100vw);
+    padding-top: calc(96 / 1440 * 100vw);
+    padding-bottom: calc(96 / 1440 * 100vw);
+    }
+    .price-title {
+    width: calc(1248 / 1440 * 100vw);
+    height:  calc(166 / 1440 * 100vw);
+    gap: calc(15 / 1440 * 100vw);
+}
+
+.price-title p {
+    width: 40%;
+    font-size: calc(18 / 1440 * 100vw);
+    line-height: calc(28 / 1440 * 100vw);
+}
+.price-content {
+    width: calc(1248 / 1440 * 100vw);
+    height: calc(675 / 1440 * 100vw);
+}
+
+.price-bottom {
+    width: calc(1248 / 1440 * 100vw);
+    height: calc(160 / 1440 * 100vw);
+}
+.price-conten-packages {
+    width: 100%;
+    height: calc(108 / 1440 * 100vw);
+}
+
+.left-price-conten-packages h2 {
+    font-size: calc(28 / 1440 * 100vw);
+    margin-bottom: calc(10 /1440 * 100vw);
+}
+
+.left-price-conten-packages p {
+    font-size: calc(18 / 1440 * 100vw);
+}
+
+.price-content-container {
+    width: 100%;
+    height:  calc(519 / 1440 * 100vw) ;
+}
+
+
+.menu-price {
+    gap:  calc(15 / 1440 * 100vw) ;
+    width:  calc(287 / 1440 * 100vw) ;
+    height:  calc(48 / 1440 * 100vw) ;
+    padding:  calc(4 / 1440 * 100vw) ;
+}
+
+.menu-price button {
+    font-size: calc(18/ 1440 * 100vw);
+    width:  calc(96 / 1440 * 100vw) ;
+    height:  calc(40 / 1440 * 100vw) ;
+}
+
+.menu-price button:hover,
+.menu-price button.active {
+    font-size: calc(18/ 1440 * 100vw);
+    width:  calc(96 / 1440 * 100vw) ;
+    height:  calc(40 / 1440 * 100vw) ;
+}
+
+.product-container {
+    gap:  calc(24 / 1440 * 100vw) ;
+    max-width:  calc(1248 / 1440 * 100vw) ;
+}
+
+
+.product {
+    width:  calc(294 / 1440 * 100vw) ;
+    height:  calc(519 / 1440 * 100vw) ;
+    padding: calc(40 / 1440 * 100vw) 0px  calc(40 / 1440 * 100vw)  0px;
+}
+.product.hot::after {
+    content: " HOT ";
+    position: absolute;
+    top: calc(-20 / 1440 * 100vw);
+    left: 40%;
+}
+
+.name-price {
+    margin-top: calc(20 / 1440 * 100vw);
+    width: 100%;
+    height: calc(100 / 1440 *100vw);
+}
+
+.product h3 {
+    font-size: calc(18 / 1440 * 100vw);
+}
+
+.price h3 {
+    font-size: calc(32 / 1440 * 100vw);
+}
+
+.name-price h4 {
+    font-size: calc(20 / 1440 * 100vw);
+    line-height: calc(48/ 1440 * 100vw);
+}
+.price p {
+    margin-top: 2%;
+}
+
+.price-container ul {
+    width: calc(294 / 1440 * 100vw);
+    height: calc(275 / 1440 * 100vw);
+    padding: calc(40 / 1440 * 100vw) calc(24 / 1440 * 100vw);
+    gap: calc(24 / 1440 * 100vw);
+}
+
+.price-container ul li {
+    gap: calc(6 / 1440 * 100vw);
+    font-size:  calc(16 / 1440 * 100vw);
+}
+
+.price-container ul li i.fa-check {
+    margin-right: calc(6 / 1400 * 100vw);
+}
+
+.price-container ul li i.fa-xmark {
+    margin-right: calc(6 / 1400 * 100vw);
+}
+
+.btn-bynow {
+    width: calc(230 / 1440 * 100vw);
+    height: calc(56 / 1440 * 100vw);
+}
+
+.btn-bynow-bander {
+    width: calc(156 / 1440 * 100vw);
+}
+
+.product.hot .btn-bynow {
+    width: calc(230 / 1440 * 100vw);
+    height: calc(56 / 1440 * 100vw);
+}
+
+
+.price-bottom {
+    width:  calc(1248 / 1440 * 100vw);
+    height: calc(148 / 1440 * 100vw);
+    padding: calc(32 / 1440 * 100vw) calc(48 / 1440 * 100vw);
+}
+
+.price-bottom-box-1 h2{
+    margin-right: calc(20 / 1440 * 100vw);
+    font-size: calc(28 / 1440 * 100vw);
+}
+.price-bottom-box-1 p {
+    font-size: calc(14 / 1440 * 100vw);
+}
+
+.price-bottom-box-2 h3 {
+    width: 100%;
+    font-size: calc(32 / 1440 * 100vw);
+}
+
+.price-bottom-box-2 h2 {
+    font-size: calc(32 / 1440 * 100vw);
+}
+
+.price-bottom-box-2 p {
+    margin-top: calc(15 / 1440 * 100vw);
+    font-size: calc(18 / 1440 * 100vw);
+}
+.btn-bynow-bander{
+    font-size: calc(18 / 1440 * 100vw);
+}
+.price-bottom::after {
+    margin-top: calc(32 / 1440 * 100vw);
+    height: calc(84 / 1440 * 100vw);
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-radius: inherit;
+    background-image: linear-gradient(to right,
+            transparent 0%,
+            transparent 27%,
+            white calc(27% + 2px),
+            transparent calc(27% + 4px),
+            transparent 55%,
+            white calc(55% + 2px),
+            transparent calc(55% + 4px));
+    opacity: 0.6;
+}
+}

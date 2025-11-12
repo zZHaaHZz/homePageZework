@@ -15,7 +15,7 @@ function resizeWrapper() {
 }
 
 function autoScale() {
-    const baseWidth = 1440; // phải khai báo rõ ràng
+    const baseWidth = 1440; 
     const screenWidth = window.innerWidth;
     const scale = screenWidth / baseWidth;
 
