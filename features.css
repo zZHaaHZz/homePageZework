@@ -205,14 +205,14 @@
    }
 
    .features-1 {
-      width: 100%;
+      width:  calc(1148 / 1440 * 100vw);
       height: calc(697 / 1440 * 100vw);
-      border-radius: 24px;
+      border-radius: 10px;
       overflow: hidden;
    }
 
    .feature-detail {
-      width: 100%;
+      width: calc(1148 / 1440 * 100vw);
       height: calc(666 / 1440 *100vw);
       display: flex;
       justify-content: center;

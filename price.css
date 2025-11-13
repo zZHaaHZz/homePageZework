@@ -39,7 +39,9 @@
     flex-direction: column;
     justify-content: space-between;
 }
-
+.price-title h1{
+    font-size: 32px;
+}
 .price-bottom {
     width: 1248px;
     height: 160px;
@@ -536,7 +538,8 @@
             white calc(55% + 2px),
             transparent calc(55% + 4px));
     opacity: 0.6;
-}.product.hot::after {
+}
+.product.hot::after {
     content: " HOT ";
     position: absolute;
     top: calc(-20 / 1440 * 100vw);
@@ -549,5 +552,8 @@
     font-weight: 500;
     line-height: calc(24 / 1440 * 100vw);
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.price-title h1{
+    font-size: calc(32 /1440 *100vw);
 }
 }
