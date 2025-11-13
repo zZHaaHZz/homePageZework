@@ -1,63 +1,90 @@
+// === Nút đăng nhập, đăng ký, trải nghiệm ===
 const btnLogin = document.querySelector('.btn-header-login');
 const btnSignup = document.querySelector('.btn-header-signup');
 const btnExperiences = document.querySelectorAll('.experience');
 
-btnLogin.addEventListener('click', () => {
-    alert('Chức năng dang nhap');
-    // window.location.href = 'login.html';
+btnLogin?.addEventListener('click', () => {
+  alert('Chức năng đăng nhập');
+  // window.location.href = 'login.html';
 });
-btnSignup.addEventListener('click', () => {
-    alert('Chức năng dang ky');
-    // window.location.href = 'signup.html';
+
+btnSignup?.addEventListener('click', () => {
+  alert('Chức năng đăng ký');
+  // window.location.href = 'signup.html';
 });
+
 btnExperiences.forEach(btn => {
-    btn.addEventListener('click', () => {
-        alert('Chức năng đang được phát triển');
-        // window.location.href = 'signup.html';
-    });
+  btn.addEventListener('click', () => {
+    alert('Chức năng đang được phát triển');
+  });
 });
-// Chọn cả hai thẻ <a> có href="#trangchu"
-const trangChuLinks = document.querySelectorAll('a[href="#trangchu"]');
 
+
+// === Menu điều hướng ===
+const menuLinks = document.querySelectorAll('.ul-menu a');
+const trangChuLinks = document.querySelectorAll('a[href="#trangchu"]'); // gồm cả logo
+
+// Hàm xóa class active
+function removeActiveMenu() {
+  menuLinks.forEach(link => link.classList.remove('active-menu'));
+}
+
+// Gán sự kiện click cho tất cả link menu
+menuLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    removeActiveMenu();
+    link.classList.add('active-menu');
+
+    const href = link.getAttribute('href');
+    switch (href) {
+      case '#trangchu':
+        window.location.href = 'index.html';
+        break;
+      case '#tinhnang':
+        window.location.href = 'feature.html';
+        break;
+      case '#banggia':
+        alert('Bạn vừa nhấn vào: Bảng giá');
+        break;
+      case '#baiviet':
+        alert('Bạn vừa nhấn vào: Bài viết');
+        break;
+      case '#lienhe':
+        alert('Bạn vừa nhấn vào: Liên hệ');
+        break;
+    }
+  });
+});
+
+// === Sự kiện cho logo cũng là "Trang chủ" ===
 trangChuLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault(); // chặn nhảy trang nếu cần
-        
-        // window.scrollTo({ top: 0, behavior: 'smooth' });
-        window.location.href='index.html';
-    });
-});
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    removeActiveMenu();
 
-const linkTinhNang = document.querySelector('.ul-menu a[href="#tinhnang"]');
+    // Thêm active cho link "Trang chủ" trong menu
+    const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
+    menuTrangChu?.classList.add('active-menu');
 
-linkTinhNang.addEventListener('click', (e) => {
-    e.preventDefault(); // ngăn cuộn mặc định nếu cần
-    alert('Bạn vừa nhấn vào: Tính năng');
-});
-
-const linkBangGia = document.querySelector('.ul-menu a[href="#banggia"]');
-linkBangGia.addEventListener('click', (e) => {
-    e.preventDefault(); // ngăn cuộn mặc định nếu cần
-    alert('Bạn vừa nhấn vào: Bảng giá');
-});
-
-const linkBaiViet = document.querySelector('.ul-menu a[href="#baiviet"]');
-linkBaiViet.addEventListener('click', (e) => {
-    e.preventDefault(); // ngăn cuộn mặc định nếu cần
-    alert('Bạn vừa nhấn vào: Bài viết');
-});
-
-const linkLienHe = document.querySelector('.ul-menu a[href="#lienhe"]');
-linkLienHe.addEventListener('click', (e) => {
-    e.preventDefault(); // ngăn cuộn mặc định nếu cần
-    alert('Bạn vừa nhấn vào: Liên hệ');
+    window.location.href = 'index.html';
+  });
 });
 
 
+// === Nút "Mua ngay" ===
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('a[href="#bynow"], .btn-bynow-bander');
   if (btn) {
     e.preventDefault();
     alert('Bạn vừa nhấn vào nút Mua ngay!');
   }
+});
+
+
+// === Mặc định Trang chủ active khi load trang ===
+window.addEventListener('DOMContentLoaded', () => {
+  removeActiveMenu();
+  const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
+  menuTrangChu?.classList.add('active-menu');
 });

@@ -148,7 +148,7 @@
 }
 
 
-@media (max-width: 1440px) {
+/* @media (max-width: 1440px) {
     .sales-feedback {
         width: 100%;
         height: calc(661 / 1440 * 100vw);
@@ -232,4 +232,4 @@
     .start-feedback-sales {
         font-size: calc(32 / 1440 *100vw);
     }
-}
+} */

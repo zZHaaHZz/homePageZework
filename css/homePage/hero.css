@@ -1,40 +1,21 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: auto;
+        }
 .hero {
     width: 100vw;
     height: calc(1120px - 88px);
     position: relative;
     overflow: hidden;
-    background-image: linear-gradient(to bottom, #375DFA, #f2f4fb);
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    background: 
+        url("/img/grid\ \(1\).svg") no-repeat center/cover,
+        linear-gradient(to bottom, #375DFA, #f2f4fb);
 }
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height:100%;
-    background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
-    background-size: 100px 100px;
-    background-position: 0 0;
-    mask-image: radial-gradient(ellipse at center,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.7) 60%,
-            rgba(0, 0, 0, 0.3) 85%,
-            rgba(0, 0, 0, 0) 100%);
-    -webkit-mask-image: radial-gradient(ellipse at center,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.7) 60%,
-            rgba(0, 0, 0, 0.3) 85%,
-            rgba(0, 0, 0, 0) 100%);
-    background-position: -33px  -50px, -33px -33px;
-}
-
-
 .square {
     position: absolute;
     width: 100px;
@@ -43,7 +24,7 @@
     opacity: 0.1;
     position: absolute;
 }
-
+/* 
 .square-1 {
     top: 167px;
     left: 167px;
@@ -51,17 +32,17 @@
 
 .square-2 {
     top: 67px; 
-    right: 182px;
+    right: 172px;
 }
 
 .square-3 {
     top: 268px;
-    right: 283px;
+    right: 273px;
 }
 .square-4{
     top: 468px;
     left: -33px;
-}
+} */
 .square-5 {
     position: absolute;
     top: 43%;
@@ -70,11 +51,11 @@
     width: 1186px;
     height: 1200px;
     background: linear-gradient(
-        rgba(202, 216, 255, 0.4),
-        rgba(226, 238, 255, 0.4),
-        rgba(194, 220, 255, 0.4)
+        rgba(202, 216, 255, 0.1),
+        rgba(226, 238, 255, 0.1),
+        rgba(194, 220, 255, 0.1)
     );
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     z-index: 1;
     overflow: hidden;
@@ -186,7 +167,9 @@
 .experience.bottom{
     left: 0px;
 }
- @media (max-width: 991px){
+
+
+ /* @media (max-width: 991px){
     .head-line-hero {
         width: 613px;
     }
@@ -241,12 +224,12 @@
     .square-5{
         max-width: 1186px;
         /* max-height: 1200px; */
-    }
+    /* }
     .experience.top{
         margin-top: 20px;
     }
-}
-@media (max-width: 1441px) {
+} */ 
+/* @media (max-width: 1441px) {
     .hero {
         height: 85%;
     }
@@ -277,4 +260,4 @@
         color: #40AE48;
         font-size: 16px;
     }
-} */
+} */ 

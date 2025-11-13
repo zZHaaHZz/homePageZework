@@ -1,0 +1,192 @@
+.why-select-zework {
+    width: 100%;
+    height: 3967px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 96px;
+    align-items: center;
+    max-height: 3967px;
+    margin-top: 96px;
+    padding-bottom: 96px;
+    position: relative;
+}
+
+.why-select-zework-title {
+    width: 50%;
+    height: 128px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.why-select-zework-title h2 {
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* why select 1 */
+.why-select-zework-1 {
+    width: 1248px;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-why-select-zework-1 {
+    width: 612px;
+    height: 100%;
+    border-radius: 10px;
+
+}
+
+.right-why-select-zework-1 {
+    width: 557px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 64px;
+    padding: 103px 0px 103px 0px;
+}
+
+.title-right-why-select-zework-1 {
+    width: 100%;
+    height: 142px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title-right-why-select-zework-1 h3 {
+    font-size: 32px;
+    width: 343px;
+    font-weight: 600;
+}
+
+.content-right-why-select-zework-1 {
+    width: 100%;
+    height: auto;
+}
+
+.content-right-why-select-zework-1 div {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    justify-self: start;
+    align-items: center;
+    gap: 24px;
+    font-size: 18px;
+}
+
+.content-right-why-select-zework-1 div .list-pink-icon {
+    width: 18px;
+    height: 2px;
+    background: linear-gradient(to right, #f06292, #f8bbd0);
+    /* gradient hồng */
+    border-radius: 1px;
+    /* bo nhẹ 2 đầu */
+}
+
+.content-right-why-select-zework-1 div .list-pink-icon::after,
+.content-right-why-select-zework-1 div .list-pink-icon::before,
+.content-right-why-select-zework-1 div .list-pink-icon .extra-pink {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 2px;
+    background: linear-gradient(to right, #f06292, #f8bbd0);
+    border-radius: 1px;
+    /* bo nhẹ 2 đầu thanh */
+}
+
+.content-right-why-select-zework-1 div .list-pink-icon::after {
+    transform: rotate(90deg);
+}
+
+.content-right-why-select-zework-1 div .list-pink-icon::before {
+    transform: rotate(-50deg);
+}
+
+.content-right-why-select-zework-1 div .list-pink-icon .extra-pink {
+    transform: rotate(50deg);
+}
+
+/* end why select 1 */
+
+/* .why-select-zework-3 */
+.why-select-zework-3 {
+    width: 1248px;
+    height: 820px;
+    padding-top: 64px;
+    background-color: #F9FAFB;
+    border: 1px solid #D0D5DD;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-why-select-zework-3 {
+    width: 1140px;
+    height: 94px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.left-top-why-select-zework-3 {
+    width: 473px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+}
+
+.left-top-why-select-zework-3 h3 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.right-top-why-select-zework-3 {
+    width: 495px;
+    height: 56px;
+
+}
+
+.right-top-why-select-zework-3 p {
+    font-size: 18px;
+    font-weight: 500;
+    width: 495px;
+    color: #475467;
+    margin-top: 10px;
+}
+
+.bottom-why-select-zework-3 {
+    width: 1128px;
+    height: 600px;
+    padding: 64px;
+}
+.bottom-why-select-zework-3 img{
+    width: 100%;
+    height: 100%;
+}
+/* end why select 3 */
+
+.why-select-zework-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+

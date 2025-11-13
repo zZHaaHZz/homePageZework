@@ -342,7 +342,7 @@
     opacity: 0.6;
 
 }
-
+/* 
 @media (max-width: 1440px){
     .price-container {
     width: 100%;
@@ -556,4 +556,4 @@
 .price-title h1{
     font-size: calc(32 /1440 *100vw);
 }
-}
+} */
