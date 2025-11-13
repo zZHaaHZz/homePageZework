@@ -67,10 +67,6 @@
     bottom: 148px;
     left:  -33px;
 }
-.experience.bottom {
-    bottom: 0px;
-    margin-left: 18%;
-}
 .CTA h1{
     z-index: 44;
     font-size: 48px;
@@ -97,12 +93,12 @@
     }
 }
 @media (min-width: 1440px){
-    .experience.bottom {
+    /* .experience.bottom {
     bottom: 0px;
     margin-left: 18%;
     max-width: 300px;
     max-height: 70px;
     font-size: 1.3rem;
     margin-left: calc(250 / 1440 * 100vw);
-    }
+    } */
 }

@@ -1,19 +1,104 @@
 footer {
     width: 100%;
     height: 372px;
-    background-color: lightgreen;
-    padding: 64px 96px 32px 96px;
-
+    padding: 64px 96px 0px 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .main-footer{
-    width: 100%;
-    background-color: rgb(17, 4, 17);
+    width: 1248px;
     height: 156px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+}
+.logo-footer{
+    width: 140px;
+    height: 48px;
+}
+.logo-footer img{
+    width: 70px;
+    margin-left: -15px;
+}
+.logo-footer h1{
+    font-size: 24px;
+}
+.left-main-footer{
+    width: 320px;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: 500;
+    line-height: 24px;
+}
+.right-main-footer{
+    width: 864px;
+    height: 156px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+.right-main-footer p{
+    margin-bottom: 12px
+}
+.right-main-footer h2{
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+.right-main-footer p{
+    font-size: 14px;
+    color: #475467;
+}
+.right-main-footer div:nth-child(1) {
+    width: 192px;
+    height: 100%;
 }
 
-@media (min-width: 1440px){
+.right-main-footer div:nth-child(2) {
+    width: 192px;
+    height: 100%;
+}
+
+.right-main-footer div:nth-child(3) {
+    width: 192px;
+    height: 100%;
+}
+
+.right-main-footer div:nth-child(4) {
+    width: 192px;
+    height: 100%;
+}
+.bottom-footer{
+    width: 1248px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #475467;
+    margin: 0 auto;
+}
+.icon-Social{
+    width: 120px;
+    height: 24px;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon-Social a{
+    width: 25px;
+    height: 25px;
+    color: #475467;
+}
+.icon-Social svg{
+    width: 24px;
+    height: 24px;
+}
+/* @media (min-width: 1440px){
     footer{
         max-width: 100%;
         padding-left: auto;
@@ -35,4 +120,4 @@ footer {
         height: calc(157 / 1440 * 100vw);
     }
 
-}
+} */

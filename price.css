@@ -267,7 +267,7 @@
     background-color: #375DFA;
     border: 1px solid #D0D5DD;
     color: #fff;
-    /* màu chữ cho nổi bật */
+    
 }
 
 
@@ -406,6 +406,7 @@
     font-size: calc(18/ 1440 * 100vw);
     width:  calc(96 / 1440 * 100vw) ;
     height:  calc(40 / 1440 * 100vw) ;
+    border: 10px;
 }
 
 .product-container {
@@ -418,6 +419,7 @@
     width:  calc(294 / 1440 * 100vw) ;
     height:  calc(519 / 1440 * 100vw) ;
     padding: calc(40 / 1440 * 100vw) 0px  calc(40 / 1440 * 100vw)  0px;
+    border-radius: 10px;
 }
 .product.hot::after {
     content: " HOT ";
@@ -441,7 +443,7 @@
 }
 
 .name-price h4 {
-    font-size: calc(20 / 1440 * 100vw);
+    font-size: calc(24 / 1440 * 100vw);
     line-height: calc(48/ 1440 * 100vw);
 }
 .price p {
@@ -471,6 +473,7 @@
 .btn-bynow {
     width: calc(230 / 1440 * 100vw);
     height: calc(56 / 1440 * 100vw);
+    border-radius: 5px;
 }
 
 .btn-bynow-bander {
@@ -480,6 +483,7 @@
 .product.hot .btn-bynow {
     width: calc(230 / 1440 * 100vw);
     height: calc(56 / 1440 * 100vw);
+    border-radius: 5px;
 }
 
 
@@ -532,5 +536,18 @@
             white calc(55% + 2px),
             transparent calc(55% + 4px));
     opacity: 0.6;
+}.product.hot::after {
+    content: " HOT ";
+    position: absolute;
+    top: calc(-20 / 1440 * 100vw);
+    left:  calc((45%)/ 1440 * 100vw);
+    background: linear-gradient(45deg, #ff0000, #ff6b6b);
+    color: white;
+    padding: calc(6 / 1440 * 100vw) calc(12 / 1440 * 100vw);
+    border-radius: 2px;
+    font-size: calc(20/ 1440 * 100vw);
+    font-weight: 500;
+    line-height: calc(24 / 1440 * 100vw);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
 }
