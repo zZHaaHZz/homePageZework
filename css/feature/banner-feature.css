@@ -1,0 +1,30 @@
+.banner-feature{
+    width: 124.8rem;
+    height: 59.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 9.6rem;
+}
+.left-bander-feature{
+    width: 58.8rem;
+}
+.left-bander-feature h1{
+    font-size: 5.6rem;
+    letter-spacing: 0%;
+    font-weight: 600;
+    width: 58.8rem;
+}
+.right-bander-feature img{
+    width: 69.2rem;
+    height: 55.6rem;
+}
+.left-bander-feature p{
+    font-weight: 500;
+    font-size: 2rem;
+    color: #475467;
+}
+.right-bander-feature{
+    margin-top: 4rem;
+    max-height: 55.6rem;
+}

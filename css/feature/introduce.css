@@ -1,0 +1,154 @@
+.introduce{
+    width: 124.8rem;
+    height: 214.04rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.tittle-introduce{
+    width: 100%;
+    height: 16.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.tittle-introduce h1{
+    font-size: 3.2rem;
+}
+.tittle-introduce p{
+    font-size: 1.8rem;
+    width: 70rem;
+    text-align: center;
+    color: #475467;
+
+}
+.list-introduce{
+    width: 124.8rem;
+    height: 191.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.2rem;
+}
+.box-list-introduce{
+    width: 60.8rem;
+    height: 62.8rem;
+    background-color: #F2F4F7;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.title-box-introduce-haft{
+    width: 60.8rem;
+    height: 23.6rem;
+    padding-top: 4.8rem;
+    padding-bottom: 7.8rem;
+    padding-left: 4.6rem;
+}
+.title-box-introduce-haft h2{
+    font-size: 2.8rem;
+    margin-bottom: 1.6rem;
+}
+.title-box-introduce-haft p{
+    font-size: 1.8rem;
+    width: 51.2rem;
+    color: #475467;
+}
+
+.box-haft img{
+    width: 60.8rem;
+    height: 39.3rem;
+}
+
+.box-full{
+    width: 124.8rem;
+    height: 59rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.box-full img{
+    width: 67.3rem;
+    height: 47rem;
+}
+.box-full .title-box-introduce-haft{
+    padding-left: 5.1rem;
+    width: 52.8rem;
+}
+.box-full .title-box-introduce-haft h2{
+    width: 41.2rem;
+}
+.box-full .title-box-introduce-haft p{
+    width: 41.2rem;
+}
+.feedback-content-feature{
+    position: relative;
+    color: #FFF;
+    width: 124.8rem;
+    background-color: #5682FD;
+    height: 23rem;
+    border-radius: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4.6rem;
+    gap: 2rem;
+}
+.feedback-content-feature h1{
+    color: #FFF;
+    font-size: 3.2rem;
+    line-height: 5.2rem;
+}
+.feedback-content-feature p{
+    color: #FFF;
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    width: 72rem;
+    padding-left: 4.3rem;
+    padding-right: 4.3rem;
+    text-align: center;
+}
+.list-introduce-mini{
+    display: flex;
+    gap: 2.4rem;
+    height: 56rem;
+}
+.introduce-mini{
+    height: 79.4rem;
+}
+.box-mini{
+    width: 40rem;
+    height: 58rem;
+}
+.box-mini img{
+    width: 40rem;
+    height: 39rem;
+}
+.box-mini h2{
+    font-size: 1.8rem;
+    color: #475467;
+}
+.box-mini p{
+    width: 33.6rem;
+    font-size: 2.8rem;
+    color: #101828;
+}
+.introduce-4-box{
+    height: 142rem;
+    gap: 6.4rem;
+}
+.list-introduce-4-box h2{
+    font-size: 1.8rem;
+    color: #475467;
+}
+.list-introduce-4-box p{
+    width: 50.6rem;
+    font-size: 2.8rem;
+    color: #101828;
+}
+.list-introduce-4-box{
+    height: 132rem;
+}
+.introduce-4-box{
+    height: 156.4rem;
+}

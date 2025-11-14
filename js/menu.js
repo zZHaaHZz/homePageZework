@@ -35,17 +35,17 @@ menuLinks.forEach(link => {
     e.preventDefault();
     removeActiveMenu();
     link.classList.add('active-menu');
-
     const href = link.getAttribute('href');
+    localStorage.setItem("activeMenu", href);
     switch (href) {
       case '#trangchu':
         window.location.href = 'index.html';
         break;
       case '#tinhnang':
-        window.location.href = 'feature.html';
+        window.location.href = 'pageFeature.html';
         break;
       case '#banggia':
-        alert('Bạn vừa nhấn vào: Bảng giá');
+        window.location.href = 'pricePage.html';
         break;
       case '#baiviet':
         alert('Bạn vừa nhấn vào: Bài viết');
@@ -72,6 +72,21 @@ trangChuLinks.forEach(link => {
 });
 
 
+const logoLinks = document.querySelectorAll('a[href="#trangchu"]');
+
+logoLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Lưu menu active vào localStorage
+    localStorage.setItem("activeMenu", "#trangchu");
+
+    // Chuyển trang
+    window.location.href = 'index.html';
+  });
+});
+
+
 // === Nút "Mua ngay" ===
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('a[href="#bynow"], .btn-bynow-bander');
@@ -82,9 +97,35 @@ document.addEventListener('click', (e) => {
 });
 
 
-// === Mặc định Trang chủ active khi load trang ===
+// // === Mặc định Trang chủ active khi load trang ===
+// window.addEventListener('DOMContentLoaded', () => {
+//   removeActiveMenu();
+//   const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
+//   menuTrangChu?.classList.add('active-menu');
+// });
+
+// === Khôi phục menu active từ localStorage ===
 window.addEventListener('DOMContentLoaded', () => {
+  // Nếu đang ở trang chủ → clear localStorage
+  if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
+    localStorage.removeItem("activeMenu");
+  }
+
   removeActiveMenu();
+
+  const savedMenu = localStorage.getItem("activeMenu");
+
+  if (savedMenu) {
+    const activeLink = document.querySelector(`.ul-menu a[href="${savedMenu}"]`);
+    if (activeLink) {
+      activeLink.classList.add('active-menu');
+      return;
+    }
+  }
+
+  // Nếu không có menu đã lưu hoặc đang ở trang chủ → mặc định Trang chủ active
   const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
   menuTrangChu?.classList.add('active-menu');
 });
+
+

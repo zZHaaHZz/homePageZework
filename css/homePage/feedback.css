@@ -1,75 +1,77 @@
 .feedback {
     width: 100%;
-    height: 711px;
+    height: 71.1rem;
     background-color: #FFF;
-    padding-top: 96px;
-    padding-bottom: 96px;
+    padding-top: 9.6rem;
+    padding-bottom: 9.6rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-
+.feedback-container{
+    width: 124.8rem;
+}
 .feedback-title {
-    width: 1248px;
-    height: 85px;
+    width: 124.8rem;
+    height: 8.5rem;
 }
 
 .feedback-title h1 {
-    font-size: 32px;
+    font-size: 3.2rem;
     font-weight: 600;
     text-align: start;
     color: #101828;
 }
 
 .feedback-title p {
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 500;
     text-align: start;
     color: #475467;
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 .feedback-content {
     position: relative;
-    width: 1248px;
-    height: 394px;
+    width: 124.8rem;
+    height: 39.4rem;
     background-color: #5682FD;
-    border-radius: 24px;
+    border-radius: 2.4rem;
     overflow: hidden;
-    padding: 74px 64px 74px 64px;
+    padding: 7.4rem 6.4rem;
 }
 
 .feedback-content h1 {
-    font-size: 28px;
+    font-size: 2.8rem;
     font-weight: 600;
     color: #FFFFFF;
     text-align: center;
 }
 
 .main-feedback-content {
-    margin-top: 50px;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 1.6rem;
 }
 
 .main-feedback-content img {
-    width: 56px;
-    height: 56px;
+    width: 5.6rem;
+    height: 5.6rem;
     border-radius: 50%;
 }
 
 .main-feedback-content h2 {
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 500;
     color: #FFFFFF;
 }
 
 .main-feedback-content p {
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 500;
     color: #FFFFFF;
 }

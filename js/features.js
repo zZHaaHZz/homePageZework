@@ -10,37 +10,37 @@ const features = [
     id: "groupChat",
     title: "Nhóm chat",
     desc: "Tạo nhóm để thảo luận công việc, chia sẻ tệp và hình ảnh dễ dàng.",
-    img: "img/featureImg/groupchat.png",
+    img: "img/why-1.svg",
   },
   {
     id: "call",
     title: "Gọi điện",
     desc: "Thực hiện cuộc gọi thoại hoặc video chất lượng cao, không giới hạn.",
-    img: "img/featureImg/call.png",
+    img: "img/why-2.svg",
   },
   {
     id: "employee",
     title: "Nhân viên",
     desc: "Quản lý thông tin nhân viên, vai trò và trạng thái hoạt động.",
-    img: "img/featureImg/employee.png",
+    img: "img/why-3.svg",
   },
   {
     id: "synchronize",
     title: "Đồng bộ Zalo",
     desc: "Đồng bộ dữ liệu, danh bạ và tin nhắn với tài khoản Zalo của bạn.",
-    img: "img/featureImg/synchronize.png",
+    img: "img/why-1.svg",
   },
   {
     id: "contacts",
     title: "Danh bạ",
     desc: "Xem, thêm và quản lý toàn bộ danh bạ liên hệ một cách khoa học.",
-    img: "img/featureImg/contacts.png",
+    img: "img/why-4.svg",
   },
   {
     id: "setting",
     title: "Cấu hình",
     desc: "Tùy chỉnh giao diện, quyền truy cập, và các thiết lập nâng cao.",
-    img: "img/featureImg/setting.png",
+    img: "img/why-3.svg",
   },
 ];
 

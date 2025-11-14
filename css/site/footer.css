@@ -1,19 +1,18 @@
 footer {
     width: 100%;
-    height: calc(336px + 372px);
+    height: 70.8rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
 .CTA {
     width: 100vw;
-    height: 348px;
-    /* border: 1px solid black; */
+    height: 34.8rem; 
     position: relative;
     background-image: linear-gradient(#A3C9FF4A);
     opacity: 0.9;
-    padding: 64px 0px 64px 0px;
-
+    padding: 6.4rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,128 +23,121 @@ footer {
 
 .CTA h1{
     z-index: 44;
-    font-size: 48px;
+    font-size: 4.8rem;
     font-weight: 600;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
+
 .CTA p{
-     z-index: 44;
-     font-family: 'Plus Jakarta Sans', sans-serif;
-     font-size: 24px;
-     font-weight: 500;
-     color: #475467;
+    z-index: 44;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.4rem; 
+    font-weight: 500;
+    color: #475467;
 }
+.experience.bottom{
+      z-index: 3;
+    width: 25.2rem;
+    height: 5.6rem;
+    border-radius: 1.2rem;
+    background-color: #375DFA;
+    border: 0.1rem solid #FFFFFF;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    box-shadow: 0 0 0.3rem 0.1rem rgba(255, 255, 255, 0.4);
+}
+
+.experience.bottom {
+    left: 0;
+}
+
 .main-footer{
-    width: 1248px;
-    height: 156px;
+    width: 124.8rem;  
+    height: 15.6rem;  
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+}
 
-}
 .logo-footer{
-    width: 140px;
-    height: 48px;
+    width: 14rem;   
+    height: 4.8rem;  
 }
+
 .logo-footer img{
-    width: 70px;
-    margin-left: -15px;
+    width: 7rem;    
+    margin-left: -1.5rem; 
 }
+
 .logo-footer h1{
-    font-size: 24px;
+    font-size: 2.4rem;
 }
+
 .left-main-footer{
-    width: 320px;
-    height: 128px;
+    width: 32rem;   
+    height: 12.8rem; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-weight: 500;
-    line-height: 24px;
+    line-height: 2.4rem; 
+}
+.left-main-footer p{
+    font-size: 1.6rem;
+    color: #475467;
 }
 .right-main-footer{
-    width: 864px;
-    height: 156px;
+    width: 86.4rem;  
+    height: 15.6rem;
     display: flex;
     justify-content: space-between;
     text-align: left;
 }
 .right-main-footer p{
-    margin-bottom: 12px
-}
-.right-main-footer h2{
-    font-size: 16px;
-    margin-bottom: 16px;
-}
-.right-main-footer p{
-    font-size: 14px;
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;  
     color: #475467;
 }
-.right-main-footer div:nth-child(1) {
-    width: 192px;
-    height: 100%;
+
+.right-main-footer h2{
+    font-size: 1.6rem;     
+    margin-bottom: 1.6rem;
 }
 
-.right-main-footer div:nth-child(2) {
-    width: 192px;
-    height: 100%;
-}
-
-.right-main-footer div:nth-child(3) {
-    width: 192px;
-    height: 100%;
-}
-
+.right-main-footer div:nth-child(1),
+.right-main-footer div:nth-child(2),
+.right-main-footer div:nth-child(3),
 .right-main-footer div:nth-child(4) {
-    width: 192px;
+    width: 19.2rem;
     height: 100%;
 }
+
 .bottom-footer{
-    width: 1248px;
-    height: 80px;
+    width: 124.8rem; 
+    height: 8rem;  
     display: flex;
     justify-content: space-between;
     align-items: self-start;
     color: #475467;
     margin: 0 auto;
 }
+
 .icon-Social{
-    width: 120px;
-    height: 24px;
-    font-size: 24px;
+    width: 12rem;  
+    height: 2.4rem;  
+    font-size: 2.4rem; 
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .icon-Social a{
-    width: 25px;
-    height: 25px;
+    width: 2.5rem;
+    height: 2.5rem;  
     color: #475467;
 }
+
 .icon-Social svg{
-    width: 24px;
-    height: 24px;
+    width: 2.4rem; 
+    height: 2.4rem;  
 }
-/* @media (min-width: 1440px){
-    footer{
-        max-width: 100%;
-        padding-left: auto;
-        padding-right: auto;
-        height: 372px;
-    }
-    .main-footer{
-        width: 1248px;
-        background-color: rgb(17, 4, 17);
-        height: 156px;
-        margin: 0 auto;
-    }
-}
-
-@media (max-width: 1441px){
-    .main-footer{
-        width: 90%;
-        background-color: rgb(17, 4, 17);
-        height: calc(157 / 1440 * 100vw);
-    }
-
-} */

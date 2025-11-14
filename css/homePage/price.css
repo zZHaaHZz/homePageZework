@@ -1,55 +1,57 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600&display=swap');
+
 .price-container {
     width: 100%;
-    height: 1312px;
+    height: 131.2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-top: 96px;
-    padding-bottom: 96px;
+    padding-top: 9.6rem;
+    padding-bottom: 9.6rem;
     position: relative;
 }
 
 .price-title {
-    width: 1248px;
-    height: 166px;
+    width: 124.8rem;
+    height: 16.6rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 1.5rem;
+}
+
+.price-title h1 {
+    font-size: 3.2rem;
 }
 
 .price-title p {
     width: 40%;
-    font-size: 18px;
+    font-size: 1.8rem;
     color: #475467;
     font-weight: 500;
-    line-height: 28px;
+    line-height: 2.8rem;
     text-align: center;
 }
 
 .price-content {
-    width: 1248px;
-    height: 675px;
-
+    width: 124.8rem;
+    height: 67.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.price-title h1{
-    font-size: 32px;
-}
+
 .price-bottom {
-    width: 1248px;
-    height: 160px;
+    width: 124.8rem;
+    height: 16rem;
 }
 
 .price-conten-packages {
     width: 100%;
-    height: 108px;
+    height: 10.8rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -57,33 +59,32 @@
 }
 
 .left-price-conten-packages h2 {
-    font-size: 28px;
+    font-size: 2.8rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .left-price-conten-packages p {
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 500;
     color: #475467;
 }
 
 .price-content-container {
     width: 100%;
-    height: 519px;
+    height: 51.9rem;
 }
-
 
 .menu-price {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 1.5rem;
     background: #5682FD;
-    width: 287px;
-    height: 48px;
+    width: 28.7rem;
+    height: 4.8rem;
     align-items: center;
-    padding: 4px;
-    border-radius: 8px;
+    padding: 0.4rem;
+    border-radius: 0.8rem;
 }
 
 .menu-price button {
@@ -91,36 +92,35 @@
     color: #fff;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     transition: background 0.3s;
-    width: 96px;
-    height: 40px;
+    width: 9.6rem;
+    height: 4rem;
+    font-size: 1.5rem;
 }
 
 .menu-price button:hover,
 .menu-price button.active {
     background: #FFFFFF;
     color: #101828;
-    width: 96px;
-    height: 40px;
+    width: 9.6rem;
+    height: 4rem;
 }
-
 .product-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 24px;
-    max-width: 1248px;
+    gap: 2.4rem;
+    max-width: 124.8rem;
 }
-
 
 .product {
     background: #fff;
-    border-radius: 24px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 294px;
-    height: 519px;
-    padding: 40px 0px 40px 0px;
+    border-radius: 2.4rem;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+    width: 29.4rem;
+    height: 51.9rem;
+    padding: 4rem 0 4rem 0;
     text-align: center;
     position: relative;
     transition: transform 0.3s, opacity 0.4s;
@@ -134,9 +134,8 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(1rem);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -147,35 +146,34 @@
     transform: scale(1.05);
 }
 
-/* hiệu ứng cho gói hot */
 .product.hot {
-    border: 2px solid #375DFA;
-    box-shadow: 0 0 15px #5172f7;
+    border: 0.2rem solid #375DFA;
+    box-shadow: 0 0 1.5rem #5172f7;
 }
 
 .product.hot::after {
     content: " HOT ";
     position: absolute;
-    top: -20px;
+    top: -2rem;
     left: 40%;
     background: linear-gradient(45deg, #ff0000, #ff6b6b);
     color: white;
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 0.4rem 1.2rem;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
     font-weight: 500;
-    line-height: 24px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    line-height: 2.4rem;
+    box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.3);
 }
 
 .name-price {
-    margin-top: 20px;
+    margin-top: 2rem;
     width: 100%;
-    height: 100px;
+    height: 10rem;
 }
 
 .product h3 {
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 500;
     text-align: center;
 }
@@ -183,17 +181,17 @@
 .price h3 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-style: italic;
-    font-size: 32px;
+    font-size: 3.2rem;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 4.8rem;
     text-align: center;
     color: #333;
 }
 
 .name-price h4 {
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 4.8rem;
     text-align: center;
     color: #475467;
 }
@@ -201,14 +199,16 @@
 .price {
     color: #101828;
     font-weight: bold;
-    padding-top: 0px;
+    padding-top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .price p {
-    margin-top: 2%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
 }
 
 .product.hot .price {
@@ -219,67 +219,65 @@
 }
 
 .price-container ul {
-    width: 294px;
-    height: 275px;
+    width: 29.4rem;
+    height: 27.5rem;
     text-align: left;
-    padding: 40px 24px 40px 24px;
+    padding: 4rem 2.4rem;
     list-style: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 24px;
+    gap: 2.4rem;
 }
 
 .price-container ul li {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 16px;
+    gap: 0.6rem;
+    font-size: 1.6rem;
     color: #475467;
     font-weight: 500;
 }
 
 .price-container ul li i.fa-check {
     color: #FF82F9;
-    margin-right: 6px;
+    margin-right: 0.6rem;
 }
 
 .price-container ul li i.fa-xmark {
     color: #475467;
-    margin-right: 6px;
+    margin-right: 0.6rem;
 }
 
 .btn-bynow {
-    width: 230px;
-    height: 56px;
-    border-radius: 12px;
+    width: 23rem;
+    height: 5.6rem;
+    border-radius: 1.2rem;
     background-color: #FFFFFF;
-    border: 1px solid #D0D5DD;
+    border: 0.1rem solid #D0D5DD;
+    font-size: 2rem;
 }
 
 .btn-bynow-bander {
-    width: 156px;
-    
+    width: 15.6rem;
 }
 
 .product.hot .btn-bynow {
-    width: 230px;
-    height: 56px;
-    border-radius: 12px;
+    width: 23rem;
+    height: 5.6rem;
+    border-radius: 1.2rem;
     background-color: #375DFA;
-    border: 1px solid #D0D5DD;
+    border: 0.1rem solid #D0D5DD;
     color: #fff;
-    
 }
-
 
 .price-bottom {
     position: relative;
-    width: 1248px;
-    height: 148px;
-    background-image: linear-gradient(to right, rgba(0, 88, 182, 0.9)0%, rgba(29, 171, 80) 100%);
-    border-radius: 20px;
-    padding: 32px 48px 32px 48px;
+    width: 124.8rem;
+    height: 14.8rem;
+    background-image: linear-gradient(to right, rgba(0, 88, 182, 0.9) 0%, rgba(29, 171, 80) 100%);
+    border-radius: 2rem;
+    padding: 3.2rem 4.8rem;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
@@ -287,9 +285,16 @@
 }
 
 .price-bottom-box-1 {
-    margin-right: 20px;
+    margin-right: 2rem;
     color: #FFFFFF;
+}
 
+.price-bottom-box-1 h2 {
+    font-size: 2.8rem;
+}
+
+.price-bottom-box-1 p {
+    font-size: 1.8rem;
 }
 
 .price-bottom-box-2 {
@@ -300,30 +305,29 @@
 
 .price-bottom-box-2 h3 {
     width: 100%;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 500;
     color: #FFFFFF;
 }
 
 .price-bottom-box-2 h2 {
-    font-size: 48px;
+    font-size: 4.8rem;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-style: italic;
     color: #FFFFFF;
 }
 
 .price-bottom-box-2 p {
-    margin-top: 15px;
+    margin-top: 1.5rem;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-style: italic;
-    font-size: 18px;
+    font-size: 1.8rem;
     color: #FFFFFF;
 }
 
 .price-bottom::after {
-  
-    margin-top: 32px;
-    height: 84px;
+    margin-top: 3.2rem;
+    height: 8.4rem;
     content: "";
     position: absolute;
     top: 0;
@@ -333,227 +337,11 @@
     border-radius: inherit;
     background-image: linear-gradient(to right,
             transparent 0%,
-            transparent 27%,
-            white calc(27% + 2px),
-            transparent calc(27% + 4px),
+            transparent 30%,
+            white calc(30% + 0.2rem),
+            transparent calc(30% + 0.4rem),
             transparent 55%,
-            white calc(55% + 2px),
-            transparent calc(55% + 4px));
-    opacity: 0.6;
-
-}
-/* 
-@media (max-width: 1440px){
-    .price-container {
-    width: 100%;
-    height: calc(1312 / 1440 * 100vw);
-    padding-top: calc(96 / 1440 * 100vw);
-    padding-bottom: calc(96 / 1440 * 100vw);
-    }
-    .price-title {
-    width: calc(1248 / 1440 * 100vw);
-    height:  calc(166 / 1440 * 100vw);
-    gap: calc(15 / 1440 * 100vw);
-}
-
-.price-title p {
-    width: 40%;
-    font-size: calc(18 / 1440 * 100vw);
-    line-height: calc(28 / 1440 * 100vw);
-}
-.price-content {
-    width: calc(1248 / 1440 * 100vw);
-    height: calc(675 / 1440 * 100vw);
-}
-
-.price-bottom {
-    width: calc(1248 / 1440 * 100vw);
-    height: calc(160 / 1440 * 100vw);
-}
-.price-conten-packages {
-    width: 100%;
-    height: calc(108 / 1440 * 100vw);
-}
-
-.left-price-conten-packages h2 {
-    font-size: calc(28 / 1440 * 100vw);
-    margin-bottom: calc(10 /1440 * 100vw);
-}
-
-.left-price-conten-packages p {
-    font-size: calc(18 / 1440 * 100vw);
-}
-
-.price-content-container {
-    width: 100%;
-    height:  calc(519 / 1440 * 100vw) ;
-}
-
-
-.menu-price {
-    gap:  calc(15 / 1440 * 100vw) ;
-    width:  calc(287 / 1440 * 100vw) ;
-    height:  calc(48 / 1440 * 100vw) ;
-    padding:  calc(4 / 1440 * 100vw) ;
-}
-
-.menu-price button {
-    font-size: calc(18/ 1440 * 100vw);
-    width:  calc(96 / 1440 * 100vw) ;
-    height:  calc(40 / 1440 * 100vw) ;
-}
-
-.menu-price button:hover,
-.menu-price button.active {
-    font-size: calc(18/ 1440 * 100vw);
-    width:  calc(96 / 1440 * 100vw) ;
-    height:  calc(40 / 1440 * 100vw) ;
-    border: 10px;
-}
-
-.product-container {
-    gap:  calc(24 / 1440 * 100vw) ;
-    max-width:  calc(1248 / 1440 * 100vw) ;
-}
-
-
-.product {
-    width:  calc(294 / 1440 * 100vw) ;
-    height:  calc(519 / 1440 * 100vw) ;
-    padding: calc(40 / 1440 * 100vw) 0px  calc(40 / 1440 * 100vw)  0px;
-    border-radius: 10px;
-}
-.product.hot::after {
-    content: " HOT ";
-    position: absolute;
-    top: calc(-20 / 1440 * 100vw);
-    left: 40%;
-}
-
-.name-price {
-    margin-top: calc(20 / 1440 * 100vw);
-    width: 100%;
-    height: calc(100 / 1440 *100vw);
-}
-
-.product h3 {
-    font-size: calc(18 / 1440 * 100vw);
-}
-
-.price h3 {
-    font-size: calc(32 / 1440 * 100vw);
-}
-
-.name-price h4 {
-    font-size: calc(24 / 1440 * 100vw);
-    line-height: calc(48/ 1440 * 100vw);
-}
-.price p {
-    margin-top: 2%;
-}
-
-.price-container ul {
-    width: calc(294 / 1440 * 100vw);
-    height: calc(275 / 1440 * 100vw);
-    padding: calc(40 / 1440 * 100vw) calc(24 / 1440 * 100vw);
-    gap: calc(24 / 1440 * 100vw);
-}
-
-.price-container ul li {
-    gap: calc(6 / 1440 * 100vw);
-    font-size:  calc(16 / 1440 * 100vw);
-}
-
-.price-container ul li i.fa-check {
-    margin-right: calc(6 / 1400 * 100vw);
-}
-
-.price-container ul li i.fa-xmark {
-    margin-right: calc(6 / 1400 * 100vw);
-}
-
-.btn-bynow {
-    width: calc(230 / 1440 * 100vw);
-    height: calc(56 / 1440 * 100vw);
-    border-radius: 5px;
-}
-
-.btn-bynow-bander {
-    width: calc(156 / 1440 * 100vw);
-}
-
-.product.hot .btn-bynow {
-    width: calc(230 / 1440 * 100vw);
-    height: calc(56 / 1440 * 100vw);
-    border-radius: 5px;
-}
-
-
-.price-bottom {
-    width:  calc(1248 / 1440 * 100vw);
-    height: calc(148 / 1440 * 100vw);
-    padding: calc(32 / 1440 * 100vw) calc(48 / 1440 * 100vw);
-}
-
-.price-bottom-box-1 h2{
-    margin-right: calc(20 / 1440 * 100vw);
-    font-size: calc(28 / 1440 * 100vw);
-}
-.price-bottom-box-1 p {
-    font-size: calc(14 / 1440 * 100vw);
-}
-
-.price-bottom-box-2 h3 {
-    width: 100%;
-    font-size: calc(32 / 1440 * 100vw);
-}
-
-.price-bottom-box-2 h2 {
-    font-size: calc(32 / 1440 * 100vw);
-}
-
-.price-bottom-box-2 p {
-    margin-top: calc(15 / 1440 * 100vw);
-    font-size: calc(18 / 1440 * 100vw);
-}
-.btn-bynow-bander{
-    font-size: calc(18 / 1440 * 100vw);
-}
-.price-bottom::after {
-    margin-top: calc(32 / 1440 * 100vw);
-    height: calc(84 / 1440 * 100vw);
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    border-radius: inherit;
-    background-image: linear-gradient(to right,
-            transparent 0%,
-            transparent 27%,
-            white calc(27% + 2px),
-            transparent calc(27% + 4px),
-            transparent 55%,
-            white calc(55% + 2px),
-            transparent calc(55% + 4px));
+            white calc(55% + 0.2rem),
+            transparent calc(55% + 0.4rem));
     opacity: 0.6;
 }
-.product.hot::after {
-    content: " HOT ";
-    position: absolute;
-    top: calc(-20 / 1440 * 100vw);
-    left:  calc((45%)/ 1440 * 100vw);
-    background: linear-gradient(45deg, #ff0000, #ff6b6b);
-    color: white;
-    padding: calc(6 / 1440 * 100vw) calc(12 / 1440 * 100vw);
-    border-radius: 2px;
-    font-size: calc(20/ 1440 * 100vw);
-    font-weight: 500;
-    line-height: calc(24 / 1440 * 100vw);
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-}
-.price-title h1{
-    font-size: calc(32 /1440 *100vw);
-}
-} */

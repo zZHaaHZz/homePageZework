@@ -1,41 +1,44 @@
+
 .tag-acc {
     display: inline-block;
-    width: 149px;
-    padding: 2px;
-    /* viền dày 2px */
-    border-radius: 20px;
+    width: auto;
+    padding: 0.2rem;
+    border-radius: 2rem;
     background: linear-gradient(to right, #26B3F7, #99EB53);
-    /* gradient viền */
+
 }
 
 .tag-inner {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    width: 145px;
-    height: 30px;
+    gap: 0.6rem;        
+    width: auto;       
+    height: 3rem;         
     background: #fff;
-    /* nền trong suốt hoặc màu khác */
-    border-radius: 18px;
-    /* nhỏ hơn 1 chút để vừa khít */
+    border-radius: 1.8rem;
+    padding-right: 2em;
+    padding-left: 2rem;
 }
 
 .icon-list {
     position: relative;
-    width: 18px;
-    height: 2px;
+    width: 1.8rem;
+    height: 0.2rem;
     background: linear-gradient(to right, #26B3F7 20%, #99EB53 80%);
     opacity: 0.9;
 }
-
+.tag-inner h6{
+    width: auto;
+    font-size: 1.8rem;
+}
 .icon-list::before,
 .icon-list::after,
 .icon-list .extra {
     content: "";
     position: absolute;
-    width: 18px;
-    height: 2px;
+    width: 1.8rem;
+    height: 0.2rem;
     background: linear-gradient(to right, #26B3F7 20%, #99EB53 80%);
 }
 
@@ -53,57 +56,3 @@
     transform: rotate(50deg);
 }
 
-@media (max-width: 1440px) {
-    .tag-acc {
-        display: inline-block;
-        width: calc(149 / 1440 * 100vw);
-        padding: calc(2 / 1440 * 100vw);
-        border-radius: calc(20 / 1440 * 100vw);
-        background: linear-gradient(to right, #26B3F7, #99EB53);
-    }
-
-    .tag-inner {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: calc(6 / 1440 * 100vw);
-        width: calc(145 / 1440 * 100vw);
-        height: calc(30 / 1440 * 100vw);
-        background: #fff;
-        border-radius: calc(18 / 1440 * 100vw);
-    }
-
-    .icon-list {
-        position: relative;
-        width: calc(18 / 1440 * 100vw);
-        height: calc(2 / 1440 * 100vw);
-        background: linear-gradient(to right, #26B3F7 20%, #99EB53 80%);
-        opacity: 0.9;
-    }
-
-    .icon-list::before,
-    .icon-list::after,
-    .icon-list .extra {
-        content: "";
-        position: absolute;
-        width: calc(18 / 1440 * 100vw);
-        height: calc(2 / 1440 * 100vw);
-        background: linear-gradient(to right, #26B3F7 20%, #99EB53 80%);
-    }
-
-    .icon-list::before {
-        transform: rotate(-50deg);
-    }
-
-    .icon-list::after {
-        transform: rotate(90deg);
-        background: linear-gradient(to top, #4ebcf3, #99EB53);
-    }
-
-    .icon-list .extra {
-        transform: rotate(50deg);
-    }
-    .tag-inner h6{
-          font-size: calc(18 / 1440 * 100vw);
-    }
-}
