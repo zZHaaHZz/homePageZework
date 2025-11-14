@@ -17,7 +17,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background: url("/img/grid.svg") no-repeat center/cover;
+    background: url("/img/grid.svg") repeat;
     background-color: aliceblue;
 }
 
