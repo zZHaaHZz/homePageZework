@@ -2,10 +2,10 @@
 .tag-acc {
     display: inline-block;
     width: auto;
-    padding: 0.2rem;
+    padding: 0.2rem 0.3rem;
     border-radius: 2rem;
     background: linear-gradient(to right, #26B3F7, #99EB53);
-
+    height: auto;
 }
 
 .tag-inner {
@@ -14,7 +14,7 @@
     justify-content: center;
     gap: 0.6rem;        
     width: auto;       
-    height: 3rem;         
+    height: 4rem;         
     background: #fff;
     border-radius: 1.8rem;
     padding-right: 2em;

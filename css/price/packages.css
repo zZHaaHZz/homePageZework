@@ -9,10 +9,15 @@
 .tittle-packages h1{
     font-size: 3.2rem;
 }
-.tittle-packages p{
+.tittle-packages     p{
     font-size: 1.8rem;
     width: 70rem;
     text-align: center;
     color: #475467;
 
+}
+.contaier-packages{
+    width: 144rem;
+    height: 147.8rem;
+    background-color: pink;
 }
