@@ -1,0 +1,109 @@
+.banner-aricle{
+    width: 100vw;
+    height: calc(69.8rem - 8.8rem);
+    background:
+        url("/img/bai-viet/grid-bai-viet.svg") no-repeat center/cover,
+        linear-gradient(to bottom, #C4D2FF, #DAE3FF);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.contnet-banner-aricle{
+    position: relative;
+    width: 144rem;
+    height: 41.4rem;
+    padding-left:  9.6rem;
+    padding-right: 9.6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8rem;
+}
+.img-logo-aricle{
+    position: absolute;
+    width: 58.1rem;
+    height: 63.5rem;
+    top: -5rem;
+    left: 61.5rem;
+}
+.tag-article {
+    position: relative;
+    width: 11.7rem;
+    height: 3rem;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding-left: 0.58em;
+    padding-right: 0.8rem;
+    border-radius: 20rem;
+    background: transparent;
+}
+
+.tag-article::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px; /* độ dày border */
+    background: linear-gradient(to right, #26B3F7, #99EB53);
+
+    /* tạo border rỗng nhưng giữ border-radius */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+}
+
+.tag-article h6 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: 6.7rem;
+    height: 2.8rem;
+    text-align: center;
+    padding-top: 0.7rem;
+}
+.left-banner-aricle{
+    width: 66.2rem;
+    height: 34.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+.left-banner-aricle h1{
+    font-size: 4.8rem;
+    z-index: 2;
+    font-weight: 600;
+}
+.left-banner-aricle p{
+    color: #475467;
+    font-size: 2rem;
+    font-weight: 500;
+}
+.view-now{
+    width: 11.6rem;
+    height: 4.8rem;
+    border: none;
+    background-color: #375DFA;
+    border-radius: 1.2rem;
+    color: #FFF;
+    font-size: 1.6rem;
+}
+.right-banner-aricle{
+    z-index: 2;
+    width: 50.6rem;
+    height: 41.4rem;
+}
+/* .right-banner-aricle img{
+
+} */
+
+.content-article{
+    width: 144rem;
+    height: 151.1rem;
+    padding: 9.6rem;
+}

@@ -2,7 +2,7 @@
 const btnLogin = document.querySelector('.btn-header-login');
 const btnSignup = document.querySelector('.btn-header-signup');
 const btnExperiences = document.querySelectorAll('.experience');
-
+const btnViewNow = document.querySelectorAll('.view-now');
 btnLogin?.addEventListener('click', () => {
   alert('Chức năng đăng nhập');
   // window.location.href = 'login.html';
@@ -15,10 +15,15 @@ btnSignup?.addEventListener('click', () => {
 
 btnExperiences.forEach(btn => {
   btn.addEventListener('click', () => {
-    alert('Chức năng đang được phát triển');
+    alert('vua click vao btnExperiences');
   });
 });
 
+btnViewNow.forEach(btn => {
+  btn.addEventListener('click', () => {
+    alert('vua click vao btnViewNow');
+  });
+});
 
 // === Menu điều hướng ===
 const menuLinks = document.querySelectorAll('.ul-menu a');
@@ -48,7 +53,7 @@ menuLinks.forEach(link => {
         window.location.href = 'pricePage.html';
         break;
       case '#baiviet':
-        alert('Bạn vừa nhấn vào: Bài viết');
+        window.location.href = 'pageArticle.html';
         break;
       case '#lienhe':
         alert('Bạn vừa nhấn vào: Liên hệ');
