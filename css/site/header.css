@@ -244,6 +244,9 @@ header {
     html {
         font-size: 3px;
     }
+    header{
+        height: 21.3rem;
+    }
     .content-header{
         width: 125rem;
         justify-content: space-between;
