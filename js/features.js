@@ -37,8 +37,8 @@ const features = [
     img: "img/why-4.svg",
   },
   {
-    id: "setting",
-    title: "Cấu hình",
+    id: "dashboard",
+    title: "dashboard",
     desc: "Tùy chỉnh giao diện, quyền truy cập, và các thiết lập nâng cao.",
     img: "img/why-3.svg",
   },

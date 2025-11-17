@@ -254,6 +254,7 @@ header {
 }
 
 @media (width<=400px) {
+
     html {
         font-size: 10px;
     }
@@ -261,6 +262,7 @@ header {
     header {
         height: 6.4rem;
         width: 100vw;
+        /* display: none; */
     }
 
     .content-header {

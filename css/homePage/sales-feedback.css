@@ -3,16 +3,18 @@
     display: flex;
     justify-content: center;
 }
-.sales-feedback-container{
+
+.sales-feedback-container {
     width: auto;
     height: 66.1rem;
-     display: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 6.4rem;
     padding: 0 9.6rem 3.2rem 9.6rem;
 }
+
 .sales-feedback-title {
     width: 124.8rem;
     height: 14.2rem;
@@ -74,7 +76,7 @@
     position: relative;
 }
 
-.head-sales-feedback-content-box > div {
+.head-sales-feedback-content-box>div {
     display: grid;
     grid-template-rows: auto auto;
 }
@@ -145,4 +147,88 @@
     position: relative;
     top: 0;
     left: -1rem;
+}
+
+@media (max-width: 400px) {
+    .container {
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .sales-feedback {
+        width: 37.5rem;
+        height: 116rem;
+    }
+
+    .sales-feedback-container {
+        height: 116rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;;
+    }
+
+    .sales-feedback-title {
+        width: 34.3rem;
+        height: 14.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-sales-feedback-title {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-sales-feedback-title h2 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .sales-feedback-title p {
+        font-size: 1.4rem;
+        text-align: center;
+        width: 34.3rem;
+        height: 8rem;
+    }
+
+    .sales-feedback-content {
+        flex-direction: column;
+        align-items: center;
+        
+        gap: 2rem;
+        height: 92.8rem;
+    }
+
+    .sales-feedback-content-box {
+        width: 34.3rem;
+        height: 22rem;
+        border: 0.1rem solid #D0D5DD;
+        border-radius: 1.2rem;
+        padding: 1.6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .main-sales-feedback-content {
+        width: 30.7rem;
+        height: 11.6rem;
+    }
+
+    .main-sales-feedback-content p {
+        font-size: 1.4rem;
+        height: 8rem;
+         padding-bottom: 0rem;
+          line-height: 2rem
+    }
+
+    .start-feedback-sales {
+        font-size: 2.4rem;
+        color: #FF7F22;
+    }
 }
