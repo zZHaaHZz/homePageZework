@@ -40,10 +40,12 @@
     height: 100%;
     border-radius: 1rem;
 }
-.left-why-select-zework-1 img{
+
+.left-why-select-zework-1 img {
     width: 61.1rem;
     height: 57.5rem;
 }
+
 .right-why-select-zework-1 {
     width: 55.7rem;
     height: 100%;
@@ -168,7 +170,7 @@
     padding: 6.4rem;
 }
 
-.bottom-why-select-zework-3 img{
+.bottom-why-select-zework-3 img {
     width: 100%;
     height: 100%;
 }
@@ -178,4 +180,146 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
+}
+
+@media (width<=400px) {
+    .why-select-zework {
+        width: 37.5rem;
+        height: auto;
+        gap: 4rem;
+    }
+
+    .why-select-zework-title {
+        width: 100%;
+        height: auto;
+    }
+
+    .why-select-zework-title h2 {
+        font-size: 3.2rem;
+        width: 100%;
+    }
+
+    .why-select-zework-1 {
+        width: 34.3rem;
+        height: 55.851rem;
+        flex-direction: column-reverse;
+        gap: 1.6rem;
+    }
+
+    .left-why-select-zework-1 {
+        width: 34.3rem;
+        height: 32.2rem;
+        border-radius: 1rem;
+    }
+
+    .left-why-select-zework-1 img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .right-why-select-zework-1 {
+        width: 34.3rem;
+        height: 22rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+        padding: 0;
+    }
+
+    .box-tag-acc-home {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title-right-why-select-zework-1 {
+        width: 100%;
+        height: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .title-right-why-select-zework-1 h3 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 2.4rem;
+        text-align: center;
+        width: 70%;
+    }
+    .content-right-why-select-zework-1{
+        width: 34.3rem;
+        height: 12.8rem;
+    }
+    .content-right-why-select-zework-1 div p{
+        width: 31.8rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #475467;
+    }
+    .content-right-why-select-zework-1 div {
+        width: 100%;
+        height: 3.6rem;
+        font-size: 1.4rem;
+        gap: 1.2rem;
+        
+    }
+
+    .content-right-why-select-zework-1 div .list-pink-icon {
+        width: 1.2rem;
+        height: 0.2rem;
+        border-radius: 0rem;
+    }
+
+    .content-right-why-select-zework-1 div .list-pink-icon::after,
+    .content-right-why-select-zework-1 div .list-pink-icon::before,
+    .content-right-why-select-zework-1 div .list-pink-icon .extra-pink {
+        content: "";
+        position: absolute;
+        width: 1.2rem;
+        height: 0.2rem;
+        border-radius: 0.1rem;
+    }
+    .why-select-zework-3 {
+        width: 34.3rem;
+        height: 38.6rem;
+        padding: 2rem 1.6rem;
+    }
+    .top-why-select-zework-3{
+        display: flex;
+        flex-direction: column;
+        width: 31.1rem;
+        height: 12.8rem;
+    }
+    .left-top-why-select-zework-3{
+        width: 100%;
+        height: auto;
+        align-items: center;
+        text-align: center;
+    }
+
+.left-top-why-select-zework-3 h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.right-top-why-select-zework-3 {
+    width: 100%;
+    height: 5.6rem;
+    text-align: center;
+}
+.right-top-why-select-zework-3 p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    width: 100%;
+    color: #475467;
+    margin-top: 0rem;
+}
+    .bottom-why-select-zework-3{
+        width: 31.1rem;
+        height: 18.6rem;
+        padding: 0px;
+    }
 }

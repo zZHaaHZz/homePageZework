@@ -56,3 +56,17 @@
     transform: rotate(50deg);
 }
 
+@media (width<=400px) {
+    .tag-inner h6{
+        width: auto;
+        font-size: 1.2rem;
+    }
+    .tag-inner {
+    gap: 0.6rem;        
+    width: auto;       
+    height: 2.4rem;         
+    border-radius: 1.8rem;
+    padding-right: 1.2em;
+    padding-left: 1rem;
+}
+}

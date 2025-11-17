@@ -16,7 +16,10 @@
         url("/img/grid\ \(1\).svg") no-repeat center/cover,
         linear-gradient(to bottom, #375DFA, #f2f4fb);
 }
-
+.head-line-hero div{
+    width: 66.6rem;
+    height: 5.7rem;
+}
 .square {
     position: absolute;
     width: 10rem;
@@ -150,7 +153,7 @@
     height: 5.6rem;
     border-radius: 1.2rem;
     background-color: #375DFA;
-    border: 0.1rem solid #FFFFFF;
+    border: 0.2rem solid #FFFFFF;
     color: #FFFFFF;
     font-size: 1.6rem;
     box-shadow: 0 0 0.3rem 0.1rem rgba(255, 255, 255, 0.4);
@@ -158,4 +161,64 @@
 
 .experience.bottom {
     left: 0;
+}
+.img-quare-5-mobile{
+    display: none;
+}
+
+@media (width<=400px) {
+    .container {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .hero {
+        width: 100vw;
+        height: 74.8rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background:
+            linear-gradient(to bottom, #375DFA, #f2f4fb);
+    }
+    .head-line-hero{
+        width: 32.7rem;
+        height: 30.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .head-line-hero h2 {
+        width: 32.7rem;
+        font-weight: 700;
+        color: #FFFFFF;
+        font-size: 3.2rem;
+    }
+    .head-line-hero div {
+        width: 32.7rem;
+        font-size: 1.4rem;
+        line-height: 2rem;
+    }
+    .experience.top {
+        width: 25.2rem;
+        height: 4.8rem;
+        border-radius: 1.2rem;
+        font-size: 1.6rem;
+        border: 0.2rem solid #FFFFFF;
+    }
+    .square-5{
+       display: none;
+    }
+    .img-quare-5-mobile{
+        display: block;
+    }
+    .img-quare-5-mobile img{
+        width: 100vw;
+        height: 33.3rem;
+        object-fit: cover;
+    }
 }

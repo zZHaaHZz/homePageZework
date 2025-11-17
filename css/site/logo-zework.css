@@ -169,3 +169,21 @@
     background-color: var(--color-bg-vector-logo-light-green);
     transform: rotate(-50deg);
 }
+@media (max-width: 400px) {
+    .vertor-logo{
+        display: none;
+    }
+    .vertor-logo2{
+        display: none;
+    }
+    .vertor-logo3{
+        display: none;      
+    }
+    .vertor-logo4{
+        display: none;      
+    }
+    .vertor-logo5{
+        display: none;
+
+    }
+}
