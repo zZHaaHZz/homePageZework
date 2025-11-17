@@ -194,35 +194,41 @@ header {
     padding: 20px;
     transition: 0.3s;
     z-index: 999;
-    box-shadow: -2px 0 6px rgba(0,0,0,0.1);
-}   
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+}
+
 .mobile-menu-popup.show {
     right: 0;
 }
+
 @media (width <=1440px) {
     html {
         font-size: 8px;
     }
 }
-.menu-mobile{
+
+.menu-mobile {
     display: none;
 }
+
 @media (width <=1228px) {
     html {
         font-size: 7px;
     }
-    .menu-mobile{
-    display: none;
-}
+
+    .menu-mobile {
+        display: none;
+    }
 }
 
 @media (width <=1024px) {
     html {
         font-size: 5px;
     }
-    .menu-mobile{
-    display: none;
-}
+
+    .menu-mobile {
+        display: none;
+    }
 }
 
 @media (width <=800px) {
@@ -235,44 +241,93 @@ header {
     html {
         font-size: 3.5px;
     }
-    .menu-mobile{
-    display: none;
-}
+
+    .menu-mobile {
+        display: none;
+    }
 }
 
 @media (width <=480px) {
     html {
         font-size: 3px;
     }
-    header{
-        height: 21.3rem;
+}
+
+@media (width<=400px) {
+    html {
+        font-size: 10px;
     }
-    .content-header{
-        width: 125rem;
+
+    header {
+        height: 6.4rem;
+        width: 100vw;
+    }
+
+    .content-header {
+        width: 37.5rem;
+        height: 6.4rem;
         justify-content: space-between;
-        padding-left: 6rem;
-        padding-right: 6rem;
+        padding-left: 1.6rem;
+        padding-right: 1.6rem;
     }
-    .btn-header{
-        width: 18.6rem;
+
+    .logo {
+        width: 11.7rem;
+        height: 3.6rem;
     }
-    .btn-header-login, 
+
+    .logo h1 {
+        width: 7.5rem;
+        height: 3.2rem;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 3.2rem;
+        background: linear-gradient(to right, rgb(2, 123, 255), #55BB00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+
+    .content-header .logo img {
+        width: 3.8rem;
+        height: 3.8rem;
+    }
+
+    .btn-header {
+        width: 11.6rem;
+        height: 4rem;
+    }
+
+    .btn-header-login,
     .btn-header-signup {
         display: none;
     }
-    .menu-mobile{
+
+    .menu-mobile {
         display: block;
         border: none;
         background-color: #FFFFFF;
     }
+
     .menu-mobile svg {
-        padding-top: 1rem;
-        width: 4rem;
-        height: 4rem;
+        width: 2.4rem;
+        height: 2.4rem;
         background-color: #FFFFFF;
         border: none;
     }
-    .menu{
+    .flag svg{
+        width: 4.2rem;
+        height: 2.7rem;
+    }
+    .btn-change-languege{
+        gap:1rem;
+    }
+    .drop-dow svg {
+        width: 2.8rem;
+        height: 2.8rem;
+        padding-top: 1rem;
+    }
+    .menu {
         display: none;
     }
 }
