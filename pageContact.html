@@ -4,22 +4,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bai viet Zework</title>
+    <title>Liên hệ ZeWork</title>
     <link rel="icon" type="image/png" href="/img/logoZework.svg">
-    <link rel="stylesheet" href="css/site/header.css">
-    <link rel="stylesheet" href="css/site/footer.css">
-    <link rel="stylesheet" href="css/aricle/banner-aricle.css">
-    <link rel="stylesheet" href="css/site/tag-iconlist.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="css/aricle/content-article-1.css">
+    <link rel="stylesheet" href="css/site/header.css">
+    <link rel="stylesheet" href="css/site/logo-zework.css">
+    <link rel="stylesheet" href="css/site/footer.css">
     <link rel="stylesheet" href="css/aricle/content-article-2.css">
-    <link rel="stylesheet" href="css/aricle/site-arice.css">
+    <link rel="stylesheet" href="css/site/tag-iconlist.css">
     <style>
+        .container-contact {
+            width: 144rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-contact-1 {
+            width: 100%;
+            height: 105.8rem;
+            padding: 4rem 9.6rem 9.6rem 9.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-content-contact-1 {
+            width: 100%;
+            height: 17rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-content-contact-1 h1 {
+            font-size: 5.6rem;
+            font-weight: 600;
+            line-height: 7.2rem;
+        }
+
+        .title-content-contact-1 p {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 2.8rem;
+            color: #666666;
+            text-align: center;
+        }
+
+        .main-content-contact-1 {
+            width: 124.8rem;
+            height: 67.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 8rem;
+        }
+
+        .form-input-contact {
+            width: 69.2rem;
+            height: 51.6rem;
+        }
+
+        .img-main-content-contact-1 {
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .img-main-content-contact-1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
 
 
+        .form-input-contact {
+            max-width: 60rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            font-size: 1.6rem;
+        }
+
+        .form-group input {
+            width: 28.2rem;
+            height: 4.8rem;
+            padding: 1rem 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .form-group-full {
+            margin-bottom: 2rem;
+        }
+
+        .form-group-full label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            font-size: 1.6rem;
+        }
+
+        .form-group-full textarea {
+            width: 59.2rem;
+            height: 11.2rem;
+            padding: 1rem 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 1rem;
+            font-size: 1.6rem;
+            resize: vertical;
+        }
+
+        .form-notice {
+            margin-bottom: 2rem;
+        }
+
+        .form-notice span {
+            display: block;
+            font-size: 1.6rem;
+            color: #475467;
+            line-height: 2.4rem;
+        }
+
+        .btn-submit-contact {
+            padding: 1.2rem 3rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 1rem;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        .btn-submit-contact:hover {
+            background: #0056b3;
+        }
     </style>
 </head>
 
@@ -162,76 +297,66 @@
             </div>
         </div>
     </header>
-    <div class="banner-aricle">
-        <div class="contnet-banner-aricle">
-            <img src="img/bai-viet/Logo.svg" alt="" class="img-logo-aricle">
-
-            <div class="left-banner-aricle">
-                <div class="tag-article">
-                    <div class="icon-list">
-                        <div class="extra"></div>
+    <div class="container-contact">
+        <div class="content-contact-1">
+            <div class="title-content-contact-1">
+                <div class="tag-acc">
+                    <div class="tag-inner">
+                        <div class="icon-list">
+                            <div class="extra"></div>
+                        </div>
+                        <h6>LIÊN HỆ</h6>
                     </div>
-                    <h6>TÍNH NĂNG</h6>
                 </div>
-                <h1>Zework hợp tác cùng đối tác lớn mở rộng hệ sinh thái giải pháp doanh nghiệp</h1>
-                <p>October 17, 2025</p>
-
-                <button class="view-now">Xem ngay</button>
+                <h1>Liên hệ với chúng tôi</h1>
+                <p>Be one of the first companies to visualize their entire product with Adora.</p>
             </div>
+            <div class="main-content-contact-1">
+                <div class="form-input-contact">
+                    <form action="">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Họ và tên</label>
+                                <input type="text" id="name" name="name" placeholder="Nhập họ và tên của bạn">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn">
+                            </div>
+                        </div>
 
-            <div class="right-banner-aricle">
-                <img src="img/why-4.svg" alt="">
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="container-article">
-        <div class="content-article-1">
-            <h1>Tin tức nổi bật</h1>
-            <div class="container-list-article-1">
-                <div class="item-article item-article-1">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Zework Edtech">
-                    <div class="item-article-content">
-                        <h3>Zework chính thức đồng hành cùng công ty Edtech đi đầu trong lĩnh vực chuyển đổi số chăm sóc
-                            khách hàng quý III 2025</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Nhập email của bạn">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Địa chỉ</label>
+                                <input type="text" id="address" name="address" placeholder="Nhập địa chỉ của bạn">
+                            </div>
+                        </div>
+
+                        <div class="form-group-full">
+                            <label for="message">Nội dung liên hệ</label>
+                            <textarea id="message" name="message" placeholder="Nhập nội dung liên hệ"></textarea>
+                        </div>
+
+                        <div class="form-notice">
+                            <span>We need the contact information you provide to us to contact you about our products
+                                and services. For information on how to unsubscribe, as well as our privacy practices
+                                and commitment to protecting your privacy, please review our Privacy Policy.</span>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="btn-submit-contact">Gửi liên hệ</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="item-article item-article-2">
-                    <img src="https://images.unsplash.com/photo-1581089781785-603411fa81e5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Zework Zalo">
-                    <div class="item-article-content">
-                        <h3>Zework ra mắt tính năng tích hợp Zalo phiên bản mới siêu mượt</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
-
-                <div class="item-article item-article-3">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400" alt="Quản lý Zalo">
-                    <div class="item-article-content">
-                        <h3>Chính thức hỗ trợ quản lý đa tài khoản Zalo trên một nền tảng</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
-
-                <div class="item-article item-article-4">
-                    <img src="https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Edtech CSKH">
-                    <div class="item-article-content">
-                        <h3>Zework chính thức đồng hành cùng công ty Edtech trong chuyển đổi số CSKH</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
-
-                <div class="item-article item-article-5">
-                    <img src="https://images.unsplash.com/photo-1715635845783-a184542d95e5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Zalo Enterprise">
-                    <div class="item-article-content">
-                        <h3>Zework đẩy mạnh hỗ hoá chăm sóc khách hàng với hệ thống Zalo Enterprise</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
+                <div class="img-main-content-contact-1">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="">
                 </div>
             </div>
         </div>
-
 
         <div class="content-article-2">
             <h1>Có thể bạn quan tâm</h1>
@@ -360,6 +485,3 @@
 
 </html>
 <script src="js/menu.js"></script>
-<script src="js/price.js"></script>
-<script src="js/feedback.js"></script>
-<script src="js/features.js"></script>

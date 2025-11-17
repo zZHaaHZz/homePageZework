@@ -1,28 +1,28 @@
     // feebback
     const feedbacks = [
   {
-    img: "img/zework.png",
+    img: "img/logoZework.svg",
     name: "ZeWork",
     position: "Khach hang 1",
     content: "❤️ Từ khi dùng Zework, chúng tôi không còn bỏ sót tin nhắn khách hàng. Mọi thứ được sắp xếp và theo dõi cực kỳ dễ dàng.",
-    stars: 5
+    stars: 2
   },
   {
-    img: "img/zework.png",
+    img: "img/logoZework.svg",
     name: "ZeWork",
     position: "Product Owner",
     content: "❤️ Từ khi dùng Zework, chúng tôi không còn bỏ sót tin nhắn khách hàng. Mọi thứ được sắp xếp và theo dõi cực kỳ dễ dàng.",
-    stars: 5
+    stars: 3
   },
   {
-    img: "img/zework.png",
+    img: "img/logoZework.svg",
     name: "ZeWork",
     position: "Khach hang 2",
     content: "❤️ Từ khi dùng Zework, chúng tôi không còn bỏ sót tin nhắn khách hàng. Mọi thứ được sắp xếp và theo dõi cực kỳ dễ dàng.",
-    stars: 5
+    stars: 4
   },
   {
-    img: "img/zework.png",
+    img: "img/logoZework.svg",
     name: "ZeWork",
     position: "Product Owner",
     content: "❤️ Từ khi dùng Zework, chúng tôi không còn bỏ sót tin nhắn khách hàng. Mọi thứ được sắp xếp và theo dõi cực kỳ dễ dàng.",

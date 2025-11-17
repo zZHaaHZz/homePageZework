@@ -19,8 +19,7 @@
 .contaier-packages{
     width: 144rem;
     height: 147.8rem;
-    /* background-color: pink; */
-    padding: 9.6rem;
+    padding:  9.6rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

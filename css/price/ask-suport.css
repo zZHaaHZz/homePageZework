@@ -1,7 +1,7 @@
 .ask-suport{
     width: 144rem;
     height: 123.6rem;
-    padding: 9.6rem;
+    padding: 0rem 9.6rem 9.6rem 9.6rem;
     display: flex;
     flex-direction: row;
     gap: 2.4rem;

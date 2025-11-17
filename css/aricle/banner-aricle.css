@@ -98,9 +98,12 @@
     width: 50.6rem;
     height: 41.4rem;
 }
-/* .right-banner-aricle img{
-
-} */
+.right-banner-aricle img{
+    width: 50.6rem;
+    height: 41.4rem;
+    object-fit: cover;
+    display: block;
+}
 
 .content-article{
     width: 144rem;
