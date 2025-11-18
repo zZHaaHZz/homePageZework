@@ -80,6 +80,7 @@ header {
     align-items: center;
     justify-content: center;
     gap: 6rem;
+    position: relative;
 }
 
 .content-header .logo img {
@@ -108,9 +109,11 @@ header {
 .ul-menu a.active-menu {
     color: #375DFA;
 }
+
 .mobile-menu-popup .ul-menu a.active-menu {
     color: #375DFA;
 }
+
 .ul-menu {
     display: flex;
     flex-direction: row;
@@ -188,11 +191,55 @@ header {
 .mobile-menu-popup {
     display: none;
 }
-.menu-mobile svg{
+
+.menu-mobile svg {
     display: none;
 }
-.close-menu{
+
+.close-menu {
     display: none;
+}
+
+.drop-up {
+    display: none;
+}
+
+.drop-up svg {
+    width: 2.8rem;
+    height: 2.8rem;
+    padding-top: 1rem;
+}
+
+.menu-change-langue {
+    display: block;
+    position: absolute;
+    width: 15rem;
+    height: 10rem;
+    top: 5rem;
+    padding: 1rem;
+    right: 23rem;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transform: translateY(-180%);
+    transition: 0.3s ease;
+    box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.08);
+    z-index: 800;
+}
+.show{
+    transform: translateY(0%);
+}
+.ul-menu-change-langue{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.ul-menu-change-langue li{
+    font-size: 1.6rem;
+    list-style: none;
+    width: 100%;
 }
 
 @media (width <=1440px) {
@@ -322,20 +369,14 @@ header {
         padding-top: 1rem;
     }
 
-    .menu {
-        display: none;
+    .drop-up svg {
+        width: 2.8rem;
+        height: 2.8rem;
+        padding-top: 1rem;
     }
 
-    .mobile-menu-popup {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100vw;
-        height: 100vh;
-        background: white;
-        transition: 0.3s;
-        z-index: 998;
-        box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+    .menu {
+        display: none;
     }
 
     .mobile-menu-popup .ul-menu {
@@ -346,9 +387,6 @@ header {
         align-items: flex-start;
     }
 
-    .mobile-menu-popup.show {
-        right: 0;
-    }
 
     .close-menu {
         display: none;
@@ -358,12 +396,12 @@ header {
         height: 2.4rem;
         padding-top: 0.5rem;
     }
-    .close-menu svg{
+
+    .close-menu svg {
         width: 1.35rem;
         height: 1.35rem;
     }
 
-    /* popup ẩn mặc định */
     .mobile-menu-popup {
         display: block;
         position: absolute;
@@ -380,17 +418,17 @@ header {
         transform: translateY(-120%);
         transition: 0.3s ease;
         box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.08);
-        z-index: 999;
+        z-index: 900;
     }
 
-    /* popup hiện ra */
     .mobile-menu-popup.show {
         transform: translateY(0);
     }
-    .mobile-menu-popup ul{
+
+    .mobile-menu-popup ul {
         gap: 1.6rem;
     }
-    
+
     .mobile-menu-popup ul li {
         list-style: none;
         padding: 1.2rem 0;
@@ -404,7 +442,8 @@ header {
         gap: 1.2rem;
         height: 15.6rem;
     }
-    .btn-signup{
+
+    .btn-signup {
         width: 100%;
         height: 4.8rem;
         border: none;
@@ -413,7 +452,8 @@ header {
         color: #FFFFFF;
         font-size: 1.6rem;
     }
-    .btn-login{
+
+    .btn-login {
         width: 100%;
         height: 4.8rem;
         border: 0.1rem solid #D0D5DD;
@@ -421,5 +461,13 @@ header {
         background-color: #FFFFFF;
         color: #101828;
         font-size: 1.6rem;
+    }
+    .menu-change-langue{
+        right: 1rem;
+        width: 10rem;
+        height: 10rem;
+    }
+    .ul-menu-change-langue li{
+        font-size: 1.4rem;
     }
 }

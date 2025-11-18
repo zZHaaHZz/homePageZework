@@ -151,19 +151,45 @@ const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
 
 
 
+
+// xu ly menu mobile
 const btnMenu = document.querySelector('.menu-mobile');
 const btnClose = document.querySelector('.close-menu');
 const popupMenu = document.querySelector('.mobile-menu-popup');
+const popupMenuChangeLangue = document.querySelector('.menu-change-langue');
 
 btnMenu.addEventListener('click', () => {
   popupMenu.classList.add('show');
+
   btnMenu.style.display = "none";
   btnClose.style.display = "block";
 });
 
 btnClose.addEventListener('click', () => {
   popupMenu.classList.remove('show');
+
   btnMenu.style.display = "block";
   btnClose.style.display = "none";
 });
 
+
+
+// xu ly drop dow
+
+
+const dropDow = document.querySelector('.drop-dow');
+const dropUp = document.querySelector('.drop-up');
+
+// click drop-dow
+dropDow.addEventListener('click', () => {
+    popupMenuChangeLangue.classList.add('show');
+    dropDow.style.display = 'none';
+    dropUp.style.display = 'block';
+});
+
+// click drop-up
+dropUp.addEventListener('click', () => {
+    popupMenuChangeLangue.classList.remove('show');
+    dropUp.style.display = 'none';
+    dropDow.style.display = 'block';
+});
