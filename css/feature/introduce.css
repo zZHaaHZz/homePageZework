@@ -181,7 +181,7 @@
 
 @media(max-width:430px) {
     .introduce {
-        padding: 3.2rem 1.6rem;
+        padding: 0rem 1.6rem;
         width: 37.5rem;
         height: 199.831rem;
         flex-direction: column;
@@ -289,6 +289,7 @@
         flex-direction: column;
         justify-content: space-between;
         height: 54.2rem;
+        padding: 0rem 1.6rem;
     }
 
     .introduce-mini .tittle-introduce {
@@ -301,16 +302,25 @@
         display: flex;
         justify-content: center;
         flex-direction: row;
+        gap: 1.6rem;
         overflow: hidden;
-        transform: translateX(-28%);
+        /* transform: translateX(20%); */
+        margin: auto;
+        padding-left: 4.66rem;
     }
 
 
-    .box-list-introduce .box-mini {
+    .box-list-introduce.box-mini {
         width: 25rem;
         height: 32.4rem;
+        padding: 1rem 0rem 0rem 0rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-
+    .box-list-introduce.box-mini img {
+        width: 100%;
+    }
     .box-mini .title-box-introduce-haft {
         width: 21.8rem;
         height: 10rem;
@@ -332,11 +342,13 @@
     .introduce-4-box{
         width: 34.3rem;
         height: 146.4rem;
+
     }
     .introduce.introduce-1.introduce-4-box{
         height: 146.4rem;
         padding: 3.2rem 0rem;
         gap: 2.4rem;
+        padding: 0rem;
     }
     .list-introduce.list-introduce-4-box{
         height: 131.2rem;

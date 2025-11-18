@@ -254,11 +254,12 @@ footer {
     .logo-footer {
         width: 11.7rem;
         height: 3.8rem;
+
     }
 
     .logo-footer img {
         width: 3.8rem;
-        margin-left: -1.5rem;
+        margin-left: -0.5rem;
     }
 
     .logo-footer h1 {
