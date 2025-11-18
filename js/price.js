@@ -169,8 +169,8 @@
             </div>
             </div>
             <ul>${descHTML}</ul>
-            
-    `;
+             <a href="#${p.href}"><button class="btn-bynow">Mua ngay</button></a>
+        `;
             container.appendChild(product);
         });
     }

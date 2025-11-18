@@ -142,12 +142,13 @@
                         </g>
                     </svg>
                 </button>
+                <button class="close-menu">
+                        <svg fill="currentColor" height="329pt" viewBox="0 0 329.26933 329" width="329pt" xmlns="http://www.w3.org/2000/svg" id="fi_1828778"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
+                </button>
             </div>
 
 
-            <div class="mobile-menu-popup">
-                <button class="close-menu">✕</button>
-                <!-- menu có sẵn -->
+            <div class="mobile-menu-popup" id="mobileMenu">
                 <ul class="ul-menu">
                     <li><a href="#trangchu">Trang chủ</a></li>
                     <li><a href="#tinhnang">Tính năng</a></li>
@@ -155,6 +156,11 @@
                     <li><a href="#baiviet">Bài viết</a></li>
                     <li><a href="#lienhe">Liên hệ</a></li>
                 </ul>
+
+                <div class="mobile-auth">
+                    <button class="btn-signup">Đăng ký</button>
+                    <button class="btn-login">Đăng nhập</button>
+                </div>
             </div>
         </div>
     </header>
@@ -425,7 +431,7 @@
 
     <footer>
         <div class="CTA">
-            <h1>Trải nghiệm miễn phí - 1 phút để bắt đầu</h1>
+            <h1>Trải nghiệm miễn phí <div class="hyphen"><svg id="fi_13132410" fill="currentColor" enable-background="new 0 0 110 110" height="110" viewBox="0 0 110 110" width="110" xmlns="http://www.w3.org/2000/svg"><path d="m96 46h-82c-4.971 0-9 4.029-9 9s4.029 9 9 9h82c4.971 0 9-4.029 9-9s-4.029-9-9-9z"></path></svg></div>1 phút để bắt đầu</h1>
             <p>Hơn 2.000 doanh nghiệp đang dùng Zework để quản lý và chăm sóc khách hàng hiệu quả hơn mỗi ngày </p>
             <button class="experience bottom">Trải nghiệm miễn phí ngay</button>
         </div>
@@ -471,8 +477,7 @@
             <p>© 2025 ZEWORK CO., LTD</p>
             <div class="icon-Social">
                 <a href=""><i class="fa-brands fa-facebook"></i></a>
-                <a href="">
-                        <svg fill="currentColor" id="fi_5968958" enable-background="new 0 0 1226.37 1226.37"
+                <a href=""><svg fill="currentColor" id="fi_5968958" enable-background="new 0 0 1226.37 1226.37"
                         viewBox="0 0 1226.37 1226.37" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="m727.348 519.284 446.727-519.284h-105.86l-387.893 450.887-309.809-450.887h-357.328l468.492 681.821-468.492 544.549h105.866l409.625-476.152 327.181 476.152h357.328l-485.863-707.086zm-144.998 168.544-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721h-162.604l-323.311-462.446z">

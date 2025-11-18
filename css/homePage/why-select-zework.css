@@ -187,6 +187,8 @@
         width: 37.5rem;
         height: auto;
         gap: 4rem;
+        margin-top: 4rem;
+        margin-left: 1rem;
     }
 
     .why-select-zework-title {
