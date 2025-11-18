@@ -304,14 +304,7 @@
         overflow: hidden;
         transform: translateX(-28%);
     }
-/* 
-    .list-introduce-mini>div:first-child {
-        display: none;
-    }
 
-    .list-introduce-mini>div:last-child {
-        display: none;
-    } */
 
     .box-list-introduce .box-mini {
         width: 25rem;
@@ -342,6 +335,7 @@
     }
     .introduce.introduce-1.introduce-4-box{
         height: 156.6rem;
+        padding: 0rem;
     }
     .list-introduce.list-introduce-4-box{
         height: 131.2rem;
