@@ -211,8 +211,22 @@ footer {
         height: 9.8rem;
     }
 
+    .logo-footer {
+        width: 11.7rem;
+        height: 3.8rem;
+    }
+
+    .logo-footer img {
+        width: 3.8rem;
+        margin-left: -1.5rem;
+    }
+
+    .logo-footer h1 {
+        font-size: 2rem;
+    }
+
     .right-main-footer {
-        width: 34.3rem;
+        width: 7.5rem;
         height: 31.2rem;
         flex-wrap: wrap;
     }
