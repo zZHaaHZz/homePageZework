@@ -288,7 +288,7 @@ header {
     }
 }
 
-@media (width<=400px) {
+@media (width<=430px) {
 
     html {
         font-size: 10px;
@@ -408,7 +408,7 @@ header {
         width: 100vw;
         height: 100vh;
         top: 6rem;
-        left: -2;
+        left: 0;
         right: 0;
         background: #fff;
         padding: 2rem;

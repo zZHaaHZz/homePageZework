@@ -353,12 +353,12 @@
     opacity: 0.6;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
     .price-container {
         width: 37.5rem;
         height: auto;
         padding: 3.2rem 1.6rem;
-        margin-left: 1rem;
+        margin: 0rem auto;
         display: flex;
         flex-direction: column;
         align-items: center;

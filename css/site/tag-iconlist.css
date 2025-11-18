@@ -56,7 +56,7 @@
     transform: rotate(50deg);
 }
 
-@media (width<=400px) {
+@media (width<=430px) {
     .tag-inner h6{
         width: auto;
         font-size: 1.2rem;

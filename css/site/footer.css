@@ -158,7 +158,7 @@ footer {
     display: inline;
 }
 
-@media (width<=400px) {
+@media (width<=430px) {
     footer {
         height: 90.6rem;
     }

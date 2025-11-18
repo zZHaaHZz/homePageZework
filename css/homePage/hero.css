@@ -166,7 +166,7 @@
     display: none;
 }
 
-@media (width<=400px) {
+@media (width<=430px) {
     .container {
         position: relative;
         width: 100%;

@@ -69,7 +69,7 @@
     opacity: 0.9;
 }
 
-@media (max-width:400px) {
+@media (max-width:430px) {
     .content-article-2 {
         width: 34.3rem;
         height: 210.85rem;

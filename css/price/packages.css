@@ -114,7 +114,7 @@
     font-weight: 500;
 }
 
-@media (max-width:400px) {
+@media (max-width:430px) {
 
     .contaier-packages {
         width: 37.5rem;

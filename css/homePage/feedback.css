@@ -77,12 +77,12 @@
     color: #FFFFFF;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
     .feedback {
         width: 37.5rem;
         height: 47.2rem;
         padding: 3.2rem 1.6rem;
-        margin-left: 1rem;
+        margin: 0rem auto;
 
     }
     .feedback-title{

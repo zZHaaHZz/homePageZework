@@ -179,7 +179,7 @@
     height: 156.4rem;
 }
 
-@media(max-width:400px) {
+@media(max-width:430px) {
     .introduce {
         padding: 3.2rem 1.6rem;
         width: 37.5rem;

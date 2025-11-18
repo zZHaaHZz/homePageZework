@@ -182,13 +182,12 @@
     align-items: center;
 }
 
-@media (width<=400px) {
+@media (width<=430px) {
     .why-select-zework {
         width: 37.5rem;
         height: auto;
         gap: 4rem;
-        margin-top: 4rem;
-        margin-left: 1rem;
+        margin: 4rem auto;
     }
 
     .why-select-zework-title {

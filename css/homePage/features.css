@@ -185,14 +185,14 @@
    color: #375DFA;
 }
 
-@media (width<=400px) {
+@media (width<=430px) {
    .features {
       width: 37.5rem;
       height: 58.7rem;
       padding: 3.2rem 1.6rem;
       display: flex;
       justify-content: space-between;
-      margin-left: 1rem;
+      margin: 0rem auto;
    }
 
    .features-title {

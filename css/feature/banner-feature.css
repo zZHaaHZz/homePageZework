@@ -34,7 +34,7 @@
     max-height: 55.6rem;
 }
 
-@media(max-width:400px) {
+@media(max-width:430px) {
     .banner-feature {
         width: 37.5rem;
         height: 59.6rem;
