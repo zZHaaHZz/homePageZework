@@ -1,4 +1,4 @@
-.ask-suport{
+.ask-suport {
     width: 144rem;
     height: 123.6rem;
     padding: 0rem 9.6rem 9.6rem 9.6rem;
@@ -6,7 +6,8 @@
     flex-direction: row;
     gap: 2.4rem;
 }
-.ask-suport-packages{
+
+.ask-suport-packages {
     width: 61.1rem;
     height: 15.8rem;
     padding-right: 8rem;
@@ -14,25 +15,29 @@
     flex-direction: column;
     justify-content: space-between;
 }
-.ask-suport-packages h1{
+
+.ask-suport-packages h1 {
     font-size: 3.2rem;
     font-weight: 600;
     color: #21164C;
     line-height: 4.8rem;
 }
-.ask-suport-packages p{
+
+.ask-suport-packages p {
     color: #475467;
     font-size: 1.8rem;
     font-weight: 500;
     line-height: 2.8rem;
 }
-.list-ask-suport{
+
+.list-ask-suport {
     width: 61.3rem;
     height: 104.4rem;
     display: flex;
     flex-direction: column;
 }
-.head-list-ask-suport{
+
+.head-list-ask-suport {
     width: 61.3rem;
     height: 21.6rem;
     padding: 3.2rem 0rem 3.2rem 0rem;
@@ -40,25 +45,29 @@
     flex-wrap: wrap;
     column-gap: 2.4rem;
 }
-.head-list-ask-suport svg{
+
+.head-list-ask-suport svg {
     width: 2.4rem;
     height: 2.4rem;
 }
-.head-list-ask-suport p{
+
+.head-list-ask-suport p {
     color: #375DFA;
     width: 56.5rem;
     height: 2.8rem;
     font-size: 1.8rem;
     font-weight: 500;
 }
-.head-list-ask-suport span{
+
+.head-list-ask-suport span {
     width: 61.3rem;
     height: 8.4rem;
     font-size: 1.8rem;
     font-weight: 500;
     color: #475467;
 }
-.body-list-ask-suport{
+
+.body-list-ask-suport {
     width: 61.3rem;
     height: 9.2rem;
     border-top: 1px solid #EAECF0;
@@ -67,12 +76,106 @@
     align-items: center;
     justify-content: space-between;
 }
-.body-list-ask-suport svg{
+
+.body-list-ask-suport svg {
     width: 2.4rem;
     height: 2.4rem;
 }
-.body-list-ask-suport p{
+
+.body-list-ask-suport p {
     color: #475467;
     font-size: 1.8rem;
     font-weight: 500;
+}
+
+@media (max-width:400px) {
+    .ask-suport {
+        width: 37.5rem;
+        height: 128.4rem;
+        padding: 3.2rem 1.6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    .ask-suport-packages {
+        width: 34.3rem;
+        height: 11.2rem;
+        padding-right: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .ask-suport-packages h1 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #21164C;
+        line-height: 2.4rem;
+    }
+
+    .ask-suport-packages p {
+        color: #475467;
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 2rem;
+    }
+
+    .list-ask-suport {
+        width: 34.3rem;
+        height: 109.2rem;
+    }
+
+    .head-list-ask-suport p {
+        color: #375DFA;
+        width: 29.5rem;
+        height: 4rem;
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+
+    .head-list-ask-suport {
+        width: 34.3rem;
+        height: 21.6rem;
+        padding: 3.2rem 0rem 3.2rem 0rem;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 2.4rem;
+    }
+
+    .head-list-ask-suport svg {
+        padding-top: 0.8rem;
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
+    .head-list-ask-suport span {
+        width: 34.3rem;
+        height: 8rem;
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: #475467;
+    }
+
+    .body-list-ask-suport {
+        width: 34.3rem;
+        height: 8.8rem;
+        border-top: 1px solid #EAECF0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .body-list-ask-suport svg {
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
+    .body-list-ask-suport p {
+        width: 29.5rem;
+        color: #475467;
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
 }

@@ -17,3 +17,9 @@
     align-items: center;
     gap: 9.6rem;
 }
+
+@media (max-width:400px) {
+    .container-price {
+        width: 37.5rem;
+    }
+}

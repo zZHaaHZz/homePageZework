@@ -26,7 +26,6 @@
     grid-template-rows: repeat(7, 1fr);
     column-gap: 2.4rem;
     row-gap: 4.9rem;
-
 }
 
 .item-article {
@@ -110,4 +109,49 @@
     object-fit: cover;
     display: block;
     border-radius: 1.6rem;
+}
+
+@media (max-width:400px) {
+    .content-article-1 {
+        width: 37.5rem;
+        height: 177.71rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 3.2rem 1.6rem;
+        gap: 4rem;
+    }
+    .content-article-1 h1 {
+        font-size: 1.8rem;
+        padding-left: 0rem;
+    }
+    .container-list-article-1{
+        height: 164.391rem;
+        width: 34.3rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .item-article{
+        width: 34.3rem;
+        height: 30rem;
+    }
+    .item-article img{
+        width: 100%;
+        height: 20.849rem;
+    }
+    .item-article-content{
+        width: 34.3rem;
+        height: 7.2rem;
+    }
+    .item-article-content h3{
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+    .item-article-1{
+        height: 32.094rem;
+    }
+    .date{
+        font-size: 1.6rem;
+        color: #475467;
+    }
 }

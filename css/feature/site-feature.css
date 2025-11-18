@@ -17,3 +17,20 @@
     align-items: center;
     gap: 9.6rem;
 }
+
+@media (max-width:400px) {
+    .container-feature {
+        width: 100vw;
+    }
+
+    .content-feature {
+        width: 144rem;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 3.2rem 1.6rem ;
+        align-items: center;
+        gap: 0rem;
+    }
+}

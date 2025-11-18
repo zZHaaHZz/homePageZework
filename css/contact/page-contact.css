@@ -138,3 +138,106 @@
 .btn-submit-contact:hover {
     background: #0056b3;
 }
+
+@media (max-width:400px) {
+    .container-contact {
+        width: 100vw;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content-contact-1 {
+        width: 100%;
+        height: 138.3rem;
+        padding: 3.2rem 1.6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .title-content-contact-1 {
+        width: 100%;
+        height: 13.6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .title-content-contact-1 h1 {
+        font-size: 3.2rem;
+        font-weight: 700;
+        line-height: 4.8rem;
+    }
+
+    .title-content-contact-1 p {
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 2rem;
+        color: #666666;
+        text-align: center;
+    }
+
+    .main-content-contact-1 {
+        width: 34.3rem;
+        height: 115.19rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3.2rem;
+    }
+
+    .form-input-contact {
+        width: 34.3rem;
+        height: 76.8rem;
+    }
+
+    .img-main-content-contact-1 {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .img-main-content-contact-1 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .form-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-weight: 500;
+        font-size: 1.6rem;
+    }
+
+    .form-group-full label {
+        display: block;
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+        font-size: 1.6rem;
+    }
+
+    .form-group-full textarea {
+        width: 34.3rem;
+        height: 11.2rem;
+        padding: 1rem 1.5rem;
+        border: 1px solid #ddd;
+        border-radius: 1rem;
+        font-size: 1.6rem;
+        resize: vertical;
+    }
+
+    .form-row input {
+        width: 100%;
+    }
+}
