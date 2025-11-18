@@ -334,8 +334,9 @@
         height: 146.4rem;
     }
     .introduce.introduce-1.introduce-4-box{
-        height: 156.6rem;
-        padding: 0rem;
+        height: 146.4rem;
+        padding: 3.2rem 0rem;
+        gap: 2.4rem;
     }
     .list-introduce.list-introduce-4-box{
         height: 131.2rem;
