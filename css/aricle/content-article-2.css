@@ -72,12 +72,12 @@
 @media (max-width:430px) {
     .content-article-2 {
         width: 34.3rem;
-        height: 210.85rem;
-        padding: 3.2rem 0rem;
+        height: 201.85rem;
+        padding: 0rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        gap: 4rem;
+        gap: 2.4rem;
     }
 
     .content-article-2 h1 {
@@ -87,6 +87,7 @@
     .container-list-article-2 {
         width: 34.3rem;
         height: 187.65rem;
+        gap: 2.4rem;
     }
 
     .item-list-article-2 {
@@ -107,5 +108,10 @@
     .title-item-list-article-2 h3{
         font-size: 1.4rem;
         color: #101828;
+    }
+    .btn-see-more-articles{
+        width: 100%;
+        padding: 0rem;
+        margin: 0rem;
     }
 }

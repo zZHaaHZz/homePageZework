@@ -29,8 +29,8 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 3.2rem 1.6rem ;
+        padding: 3.2rem 1.6rem  0rem 1.6rem;
         align-items: center;
-        gap: 4rem;
+        gap: 0rem;
     }
 }

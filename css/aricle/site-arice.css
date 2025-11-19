@@ -21,7 +21,7 @@
 @media (max-width:430px) {
     .container-article {
         width: 37.5rem;
-        height: calc(177.191rem + 210.85rem);
+        height: auto;
         margin: 0 auto;
         display: flex;
         flex-direction: column;

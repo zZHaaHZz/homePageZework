@@ -185,6 +185,8 @@
         width: 37.5rem;
         height: 199.831rem;
         flex-direction: column;
+        justify-content: flex-start;
+        gap: 2.4rem;
     }
 
     .list-introduce {
@@ -286,8 +288,10 @@
 
     .introduce-mini {
         display: flex;
+        margin-top: 4rem;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 2.4rem;
         height: 54.2rem;
         padding: 0rem 1.6rem;
     }
@@ -304,9 +308,9 @@
         flex-direction: row;
         gap: 1.6rem;
         overflow: hidden;
-        /* transform: translateX(20%); */
         margin: auto;
         padding-left: 4.66rem;
+        margin: 0rem;
     }
 
 

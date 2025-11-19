@@ -172,7 +172,7 @@
 
     .detail-row {
         width: 34.3rem;
-        height: 9.2rem;
+        height: auto;
         display: flex;
         flex-direction: column;
         padding-left: 0rem;

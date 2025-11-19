@@ -16,10 +16,12 @@
         url("/img/grid\ \(1\).svg") no-repeat center/cover,
         linear-gradient(to bottom, #375DFA, #f2f4fb);
 }
-.head-line-hero div{
+
+.head-line-hero div {
     width: 66.6rem;
     height: 5.7rem;
 }
+
 .square {
     position: absolute;
     width: 10rem;
@@ -162,7 +164,8 @@
 .experience.bottom {
     left: 0;
 }
-.img-quare-5-mobile{
+
+.img-quare-5-mobile {
     display: none;
 }
 
@@ -185,24 +188,28 @@
         background:
             linear-gradient(to bottom, #375DFA, #f2f4fb);
     }
-    .head-line-hero{
+
+    .head-line-hero {
         width: 32.7rem;
         height: 30.9rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
     }
+
     .head-line-hero h2 {
         width: 32.7rem;
         font-weight: 700;
         color: #FFFFFF;
         font-size: 3.2rem;
     }
+
     .head-line-hero div {
         width: 32.7rem;
         font-size: 1.4rem;
         line-height: 2rem;
     }
+
     .experience.top {
         width: 25.2rem;
         height: 4.8rem;
@@ -210,15 +217,20 @@
         font-size: 1.6rem;
         border: 0.2rem solid #FFFFFF;
     }
-    .square-5{
-       display: none;
+
+    .square-5 {
+        display: none;
     }
-    .img-quare-5-mobile{
+
+    .img-quare-5-mobile {
         display: block;
     }
-    .img-quare-5-mobile img{
+
+    .img-quare-5-mobile img {
         width: 100vw;
         height: 33.3rem;
         object-fit: cover;
+        object-position: left;
+        border-radius: 1rem 0rem 0rem 0rem;
     }
 }
