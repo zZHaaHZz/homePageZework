@@ -415,14 +415,15 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        transform: translateY(-120%);
+        transform: translateX(120%);
         transition: 0.3s ease;
         box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.08);
         z-index: 900;
     }
 
     .mobile-menu-popup.show {
-        transform: translateY(0);
+        transform: translateX(-6%);
+
     }
 
     .mobile-menu-popup ul {
@@ -469,5 +470,19 @@ header {
     }
     .ul-menu-change-langue li{
         font-size: 1.4rem;
+    }
+}
+@media(max-width:376px){
+    header{
+        padding: 0rem 1.6rem;
+    }
+    .mobile-menu-popup.show {
+        transform: translateX(0);
+
+    }
+}
+@media(max-width:390px){
+    .mobile-menu-popup.show {
+        transform: translateX(-3%);
     }
 }

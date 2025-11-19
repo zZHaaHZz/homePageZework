@@ -156,6 +156,11 @@
     border: 0.3rem solid #375DFA;
     /* box-shadow: 0 0 1.5rem #5172f7; */
 }
+.product.hot ul {
+    width: 99%;
+    padding-top: 0.2rem;
+    border-top: 0.1rem dashed #D0D5DD;
+}
 
 .product.hot::after {
     content: " HOT ";
