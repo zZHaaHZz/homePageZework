@@ -170,14 +170,14 @@
    color: #375DFA;
 }
 
-.box-icon ion-icon {
+.box-icon .ion-icon {
    width: 2.5rem;
    height: 2.5rem;
 }
 
 .box-icon svg {
    width: 2.4rem;
-   height: 2.4rem;
+   height: 2rem;
    color: #ffffff;
 }
 
