@@ -407,6 +407,7 @@ header {
         position: absolute;
         width: 100vw;
         height: 100vh;
+        max-height: 88.4rem;
         top: 6rem;
         left: 0;
         right: 0;
@@ -419,6 +420,8 @@ header {
         transition: 0.3s ease;
         box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.08);
         z-index: 900;
+        overflow-y: hidden;
+        overflow-x: hidden;
     }
 
     .mobile-menu-popup.show {
