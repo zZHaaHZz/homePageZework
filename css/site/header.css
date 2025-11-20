@@ -292,7 +292,7 @@ header {
 
     html {
         font-size: 10px;
-        overflow-x: hidden;
+
     }
 
     header {
@@ -417,7 +417,7 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        transform: translateX(120%);
+        transform: translateY(-120%);
         transition: 0.3s ease;
         box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.08);
         z-index: 900;
@@ -426,7 +426,7 @@ header {
     }
 
     .mobile-menu-popup.show {
-        transform: translateX(0%);
+        transform: translateY(0%);
 
     }
 
