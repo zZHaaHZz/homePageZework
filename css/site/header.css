@@ -422,7 +422,7 @@ header {
     }
 
     .mobile-menu-popup.show {
-        transform: translateX(-6%);
+        transform: translateX(0%);
 
     }
 
@@ -472,7 +472,7 @@ header {
         font-size: 1.4rem;
     }
 }
-@media(max-width:376px){
+/* @media(max-width:376px){
     header{
         padding: 0rem 1.6rem;
     }
@@ -482,7 +482,18 @@ header {
     }
 }
 @media(max-width:390px){
+     header{
+        padding: 0rem 1rem;
+    }
     .mobile-menu-popup.show {
         transform: translateX(-3%);
     }
 }
+@media(max-width:280px){
+     header{
+        padding: 0rem 1rem;
+    }
+    .mobile-menu-popup.show {
+        transform: translateX(-2%);
+    }
+} */
