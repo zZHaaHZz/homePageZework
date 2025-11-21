@@ -113,6 +113,7 @@
     height: 41.4rem;
     object-fit: cover;
     display: block;
+    border-radius: 1rem;
 }
 
 .content-article {
