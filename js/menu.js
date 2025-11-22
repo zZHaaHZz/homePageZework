@@ -69,20 +69,17 @@ menuLinks.forEach(link => {
     }
 
     switch (href) {
-      case '#trangchu':
-        window.location.href = '/';
-        break;
       case '#tinhnang':
-        window.location.href = '/pageFeature';
+        window.location.href = '/tinh-nang';
         break;
       case '#banggia':
-        window.location.href = '/pagePrice';
+        window.location.href = '/bang-gia';
         break;
       case '#baiviet':
-        window.location.href = '/pageArticle';
+        window.location.href = '/baiviet';
         break;
       case '#lienhe':
-        window.location.href = '/pageContact';
+        window.location.href = '/lien-he';
         break;
     }
 
