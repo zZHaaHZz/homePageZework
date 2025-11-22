@@ -70,21 +70,22 @@ menuLinks.forEach(link => {
 
     switch (href) {
       case '#trangchu':
-        window.location.href = 'index.html';
+        window.location.href = '/';
         break;
       case '#tinhnang':
-        window.location.href = 'pageFeature.html';
+        window.location.href = '/pageFeature';
         break;
       case '#banggia':
-        window.location.href = 'pagePrice.html';
+        window.location.href = '/pagePrice';
         break;
       case '#baiviet':
-        window.location.href = 'pageArticle.html';
+        window.location.href = '/pageArticle';
         break;
       case '#lienhe':
-        window.location.href = 'pageContact.html';
+        window.location.href = '/pageContact';
         break;
     }
+
   });
 });
 
@@ -95,7 +96,7 @@ trangChuLinks.forEach(link => {
     const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
     menuTrangChu?.classList.add('active-menu');
 
-    window.location.href = 'index.html';
+    window.location.href = '/';
   });
 });
 
@@ -106,7 +107,7 @@ logoLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
     localStorage.setItem("activeMenu", "#trangchu");
-    window.location.href = 'index.html';
+    window.location.href = '/';
   });
 });
 
@@ -122,9 +123,9 @@ document.addEventListener('click', (e) => {
 
 window.addEventListener('DOMContentLoaded', () => {
 
-if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
+  if (window.location.pathname.endsWith("/") || window.location.pathname === "/") {
     localStorage.setItem("activeMenu", "#trangchu");
-}
+  }
 
 
   removeActiveMenu();
@@ -132,20 +133,20 @@ if (window.location.pathname.endsWith("index.html") || window.location.pathname 
   const savedMenu = localStorage.getItem("activeMenu");
 
   if (savedMenu) {
-  const activeLinks = document.querySelectorAll(
-  `header .ul-menu a[href="${savedMenu}"], 
+    const activeLinks = document.querySelectorAll(
+      `header .ul-menu a[href="${savedMenu}"], 
    .mobile-menu-popup .ul-menu a[href="${savedMenu}"]`
-);
+    );
 
-if (activeLinks.length > 0) {
-  activeLinks.forEach(a => a.classList.add("active-menu"));
-  return;
-}
+    if (activeLinks.length > 0) {
+      activeLinks.forEach(a => a.classList.add("active-menu"));
+      return;
+    }
 
   }
 
 
-const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
+  const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
   menuTrangChu?.classList.add('active-menu');
 });
 
@@ -175,21 +176,19 @@ btnClose.addEventListener('click', () => {
 
 
 // xu ly drop dow
-
-
 const dropDow = document.querySelector('.drop-dow');
 const dropUp = document.querySelector('.drop-up');
 
 // click drop-dow
 dropDow.addEventListener('click', () => {
-    popupMenuChangeLangue.classList.add('show');
-    dropDow.style.display = 'none';
-    dropUp.style.display = 'block';
+  popupMenuChangeLangue.classList.add('show');
+  dropDow.style.display = 'none';
+  dropUp.style.display = 'block';
 });
 
 // click drop-up
 dropUp.addEventListener('click', () => {
-    popupMenuChangeLangue.classList.remove('show');
-    dropUp.style.display = 'none';
-    dropDow.style.display = 'block';
+  popupMenuChangeLangue.classList.remove('show');
+  dropUp.style.display = 'none';
+  dropDow.style.display = 'block';
 });
