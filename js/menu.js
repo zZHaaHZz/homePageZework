@@ -1,9 +1,6 @@
 const btnExperiences = document.querySelectorAll('.experience');
 const btnViewNow = document.querySelectorAll('.view-now');
 const btnSeeMore = document.querySelectorAll('.btn-see-more-articles');
-
-
-
 const loginButtons = document.querySelectorAll('.btn-header-login, .btn-login');
 
 loginButtons.forEach(btn => {
@@ -76,7 +73,7 @@ menuLinks.forEach(link => {
         window.location.href = '/bang-gia';
         break;
       case '#baiviet':
-        window.location.href = '/baiviet';
+        window.location.href = '/bai-viet';
         break;
       case '#lienhe':
         window.location.href = '/lien-he';
@@ -97,9 +94,7 @@ trangChuLinks.forEach(link => {
   });
 });
 
-
 const logoLinks = document.querySelectorAll('a[href="#trangchu"]');
-
 logoLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -107,7 +102,6 @@ logoLinks.forEach(link => {
     window.location.href = '/';
   });
 });
-
 
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('a[href="#bynow"], .btn-bynow-bander');
@@ -117,38 +111,25 @@ document.addEventListener('click', (e) => {
   }
 });
 
-
 window.addEventListener('DOMContentLoaded', () => {
-
   if (window.location.pathname.endsWith("/") || window.location.pathname === "/") {
     localStorage.setItem("activeMenu", "#trangchu");
   }
-
-
   removeActiveMenu();
-
   const savedMenu = localStorage.getItem("activeMenu");
-
   if (savedMenu) {
     const activeLinks = document.querySelectorAll(
       `header .ul-menu a[href="${savedMenu}"], 
    .mobile-menu-popup .ul-menu a[href="${savedMenu}"]`
     );
-
     if (activeLinks.length > 0) {
       activeLinks.forEach(a => a.classList.add("active-menu"));
       return;
     }
-
   }
-
-
   const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
   menuTrangChu?.classList.add('active-menu');
 });
-
-
-
 
 // xu ly menu mobile
 const btnMenu = document.querySelector('.menu-mobile');
@@ -158,19 +139,15 @@ const popupMenuChangeLangue = document.querySelector('.menu-change-langue');
 
 btnMenu.addEventListener('click', () => {
   popupMenu.classList.add('show');
-
   btnMenu.style.display = "none";
   btnClose.style.display = "block";
 });
 
 btnClose.addEventListener('click', () => {
   popupMenu.classList.remove('show');
-
   btnMenu.style.display = "block";
   btnClose.style.display = "none";
 });
-
-
 
 // xu ly drop dow
 const dropDow = document.querySelector('.drop-dow');
@@ -189,3 +166,14 @@ dropUp.addEventListener('click', () => {
   dropUp.style.display = 'none';
   dropDow.style.display = 'block';
 });
+
+const btnDownWin = document.querySelector('.downWin');
+btnDownWin.onclick = () => {
+    window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.msi';
+}
+
+
+const btnDownMacOs = document.querySelector('.downMacOs');
+btnDownMacOs.onclick = () => {
+    window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.dmg';
+}

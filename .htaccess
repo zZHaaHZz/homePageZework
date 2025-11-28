@@ -2,6 +2,8 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+)$ $1.html [L]
 
-DirectoryIndex index.html
+RewriteRule ^tinh-nang$ pageFeature.html [L]
+RewriteRule ^bang-gia$ pagePrice.html [L]
+RewriteRule ^bai-viet$ pageArticle.html [L]
+RewriteRule ^lien-he$ pageContact.html [L]

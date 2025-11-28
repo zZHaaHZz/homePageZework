@@ -158,7 +158,35 @@ footer {
     display: inline;
 }
 
+.box-download{
+    display: block;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.downMacOs,
+.downWin{
+    display: block;
+    width: 18rem;
+    height: 5.6rem;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+    border: none;
+    color: white;
+    background-color: #375DFA;
+}
+
 @media (width<=430px) {
+    .box-download{
+        display: none;
+    }
+    .downMacOs{
+        display: none;
+    }
+    .downWin{
+        display: none;
+    }
     footer {
         height: 90.6rem;
     }
