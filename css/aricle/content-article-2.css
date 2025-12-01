@@ -30,10 +30,11 @@
     font-size: 1.6rem;
     color: #101828;
     font-weight: 600;
+    background-color: #FFFFFF;
 }
 
 .btn-see-more-articles:hover {
-    background-color: #F9FAFB;
+    background-color: #edecec;
     cursor: pointer;
 }
 

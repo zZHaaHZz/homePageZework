@@ -268,7 +268,9 @@
     border: 0.1rem solid #D0D5DD;
     font-size: 2rem;
 }
-
+.btn-bynow:hover{
+    background-color: #edecec;
+}
 .btn-bynow-bander {
     width: 15.6rem;
     cursor: pointer;
@@ -282,7 +284,9 @@
     border: 0.1rem solid #D0D5DD;
     color: #fff;
 }
-
+.product.hot .btn-bynow:hover{
+    background-color: #0f37d5;
+}
 .price-bottom {
     position: relative;
     width: 124.8rem;

@@ -37,11 +37,12 @@
     height: 3rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding-left: 0.58em;
     padding-right: 0.8rem;
     border-radius: 20rem;
     background: transparent;
+    gap: 1rem;
 }
 
 .tag-article::before {
@@ -99,7 +100,9 @@
     color: #FFF;
     font-size: 1.6rem;
 }
-
+.view-now:hover{
+          background-color: #0f37d5;
+}
 .right-banner-aricle {
     z-index: 2;
     width: 50.6rem;
