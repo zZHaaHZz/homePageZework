@@ -105,7 +105,7 @@ document.addEventListener('click', (e) => {
   const btn = e.target.closest('a[href="#bynow"], .btn-bynow-bander');
   if (btn) {
     e.preventDefault();
-    alert('Bạn vừa nhấn vào nút Mua ngay!');
+    window.location.href = "https://app.zework.com/vn/price";
   }
 });
 
