@@ -273,6 +273,9 @@
    }
 
    .box-img-feature {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 31.1rem;
       height: 17.5rem;
    }

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /cgi-bin/
+Disallow: /admin/
+Disallow: /login/
+
+Sitemap: https://zework.com/sitemap.xml

@@ -148,8 +148,9 @@
     z-index: 4;
 }
 
-.experience.bottom,
+
 .experience.top {
+    cursor: pointer;
     z-index: 3;
     width: 25.2rem;
     height: 5.6rem;
@@ -159,11 +160,15 @@
     color: #FFFFFF;
     font-size: 1.6rem;
     box-shadow: 0 0 0.3rem 0.1rem rgba(255, 255, 255, 0.4);
+    padding-top: 0.2rem;
+
 }
 
-.experience.bottom {
-    left: 0;
+.experience:hover.top{
+     background-color: #2b55fd;
+     border: none;
 }
+
 
 .img-quare-5-mobile {
     display: none;

@@ -5,8 +5,7 @@ const loginButtons = document.querySelectorAll('.btn-header-login, .btn-login');
 
 loginButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    alert('Chức năng dang nhap');
-
+    window.location.href = "https://dev-chat.zework.com"
   });
 });
 
@@ -14,7 +13,7 @@ const signupButtons = document.querySelectorAll('.btn-header-signup, .btn-signup
 
 signupButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    alert('Chức năng dang kys');
+       window.location.href = "https://dev.zework.com/vn/register"
 
   });
 });
@@ -22,18 +21,17 @@ signupButtons.forEach(btn => {
 
 btnExperiences.forEach(btn => {
   btn.addEventListener('click', () => {
-    alert('vua click vao Trai nghiem mien phi ngay');
+    window.location.href = "https://dev-chat.zework.com"
   });
 });
 
 btnViewNow.forEach(btn => {
   btn.addEventListener('click', () => {
-    alert('vua click vao Xem ngay');
+    
   });
 });
 btnSeeMore.forEach(btn => {
   btn.addEventListener('click', () => {
-    alert('vua click vao Xem them bai viet');
   });
 });
 
@@ -155,14 +153,12 @@ const dropUp = document.querySelector('.drop-up');
 
 // click drop-dow
 dropDow.addEventListener('click', () => {
-  popupMenuChangeLangue.classList.add('show');
   dropDow.style.display = 'none';
   dropUp.style.display = 'block';
 });
 
 // click drop-up
 dropUp.addEventListener('click', () => {
-  popupMenuChangeLangue.classList.remove('show');
   dropUp.style.display = 'none';
   dropDow.style.display = 'block';
 });
