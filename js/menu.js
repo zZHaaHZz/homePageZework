@@ -35,7 +35,7 @@ btnSeeMore.forEach(btn => {
   });
 });
 
-// === Menu điều hướng ===
+
 const menuLinks = document.querySelectorAll(
   'header .ul-menu a, .mobile-menu-popup .ul-menu a'
 );
@@ -87,7 +87,6 @@ trangChuLinks.forEach(link => {
     removeActiveMenu();
     const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
     menuTrangChu?.classList.add('active-menu');
-
     window.location.href = '/';
   });
 });
@@ -96,8 +95,42 @@ const logoLinks = document.querySelectorAll('a[href="#trangchu"]');
 logoLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    localStorage.setItem("activeMenu", "#trangchu");
-    window.location.href = '/';
+  });
+});
+
+const featureLink = document.querySelectorAll('a[href="#tinhnang"]');
+featureLink.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.setItem("activeMenu", "#tinhnang");
+    window.location.href = '/tinh-nang';
+  });
+});
+
+const priceLinks = document.querySelectorAll('a[href="#banggia"]');
+priceLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.setItem("activeMenu", "#banggia");
+    window.location.href = '/bang-gia';
+  });
+});
+
+const articleLinks = document.querySelectorAll('a[href="#baiviet"]');
+articleLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.setItem("activeMenu", "#baiviet");
+    window.location.href = '/bai-viet';
+  });
+});
+
+const contactLinks = document.querySelectorAll('a[href="#lienhe"]');
+contactLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.setItem("activeMenu", "#lienhe");
+    window.location.href = '/lien-he';
   });
 });
 
@@ -105,9 +138,14 @@ document.addEventListener('click', (e) => {
   const btn = e.target.closest('a[href="#bynow"], .btn-bynow-bander');
   if (btn) {
     e.preventDefault();
-    window.location.href = "https://app.zework.com/vn/price";
+    window.location.href = "https://app.zework.com/vn/price"; 
   }
 });
+
+
+
+
+
 
 window.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname.endsWith("/") || window.location.pathname === "/") {
@@ -129,7 +167,6 @@ window.addEventListener('DOMContentLoaded', () => {
   menuTrangChu?.classList.add('active-menu');
 });
 
-// xu ly menu mobile
 const btnMenu = document.querySelector('.menu-mobile');
 const btnClose = document.querySelector('.close-menu');
 const popupMenu = document.querySelector('.mobile-menu-popup');
@@ -173,3 +210,13 @@ const btnDownMacOs = document.querySelector('.downMacOs');
 btnDownMacOs.onclick = () => {
     window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.dmg';
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const logoLinksZalo = document.querySelector('.icon-zalo-chat');
+    logoLinksZalo.onclick = () => {   
+      window.location.href = "https://zalo.me/982303333"
+    } 
+});
+
+
