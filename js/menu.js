@@ -102,7 +102,6 @@ const featureLink = document.querySelectorAll('a[href="#tinhnang"]');
 featureLink.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    localStorage.setItem("activeMenu", "#tinhnang");
     window.location.href = '/tinh-nang';
   });
 });
@@ -111,7 +110,6 @@ const priceLinks = document.querySelectorAll('a[href="#banggia"]');
 priceLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    localStorage.setItem("activeMenu", "#banggia");
     window.location.href = '/bang-gia';
   });
 });
@@ -120,7 +118,6 @@ const articleLinks = document.querySelectorAll('a[href="#baiviet"]');
 articleLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    localStorage.setItem("activeMenu", "#baiviet");
     window.location.href = '/bai-viet';
   });
 });
@@ -129,7 +126,7 @@ const contactLinks = document.querySelectorAll('a[href="#lienhe"]');
 contactLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    localStorage.setItem("activeMenu", "#lienhe");
+  
     window.location.href = '/lien-he';
   });
 });
@@ -142,29 +139,45 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// Hàm lấy active menu dựa trên URL hiện tại
+const getActiveMenuFromURL = () => {
+  const pathname = window.location.pathname;
+  
+  if (pathname.endsWith("/") || pathname === "/") {
+    return "#trangchu";
+  } else if (pathname.includes("/tinh-nang")) {
+    return "#tinhnang";
+  } else if (pathname.includes("/bang-gia")) {
+    return "#banggia";
+  } else if (pathname.includes("/bai-viet")) {
+    return "#baiviet";
+  } else if (pathname.includes("/lien-he")) {
+    return "#lienhe";
+  }
+  
+  return "#trangchu";
+};
 
-
+const setActiveMenu = getActiveMenuFromURL();
 
 
 
 window.addEventListener('DOMContentLoaded', () => {
-  if (window.location.pathname.endsWith("/") || window.location.pathname === "/") {
-    localStorage.setItem("activeMenu", "#trangchu");
-  }
   removeActiveMenu();
-  const savedMenu = localStorage.getItem("activeMenu");
-  if (savedMenu) {
-    const activeLinks = document.querySelectorAll(
-      `header .ul-menu a[href="${savedMenu}"], 
-   .mobile-menu-popup .ul-menu a[href="${savedMenu}"]`
-    );
-    if (activeLinks.length > 0) {
-      activeLinks.forEach(a => a.classList.add("active-menu"));
-      return;
-    }
+  
+  // Lấy active menu từ URL
+  const activeMenuFromURL = getActiveMenuFromURL();
+  localStorage.setItem("activeMenu", activeMenuFromURL);
+  
+  // Thêm class active-menu vào tất cả các link menu tương ứng
+  const activeLinks = document.querySelectorAll(
+    `header .ul-menu a[href="${activeMenuFromURL}"], 
+     .mobile-menu-popup .ul-menu a[href="${activeMenuFromURL}"]`
+  );
+  
+  if (activeLinks.length > 0) {
+    activeLinks.forEach(a => a.classList.add("active-menu"));
   }
-  const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
-  menuTrangChu?.classList.add('active-menu');
 });
 
 const btnMenu = document.querySelector('.menu-mobile');
