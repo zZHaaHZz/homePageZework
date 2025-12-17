@@ -5,7 +5,7 @@ const loginButtons = document.querySelectorAll('.btn-header-login, .btn-login');
 
 loginButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    window.location.href = "https://dev-chat.zework.com"
+    window.location.href = "https://chat.zework.com/"
   });
 });
 
@@ -13,7 +13,7 @@ const signupButtons = document.querySelectorAll('.btn-header-signup, .btn-signup
 
 signupButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-       window.location.href = "https://dev.zework.com/vn/register"
+       window.location.href = "https://app.zework.com"
 
   });
 });
@@ -21,7 +21,7 @@ signupButtons.forEach(btn => {
 
 btnExperiences.forEach(btn => {
   btn.addEventListener('click', () => {
-    window.location.href = "https://dev-chat.zework.com"
+    window.location.href = "https://chat.zework.com/"
   });
 });
 
@@ -51,7 +51,6 @@ menuLinks.forEach(link => {
     removeActiveMenu();
     link.classList.add('active-menu');
     const href = link.getAttribute('href');
-    localStorage.setItem("activeMenu", href);
 
     const popupMenu = document.querySelector('.mobile-menu-popup');
     const btnMenu = document.querySelector('.menu-mobile');
@@ -167,7 +166,6 @@ window.addEventListener('DOMContentLoaded', () => {
   
   // Lấy active menu từ URL
   const activeMenuFromURL = getActiveMenuFromURL();
-  localStorage.setItem("activeMenu", activeMenuFromURL);
   
   // Thêm class active-menu vào tất cả các link menu tương ứng
   const activeLinks = document.querySelectorAll(
