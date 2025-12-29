@@ -123,6 +123,11 @@
    transition: 0.3s;
 }
 
+.menu-features-1 button:hover {
+   background:  #375DFA;
+   color: #FFFFFF;
+   transition: 0.3s;
+}
 .menu-features-1 button:first-child {
    border-radius: 2.4rem 0 0 0;
 }
