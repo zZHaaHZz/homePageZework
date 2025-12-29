@@ -110,6 +110,9 @@
     font-size: 1.8rem;
     font-weight: 500;
 }
+.active-ask .active-ask-suport p {
+    color: #375DFA;
+ }
 
 @media (max-width:430px) {
     .ask-suport {
@@ -190,7 +193,7 @@
     .body-list-ask-suport {
         max-width: 100%;
         padding: 2rem 0;
-        /* mobile gọn hơn */
+
     }
 
     .body-list-ask-suport p {
@@ -216,6 +219,10 @@
         flex-direction: column;
     }
 
+    .active-ask .active-ask-suport p {
+        color: #375DFA;
+    }
+
     .ask-detail {
         font-size: 1.5rem;
         padding: 0;
@@ -226,11 +233,11 @@
         padding: 0;
         margin: 0;
     }
+
     .active-ask-suport,
     .body-list-ask-suport {
         max-width: 100%;
         padding: 1rem 0;
-        /* mobile gọn hơn */
     }
 
 }

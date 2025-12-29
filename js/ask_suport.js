@@ -8,7 +8,7 @@ const FAQS = [
   { 
     id: 2, 
     q: "Liên hệ bộ phận hỗ trợ của ZeWork ở đâu?", 
-    a: "Bạn có thể liên hệ hỗ trợ qua 3 kênh: Chat trực tiếp trên website Zework.vn, gọi Hotline kỹ thuật 24/7, hoặc tham gia cộng đồng Zalo Support dành riêng cho khách hàng doanh nghiệp." 
+    a: "Bạn có thể liên hệ hỗ trợ qua 3 hotline: 0982303333 " 
   },
   { 
     id: 3, 
