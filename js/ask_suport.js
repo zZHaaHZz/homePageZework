@@ -8,7 +8,7 @@ const FAQS = [
   { 
     id: 2, 
     q: "Liên hệ bộ phận hỗ trợ của ZeWork ở đâu?", 
-    a: "Bạn có thể liên hệ hỗ trợ qua 3 hotline: 0982303333 " 
+    a: "Bạn có thể liên hệ hỗ trợ qua hotline: 0982303333, Fanpage: Zework, X(twitter): @_zework" 
   },
   { 
     id: 3, 
