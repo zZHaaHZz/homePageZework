@@ -81,37 +81,27 @@ function escapeHtml(str) {
 
 /** 4) Render */
 function renderFaqs(rootEl) {
-  rootEl.innerHTML = FAQS.map((item) => {
-    const isOpen = !!item.open;
-
-    return `
-      <div class="body-list-ask-suport ${isOpen ? "active-ask" : ""}" data-id="${item.id}">
-        <div class="active-ask-suport">
-          <p>${escapeHtml(item.q)}</p>
-
-          <button type="button" class="faq-toggle" aria-expanded="${isOpen}">
-            ${isOpen ? SVG_MINUS : SVG_PLUS}
-          </button>
-        </div>
-
-        <div class="ask-detail">
-          <span>${escapeHtml(item.a)}</span>
-        </div>
+  rootEl.innerHTML = FAQS.map((item, index) => `
+    <div class="body-list-ask-suport ${index === 0 ? "active-ask" : ""}" data-id="${item.id}">
+      <div class="active-ask-suport">
+        <p>${escapeHtml(item.q)}</p>
+        <button type="button" class="faq-toggle">
+          ${index === 0 ? SVG_MINUS : SVG_PLUS}
+        </button>
       </div>
-    `;
-  }).join("");
+
+      <div class="ask-detail">
+        <span>${escapeHtml(item.a)}</span>
+      </div>
+    </div>
+  `).join("");
 }
 
+
 /** 5) Init + Click handling (accordion 1 mở) */
-function initFaqAccordion({
-  rootSelector = "#faqList",
-  singleOpen = true, // true: chỉ mở 1 câu; false: mở nhiều câu
-} = {}) {
+function initFaqAccordion({ rootSelector = "#faqList", singleOpen = true } = {}) {
   const rootEl = document.querySelector(rootSelector);
-  if (!rootEl) {
-    console.warn(`FAQ root not found: ${rootSelector}`);
-    return;
-  }
+  if (!rootEl) return;
 
   renderFaqs(rootEl);
 
@@ -119,31 +109,27 @@ function initFaqAccordion({
     const btn = e.target.closest(".faq-toggle");
     if (!btn) return;
 
-    const itemEl = btn.closest(".body-list-ask-suport");
-    if (!itemEl) return;
-
-    const id = Number(itemEl.dataset.id);
-    const target = FAQS.find((x) => x.id === id);
-    if (!target) return;
+    const item = btn.closest(".body-list-ask-suport");
+    const isOpen = item.classList.contains("active-ask");
 
     if (singleOpen) {
-      FAQS.forEach((x) => {
-        if (x.id === id) x.open = !x.open;
-        else x.open = false;
+      rootEl.querySelectorAll(".body-list-ask-suport").forEach(el => {
+        el.classList.remove("active-ask");
+        el.querySelector(".faq-toggle").innerHTML = SVG_PLUS;
       });
-    } else {
-      target.open = !target.open;
     }
 
-    renderFaqs(rootEl);
+    if (!isOpen) {
+      item.classList.add("active-ask");
+      btn.innerHTML = SVG_MINUS;
+    }
   });
 }
 
-/** 6) Auto run khi DOM ready */
 document.addEventListener("DOMContentLoaded", () => {
   initFaqAccordion({
     rootSelector: "#faqList",
-    singleOpen: true, // đổi false nếu muốn mở nhiều câu cùng lúc
+    singleOpen: true,
   });
 });
 
