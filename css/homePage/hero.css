@@ -140,10 +140,10 @@
     font-size: 2rem;
 }
 
-.div-img-dashBoard img {
-    width: 87.6rem;
-    height: 54rem;
-    margin: 4.5rem auto;
+.div-img-dashBoard video {
+    width: 110.6rem;
+    height: 51rem;
+    margin: 1.5rem auto;
     display: block;
     z-index: 4;
 }
@@ -231,7 +231,7 @@
         display: block;
     }
 
-    .img-quare-5-mobile img {
+    .img-quare-5-mobile video {
         width: 100vw;
         height: 33.3rem;
         object-fit: cover;
