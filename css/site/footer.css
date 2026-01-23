@@ -202,6 +202,7 @@ footer {
     justify-content: center;
     gap: 0.7rem;
     cursor: pointer;
+    transition: all 0.35s ease-in-out;
 }
 
 .downWin svg {

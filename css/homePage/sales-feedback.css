@@ -30,6 +30,9 @@
     align-items: start;
     justify-content: center;
     gap: 2rem;
+    animation: appearLeftToCenter linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
 }
 
 .left-sales-feedback-title h2 {
@@ -47,6 +50,9 @@
     color: #475467;
     line-height: 2.8rem;
     text-align: start;
+    animation: appearRightToCenter linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
 }
 
 .sales-feedback-content {
@@ -59,6 +65,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    animation: appearBottom linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
 }
 
 .sales-feedback-content-box {
