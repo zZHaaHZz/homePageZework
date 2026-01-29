@@ -92,10 +92,12 @@
     <link rel="stylesheet" href="./css/site/header.css">
     <link rel="stylesheet" href="./css/site/logo-zework.css">
     <link rel="stylesheet" href="./css/site/footer.css">
+    <link rel="stylesheet" href="./css/security-animation.css">
 
 </head>
 
 <body>
+    <script src="./js/security-animation.js"></script>
     <header>
         <div class="content-header">
             <a href="#trangchu">
@@ -319,47 +321,69 @@
             <div class="square-5">
 
                 <div class="div-img-dashBoard">
-                    <video
-                            class="img-rounded"
-                            src="img/videodash.mp4"
-                            autoplay
-                            loop
-                            muted
-                            playsinline
-                    ></video>
+                    <canvas id="dashboardCanvas" class="img-rounded"></canvas>
+                    <script src="./js/dashboard-simulation.js"></script>
 
                     <style>
                         .img-rounded {
-                            width: 160px;
-                            height: auto;        /* giữ đúng tỉ lệ video */
-                            border-radius: 12px; /* bo góc nhẹ */
+                            width: 100%;
+                            height: 100%;
+                            min-height: 550px;
+                            border-radius: 12px;
                             display: block;
-                            object-fit: cover;
+                            /* background: transparent; */
                         }
                     </style>
                 </div>
                 <div class="img-customer-ratio">
 
                 </div>
-                <div class="mouse-hero">
-                    <img src="img/mouse.svg" alt="">
+
+
+                <!-- Security Animation HTML Structure -->
+                <div id="securityOverlay" class="security-overlay">
+                    <div class="network-container">
+                        <!-- Left Node (User/Phone) -->
+                        <div class="node left">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+
+                        <!-- Connection Lines -->
+                        <div class="connection-line line-left"></div>
+                        <div class="connection-line line-right"></div>
+
+                        <!-- Center Hub (Zework) -->
+                        <div class="hub-center">
+                            <div class="hub-pulse"></div>
+                            <img src="./img/logoZework.svg" alt="Zework">
+                        </div>
+
+                        <!-- Right Node (Zalo/Cloud) -->
+                        <div class="node right">
+                            <img src="./img/Icon_of_Zalo.svg" style="width: 40px; height: 40px;">
+                        </div>
+
+                        <!-- Packet Container -->
+                        <div id="packetLayer" style="position:absolute; width:100%; height:100%; pointer-events:none;">
+                        </div>
+                    </div>
+
+                    <div class="security-status">
+                        <h3 id="statusTitle">Kết nối hệ thống</h3>
+                        <p id="statusDesc">Đang thiết lập môi trường bảo mật...</p>
+                    </div>
                 </div>
             </div>
             <div class="img-quare-5-mobile">
-                <video
-                        class="img-rounded"
-                        src="img/videodash.mp4"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                ></video>
+                <video class="img-rounded" src="img/videodash.mp4" autoplay loop muted playsinline></video>
 
                 <style>
                     .img-rounded {
                         width: 160px;
-                        height: auto;        /* giữ đúng tỉ lệ video */
-                        border-radius: 12px; /* bo góc nhẹ */
+                        height: auto;
+                        /* giữ đúng tỉ lệ video */
+                        border-radius: 12px;
+                        /* bo góc nhẹ */
                         display: block;
                         object-fit: cover;
                     }
@@ -792,25 +816,9 @@
                 <div class="feature-detail"></div>
             </div>
         </div>
-        <div class="feedback">
-            <div class="feedback-title">
-                <h1>Khách hàng nói về Zework</h1>
-                <p>Cùng lắng nghe những chia sẻ của khách hàng về phần mềm</p>
-            </div>
-            <div class="feedback-content">
-                <div class="vector-logo-3">
-                    <img src="img/Logo (2).svg" alt="">
-                </div>
-                <h1>Zework thay đổi hoàn toàn cách chúng tôi chăm sóc khách hàng qua Zalo — nhanh hơn, thông minh hơn,
-                    hiệu quả hơn</h1>
-                <div class="main-feedback-content">
-                    <img src="img/logoZework.svg" alt="">
-                    <h2>Mollie Hall</h2>
-                    <p>Web Developer, Sisyphus</p>
-                </div>
-            </div>
-        </div>
+
         <div class="sales-feedback">
+            <link rel="stylesheet" href="./css/sales-feedback.css">
             <div class="sales-feedback-container">
                 <div class="sales-feedback-title">
                     <div class="left-sales-feedback-title">
@@ -819,16 +827,164 @@
                                 <div class="icon-list">
                                     <div class="extra"></div>
                                 </div>
-                                <h6>PHẢN HỒI</h6>
+
                             </div>
                         </div>
                         <h2>Đội ngũ kinh doanh nói về ZeWork</h2>
                     </div>
                     <p>Zework giúp chúng tôi nhìn rõ toàn bộ hành trình khách hàng trên Zalo - từ tin nhắn đầu tiên đến
-                        khi
-                        chốt đơn. Mọi thứ rõ ràng, mạch lạc, và cực kỳ hiệu quả</p>
+                        khi chốt đơn. Mọi thứ rõ ràng, mạch lạc, và cực kỳ hiệu quả.</p>
                 </div>
-                <div class="sales-feedback-content">
+
+                <div class="marquee-wrapper">
+                    <div class="marquee-track">
+                        <!-- Item 1 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Nguyễn Văn Bình</h4>
+                                    <p>Trưởng phòng Sales, TechnoVn</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Từ khi dùng ZeWork, đội sales không còn cảnh 'trôi tin nhắn' nữa. Tỷ
+                                lệ chốt đơn tăng 30% chỉ trong tháng đầu tiên áp dụng. Thực sự đáng tiền!"</p>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Trần Thị Thu Hà</h4>
+                                    <p>CEO, HomeDecor Hanoi</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Quản lý nhân viên telesale dễ dàng hơn bao giờ hết. Tôi có thể xem
+                                báo cáo realtime ngay trên dashboard mà không cần chờ cuối ngày."</p>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Lê Minh Tuấn</h4>
+                                    <p>Sales Manager, RealEstate Pro</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Tính năng phân bổ hội thoại tự động rất thông minh. Khách hàng cũ
+                                quay lại được nối máy ngay với nhân viên cũ, trải nghiệm khách hàng tuyệt vời."</p>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Phạm Thanh Hương</h4>
+                                    <p>Owner, Beauty Spa 5*</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"ZeWork giúp tôi bảo mật dữ liệu khách hàng tuyệt đối. Nhân viên nghỉ
+                                việc không lo mất data khách quen vì đã được mã hoá và phân quyền chặt chẽ."</p>
+                        </div>
+                        <!-- Item 5 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Hoàng Đức Dũng</h4>
+                                    <p>Giám đốc Kinh doanh, EduGroup</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Giao diện trực quan, nhân viên mới vào chỉ cần 15 phút là quen việc.
+                                Tính năng gắn tag trạng thái giúp team follow khách hàng cực sát."</p>
+                        </div>
+                        <!-- Item 6 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Đặng Thùy Linh</h4>
+                                    <p>Team Leader, Fashion Click</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Thích nhất là tính năng đồng bộ tin nhắn Zalo 2 chiều. Chat trên
+                                Zework mượt mà như app gốc, mà lại có thêm đủ loại công cụ CRM đi kèm."</p>
+                        </div>
+
+                        <!-- DUPLICATE SET FOR INFINITE LOOP -->
+                        <!-- Item 1 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Nguyễn Văn Bình</h4>
+                                    <p>Trưởng phòng Sales, TechnoVn</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Từ khi dùng ZeWork, đội sales không còn cảnh 'trôi tin nhắn' nữa. Tỷ
+                                lệ chốt đơn tăng 30% chỉ trong tháng đầu tiên áp dụng. Thực sự đáng tiền!"</p>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Trần Thị Thu Hà</h4>
+                                    <p>CEO, HomeDecor Hanoi</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Quản lý nhân viên telesale dễ dàng hơn bao giờ hết. Tôi có thể xem
+                                báo cáo realtime ngay trên dashboard mà không cần chờ cuối ngày."</p>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Lê Minh Tuấn</h4>
+                                    <p>Sales Manager, RealEstate Pro</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Tính năng phân bổ hội thoại tự động rất thông minh. Khách hàng cũ
+                                quay lại được nối máy ngay với nhân viên cũ, trải nghiệm khách hàng tuyệt vời."</p>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Phạm Thanh Hương</h4>
+                                    <p>Owner, Beauty Spa 5*</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"ZeWork giúp tôi bảo mật dữ liệu khách hàng tuyệt đối. Nhân viên nghỉ
+                                việc không lo mất data khách quen vì đã được mã hoá và phân quyền chặt chẽ."</p>
+                        </div>
+                        <!-- Item 5 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Hoàng Đức Dũng</h4>
+                                    <p>Giám đốc Kinh doanh, EduGroup</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Giao diện trực quan, nhân viên mới vào chỉ cần 15 phút là quen việc.
+                                Tính năng gắn tag trạng thái giúp team follow khách hàng cực sát."</p>
+                        </div>
+                        <!-- Item 6 -->
+                        <div class="feedback-card">
+                            <div class="card-header">
+                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
+                                <div class="card-info">
+                                    <h4>Đặng Thùy Linh</h4>
+                                    <p>Team Leader, Fashion Click</p>
+                                </div>
+                            </div>
+                            <p class="card-quote">"Thích nhất là tính năng đồng bộ tin nhắn Zalo 2 chiều. Chat trên
+                                Zework mượt mà như app gốc, mà lại có thêm đủ loại công cụ CRM đi kèm."</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -976,16 +1132,26 @@
             <div class="right-main-footer">
                 <div>
                     <h2>Sản phẩm</h2>
-                        <a href="#trangchu"><p>Tổng quan</p></a>
-                        <a href="#tinhnang"><p>Tính năng</p></a>
-                        <a href="#banggia"> <p>Bảng giá</p></a>
-                        <a href="#baiviet"><p>Bài viết</p></a>
+                    <a href="#trangchu">
+                        <p>Tổng quan</p>
+                    </a>
+                    <a href="#tinhnang">
+                        <p>Tính năng</p>
+                    </a>
+                    <a href="#banggia">
+                        <p>Bảng giá</p>
+                    </a>
+                    <a href="#baiviet">
+                        <p>Bài viết</p>
+                    </a>
                 </div>
                 <div>
                     <h2>Điều khoản</h2>
                     <p>Chính sách</p>
                     <p>Bảo mật</p>
-                    <a href="#lienhe"><p>Liên hệ</p></a>
+                    <a href="#lienhe">
+                        <p>Liên hệ</p>
+                    </a>
                 </div>
                 <div>
                     <h2>Mạng xã hội</h2>
@@ -999,21 +1165,24 @@
                 </div>
                 <div>
                     <h2>ZEWORK CO., LTD</h2>
-                    <a href="company.html"><p>Về chúng tôi</p></a>
+                    <a href="company.html">
+                        <p>Về chúng tôi</p>
+                    </a>
                     <p>Mã số thuế: 0111275923</p>
                     <h2 style="margin-top: 1rem; margin-bottom: 1rem;">Hotline</h2>
-                        <a href="tel:0982303333">
+                    <a href="tel:0982303333">
                         <p>
                             0982303333
                         </p>
-                        </a>
+                    </a>
 
                     <h2>Địa chỉ</h2>
-            
-                        <a href="https://maps.app.goo.gl/XqnTPHBvFXWi5mEZ6"><p>
+
+                    <a href="https://maps.app.goo.gl/XqnTPHBvFXWi5mEZ6">
+                        <p>
                             29-T1 P. Hoàng Đạo Thúy, Trung Hoà, Cầu Giấy, Hà Nội</p>
-                        </a>
-                    
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -1051,6 +1220,38 @@
         </div>
     </footer>
 
+    <!-- Security Animation HTML Structure -->
+    <div id="securityOverlay" class="security-overlay">
+        <div class="network-container">
+            <!-- Left Node (User/Phone) -->
+            <div class="node left">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+
+            <!-- Connection Lines -->
+            <div class="connection-line line-left"></div>
+            <div class="connection-line line-right"></div>
+
+            <!-- Center Hub (Zework) -->
+            <div class="hub-center">
+                <div class="hub-pulse"></div>
+                <img src="./img/logoZework.svg" alt="Zework">
+            </div>
+
+            <!-- Right Node (Zalo/Cloud) -->
+            <div class="node right">
+                <img src="./img/Icon_of_Zalo.svg" style="width: 40px; height: 40px;">
+            </div>
+
+            <!-- Packet Container -->
+            <div id="packetLayer" style="position:absolute; width:100%; height:100%; pointer-events:none;"></div>
+        </div>
+
+        <div class="security-status">
+            <h3 id="statusTitle">Kết nối hệ thống</h3>
+            <p id="statusDesc">Đang thiết lập môi trường bảo mật...</p>
+        </div>
+    </div>
 </body>
 
 </html>

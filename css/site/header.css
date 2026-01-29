@@ -1,9 +1,8 @@
-
-@font-face {
+/* @font-face {
   font-family: "SF Pro Text";
   src: url("/fonts/SF-Pro-Text-Regular.woff2") format("woff2");
   font-weight: 400;
-}
+} */
 p,
 span,
 .medium-text,
@@ -106,9 +105,11 @@ header {
     display: flex;
     align-items: center;
 }
-.ul-menu a:hover{
+
+.ul-menu a:hover {
     color: #375DFA;
 }
+
 .ul-menu a.active-menu {
     color: #375DFA;
 }
@@ -185,9 +186,11 @@ header {
     border-radius: 1rem;
     font-size: 1.6rem;
 }
-.btn-header-login:hover{
+
+.btn-header-login:hover {
     background-color: #edecec;
 }
+
 .btn-header-signup {
     cursor: pointer;
     width: 10.2rem;
@@ -199,8 +202,9 @@ header {
     color: #FFFFFF;
     font-size: 1.6rem;
 }
-.btn-header-signup:hover{
-      background-color: #0f37d5;
+
+.btn-header-signup:hover {
+    background-color: #0f37d5;
 }
 
 .mobile-menu-popup {
@@ -210,13 +214,16 @@ header {
 .menu-mobile svg {
     display: none;
 }
+
 .menu-mobile {
     display: none;
 }
+
 .close-menu {
     display: none;
 }
-.close-menu svg{
+
+.close-menu svg {
     display: none;
 }
 
@@ -229,6 +236,7 @@ header {
     height: 2.8rem;
     padding-top: 1rem;
 }
+
 .menu-change-langue {
     display: block;
     position: absolute;
@@ -246,16 +254,19 @@ header {
     box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.08);
     z-index: 800;
 }
-.show{
+
+.show {
     transform: translateY(0%);
 }
-.ul-menu-change-langue{
+
+.ul-menu-change-langue {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
 }
-.ul-menu-change-langue li{
+
+.ul-menu-change-langue li {
     font-size: 1.6rem;
     list-style: none;
     width: 100%;
@@ -282,7 +293,7 @@ header {
     html {
         font-size: 5px;
     }
-    
+
     .menu-mobile {
         display: none;
     }
@@ -484,12 +495,14 @@ header {
         color: #101828;
         font-size: 1.6rem;
     }
-    .menu-change-langue{
+
+    .menu-change-langue {
         right: 1rem;
         width: 10rem;
         height: 10rem;
     }
-    .ul-menu-change-langue li{
+
+    .ul-menu-change-langue li {
         font-size: 1.4rem;
     }
 }

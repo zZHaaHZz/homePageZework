@@ -1,0 +1,285 @@
+/* Overlay positioned within the specific container (.square-5) */
+.security-overlay {
+    position: absolute;
+    /* Changed from fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    /* Very transparent, glass-like */
+    z-index: 20;
+    /* Above video (z-4) but sane */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* backdrop-filter: blur(2px); */
+    /* Slight blur or none to see video clearly */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border-radius: 2rem;
+    /* Match container radius */
+}
+
+.security-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Network Container */
+.network-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Central Hub */
+.hub-center {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 104, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border: 1px solid #e5e7eb;
+    position: relative;
+}
+
+.hub-center img {
+    width: 60px;
+    height: auto;
+}
+
+.hub-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #0068ff;
+    animation: ripple 2s infinite;
+    z-index: -1;
+}
+
+/* Nodes */
+.node {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #0068ff;
+    z-index: 5;
+}
+
+/* Position nodes relative to container center */
+.node.left {
+    left: 15%;
+}
+
+.node.right {
+    right: 15%;
+}
+
+/* Connecting Lines */
+.connection-line {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    background: rgba(0, 104, 255, 0.5);
+    /* More visible blueish line */
+    z-index: 1;
+}
+
+.line-left {
+    left: calc(15% + 60px);
+    /* node.left + width */
+    right: calc(50% + 50px);
+    /* center - half hub width */
+    width: auto;
+}
+
+.line-right {
+    left: calc(50% + 50px);
+    right: calc(15% + 60px);
+    width: auto;
+}
+
+/* Data Packet */
+.data-packet {
+    position: absolute;
+    top: 50%;
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border: 2px solid #0068ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0068ff;
+    font-size: 14px;
+    z-index: 6;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 8px rgba(0, 104, 255, 0.4);
+}
+
+/* Status Text - Positioned at bottom of container */
+.security-status {
+    position: absolute;
+    bottom: 40px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.security-status h3 {
+    font-size: 18px;
+    color: #0068ff;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.security-status p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+/* Animations matching JS logic */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        border-width: 2px;
+    }
+
+    100% {
+        width: 160%;
+        height: 160%;
+        opacity: 0;
+        border-width: 0px;
+    }
+}
+
+/* Keyframes need to match the new fluid widths. 
+   Using percentages is safer for responsive container.
+*/
+
+/* Left Node is at ~15% + 30px(half width). Center Hub is at 50%.
+   We can animate 'left' property from Node position to Center position.
+*/
+@keyframes flowLeftToCenter {
+    0% {
+        left: calc(15% + 30px);
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+}
+
+@keyframes flowCenterToRight {
+    0% {
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        left: calc(85% - 30px);
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+}
+
+@keyframes flowRightToCenter {
+    0% {
+        left: calc(85% - 30px);
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+}
+
+/* Success */
+.success-icon {
+    font-size: 50px;
+    color: #00c853;
+    animation: scaleUp 0.4s;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

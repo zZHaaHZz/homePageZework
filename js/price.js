@@ -105,7 +105,7 @@ const plans = {
                 { text: "10 tài khoản nhân viên", ok: true },
                 { text: "Hỗ trợ khôi phục tin nhắn cũ", ok: true },
                 { text: "Hỗ trợ quản lý nhân viên", ok: true },
-                { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
+                { text: "Giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: true,
             href: "bynow"
@@ -118,7 +118,7 @@ const plans = {
                 { text: "20 tài khoản nhân viên", ok: true },
                 { text: "Hỗ trợ khôi phục tin nhắn cũ", ok: true },
                 { text: "Hỗ trợ quản lý nhân viên", ok: true },
-                { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
+                { text: "Giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: false,
             href: "bynow"
@@ -131,7 +131,7 @@ const plans = {
                 { text: "30 tài khoản nhân viên", ok: true },
                 { text: "Hỗ trợ khôi phục tin nhắn cũ", ok: true },
                 { text: "Hỗ trợ quản lý nhân viên", ok: true },
-                { text: "Giới hạn data lưu trữ tin nhắn", ok: false }
+                { text: "Giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: false,
             href: "bynow"
