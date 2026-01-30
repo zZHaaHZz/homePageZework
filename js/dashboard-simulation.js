@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgEmployee = new Image(); imgEmployee.src = './img/icon-employee.svg';
     const imgZework = new Image(); imgZework.src = './img/logoZework.svg';
 
+    // Unique Avatars
+    const avatars = [];
+    for (let i = 1; i <= 4; i++) {
+        const img = new Image();
+        img.src = `./img/avatarFeedback/avatar_${i}.png`;
+        avatars.push(img);
+    }
+
     // Packet Icons
     const imgMsg = new Image(); imgMsg.src = './img/icon-message.svg';
     const imgCall = new Image(); imgCall.src = './img/icon-call.svg';
@@ -36,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const config = {
-        zaloCount: 8,
+        zaloCount: 3,
         nodeRadius: 20,
         hubRadius: 50,
         color: {
@@ -48,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             packetOut: '#4caf50',
             text: '#333'
         },
-        speed: 1.5
+        speed: 0.8
     };
 
     // State
@@ -67,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const zaloNodes = [];
     const employeeNodes = [];
     const packets = [];
-    const MAX_EMPLOYEES = 10;
+    const MAX_EMPLOYEES = 4;
 
     // Analytics Data
     let chartData = [];
@@ -75,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Leaderboard Data - SCORES CLOSE TOGETHER for frequent swapping
     const employeeNames = [
-        { id: 1, name: "Trần Minh Hằng", dept: "Customer Service", pending: 2, closed: 120, y: 0, targetY: 0 },
-        { id: 2, name: "Đặng Minh Tú", dept: "Customer Success", pending: 3, closed: 118, y: 0, targetY: 0 },
+        { id: 1, name: "Trần Minh Hằng", dept: "Chăm sóc khách hàng", pending: 2, closed: 120, y: 0, targetY: 0 },
+        { id: 2, name: "Đặng Minh Tú", dept: "Dịch vụ khách hàng", pending: 3, closed: 118, y: 0, targetY: 0 },
         { id: 3, name: "Nguyễn Trọng Nhân", dept: "Customer Service", pending: 1, closed: 116, y: 0, targetY: 0 },
         { id: 4, name: "Lữ Mạnh Nha", dept: "Sales", pending: 4, closed: 114, y: 0, targetY: 0 },
         { id: 5, name: "Phạm Văn A", dept: "Sales", pending: 5, closed: 112, y: 0, targetY: 0 }
@@ -125,8 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.strokeStyle = phase === 'security' ? config.color.lineSecure : config.color.line;
             ctx.stroke();
 
+            const radius = this.type === 'zalo' ? 30 : 28; // Increased employee radius from 20 to 28
+
             ctx.beginPath();
-            ctx.arc(this.currentX, this.currentY, config.nodeRadius, 0, Math.PI * 2);
+            ctx.arc(this.currentX, this.currentY, radius, 0, Math.PI * 2);
             ctx.fillStyle = '#fff';
             ctx.fill();
 
@@ -136,16 +146,23 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 ctx.strokeStyle = this.type === 'zalo' ? config.color.zalo : config.color.employee;
             }
+            // Zalo Pulse
+            if (this.type === 'zalo' && phase === 'sync') {
+                ctx.shadowColor = config.color.zalo;
+                ctx.shadowBlur = 15;
+            }
             ctx.stroke();
+            ctx.shadowBlur = 0;
 
-            const img = this.type === 'zalo' ? imgZalo : imgEmployee;
+            const img = this.type === 'zalo' ? imgZalo : (avatars[this.id % avatars.length] || imgEmployee);
             if (img.complete && img.naturalWidth > 0) {
                 ctx.save();
                 ctx.beginPath();
-                ctx.arc(this.currentX, this.currentY, config.nodeRadius - 4, 0, Math.PI * 2);
+                ctx.arc(this.currentX, this.currentY, radius - 4, 0, Math.PI * 2);
                 ctx.clip();
 
-                ctx.drawImage(img, this.currentX - 15, this.currentY - 15, 30, 30);
+                const imgSize = this.type === 'zalo' ? 44 : 40; // Increased employee imgSize
+                ctx.drawImage(img, this.currentX - imgSize / 2, this.currentY - imgSize / 2, imgSize, imgSize);
 
                 ctx.restore();
 
@@ -166,8 +183,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const radiusX = w * 0.35;
         const radiusY = h * 0.30;
 
+        // Arrange in Top Arc (Left -> Right)
+        // From PI (180deg) to 2*PI (360deg) -> Top semicircle
+        // Let's constrain to a tighter arc: 1.2 PI to 1.8 PI
+        const startTo = Math.PI * 1.2;
+        const endTo = Math.PI * 1.8;
+        const step = config.zaloCount > 1 ? (endTo - startTo) / (config.zaloCount - 1) : 0;
+
         for (let i = 0; i < config.zaloCount; i++) {
-            const angle = (i / config.zaloCount) * Math.PI * 2;
+            let angle = Math.PI * 1.5; // Default Top
+            if (config.zaloCount > 1) {
+                angle = startTo + i * step;
+            }
             const x = centerX + Math.cos(angle) * radiusX;
             const y = centerY + Math.sin(angle) * radiusY;
             zaloNodes.push(new Node(i, x, y, 'zalo'));
@@ -213,6 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
             this.progress = 0;
             this.done = false;
             this.distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+
+            // Trail system
         }
 
         update() {
@@ -227,8 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         draw() {
+            const size = 16;
             if (this.image && this.image.complete && this.image.naturalWidth > 0) {
-                const size = 20;
                 ctx.drawImage(this.image, this.x - size / 2, this.y - size / 2, size, size);
             }
         }
@@ -238,16 +267,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (employeeNodes.length >= MAX_EMPLOYEES) return;
 
         const i = employeeNodes.length;
-        const cols = 5;
-        const row = Math.floor(i / cols);
-        const col = i % cols;
+        // Center logic: Calculate total width based on MAX_EMPLOYEES
+        // Assume single row for few employees
+        const spacingX = w / (MAX_EMPLOYEES + 1);
 
-        const spacingX = w / (cols + 1);
-        const startX = spacingX;
-        const startY = h * 0.6 + (row * 70);
+        // Calculate x position: spacing * (index + 1)
+        // Or to perfectly center a group:
+        // totalGroupWidth = (MAX_EMPLOYEES - 1) * gap
+        // startX = (w - totalGroupWidth) / 2
 
-        const x = startX + (col * spacingX);
-        const y = startY;
+        // Simple equal spacing approach for "centering" in the available space:
+        const x = spacingX * (i + 1);
+        const y = h * 0.75; // Move them down a bit to be safe
 
         const newNode = new Node(i, x, y, 'employee');
         employeeNodes.push(newNode);
@@ -268,6 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (phase === 'tags') duration = PHASE_DURATION_TAGS;
 
         if (now - lastPhaseSwitch > duration) {
+            packets.length = 0; // Clear packets on phase switch
             // State Machine
             if (phase === 'sync') {
                 phase = 'distribute';
@@ -386,10 +418,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (rowY > listHeight + listY) return;
 
                     ctx.beginPath();
+                    ctx.save();
                     ctx.arc(rightX + 35, avatarY, 15, 0, Math.PI * 2);
+                    ctx.clip();
                     ctx.fillStyle = '#eee';
                     ctx.fill();
-                    if (imgEmployee.complete) ctx.drawImage(imgEmployee, rightX + 25, rowY + 5, 20, 20);
+
+                    // Use specific avatar
+                    const avatarImg = avatars[emp.id % avatars.length] || imgEmployee;
+                    if (avatarImg.complete) ctx.drawImage(avatarImg, rightX + 20, rowY, 30, 30);
+                    ctx.restore();
 
                     ctx.fillStyle = '#333';
                     ctx.textAlign = 'left';
@@ -533,10 +571,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 node.draw();
             });
 
-            // Hub
-            ctx.beginPath();
-            ctx.arc(centerX, hubY, config.hubRadius, 0, Math.PI * 2);
+            // Hub (Cloud Shape)
             ctx.fillStyle = '#fff';
+            drawCloud(ctx, centerX, hubY, config.hubRadius);
             ctx.fill();
 
             ctx.lineWidth = 3;
@@ -546,8 +583,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.save();
             ctx.translate(centerX, hubY);
             ctx.scale(pulseScale, pulseScale);
-            ctx.beginPath();
-            ctx.arc(0, 0, config.hubRadius, 0, Math.PI * 2);
+            // Draw stroke for cloud
+            drawCloud(ctx, 0, 0, config.hubRadius);
             ctx.stroke();
             ctx.restore();
 
@@ -571,10 +608,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillText(title, centerX, 30);
             ctx.shadowBlur = 0;
 
-            if (phase === 'security') {
+            if (phase === 'distribute' || phase === 'security') {
                 ctx.font = '16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
                 ctx.fillStyle = '#666';
-                ctx.fillText("Mã hoá đầu cuối - Phân quyền chi tiết", centerX, 60);
+                let sub = '';
+                if (phase === 'distribute') sub = "Chi tiết tới từng nhân viên";
+                if (phase === 'security') sub = "Mã hoá đầu cuối - Phân quyền chi tiết";
+                ctx.fillText(sub, centerX, 60);
             }
 
             // Packets
@@ -586,9 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         packets.push(new Packet(node.currentX, node.currentY, centerX, hubY, pImg));
                     } else if (phase === 'distribute') {
                         packets.push(new Packet(centerX, hubY, node.currentX, node.currentY, imgMsg));
-                        if (Math.random() < 0.5) {
-                            setTimeout(() => { if (node.opacity === 1) packets.push(new Packet(node.currentX, node.currentY, centerX, hubY, imgMsg)); }, 500);
-                        }
+
                     } else if (phase === 'security') {
                         packets.push(new Packet(centerX, hubY, node.currentX, node.currentY, imgLock));
                     }
@@ -606,6 +644,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Helpers ---
+    function drawCloud(ctx, x, y, r) {
+        const s = r / 50; // Scale based on radius (assuming default r=50)
+        ctx.beginPath();
+        // Start bottom-left area
+        ctx.moveTo(x - 30 * s, y + 20 * s);
+
+        // Left puff
+        ctx.bezierCurveTo(x - 65 * s, y + 20 * s, x - 65 * s, y - 20 * s, x - 35 * s, y - 25 * s);
+
+        // Top-Left puff
+        ctx.bezierCurveTo(x - 20 * s, y - 55 * s, x + 20 * s, y - 55 * s, x + 35 * s, y - 25 * s);
+
+        // Right puff
+        ctx.bezierCurveTo(x + 65 * s, y - 20 * s, x + 65 * s, y + 20 * s, x + 30 * s, y + 20 * s);
+
+        // Bottom puffs (to close nicely)
+        ctx.bezierCurveTo(x + 20 * s, y + 45 * s, x - 20 * s, y + 45 * s, x - 30 * s, y + 20 * s);
+
+        ctx.closePath();
+    }
+
     function drawCard(x, y, w, h) {
         ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
         ctx.shadowColor = "rgba(0,0,0,0.05)";
