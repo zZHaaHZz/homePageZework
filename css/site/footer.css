@@ -5,29 +5,30 @@ footer {
     flex-direction: column;
     justify-content: flex-start;
     gap: 1rem;
+    background: #ffffff;
 }
 
 .CTA {
     width: 100vw;
     height: 34.8rem;
     position: relative;
-    background-image: linear-gradient(#A3C9FF4A);
     opacity: 0.9;
     padding: 6.4rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background: url("../../img/grid.svg") repeat;
-    background-color: aliceblue;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f2ff 50%, #f5f9ff 100%);
+    border-top: 0.1rem solid rgba(2, 123, 255, 0.08);
 }
 
 .CTA h1 {
     z-index: 44;
     font-size: 4.8rem;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     flex-direction: row;
+    color: #101828;
 }
 
 .CTA p {
@@ -40,18 +41,22 @@ footer {
 .experience.bottom {
     cursor: pointer;
     z-index: 3;
-    width: 25.2rem;
+    width: 27rem;
     height: 5.6rem;
     border-radius: 1.2rem;
-    background-color: #375DFA;
-    border: 0.1rem solid #FFFFFF;
+    background: linear-gradient(135deg, #027BFF, #4da3ff);
+    border: none;
     color: #FFFFFF;
     font-size: 1.6rem;
-    box-shadow: 0 0 0.3rem 0.1rem rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    box-shadow: 0 0.4rem 1.6rem rgba(2, 123, 255, 0.25);
+    transition: all 0.3s ease;
 }
 
 .experience:hover.bottom {
-    background-color: #1744fa;
+    background: linear-gradient(135deg, #0066db, #3d93ff);
+    box-shadow: 0 0.6rem 2rem rgba(2, 123, 255, 0.35);
+    transform: translateY(-0.2rem);
 }
 
 .experience.bottom {
@@ -79,6 +84,7 @@ footer {
 
 .logo-footer h1 {
     font-size: 2.4rem;
+    color: #101828;
 }
 
 .left-main-footer {
@@ -106,6 +112,16 @@ footer {
     gap: 2rem
 }
 
+.right-main-footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.right-main-footer a:hover {
+    color: #027BFF;
+}
+
 .right-main-footer p {
     margin-bottom: 1.2rem;
     font-size: 1.4rem;
@@ -115,6 +131,7 @@ footer {
 .right-main-footer h2 {
     font-size: 1.6rem;
     margin-bottom: 1.6rem;
+    color: #101828;
 }
 
 .right-main-footer div:nth-child(1),
@@ -148,6 +165,11 @@ footer {
 .bottom-footer {
     width: 100vw;
     background-color: #F9FAFB;
+    border-top: 0.1rem solid #EAECF0;
+}
+
+.main-bottom-footer p {
+    color: #667085;
 }
 
 .icon-Social {
@@ -163,6 +185,11 @@ footer {
     width: 2.5rem;
     height: 2.5rem;
     color: #475467;
+    transition: color 0.3s;
+}
+
+.icon-Social a:hover {
+    color: #027BFF;
 }
 
 .icon-Social svg {
@@ -194,14 +221,15 @@ footer {
     height: 5.6rem;
     font-size: 1.8rem;
     border-radius: 1rem;
-    border: none;
-    color: rgb(0, 0, 0);
+    border: 0.1rem solid #D0D5DD;
+    color: #344054;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.7rem;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .downWin svg {
@@ -210,10 +238,10 @@ footer {
 
 .downMacOs:hover,
 .downWin:hover {
-    background-color: #375DFA;
+    background-color: #027BFF;
     color: #FFFFFF;
+    border-color: #027BFF;
 }
-
 
 .downMacOs:hover svg {
     color: #FFFFFF;
@@ -309,8 +337,6 @@ footer {
         height: 9.8rem;
     }
 
-
-
     .right-main-footer {
         width: 34.3rem;
         height: 31.2rem;
@@ -361,7 +387,6 @@ footer {
     .logo-footer {
         width: 11.7rem;
         height: 3.8rem;
-
     }
 
     .logo-footer img {

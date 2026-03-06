@@ -1,0 +1,210 @@
+/* ===========================================
+   Feature Showcase — Product Feature Blocks
+   =========================================== */
+
+.feature-showcase {
+    width: 100%;
+    background: #ffffff;
+    padding: 9.6rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8rem;
+}
+
+.feature-showcase-header {
+    text-align: center;
+    max-width: 72rem;
+    padding: 0 2rem;
+}
+
+.feature-showcase-header h2 {
+    font-size: 4.2rem;
+    font-weight: 800;
+    color: #101828;
+    margin-bottom: 1.6rem;
+    line-height: 1.2;
+}
+
+.feature-showcase-header p {
+    font-size: 1.8rem;
+    color: #475467;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+/* Feature Item — zigzag layout */
+.feature-showcase-item {
+    width: 124.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6.4rem;
+}
+
+.feature-showcase-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.feature-showcase-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Image side */
+.feature-showcase-img {
+    flex: 0 0 58%;
+    max-width: 58%;
+    position: relative;
+}
+
+.feature-showcase-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 1.6rem;
+    box-shadow: 0 0.8rem 3.2rem rgba(2, 123, 255, 0.08);
+    border: 0.1rem solid rgba(2, 123, 255, 0.06);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: block;
+}
+
+.feature-showcase-img img:hover {
+    transform: translateY(-0.4rem);
+    box-shadow: 0 1.2rem 4rem rgba(2, 123, 255, 0.14);
+}
+
+/* Dual image layout */
+.feature-showcase-img-dual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+}
+
+.feature-showcase-img-dual img {
+    width: 100%;
+    height: auto;
+    border-radius: 1.6rem;
+    box-shadow: 0 0.8rem 3.2rem rgba(2, 123, 255, 0.08);
+    border: 0.1rem solid rgba(2, 123, 255, 0.06);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: block;
+    object-fit: cover;
+}
+
+.feature-showcase-img-dual img:hover {
+    transform: translateY(-0.4rem);
+    box-shadow: 0 1.2rem 4rem rgba(2, 123, 255, 0.14);
+}
+
+/* Text side */
+.feature-showcase-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.feature-showcase-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #e8f2ff;
+    color: #027BFF;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.6rem 1.6rem;
+    border-radius: 10rem;
+    width: fit-content;
+}
+
+.feature-showcase-badge i {
+    font-size: 1.4rem;
+}
+
+.feature-showcase-text h3 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #101828;
+    line-height: 1.3;
+}
+
+.feature-showcase-text>p {
+    font-size: 1.8rem;
+    color: #475467;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+.feature-showcase-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 0.8rem;
+}
+
+.feature-showcase-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    font-size: 1.6rem;
+    color: #344054;
+    line-height: 1.6;
+    list-style: none;
+}
+
+.feature-showcase-benefits li i {
+    color: #027BFF;
+    font-size: 1.6rem;
+    margin-top: 0.3rem;
+    flex-shrink: 0;
+}
+
+/* =====================
+   Responsive — Mobile
+   ===================== */
+@media (max-width: 430px) {
+    .feature-showcase {
+        padding: 4rem 1.6rem;
+        gap: 4rem;
+    }
+
+    .feature-showcase-header h2 {
+        font-size: 2.6rem;
+    }
+
+    .feature-showcase-header p {
+        font-size: 1.4rem;
+    }
+
+    .feature-showcase-item {
+        width: 100%;
+        flex-direction: column !important;
+        gap: 2.4rem;
+    }
+
+    .feature-showcase-img {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .feature-showcase-img-dual {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .feature-showcase-text h3 {
+        font-size: 2rem;
+    }
+
+    .feature-showcase-text>p {
+        font-size: 1.4rem;
+    }
+
+    .feature-showcase-benefits li {
+        font-size: 1.4rem;
+    }
+
+    .feature-showcase-badge {
+        font-size: 1.2rem;
+        padding: 0.4rem 1.2rem;
+    }
+}

@@ -1,18 +1,12 @@
-/* @font-face {
-  font-family: "SF Pro Text";
-  src: url("/fonts/SF-Pro-Text-Regular.woff2") format("woff2");
-  font-weight: 400;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 p,
 span,
 .medium-text,
 li {
-    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 500;
-
 }
-
-
 
 h1,
 h2,
@@ -21,13 +15,15 @@ h4,
 h5,
 h6,
 .semi-bold-text {
-    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight: 600;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
 }
 
 body {
-    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
+    background: #ffffff;
+    color: #101828;
 }
 
 html,
@@ -50,9 +46,11 @@ body {
 
 header {
     width: 100%;
-    height: 6rem;
-    background-color: #FFFFFF;
-    border: 0.1rem solid #EAECF0;
+    height: 7rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(2rem);
+    -webkit-backdrop-filter: blur(2rem);
+    border-bottom: 0.1rem solid #EAECF0;
     position: sticky;
     top: 0;
     left: 0;
@@ -62,6 +60,7 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    transition: background 0.3s ease;
 }
 
 .logo {
@@ -95,7 +94,7 @@ header {
     font-weight: 700;
     line-height: 4.8rem;
     color: #101828;
-    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .menu {
@@ -107,15 +106,15 @@ header {
 }
 
 .ul-menu a:hover {
-    color: #375DFA;
+    color: #0066db;
 }
 
 .ul-menu a.active-menu {
-    color: #375DFA;
+    color: #0066db;
 }
 
 .mobile-menu-popup .ul-menu a.active-menu {
-    color: #375DFA;
+    color: #0066db;
 }
 
 .ul-menu {
@@ -131,9 +130,10 @@ header {
 
 .ul-menu li a {
     text-decoration: none;
-    color: black;
+    color: #475467;
     font-size: 1.8rem;
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .btn-header {
@@ -182,13 +182,17 @@ header {
     width: 12.3rem;
     height: 4.8rem;
     border: 0.1rem solid #D0D5DD;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 1rem;
     font-size: 1.6rem;
+    color: #344054;
+    transition: all 0.3s ease;
 }
 
 .btn-header-login:hover {
-    background-color: #edecec;
+    background-color: #f0f7ff;
+    border-color: #027BFF;
+    color: #0066db;
 }
 
 .btn-header-signup {
@@ -198,13 +202,18 @@ header {
     border: none;
     border-radius: 1rem;
     padding: 0;
-    background-color: #375DFA;
+    background: linear-gradient(135deg, #027BFF, #4da3ff);
     color: #FFFFFF;
     font-size: 1.6rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.4rem 1.2rem rgba(2, 123, 255, 0.25);
 }
 
 .btn-header-signup:hover {
-    background-color: #0f37d5;
+    background: linear-gradient(135deg, #0066db, #3d93ff);
+    box-shadow: 0 0.6rem 2rem rgba(2, 123, 255, 0.35);
+    transform: translateY(-0.1rem);
 }
 
 .mobile-menu-popup {
@@ -245,7 +254,8 @@ header {
     top: 5rem;
     padding: 1rem;
     right: 23rem;
-    background: #fff;
+    background: #ffffff;
+    border: 0.1rem solid #EAECF0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -253,6 +263,7 @@ header {
     transition: 0.3s ease;
     box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.08);
     z-index: 800;
+    border-radius: 1rem;
 }
 
 .show {
@@ -271,6 +282,13 @@ header {
     list-style: none;
     width: 100%;
     height: 3rem;
+    color: #475467;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.ul-menu-change-langue li:hover {
+    color: #0066db;
 }
 
 @media (width <=1440px) {
@@ -321,13 +339,12 @@ header {
 
     html {
         font-size: 10px;
-
     }
 
     header {
         height: 6.4rem;
         width: 100vw;
-        padding: 0rem;
+        padding: 0rem 1.6rem;
     }
 
     .content-header {
@@ -350,7 +367,6 @@ header {
         color: #101828;
     }
 
-
     .content-header .logo img {
         width: 3.8rem;
         height: 3.8rem;
@@ -369,14 +385,14 @@ header {
     .menu-mobile {
         display: block;
         border: none;
-        background-color: #FFFFFF;
+        background-color: transparent;
     }
 
     .menu-mobile svg {
         display: block;
         width: 2.4rem;
         height: 2.4rem;
-        background-color: #FFFFFF;
+        background-color: transparent;
         border: none;
     }
 
@@ -415,11 +431,10 @@ header {
         align-items: flex-start;
     }
 
-
     .close-menu {
         display: none;
         border: none;
-        background-color: #FFFFFF;
+        background-color: transparent;
         width: 2.4rem;
         height: 2.4rem;
         padding-top: 0.5rem;
@@ -455,7 +470,6 @@ header {
 
     .mobile-menu-popup.show {
         transform: translateY(0%);
-
     }
 
     .mobile-menu-popup ul {
@@ -481,9 +495,10 @@ header {
         height: 4.8rem;
         border: none;
         border-radius: 1.2rem;
-        background-color: #375DFA;
+        background: linear-gradient(135deg, #027BFF, #4da3ff);
         color: #FFFFFF;
         font-size: 1.6rem;
+        font-weight: 600;
     }
 
     .btn-login {

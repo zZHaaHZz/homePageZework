@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    background: #ffffff;
 }
 
 .sales-feedback-container {
@@ -34,8 +35,9 @@
 
 .left-sales-feedback-title h2 {
     width: 31.2rem;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 3.2rem;
+    color: #101828;
 }
 
 .sales-feedback-title p {
@@ -64,12 +66,20 @@
 .sales-feedback-content-box {
     width: 35.5rem;
     height: 34.4rem;
-    border: 0.1rem solid #D0D5DD;
+    border: 0.1rem solid rgba(2, 123, 255, 0.1);
     border-radius: 2.4rem;
     padding: 2.4rem 2.4rem 3.4rem 2.4rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.sales-feedback-content-box:hover {
+    box-shadow: 0 0.8rem 2.4rem rgba(2, 123, 255, 0.1);
+    border-color: rgba(2, 123, 255, 0.2);
+    transform: translateY(-0.4rem);
 }
 
 .head-sales-feedback-content-box {
@@ -95,10 +105,11 @@
     font-size: 1.8rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
+    color: #101828;
 }
 
 .head-sales-feedback-content-box p {
-    color: #375DFA;
+    color: #0066db;
 }
 
 .head-sales-feedback-content-box::after {
@@ -106,7 +117,7 @@
     content: '';
     width: 30.7rem;
     height: 0.2rem;
-    background-color: #EAECF0;
+    background: linear-gradient(to right, rgba(2, 123, 255, 0.1), rgba(2, 123, 255, 0.02));
     top: 120%;
 }
 
@@ -123,11 +134,12 @@
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 2.8rem;
+    color: #475467;
 }
 
 .start-feedback-sales {
     font-size: 2.5rem;
-    color: #FF7F22;
+    color: #027BFF;
 }
 
 .box-sales-1 {
@@ -171,7 +183,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 0;;
+        padding: 0;
+        ;
     }
 
     .sales-feedback-title {
@@ -212,7 +225,7 @@
     .sales-feedback-content-box {
         width: 34.3rem;
         height: 22rem;
-        border: 0.1rem solid #D0D5DD;
+        border: 0.1rem solid rgba(2, 123, 255, 0.1);
         border-radius: 1.2rem;
         padding: 1.6rem;
         display: flex;
@@ -220,7 +233,7 @@
         justify-content: space-between;
         margin-left: 1rem;
     }
-    
+
     .main-sales-feedback-content {
         width: 30.7rem;
         height: 11.6rem;
@@ -237,7 +250,7 @@
 
     .start-feedback-sales {
         font-size: 2rem;
-        color: #FF7F22;
+        color: #027BFF;
     }
 
 

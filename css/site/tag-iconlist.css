@@ -1,10 +1,9 @@
-
 .tag-acc {
     display: inline-block;
     width: auto;
     padding: 0.2rem 0.2rem;
     border-radius: 2rem;
-    background: linear-gradient(to right, #26B3F7, #99EB53);
+    background: linear-gradient(135deg, #027BFF, #4da3ff, #80c4ff);
     height: auto;
 }
 
@@ -12,9 +11,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;        
-    width: auto;       
-    height: 3.5rem;         
+    gap: 1rem;
+    width: auto;
+    height: 3.5rem;
     background: #fff;
     border-radius: 1.8rem;
     padding-right: 2rem;
@@ -25,15 +24,18 @@
     position: relative;
     width: 1.8rem;
     height: 0.2rem;
-    background: linear-gradient(to right, #26B3F7 20%, #99EB53 80%);
+    background: linear-gradient(to right, #027BFF 20%, #80c4ff 80%);
     opacity: 0.9;
 }
-.tag-inner h6{
+
+.tag-inner h6 {
     width: auto;
     font-size: 1.8rem;
     line-height: 2.8rem;
     font-weight: 500;
+    color: #0066db;
 }
+
 .icon-list::before,
 .icon-list::after,
 .icon-list .extra {
@@ -41,17 +43,16 @@
     position: absolute;
     width: 1.8rem;
     height: 0.2rem;
-    background: linear-gradient(to right, #26B3F7 20%, #99EB53 80%);
+    background: linear-gradient(to right, #027BFF 20%, #80c4ff 80%);
 }
 
-/* góc xoay từng thanh */
 .icon-list::before {
     transform: rotate(-50deg);
 }
 
 .icon-list::after {
     transform: rotate(90deg);
-    background: linear-gradient(to top, #4ebcf3, #99EB53);
+    background: linear-gradient(to top, #027BFF, #80c4ff);
 }
 
 .icon-list .extra {
@@ -59,18 +60,19 @@
 }
 
 @media (width<=430px) {
-    .tag-inner h6{
+    .tag-inner h6 {
         width: auto;
         font-size: 1.2rem;
     }
+
     .tag-inner {
-    gap: 0.6rem;        
-    width: auto;       
-    height: 2.4rem;         
-    border-radius: 1.8rem;
-    padding-right: 1.2em;
-    padding-left: 1rem;
-}
+        gap: 0.6rem;
+        width: auto;
+        height: 2.4rem;
+        border-radius: 1.8rem;
+        padding-right: 1.2em;
+        padding-left: 1rem;
+    }
 
 
 }

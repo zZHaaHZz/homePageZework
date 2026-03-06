@@ -87,12 +87,14 @@
     <link rel="stylesheet" href="./css/homePage/features.css">
     <link rel="stylesheet" href="./css/homePage/feedback.css">
     <link rel="stylesheet" href="./css/homePage/price.css">
-    <link rel="stylesheet" href="./css/homePage/sales-feedback.css">
     <link rel="stylesheet" href="./css/site/tag-iconlist.css">
     <link rel="stylesheet" href="./css/site/header.css">
     <link rel="stylesheet" href="./css/site/logo-zework.css">
     <link rel="stylesheet" href="./css/site/footer.css">
     <link rel="stylesheet" href="./css/security-animation.css">
+    <link rel="stylesheet" href="./css/homePage/feature-showcase.css">
+    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css">
+    <link rel="stylesheet" href="./css/scroll-reveal.css">
 
 </head>
 
@@ -321,9 +323,24 @@
             <div class="square-5">
 
                 <div class="div-img-dashBoard">
-                    <canvas id="dashboardCanvas" class="img-rounded"></canvas>
+                    <div class="dashboard-slider" id="dashboardSlider">
+                        <!-- Slide 1: Static CRM image -->
+                        <div class="dashboard-slide" id="slideImage">
+                            <img src="./img/dashboard-crm-preview.jpg" alt="Zework CRM Dashboard Preview"
+                                class="slide-preview-img">
+                        </div>
+                        <!-- Slide 2: Animated canvas dashboard -->
+                        <div class="dashboard-slide" id="slideCanvas">
+                            <canvas id="dashboardCanvas" class="img-rounded"></canvas>
+                        </div>
+                        <!-- Slider dots -->
+                        <div class="slider-dots">
+                            <div class="slider-dot active" data-slide="0"></div>
+                            <div class="slider-dot" data-slide="1"></div>
+                        </div>
+                    </div>
                     <script src="./js/dashboard-simulation.js"></script>
-
+                    <script src="./js/dashboard-slider.js"></script>
                     <style>
                         .img-rounded {
                             width: 100%;
@@ -331,7 +348,6 @@
                             min-height: 550px;
                             border-radius: 12px;
                             display: block;
-                            /* background: transparent; */
                         }
                     </style>
                 </div>
@@ -418,23 +434,14 @@
                     </div>
                     <div class="content-right-why-select-zework-1">
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Dễ dàng quản lý thông tin khách hàng tập trung</p>
                         </div>
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Tích hợp Zalo Call ngay trên phần mềm</p>
                         </div>
-                        <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
-                            <p>Gọi điện trao đổi với khách hàng ngay cả khi chưa kết bạn</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -458,27 +465,19 @@
                     </div>
                     <div class="content-right-why-select-zework-1">
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Giảm rủi ro thất thoát dữ liệu khách hàng </p>
                         </div>
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Quản lý tập trung hàng nghìn doanh nghiệp</p>
                         </div>
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Dễ dàng khôi phục lại tin nhắn cũ, dữ liệu cũ</p>
                         </div>
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Chuyển đổi dữ liệu thông tin khách hàng giữa các tài khoản Zalo</p>
                         </div>
                     </div>
@@ -528,27 +527,19 @@
                     </div>
                     <div class="content-right-why-select-zework-1">
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Cho phép tích hợp nhiều Zalo cá nhân vào cùng hệ thống</p>
                         </div>
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Theo dõi hội thoại, tin nhắn, khách hàng, nhân viên trong cùng 1 giao diện</p>
                         </div>
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Toàn bộ tin nhắn, lịch sử, thông tin khách hàng được lưu trữ tập trung và bảo mật</p>
                         </div>
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Phân luồng tin nhắn đến đúng nhân viên, phòng ban tự động</p>
                         </div>
                     </div>
@@ -574,30 +565,19 @@
                     </div>
                     <div class="content-right-why-select-zework-1">
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Dễ dàng quản lý thông tin khách hàng tập trung</p>
                         </div>
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Quản lý mọi cuộc hội thoại, phân luồng, đánh dấu lưu
                                 trữ mọi tin nhắn, file data dữ liệu</p>
                         </div>
                         <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#027BFF" style="flex-shrink: 0; margin-top: 0.3rem;"><path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/></svg>
                             <p>Tích hợp Zalo Call ngay trên phần mềm</p>
                         </div>
-                        <div class="">
-                            <div class="list-pink-icon">
-                                <div class="extra-pink"></div>
-                            </div>
-                            <p>Gọi điện trao đổi với khách hàng ngay cả khi chưa kết bạn</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -622,372 +602,146 @@
                     mà không cần đổi thiết bị.</p>
             </div>
             <div class="features-1">
+                <!-- Menu is built dynamically by features.js -->
                 <div class="menu-features-1">
-                    <button onclick="showFeature('inbox')">
-                        <div class="box-icon">
-                            <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd" fill-rule="evenodd" fill="currentColor"
-                                    d="m11.9995 3.5c-4.69441 0-8.49999 3.80558-8.49999 8.5v7.75c0 .4142.33579.75.75.75h7.74999c4.6944 0 8.5-3.8056 8.5-8.5 0-4.69442-3.8056-8.5-8.5-8.5zm-9.99999 8.5c0-5.52285 4.47715-10 9.99999-10 5.5229 0 10 4.47715 10 10 0 5.5228-4.4771 10-10 10h-7.74999c-1.24264 0-2.25-1.0074-2.25-2.25zm5.25049-2.26636c0-.41421.33579-.75.75-.75h7.9995c.4142 0 .75.33579.75.75 0 .41426-.3358.74996-.75.74996h-7.9995c-.41421 0-.75-.3357-.75-.74996zm0 4.53276c0-.4143.33579-.75.75-.75h4.508c.4142 0 .75.3357.75.75 0 .4142-.3358.75-.75.75h-4.508c-.41421 0-.75-.3358-.75-.75z">
-                                </path>
-                            </svg>
-                        </div>
-                        <p>Nhắn tin</p>
-
-                    </button>
-                    <button onclick="showFeature('role')">
-                        <div class="box-icon">
-                            <svg fill="currentColor" version="1.1" id="fi_32399" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="519.078px"
-                                height="519.078px" viewBox="0 0 519.078 519.078"
-                                style="enable-background:new 0 0 519.078 519.078;" xml:space="preserve">
-                                <g>
-                                    <path
-                                        d="M429.021,301.952v-84.829c50.826-7.379,90.057-51.122,90.057-103.979c0-58.009-47.191-105.194-105.188-105.194
-		c-49.662,0-91.298,34.634-102.273,80.983H207.465C196.492,42.584,154.862,7.95,105.2,7.95C47.191,7.95,0,55.136,0,113.145
-		c0,52.851,39.221,96.605,90.068,103.979v84.829C39.227,309.328,0,353.08,0,405.934c0,58.009,47.191,105.194,105.2,105.194
-		c53.625,0,97.944-40.377,104.316-92.32h100.031c6.384,51.943,50.69,92.32,104.331,92.32c57.996,0,105.188-47.186,105.188-105.194
-		C519.078,353.08,479.847,309.334,429.021,301.952z M413.889,47.269c36.328,0,65.888,29.548,65.888,65.882
-		c0,34.93-27.338,63.505-61.721,65.671c-1.336-0.381-2.707-0.647-4.167-0.647s-2.831,0.272-4.167,0.647
-		c-34.389-2.16-61.714-30.741-61.714-65.671C348.008,76.816,377.562,47.269,413.889,47.269z M39.324,113.145
-		c0-36.334,29.554-65.885,65.881-65.885s65.884,29.551,65.884,65.885c0,34.929-27.334,63.505-61.72,65.671
-		c-1.33-0.381-2.704-0.647-4.164-0.647s-2.831,0.272-4.164,0.647C66.656,176.655,39.324,148.074,39.324,113.145z M105.206,471.81
-		c-36.328,0-65.881-29.548-65.881-65.882c0-36.333,29.554-65.887,65.881-65.887s65.884,29.554,65.884,65.887
-		C171.09,442.262,141.533,471.81,105.206,471.81z M310.25,388.538H208.833c-7.506-44.82-43.373-80.049-88.496-86.586v-84.829
-		c48.87-7.09,86.879-47.817,89.749-97.926h98.91c2.879,50.103,40.879,90.836,89.762,97.926v84.829
-		C353.624,308.501,317.756,343.718,310.25,388.538z M413.889,471.81c-36.327,0-65.881-29.548-65.881-65.882
-		c0-36.333,29.554-65.887,65.881-65.887c36.328,0,65.888,29.554,65.888,65.887C479.777,442.262,450.217,471.81,413.889,471.81z">
-                                    </path>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                            </svg>
-                        </div>
-                        <p>Phân quyền</p>
-                    </button>
-                    <button onclick="showFeature('customer')">
-                        <div class="box-icon">
-                            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="fi_1144760">
-                                <path fill="currentColor"
-                                    d="m437.019531 74.980469c-48.351562-48.351563-112.640625-74.980469-181.019531-74.980469s-132.667969 26.628906-181.019531 74.980469c-48.351563 48.351562-74.980469 112.640625-74.980469 181.019531s26.628906 132.667969 74.980469 181.019531c48.351562 48.351563 112.640625 74.980469 181.019531 74.980469s132.667969-26.628906 181.019531-74.980469c48.351563-48.351562 74.980469-112.640625 74.980469-181.019531s-26.628906-132.667969-74.980469-181.019531zm-325.914062 354.316406c8.453125-72.734375 70.988281-128.890625 144.894531-128.890625 38.960938 0 75.597656 15.179688 103.15625 42.734375 23.28125 23.285156 37.964844 53.6875 41.742188 86.152344-39.257813 32.878906-89.804688 52.707031-144.898438 52.707031s-105.636719-19.824219-144.894531-52.703125zm144.894531-159.789063c-42.871094 0-77.753906-34.882812-77.753906-77.753906 0-42.875 34.882812-77.753906 77.753906-77.753906s77.753906 34.878906 77.753906 77.753906c0 42.871094-34.882812 77.753906-77.753906 77.753906zm170.71875 134.425782c-7.644531-30.820313-23.585938-59.238282-46.351562-82.003906-18.4375-18.4375-40.25-32.269532-64.039063-40.9375 28.597656-19.394532 47.425781-52.160157 47.425781-89.238282 0-59.414062-48.339844-107.753906-107.753906-107.753906s-107.753906 48.339844-107.753906 107.753906c0 37.097656 18.84375 69.875 47.464844 89.265625-21.886719 7.976563-42.140626 20.308594-59.566407 36.542969-25.234375 23.5-42.757812 53.464844-50.882812 86.347656-34.410157-39.667968-55.261719-91.398437-55.261719-147.910156 0-124.617188 101.382812-226 226-226s226 101.382812 226 226c0 56.523438-20.859375 108.265625-55.28125 147.933594zm0 0">
-                                </path>
-                            </svg>
-                        </div>
-                        <p>Khách hàng</p>
-                    </button>
-                    <button onclick="showFeature('synchronize')">
-                        <div class="box-icon">
-                            <svg fill="currentColor" version="1.1" id="fi_829131" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 472.621 472.621"
-                                style="enable-background:new 0 0 472.621 472.621;" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <path d="M466.721,110.437c-4.98-2.184-10.786,0.088-12.968,5.07l-23.316,53.249C402.132,87.361,324.556,30.801,236.31,30.801
-			c-97.915,0-182.707,69.628-201.614,165.56c-1.051,5.336,2.421,10.513,7.757,11.564c0.643,0.127,1.283,0.188,1.914,0.188
-			c4.608-0.001,8.725-3.252,9.65-7.944C71.11,113.441,147.776,50.493,236.31,50.493c82.834,0,155.275,55.094,178.261,133.22
-			l-59.398-18.406c-5.198-1.613-10.711,1.296-12.319,6.49c-1.61,5.194,1.296,10.71,6.49,12.319l75.932,23.529
-			c0.01,0.003,0.02,0.006,0.03,0.009l0.044,0.013c0.031,0.01,0.062,0.013,0.093,0.022c0.348,0.105,0.698,0.187,1.049,0.252
-			c0.103,0.019,0.205,0.032,0.308,0.048c0.295,0.045,0.59,0.076,0.885,0.093c0.107,0.006,0.213,0.013,0.319,0.016
-			c0.085,0.002,0.171,0.013,0.255,0.013c0.133,0,0.264-0.023,0.397-0.029c0.254-0.01,0.506-0.025,0.757-0.055
-			c0.193-0.023,0.382-0.054,0.573-0.088c0.255-0.045,0.506-0.1,0.756-0.165c0.181-0.047,0.36-0.097,0.537-0.155
-			c0.252-0.081,0.498-0.176,0.743-0.277c0.17-0.07,0.339-0.138,0.505-0.218c0.238-0.114,0.467-0.245,0.696-0.379
-			c0.162-0.094,0.326-0.184,0.483-0.287c0.214-0.142,0.416-0.304,0.62-0.463c0.155-0.121,0.315-0.234,0.463-0.365
-			c0.019-0.017,0.04-0.029,0.058-0.046c0.201-0.18,0.377-0.38,0.56-0.574c0.111-0.117,0.232-0.223,0.338-0.346
-			c0.293-0.342,0.557-0.704,0.797-1.078c0.074-0.115,0.133-0.241,0.203-0.359c0.167-0.285,0.326-0.573,0.463-0.873
-			c0.023-0.049,0.053-0.092,0.075-0.142l34.508-78.809C473.973,118.424,471.703,112.618,466.721,110.437z"></path>
-                                    </g>
-                                </g>
-                                <g>
-                                    <g>
-                                        <path d="M430.168,264.695c-5.332-1.055-10.512,2.421-11.564,7.757C401.51,359.18,324.845,422.127,236.31,422.127
-			c-82.834,0-155.275-55.094-178.261-133.22l59.398,18.406c5.195,1.611,10.71-1.297,12.319-6.49c1.61-5.194-1.296-10.71-6.49-12.319
-			l-75.906-23.521c-0.007-0.002-0.014-0.004-0.02-0.006l-0.08-0.025c-0.04-0.012-0.081-0.017-0.121-0.029
-			c-0.335-0.1-0.672-0.18-1.01-0.242c-0.096-0.018-0.193-0.032-0.289-0.047c-0.313-0.048-0.625-0.081-0.938-0.099
-			c-0.081-0.005-0.162-0.013-0.243-0.015c-0.395-0.013-0.789-0.006-1.18,0.029c-0.003,0-0.005,0.001-0.007,0.001
-			c-0.374,0.034-0.744,0.094-1.11,0.17c-0.106,0.022-0.21,0.048-0.315,0.074c-0.276,0.067-0.548,0.145-0.816,0.235
-			c-0.104,0.035-0.207,0.066-0.31,0.104c-0.354,0.132-0.702,0.278-1.04,0.45c-0.026,0.013-0.051,0.03-0.077,0.044
-			c-0.316,0.164-0.621,0.349-0.919,0.547c-0.084,0.056-0.166,0.116-0.248,0.174c-0.258,0.183-0.507,0.38-0.747,0.589
-			c-0.041,0.036-0.087,0.064-0.127,0.1c-0.019,0.017-0.035,0.038-0.054,0.055c-0.295,0.269-0.577,0.554-0.84,0.861
-			c-0.013,0.015-0.023,0.031-0.036,0.046c-0.233,0.275-0.449,0.568-0.653,0.872c-0.064,0.096-0.123,0.193-0.184,0.291
-			c-0.143,0.23-0.276,0.467-0.401,0.711c-0.059,0.116-0.119,0.23-0.174,0.348c-0.03,0.064-0.066,0.124-0.094,0.188L0.83,349.216
-			c-2.182,4.981,0.088,10.787,5.07,12.968c1.286,0.563,2.625,0.83,3.944,0.83c3.791,0,7.406-2.204,9.024-5.9l23.316-53.249
-			c28.304,81.395,105.88,137.955,194.126,137.955c97.915,0,182.707-69.628,201.614-165.56
-			C438.976,270.925,435.504,265.747,430.168,264.695z"></path>
-                                    </g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                            </svg>
-                        </div>
-                        <p>Đồng bộ</p>
-                    </button>
-                    <button onclick="showFeature('storage')">
-                        <div class="box-icon">
-                            <svg id="fi_18786781" enable-background="new 0 0 800 800" viewBox="0 0 800 800"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="41.6" x2="758.2"
-                                    y1="400" y2="400">
-                                    <stop offset=".00000011188" stop-color="#b64dff"></stop>
-                                    <stop offset="1" stop-color="#11bbe9"></stop>
-                                </linearGradient>
-                                <path
-                                    d="m417.7 498.9c-.4-.4-.9-.8-1.3-1.2-4.7-4.1-10.6-6.1-16.4-6.1-6.4 0-12.8 2.4-17.7 7.3l-66.7 66.7c-9.8 9.8-9.8 25.6 0 35.4s25.6 9.8 35.4 0l24-24v139.7c0 13.8 11.2 25 25 25s25-11.2 25-25.1v-139.6l24 24c9.8 9.8 25.6 9.8 35.4 0s9.8-25.6 0-35.4zm209.9-266.6c-8.6-45.9-32.4-87.9-67.8-119.4-39.6-35.2-90.7-54.6-144-54.6-57.5 0-111.6 22.2-152.3 62.4-40.7 40.3-63.2 93.9-63.2 150.9 0 12.7 1.2 25.4 3.4 37.8-89.9 3-162.1 76.4-162.1 166.1 0 91.7 75.3 166.2 167.9 166.2 13.8 0 24.9-11.1 24.9-24.9s-11.2-25-25-25c-65 0-117.9-52.1-117.9-116.2s52.9-116.2 117.9-116.2c7.6 0 15.2.7 22.6 2.1.3 0 .5.1.8.1 15.1 3 29.3 8.9 42.2 17.4 11.5 7.6 27 4.4 34.6-7.1s4.4-27-7.1-34.6c-14.3-9.5-29.8-16.6-46.1-21.3-4.1-14.4-6.2-29.3-6.2-44.4 0-90 74.3-163.2 165.5-163.2 71.6 0 133.3 44.8 156.1 108.8-9.6-1.3-19.3-1.9-29.1-1.9-24.6 0-48.7 4.1-71.7 12.1-13.1 4.5-20 18.8-15.4 31.8 4.5 13.1 18.8 19.9 31.8 15.4 17.6-6.2 36.2-9.3 55.2-9.3 18.5 0 36.6 3 53.8 8.8.3.1.6.2.9.3 66.3 22.9 110.8 84.7 110.8 154.1 0 76.3-54.7 143.4-130.2 159.5-13.5 2.9-22.1 16.2-19.2 29.7s16.2 22.1 29.7 19.2c47.3-10.2 90.4-36.3 121.2-73.6 31.4-37.9 48.6-85.8 48.6-134.9 0-85.8-51.9-162.8-130.6-196.1z"
-                                    fill="currentColor"></path>
-                            </svg>
-                        </div>
-                        <p>Lưu trữ Cloud</p>
-                    </button>
-                    <button onclick="showFeature('dashboard')">
-                        <div class="box-icon">
-                            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" id="fi_3992715"
-                                data-name="Layer 2" viewBox="0 0 16 16" width="512" height="512">
-                                <path
-                                    d="M3,15.5H13A2.503,2.503,0,0,0,15.5,13V3A2.503,2.503,0,0,0,13,.5H3A2.503,2.503,0,0,0,.5,3V13A2.503,2.503,0,0,0,3,15.5ZM1.5,3A1.5017,1.5017,0,0,1,3,1.5H13A1.5017,1.5017,0,0,1,14.5,3V13A1.5017,1.5017,0,0,1,13,14.5H3A1.5017,1.5017,0,0,1,1.5,13Z">
-                                </path>
-                                <path
-                                    d="M4,12.5A1.5017,1.5017,0,0,0,5.5,11V8a1.5,1.5,0,0,0-3,0v3A1.5017,1.5017,0,0,0,4,12.5ZM3.5,8a.5.5,0,0,1,1,0v3a.5.5,0,0,1-1,0Z">
-                                </path>
-                                <path
-                                    d="M8,12.5A1.5017,1.5017,0,0,0,9.5,11V5a1.5,1.5,0,0,0-3,0v6A1.5017,1.5017,0,0,0,8,12.5ZM7.5,5a.5.5,0,0,1,1,0v6a.5.5,0,0,1-1,0Z">
-                                </path>
-                                <path
-                                    d="M12,12.5A1.5017,1.5017,0,0,0,13.5,11V9a1.5,1.5,0,0,0-3,0v2A1.5017,1.5017,0,0,0,12,12.5ZM11.5,9a.5.5,0,0,1,1,0v2a.5.5,0,0,1-1,0Z">
-                                </path>
-                            </svg>
-                        </div>
-                        <p>Dashboard</p>
-                    </button>
                 </div>
                 <div class="feature-detail"></div>
             </div>
         </div>
 
-        <div class="sales-feedback">
-            <link rel="stylesheet" href="./css/sales-feedback.css">
-            <div class="sales-feedback-container">
-                <div class="sales-feedback-title">
-                    <div class="left-sales-feedback-title">
-                        <div class="tag-acc">
-                            <div class="tag-inner">
-                                <div class="icon-list">
-                                    <div class="extra"></div>
-                                </div>
+        <!-- ========== FEATURE SHOWCASE ========== -->
+        <section class="feature-showcase" id="tinhnang-chitiet">
+            <div class="feature-showcase-header">
+                <h2>Tất cả tính năng bạn cần, trong một nền tảng</h2>
+                <p>Zework tích hợp đầy đủ công cụ giúp doanh nghiệp quản lý Zalo chuyên nghiệp — từ nhắn tin, tự động
+                    hoá, khảo sát đến AI và phân quyền.</p>
+            </div>
 
-                            </div>
-                        </div>
-                        <h2>Đội ngũ kinh doanh nói về ZeWork</h2>
-                    </div>
-                    <p>Zework giúp chúng tôi nhìn rõ toàn bộ hành trình khách hàng trên Zalo - từ tin nhắn đầu tiên đến
-                        khi chốt đơn. Mọi thứ rõ ràng, mạch lạc, và cực kỳ hiệu quả.</p>
+            <!-- 1. Chiến dịch Marketing -->
+            <div class="feature-showcase-item">
+                <div class="feature-showcase-img">
+                    <img src="img/ad-img/campaign-wizard.png" alt="Tạo chiến dịch Marketing Zalo" loading="lazy">
                 </div>
-
-                <div class="marquee-wrapper">
-                    <div class="marquee-track">
-                        <!-- Item 1 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Nguyễn Văn Bình</h4>
-                                    <p>Trưởng phòng Sales, TechnoVn</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Từ khi dùng ZeWork, đội sales không còn cảnh 'trôi tin nhắn' nữa. Tỷ
-                                lệ chốt đơn tăng 30% chỉ trong tháng đầu tiên áp dụng. Thực sự đáng tiền!"</p>
-                        </div>
-                        <!-- Item 2 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Trần Thị Thu Hà</h4>
-                                    <p>CEO, HomeDecor Hanoi</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Quản lý nhân viên telesale dễ dàng hơn bao giờ hết. Tôi có thể xem
-                                báo cáo realtime ngay trên dashboard mà không cần chờ cuối ngày."</p>
-                        </div>
-                        <!-- Item 3 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Lê Minh Tuấn</h4>
-                                    <p>Sales Manager, RealEstate Pro</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Tính năng phân bổ hội thoại tự động rất thông minh. Khách hàng cũ
-                                quay lại được nối máy ngay với nhân viên cũ, trải nghiệm khách hàng tuyệt vời."</p>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Phạm Thanh Hương</h4>
-                                    <p>Owner, Beauty Spa 5*</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"ZeWork giúp tôi bảo mật dữ liệu khách hàng tuyệt đối. Nhân viên nghỉ
-                                việc không lo mất data khách quen vì đã được mã hoá và phân quyền chặt chẽ."</p>
-                        </div>
-                        <!-- Item 5 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Hoàng Đức Dũng</h4>
-                                    <p>Giám đốc Kinh doanh, EduGroup</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Giao diện trực quan, nhân viên mới vào chỉ cần 15 phút là quen việc.
-                                Tính năng gắn tag trạng thái giúp team follow khách hàng cực sát."</p>
-                        </div>
-                        <!-- Item 6 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Đặng Thùy Linh</h4>
-                                    <p>Team Leader, Fashion Click</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Thích nhất là tính năng đồng bộ tin nhắn Zalo 2 chiều. Chat trên
-                                Zework mượt mà như app gốc, mà lại có thêm đủ loại công cụ CRM đi kèm."</p>
-                        </div>
-
-                        <!-- DUPLICATE SET FOR INFINITE LOOP -->
-                        <!-- Item 1 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Nguyễn Văn Bình</h4>
-                                    <p>Trưởng phòng Sales, TechnoVn</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Từ khi dùng ZeWork, đội sales không còn cảnh 'trôi tin nhắn' nữa. Tỷ
-                                lệ chốt đơn tăng 30% chỉ trong tháng đầu tiên áp dụng. Thực sự đáng tiền!"</p>
-                        </div>
-                        <!-- Item 2 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Trần Thị Thu Hà</h4>
-                                    <p>CEO, HomeDecor Hanoi</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Quản lý nhân viên telesale dễ dàng hơn bao giờ hết. Tôi có thể xem
-                                báo cáo realtime ngay trên dashboard mà không cần chờ cuối ngày."</p>
-                        </div>
-                        <!-- Item 3 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Lê Minh Tuấn</h4>
-                                    <p>Sales Manager, RealEstate Pro</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Tính năng phân bổ hội thoại tự động rất thông minh. Khách hàng cũ
-                                quay lại được nối máy ngay với nhân viên cũ, trải nghiệm khách hàng tuyệt vời."</p>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Phạm Thanh Hương</h4>
-                                    <p>Owner, Beauty Spa 5*</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"ZeWork giúp tôi bảo mật dữ liệu khách hàng tuyệt đối. Nhân viên nghỉ
-                                việc không lo mất data khách quen vì đã được mã hoá và phân quyền chặt chẽ."</p>
-                        </div>
-                        <!-- Item 5 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Hoàng Đức Dũng</h4>
-                                    <p>Giám đốc Kinh doanh, EduGroup</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Giao diện trực quan, nhân viên mới vào chỉ cần 15 phút là quen việc.
-                                Tính năng gắn tag trạng thái giúp team follow khách hàng cực sát."</p>
-                        </div>
-                        <!-- Item 6 -->
-                        <div class="feedback-card">
-                            <div class="card-header">
-                                <img src="img/icon-employee.svg" class="card-avatar" alt="User">
-                                <div class="card-info">
-                                    <h4>Đặng Thùy Linh</h4>
-                                    <p>Team Leader, Fashion Click</p>
-                                </div>
-                            </div>
-                            <p class="card-quote">"Thích nhất là tính năng đồng bộ tin nhắn Zalo 2 chiều. Chat trên
-                                Zework mượt mà như app gốc, mà lại có thêm đủ loại công cụ CRM đi kèm."</p>
-                        </div>
-                    </div>
+                <div class="feature-showcase-text">
+                    <span class="feature-showcase-badge"><i class="fas fa-bullhorn"></i> Chiến dịch</span>
+                    <h3>Tạo chiến dịch marketing chỉ trong 3 bước</h3>
+                    <p>Chọn loại chiến dịch phù hợp mục tiêu kinh doanh — từ khảo sát khách hàng, nhắn tin hàng loạt đến
+                        tặng quà tự động.</p>
+                    <ul class="feature-showcase-benefits">
+                        <li><i class="fas fa-check-circle"></i> Khảo sát tự động — thu thập phản hồi, đánh giá chất
+                            lượng dịch vụ</li>
+                        <li><i class="fas fa-check-circle"></i> Nhắn tin hàng loạt — gửi đến nhóm KH mục tiêu với nội
+                            dung tuỳ chỉnh</li>
+                        <li><i class="fas fa-check-circle"></i> Tặng quà voucher — nhân dịp sinh nhật, lễ tết, khuyến
+                            mãi</li>
+                        <li><i class="fas fa-check-circle"></i> Chiến dịch hỗn hợp — kết hợp nhiều loại trong cùng 1
+                            chiến dịch</li>
+                    </ul>
                 </div>
             </div>
-        </div>
+
+            <!-- 2. Tự động hoá -->
+            <div class="feature-showcase-item">
+                <div class="feature-showcase-img">
+                    <img src="img/ad-img/automation-rules.png" alt="Tự động hoá quy tắc Zalo" loading="lazy">
+                </div>
+                <div class="feature-showcase-text">
+                    <span class="feature-showcase-badge"><i class="fas fa-robot"></i> Tự động hoá</span>
+                    <h3>Thiết lập quy tắc tự động — tiết kiệm 90% thời gian</h3>
+                    <p>Cấu hình hành động tự động cho từng loại sự kiện: trả lời từ khoá, chào mừng kết bạn mới, chúc
+                        sinh nhật, và nhiều hơn nữa.</p>
+                    <ul class="feature-showcase-benefits">
+                        <li><i class="fas fa-check-circle"></i> Trả lời tự động theo từ khoá — phản hồi khách hàng tức
+                            thì</li>
+                        <li><i class="fas fa-check-circle"></i> Tự động chấp nhận kết bạn + gửi tin chào mừng</li>
+                        <li><i class="fas fa-check-circle"></i> Nhắn tin tự động nhân sinh nhật khách hàng</li>
+                        <li><i class="fas fa-check-circle"></i> Đóng hội thoại tự động khi không hoạt động</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3. Nhắn tin hẹn giờ -->
+            <div class="feature-showcase-item">
+                <div class="feature-showcase-img feature-showcase-img-dual">
+                    <img src="img/ad-img/scheduled-messaging.png" alt="Tạo tin nhắn hẹn giờ" loading="lazy">
+                    <img src="img/ad-img/schedule-picker-2.png" alt="Chọn thời gian gửi tin nhắn" loading="lazy">
+                </div>
+                <div class="feature-showcase-text">
+                    <span class="feature-showcase-badge"><i class="fas fa-clock"></i> Hẹn giờ</span>
+                    <h3>Lên lịch gửi tin nhắn — đúng thời điểm, đúng người</h3>
+                    <p>Hẹn giờ gửi tin nhắn tự động với nhiều tùy chọn linh hoạt: sau 30 phút, 1 giờ, ngày mai 9h, hoặc
+                        tuỳ chọn thời gian.</p>
+                    <ul class="feature-showcase-benefits">
+                        <li><i class="fas fa-check-circle"></i> Hẹn giờ gửi tin cho từng khách hàng hoặc nhóm</li>
+                        <li><i class="fas fa-check-circle"></i> Hỗ trợ gửi Text, Ảnh/File, hoặc Template tin nhắn</li>
+                        <li><i class="fas fa-check-circle"></i> Nhập số điện thoại hoặc chọn từ danh bạ có sẵn</li>
+                        <li><i class="fas fa-check-circle"></i> Lịch sử đã gửi &amp; hẹn giờ nhận — theo dõi dễ dàng
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. AI -->
+            <div class="feature-showcase-item">
+                <div class="feature-showcase-img">
+                    <img src="img/ad-img/ai-features-overview.png" alt="Tính năng AI Zework" loading="lazy">
+                </div>
+                <div class="feature-showcase-text">
+                    <span class="feature-showcase-badge"><i class="fas fa-brain"></i> Trí tuệ nhân tạo</span>
+                    <h3>AI thông minh — nâng cao trải nghiệm khách hàng</h3>
+                    <p>Tích hợp AI chatbot tự động trả lời, gắn tag phân loại, phân tích cảm xúc, dự đoán mua hàng và
+                        tóm tắt hội thoại.</p>
+                    <ul class="feature-showcase-benefits">
+                        <li><i class="fas fa-check-circle"></i> Tự động trả lời — AI reply tin nhắn khách hàng 24/7</li>
+                        <li><i class="fas fa-check-circle"></i> Tự động gắn tag — phân loại khách hàng thông minh</li>
+                        <li><i class="fas fa-check-circle"></i> Phân tích cảm xúc — phát hiện khách cần hỗ trợ gấp</li>
+                        <li><i class="fas fa-check-circle"></i> Dự đoán mua hàng — nhận diện Hot Lead tự động</li>
+                        <li><i class="fas fa-check-circle"></i> Chuyển nhân viên thông minh — routing VIP tự động</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 5. Khảo sát -->
+            <div class="feature-showcase-item">
+                <div class="feature-showcase-img feature-showcase-img-dual">
+                    <img src="img/ad-img/survey-templates.png" alt="Mẫu khảo sát có sẵn" loading="lazy">
+                    <img src="img/ad-img/survey-editor.png" alt="Editor khảo sát kéo thả" loading="lazy">
+                </div>
+                <div class="feature-showcase-text">
+                    <span class="feature-showcase-badge"><i class="fas fa-clipboard-list"></i> Khảo sát</span>
+                    <h3>Tạo khảo sát chuyên nghiệp — editor kéo thả trực quan</h3>
+                    <p>Thiết kế form khảo sát đẹp mắt với hàng loạt template có sẵn: NPS, CSAT, đánh giá dịch vụ, review
+                        sản phẩm.</p>
+                    <ul class="feature-showcase-benefits">
+                        <li><i class="fas fa-check-circle"></i> 5+ mẫu khảo sát chuyên nghiệp: NPS, CSAT, Review...</li>
+                        <li><i class="fas fa-check-circle"></i> Editor kéo thả — tuỳ chỉnh câu hỏi không cần code</li>
+                        <li><i class="fas fa-check-circle"></i> Hỗ trợ đa dạng: đánh giá sao, emoji, radio, dropdown...
+                        </li>
+                        <li><i class="fas fa-check-circle"></i> Xem kết quả real-time trên cơ sở dữ liệu tập trung</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 6. Phân quyền -->
+            <div class="feature-showcase-item">
+                <div class="feature-showcase-img feature-showcase-img-dual">
+                    <img src="img/ad-img/access-sharing.png" alt="Chia sẻ quyền truy cập" loading="lazy">
+                    <img src="img/ad-img/role-access-control.png" alt="Phân quyền vai trò" loading="lazy">
+                </div>
+                <div class="feature-showcase-text">
+                    <span class="feature-showcase-badge"><i class="fas fa-users-cog"></i> Phân quyền</span>
+                    <h3>Phân quyền linh hoạt — bảo mật dữ liệu doanh nghiệp</h3>
+                    <p>Mời cộng tác viên, phân quyền theo vai trò (Quản lý, Xử lý, Hỗ trợ, Chỉ xem, CTV) — quản lý nhân
+                        viên chuyên nghiệp.</p>
+                    <ul class="feature-showcase-benefits">
+                        <li><i class="fas fa-check-circle"></i> 6 cấp quyền truy cập — từ Quản lý đến CTV hỗ trợ</li>
+                        <li><i class="fas fa-check-circle"></i> Mời cộng tác viên bên ngoài qua email</li>
+                        <li><i class="fas fa-check-circle"></i> Chuyển người xử lý, thêm người hỗ trợ linh hoạt</li>
+                        <li><i class="fas fa-check-circle"></i> Quản lý quyền theo từng cuộc trò chuyện</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
         <div class="price-container">
             <div class="price-title">
                 <div class="tag-acc">
@@ -1259,3 +1013,4 @@
 <script src="js/price.js"></script>
 <script src="js/feedback.js"></script>
 <script src="js/features.js"></script>
+<script src="js/scroll-reveal.js"></script>
