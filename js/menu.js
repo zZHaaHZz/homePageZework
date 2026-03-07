@@ -199,16 +199,18 @@ btnClose.addEventListener('click', () => {
 const dropDow = document.querySelector('.drop-dow');
 const dropUp = document.querySelector('.drop-up');
 
-// click drop-dow
+// click drop-dow → show dropdown
 dropDow.addEventListener('click', () => {
   dropDow.style.display = 'none';
   dropUp.style.display = 'block';
+  popupMenuChangeLangue.classList.add('show');
 });
 
-// click drop-up
+// click drop-up → hide dropdown
 dropUp.addEventListener('click', () => {
   dropUp.style.display = 'none';
   dropDow.style.display = 'block';
+  popupMenuChangeLangue.classList.remove('show');
 });
 
 const btnDownWin = document.querySelector('.downWin');

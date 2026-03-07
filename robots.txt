@@ -4,5 +4,10 @@ Allow: /
 Disallow: /cgi-bin/
 Disallow: /admin/
 Disallow: /login/
+Disallow: /.git/
+Disallow: /.idea/
+
+# Crawl-delay
+Crawl-delay: 1
 
 Sitemap: https://zework.com/sitemap.xml
