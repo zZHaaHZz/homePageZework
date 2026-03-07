@@ -18,19 +18,11 @@
     <link rel="icon" type="image/png" href="./img/logoZework.svg">
     <link rel="stylesheet" href="./css/site/header.css">
     <link rel="stylesheet" href="./css/site/footer.css">
-    <link rel="stylesheet" href="./css/aricle/banner-aricle.css">
     <link rel="stylesheet" href="./css/site/tag-iconlist.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="./css/aricle/content-article-1.css">
-    <link rel="stylesheet" href="./css/aricle/content-article-2.css">
-    <link rel="stylesheet" href="./css/aricle/site-arice.css">
-    <style>
-
-
-    </style>
+    <link rel="stylesheet" href="./css/aricle/blog.css">
 </head>
 
 <body>
@@ -242,129 +234,152 @@
             <button class="btn-login">Đăng nhập</button>
         </div>
     </div>
-    <div class="banner-aricle">
-        <div class="contnet-banner-aricle">
-            <img src="img/bai-viet/Logo.svg" alt="" class="img-logo-aricle">
+    <!-- ========== BLOG HERO ========== -->
+    <section class="blog-hero">
+        <div class="blog-hero-content">
+            <span class="blog-hero-badge"><i class="fas fa-newspaper"></i> Blog & Tin tức</span>
+            <h1>Góc nhìn chuyên gia & Tin tức Zework</h1>
+            <p>Cập nhật xu hướng CRM, chiến lược chăm sóc khách hàng qua Zalo, mẹo quản lý bán hàng và tin tức mới nhất từ Zework.</p>
+        </div>
+    </section>
 
-            <div class="left-banner-aricle">
-                <div class="tag-article">
-                    <div class="icon-list">
-                        <div class="extra"></div>
-                    </div>
-                    <h6>TÍNH NĂNG</h6>
-                </div>
-                <h1>Zework hợp tác cùng đối tác lớn mở rộng hệ sinh thái giải pháp doanh nghiệp</h1>
-                <p>October 17, 2025</p>
-
-                <button class="view-now">Xem ngay</button>
+    <!-- ========== FEATURED ARTICLE ========== -->
+    <section class="blog-featured">
+        <div class="blog-featured-card">
+            <div class="blog-featured-img">
+                <img src="https://images.unsplash.com/photo-1581089781785-603411fa81e5?q=80&w=1170&auto=format&fit=crop" alt="Zework hợp tác mở rộng" loading="lazy">
+                <span class="blog-featured-label"><i class="fas fa-star"></i> Nổi bật</span>
             </div>
-
-            <div class="right-banner-aricle">
-                <img src="https://images.unsplash.com/photo-1581089781785-603411fa81e5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            <div class="blog-featured-text">
+                <div class="blog-meta">
+                    <span class="blog-category">Tin tức</span>
+                    <span class="blog-date"><i class="far fa-calendar-alt"></i> 07/03/2026</span>
+                </div>
+                <h2>Zework hợp tác cùng đối tác lớn mở rộng hệ sinh thái giải pháp doanh nghiệp</h2>
+                <p>Với mục tiêu trở thành nền tảng CRM Zalo hàng đầu Việt Nam, Zework chính thức mở rộng hợp tác chiến lược với các đối tác công nghệ lớn, mang đến hệ sinh thái giải pháp toàn diện cho doanh nghiệp.</p>
+                <a href="#" class="blog-read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
-    </div>
-    </div>
-    <div class="container-article">
-        <div class="content-article-1">
-            <h1>Tin tức nổi bật</h1>
-            <div class="container-list-article-1">
-                <div class="item-article item-article-1">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Zework Edtech">
-                    <div class="item-article-content">
-                        <h3>Zework chính thức đồng hành cùng công ty Edtech đi đầu trong lĩnh vực chuyển đổi số chăm sóc
-                            khách hàng quý III 2025</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
+    </section>
 
-                <div class="item-article item-article-2">
-                    <img src="https://images.unsplash.com/photo-1581089781785-603411fa81e5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Zework Zalo">
-                    <div class="item-article-content">
-                        <h3>Zework ra mắt tính năng tích hợp Zalo phiên bản mới siêu mượt</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
+    <!-- ========== CATEGORY TABS ========== -->
+    <section class="blog-categories">
+        <div class="blog-category-tabs">
+            <button class="blog-tab active" data-category="all">Tất cả</button>
+            <button class="blog-tab" data-category="news">Tin tức</button>
+            <button class="blog-tab" data-category="guide">Hướng dẫn</button>
+            <button class="blog-tab" data-category="strategy">Chiến lược</button>
+            <button class="blog-tab" data-category="update">Cập nhật</button>
+        </div>
+    </section>
 
-                <div class="item-article item-article-3">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400" alt="Quản lý Zalo">
-                    <div class="item-article-content">
-                        <h3>Chính thức hỗ trợ quản lý đa tài khoản Zalo trên một nền tảng</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
+    <!-- ========== ARTICLE GRID ========== -->
+    <section class="blog-grid-section">
+        <div class="blog-grid">
+            <!-- 1 -->
+            <article class="blog-card" data-category="news">
+                <div class="blog-card-img">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Zework Edtech" loading="lazy">
                 </div>
+                <div class="blog-card-body">
+                    <div class="blog-meta">
+                        <span class="blog-category">Tin tức</span>
+                        <span class="blog-date"><i class="far fa-clock"></i> 17/03/2025</span>
+                    </div>
+                    <h3>Zework chính thức đồng hành cùng Edtech trong chuyển đổi số CSKH</h3>
+                    <p>Hợp tác chiến lược giúp các doanh nghiệp giáo dục tối ưu quy trình chăm sóc học viên qua Zalo.</p>
+                    <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
 
-                <div class="item-article item-article-4">
-                    <img src="https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Edtech CSKH">
-                    <div class="item-article-content">
-                        <h3>Zework chính thức đồng hành cùng công ty Edtech trong chuyển đổi số CSKH</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
+            <!-- 2 -->
+            <article class="blog-card" data-category="update">
+                <div class="blog-card-img">
+                    <img src="https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=2069&auto=format&fit=crop" alt="Zalo Enterprise" loading="lazy">
                 </div>
+                <div class="blog-card-body">
+                    <div class="blog-meta">
+                        <span class="blog-category">Cập nhật</span>
+                        <span class="blog-date"><i class="far fa-clock"></i> 10/03/2025</span>
+                    </div>
+                    <h3>Ra mắt tính năng tích hợp Zalo phiên bản mới siêu mượt</h3>
+                    <p>Phiên bản 2.0 mang đến trải nghiệm nhắn tin và quản lý tài khoản Zalo nhanh hơn 3 lần.</p>
+                    <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
 
-                <div class="item-article item-article-5">
-                    <img src="https://images.unsplash.com/photo-1715635845783-a184542d95e5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Zalo Enterprise">
-                    <div class="item-article-content">
-                        <h3>Zework đẩy mạnh hỗ hoá chăm sóc khách hàng với hệ thống Zalo Enterprise</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
+            <!-- 3 -->
+            <article class="blog-card" data-category="guide">
+                <div class="blog-card-img">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400" alt="Quản lý Zalo" loading="lazy">
                 </div>
-            </div>
+                <div class="blog-card-body">
+                    <div class="blog-meta">
+                        <span class="blog-category">Hướng dẫn</span>
+                        <span class="blog-date"><i class="far fa-clock"></i> 05/03/2025</span>
+                    </div>
+                    <h3>Hướng dẫn quản lý đa tài khoản Zalo trên một nền tảng</h3>
+                    <p>Bước đầu tiên để chuyển đổi số — gom toàn bộ tài khoản Zalo về 1 giao diện duy nhất.</p>
+                    <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- 4 -->
+            <article class="blog-card" data-category="strategy">
+                <div class="blog-card-img">
+                    <img src="https://images.unsplash.com/photo-1715635845783-a184542d95e5?q=80&w=1170&auto=format&fit=crop" alt="CSKH Strategy" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <div class="blog-meta">
+                        <span class="blog-category">Chiến lược</span>
+                        <span class="blog-date"><i class="far fa-clock"></i> 01/03/2025</span>
+                    </div>
+                    <h3>5 chiến lược CSKH qua Zalo giúp tăng 40% tỷ lệ chốt đơn</h3>
+                    <p>Những bí quyết vàng từ các doanh nghiệp top đầu đang áp dụng hệ thống Zework.</p>
+                    <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- 5 -->
+            <article class="blog-card" data-category="guide">
+                <div class="blog-card-img">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800" alt="AI Chatbot" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <div class="blog-meta">
+                        <span class="blog-category">Hướng dẫn</span>
+                        <span class="blog-date"><i class="far fa-clock"></i> 25/02/2025</span>
+                    </div>
+                    <h3>Hướng dẫn thiết lập AI Chatbot tự động trả lời khách hàng</h3>
+                    <p>Cấu hình AI nhanh trong 5 phút để chatbot xử lý 80% câu hỏi thường gặp.</p>
+                    <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- 6 -->
+            <article class="blog-card" data-category="strategy">
+                <div class="blog-card-img">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="Dashboard" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <div class="blog-meta">
+                        <span class="blog-category">Chiến lược</span>
+                        <span class="blog-date"><i class="far fa-clock"></i> 20/02/2025</span>
+                    </div>
+                    <h3>Đọc hiểu Dashboard Zework — biến dữ liệu thành quyết định kinh doanh</h3>
+                    <p>Hướng dẫn phân tích các chỉ số quan trọng trên Dashboard để tối ưu hiệu suất đội ngũ.</p>
+                    <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
         </div>
 
-
-        <div class="content-article-2">
-            <h1>Có thể bạn quan tâm</h1>
-            <div class="container-list-article-2">
-                <div class="item-list-article-2">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Article Image">
-                    <div class="title-item-list-article-2">
-                        <h3>Zework chính thức đồng hành cùng Edtech trong chuyển đổi số CSKH</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
-                <div class="item-list-article-2">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Article Image">
-                    <div class="title-item-list-article-2">
-                        <h3>Zework chính thức đồng hành cùng Edtech trong chuyển đổi số CSKH</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
-                <div class="item-list-article-2">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Article Image">
-                    <div class="title-item-list-article-2">
-                        <h3>Zework chính thức đồng hành cùng Edtech trong chuyển đổi số CSKH</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
-                <div class="item-list-article-2">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Article Image">
-                    <div class="title-item-list-article-2">
-                        <h3>Zework chính thức đồng hành cùng Edtech trong chuyển đổi số CSKH</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
-                <div class="item-list-article-2">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Article Image">
-                    <div class="title-item-list-article-2">
-                        <h3>Zework chính thức đồng hành cùng Edtech trong chuyển đổi số CSKH</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
-                <div class="item-list-article-2">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Article Image">
-                    <div class="title-item-list-article-2">
-                        <h3>Zework chính thức đồng hành cùng Edtech trong chuyển đổi số CSKH</h3>
-                        <div class="date">March 17, 2025</div>
-                    </div>
-                </div>
-            </div>
-            <button class="btn-see-more-articles">Xem thêm</button>
+        <div class="blog-load-more">
+            <button class="blog-load-more-btn">
+                <i class="fas fa-plus-circle"></i> Xem thêm bài viết
+            </button>
         </div>
-    </div>
+    </section>
+
     <div class="icon-zalo-chat">
         <img src="./img/Icon_of_Zalo.svg" alt="">
     </div>
@@ -548,6 +563,3 @@
 
 </html>
 <script src="js/menu.js"></script>
-<script src="js/price.js"></script>
-<script src="js/feedback.js"></script>
-<script src="js/features.js"></script>

@@ -37,62 +37,106 @@
     flex-direction: column;
 }
 
-.head-list-ask-suport {
-    width: 61.3rem;
-    height: 21.6rem;
-    padding: 3.2rem 0rem 3.2rem 0rem;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 2.4rem;
-}
-
-.head-list-ask-suport svg {
-    width: 2.4rem;
-    height: 2.4rem;
-}
-
-.head-list-ask-suport p {
-    color: #375DFA;
-    width: 56.5rem;
-    height: 2.8rem;
-    font-size: 1.8rem;
-    font-weight: 500;
-}
-
-.head-list-ask-suport span {
-    width: 61.3rem;
-    height: 8.4rem;
-    font-size: 1.8rem;
-    font-weight: 500;
-    color: #475467;
-}
-
-.body-list-ask-suport {
-    width: 61.3rem;
-    height: 9.2rem;
+/* FAQ Accordion */
+.faq-item {
     border-top: 1px solid #EAECF0;
+}
+
+.faq-item:last-child {
+    border-bottom: 1px solid #EAECF0;
+}
+
+.faq-question {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 3.2rem 0rem;
+    padding: 2.4rem 0;
+    cursor: pointer;
+    gap: 1.6rem;
+    transition: color 0.3s ease;
 }
 
-.body-list-ask-suport svg {
-    width: 2.4rem;
-    height: 2.4rem;
+.faq-question:hover p {
+    color: #027BFF;
 }
 
-.body-list-ask-suport p {
+.faq-question p {
+    flex: 1;
     color: #475467;
     font-size: 1.8rem;
     font-weight: 500;
+    line-height: 2.8rem;
+    margin: 0;
+    transition: color 0.3s ease;
 }
 
+.faq-item.active .faq-question p {
+    color: #027BFF;
+    font-weight: 600;
+}
+
+/* Icons */
+.faq-icon-minus,
+.faq-icon-plus {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: #98A2B3;
+}
+
+.faq-icon-minus {
+    display: none;
+    color: #027BFF;
+}
+
+.faq-icon-plus {
+    display: block;
+}
+
+.faq-item.active .faq-icon-minus {
+    display: block;
+}
+
+.faq-item.active .faq-icon-plus {
+    display: none;
+}
+
+/* Answer */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 30rem;
+    padding-bottom: 2.4rem;
+}
+
+.faq-answer span {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #475467;
+    line-height: 2.6rem;
+}
+
+.faq-answer a {
+    color: #027BFF;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.faq-answer a:hover {
+    color: #0056D6;
+}
+
+/* Mobile */
 @media (max-width:430px) {
     .ask-suport {
         width: 37.5rem;
-        height: 128.4rem;
+        height: auto;
         padding: 3.2rem 1.6rem;
         display: flex;
         flex-direction: column;
@@ -101,84 +145,39 @@
 
     .ask-suport-packages {
         width: 34.3rem;
-        height: 11.2rem;
+        height: auto;
         padding-right: 0rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        gap: 1.2rem;
     }
 
     .ask-suport-packages h1 {
         font-size: 1.8rem;
-        font-weight: 600;
-        color: #21164C;
         line-height: 2.4rem;
     }
 
     .ask-suport-packages p {
-        color: #475467;
         font-size: 1.4rem;
-        font-weight: 500;
         line-height: 2rem;
     }
 
     .list-ask-suport {
         width: 34.3rem;
-        height: 109.2rem;
     }
 
-    .head-list-ask-suport p {
-        color: #375DFA;
-        width: 29.5rem;
-        height: 4rem;
-        font-size: 1.4rem;
-        font-weight: 500;
-    }
-
-    .head-list-ask-suport {
-        width: 34.3rem;
-        height: 21.6rem;
-        padding: 3.2rem 0rem 3.2rem 0rem;
-        display: flex;
-        flex-wrap: wrap;
-        column-gap: 2.4rem;
-    }
-
-    .head-list-ask-suport svg {
-        padding-top: 0.8rem;
-        width: 2.4rem;
-        height: 2.4rem;
-    }
-
-    .head-list-ask-suport span {
-        width: 34.3rem;
-        height: 8rem;
-        font-size: 1.4rem;
-        font-weight: 500;
-        color: #475467;
-    }
-
-    .body-list-ask-suport {
-        width: 34.3rem;
-        height: auto;
-        border-top: 1px solid #EAECF0;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 3.2rem 0rem;
-    }
-
-    .body-list-ask-suport svg {
-        width: 1.6rem;
-        height: 1.6rem;
-    }
-
-    .body-list-ask-suport p {
-        width: 29.5rem;
-        height: auto;
-        color: #475467;
+    .faq-question p {
         font-size: 1.5rem;
-        font-weight: 500;
+        line-height: 2.2rem;
+    }
+
+    .faq-icon-minus,
+    .faq-icon-plus {
+        font-size: 1.8rem;
+    }
+
+    .faq-answer span {
+        font-size: 1.4rem;
+        line-height: 2.2rem;
     }
 }
