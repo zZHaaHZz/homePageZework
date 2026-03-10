@@ -262,10 +262,61 @@ footer {
     bottom: 5rem;
     cursor: pointer;
     pointer-events: auto;
+    border-radius: 50%;
+    isolation: isolate;
+    overflow: visible;
+}
+
+.icon-zalo-chat::before,
+.icon-zalo-chat::after {
+    content: "";
+    position: absolute;
+    inset: -0.6rem;
+    border: 0.2rem solid rgba(2, 123, 255, 0.45);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: zaloChatWave 2.2s ease-out infinite;
+}
+
+.icon-zalo-chat::after {
+    animation-delay: 1.1s;
 }
 
 .icon-zalo-chat img {
     width: 100%;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    animation: zaloChatFloat 1.5s ease-in-out infinite;
+}
+
+@keyframes zaloChatWave {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.9;
+    }
+
+    70% {
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: scale(1.7);
+        opacity: 0;
+    }
+}
+
+@keyframes zaloChatFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
 }
 
 @media (width<=430px) {

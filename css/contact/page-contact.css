@@ -1,6 +1,13 @@
+/* ========== Contact Layout ========== */
+.contact-page-wrapper {
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+}
+
 /* ========== Contact Hero ========== */
 .contact-hero {
-    width: 144rem;
+    width: 100%;
     padding: 12rem 9.6rem 6rem;
     text-align: center;
     background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 50%, #f5f7ff 100%);
@@ -46,7 +53,7 @@
 
 /* ========== Contact Info Cards ========== */
 .contact-info-section {
-    width: 144rem;
+    width: 100%;
     padding: 6rem 9.6rem;
 }
 
@@ -135,7 +142,7 @@
 
 /* ========== Contact Main (Form + Map) ========== */
 .contact-main {
-    width: 144rem;
+    width: 100%;
     padding: 0 9.6rem 9.6rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
