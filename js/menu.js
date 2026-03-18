@@ -1,3 +1,7 @@
+
+
+
+
 const btnExperiences = document.querySelectorAll('.experience');
 const btnViewNow = document.querySelectorAll('.view-now');
 const btnSeeMore = document.querySelectorAll('.btn-see-more-articles');
@@ -13,7 +17,7 @@ const signupButtons = document.querySelectorAll('.btn-header-signup, .btn-signup
 
 signupButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-       window.location.href = "https://app.zework.com"
+    window.location.href = "https://app.zework.com"
 
   });
 });
@@ -27,7 +31,7 @@ btnExperiences.forEach(btn => {
 
 btnViewNow.forEach(btn => {
   btn.addEventListener('click', () => {
-    
+
   });
 });
 btnSeeMore.forEach(btn => {
@@ -125,7 +129,7 @@ const contactLinks = document.querySelectorAll('a[href="#lienhe"]');
 contactLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-  
+
     window.location.href = '/lien-he';
   });
 });
@@ -134,14 +138,14 @@ document.addEventListener('click', (e) => {
   const btn = e.target.closest('a[href="#bynow"], .btn-bynow-bander');
   if (btn) {
     e.preventDefault();
-    window.location.href = "https://app.zework.com/vn/price"; 
+    window.location.href = "https://app.zework.com/vn/price";
   }
 });
 
 // Hàm lấy active menu dựa trên URL hiện tại
 const getActiveMenuFromURL = () => {
   const pathname = window.location.pathname;
-  
+
   if (pathname.endsWith("/") || pathname === "/") {
     return "#trangchu";
   } else if (pathname.includes("/tinh-nang")) {
@@ -153,7 +157,7 @@ const getActiveMenuFromURL = () => {
   } else if (pathname.includes("/lien-he")) {
     return "#lienhe";
   }
-  
+
   return "#trangchu";
 };
 
@@ -163,16 +167,16 @@ const setActiveMenu = getActiveMenuFromURL();
 
 window.addEventListener('DOMContentLoaded', () => {
   removeActiveMenu();
-  
+
   // Lấy active menu từ URL
   const activeMenuFromURL = getActiveMenuFromURL();
-  
+
   // Thêm class active-menu vào tất cả các link menu tương ứng
   const activeLinks = document.querySelectorAll(
     `header .ul-menu a[href="${activeMenuFromURL}"], 
      .mobile-menu-popup .ul-menu a[href="${activeMenuFromURL}"]`
   );
-  
+
   if (activeLinks.length > 0) {
     activeLinks.forEach(a => a.classList.add("active-menu"));
   }
@@ -215,21 +219,21 @@ dropUp.addEventListener('click', () => {
 
 const btnDownWin = document.querySelector('.downWin');
 btnDownWin.onclick = () => {
-    window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.msi';
+  window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.msi';
 }
 
 
 const btnDownMacOs = document.querySelector('.downMacOs');
 btnDownMacOs.onclick = () => {
-    window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.dmg';
+  window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.dmg';
 }
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const logoLinksZalo = document.querySelector('.icon-zalo-chat');
-    logoLinksZalo.onclick = () => {   
-      window.location.href = "https://zalo.me/982303333"
-    } 
+  const logoLinksZalo = document.querySelector('.icon-zalo-chat');
+  logoLinksZalo.onclick = () => {
+    window.location.href = "https://zalo.me/982303333"
+  }
 });
 
 
