@@ -1,0 +1,115 @@
+.team-experience {
+    padding: 10rem 0;
+    background: #ffffff;
+    text-align: center;
+    overflow: hidden;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.team-experience .container {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.team-exp-header {
+    margin-bottom: 50px;
+}
+
+.team-exp-header h2 {
+    font-size: 4.8rem;
+    color: #101828;
+    margin-bottom: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.team-exp-header p {
+    font-size: 1.8rem;
+    color: #475467;
+    max-width: 80rem;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.team-exp-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.team-exp-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-exp-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.team-exp-icon {
+    width: 8.4rem;
+    height: 8.4rem;
+    background: #eef4ff;
+    color: #007bff;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.6rem;
+    margin-bottom: 2.4rem;
+}
+
+.team-exp-number {
+    font-size: 3.6rem;
+    font-weight: 800;
+    color: #007bff;
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+}
+
+.team-exp-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #101828;
+    margin-bottom: 1.6rem;
+    line-height: 1.2;
+}
+
+.team-exp-desc {
+    font-size: 1.8rem;
+    color: #475467;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .team-experience {
+        padding: 6rem 0;
+    }
+    .team-exp-header h2 {
+        font-size: 3.2rem;
+    }
+    .team-exp-grid {
+        gap: 2rem;
+    }
+    .team-exp-card {
+        padding: 4rem 2.4rem;
+        max-width: 100%;
+    }
+    .team-exp-desc {
+        font-size: 1.4rem;
+    }
+}

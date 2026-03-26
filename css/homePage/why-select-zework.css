@@ -18,11 +18,12 @@
 }
 
 .why-select-zework-title {
-    width: 50%;
+    width: 100%;
     height: 12.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 2rem;
 }
 
 .why-select-zework-title h2 {
