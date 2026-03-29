@@ -44,8 +44,9 @@
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
-                    // Stop observing once revealed (one-time animation)
-                    observer.unobserve(entry.target);
+                } else {
+                    // Remove class when element leaves viewport so it can animate again
+                    entry.target.classList.remove('revealed');
                 }
             });
         }, {

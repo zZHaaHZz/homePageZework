@@ -1,6 +1,6 @@
 .team-experience {
     padding: 10rem 0;
-    background: #ffffff;
+    background: transparent;
     text-align: center;
     overflow: hidden;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -48,11 +48,28 @@
     flex: 1;
     min-width: 280px;
     max-width: 350px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     border: 1px solid rgba(0, 0, 0, 0.03);
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-exp-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: #007bff;
+    transition: width 0.4s ease;
+}
+
+.team-exp-card:hover::before {
+    width: 100%;
 }
 
 .team-exp-card:hover {
@@ -60,23 +77,38 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* Card-specific colors */
+.team-exp-card:nth-child(1)::before { background: #007bff; }
+.team-exp-card:nth-child(1) .team-exp-icon { background: #eef4ff; color: #007bff; }
+.team-exp-card:nth-child(1) .team-exp-number { color: #007bff; }
+
+.team-exp-card:nth-child(2)::before { background: #6366f1; }
+.team-exp-card:nth-child(2) .team-exp-icon { background: #eef2ff; color: #6366f1; }
+.team-exp-card:nth-child(2) .team-exp-number { color: #6366f1; }
+
+.team-exp-card:nth-child(3)::before { background: #10b981; }
+.team-exp-card:nth-child(3) .team-exp-icon { background: #ecfdf5; color: #10b981; }
+.team-exp-card:nth-child(3) .team-exp-number { color: #10b981; }
+
 .team-exp-icon {
     width: 8.4rem;
     height: 8.4rem;
-    background: #eef4ff;
-    color: #007bff;
     border-radius: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3.6rem;
     margin-bottom: 2.4rem;
+    transition: transform 0.3s ease;
+}
+
+.team-exp-card:hover .team-exp-icon {
+    transform: scale(1.1);
 }
 
 .team-exp-number {
     font-size: 3.6rem;
     font-weight: 800;
-    color: #007bff;
     margin-bottom: 1.2rem;
     line-height: 1.1;
 }
@@ -93,6 +125,7 @@
     font-size: 1.8rem;
     color: #475467;
     line-height: 1.6;
+    text-wrap: pretty;
 }
 
 @media (max-width: 768px) {

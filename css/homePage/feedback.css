@@ -80,9 +80,10 @@
 
 @media (max-width: 430px) {
     .feedback {
-        width: 37.5rem;
-        height: 47.2rem;
-        padding: 3.2rem 1.6rem;
+        width: 100%;
+        height: auto;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
         margin: 0rem auto;
 
     }

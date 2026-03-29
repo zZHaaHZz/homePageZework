@@ -1,5 +1,5 @@
 .banner-aricle {
-    width: 100vw;
+    width: 100%;
     height: calc(69.8rem - 8.8rem);
     background:
         url("/img/bai-viet/grid-bai-viet.svg") no-repeat center/cover,
@@ -60,6 +60,7 @@
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     pointer-events: none;
 }
@@ -128,7 +129,7 @@
 
 @media (max-width:430px) {
     .banner-aricle {
-        width: 100vw;
+        width: 100%;
         height: 72.2rem;
         background:
             url("/img/bai-viet/grid-bai-viet.svg") no-repeat center/cover,

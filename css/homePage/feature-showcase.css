@@ -4,7 +4,7 @@
 
 .feature-showcase {
     width: 100%;
-    background: #ffffff;
+    background: transparent;
     padding: 9.6rem 0;
     display: flex;
     flex-direction: column;
@@ -148,6 +148,15 @@
     color: #344054;
     line-height: 1.6;
     list-style: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.feature-showcase-benefits li:hover {
+    background: rgba(2, 123, 255, 0.05);
+    transform: translateX(8px);
 }
 
 .feature-showcase-benefits li i {
@@ -155,6 +164,11 @@
     font-size: 1.6rem;
     margin-top: 0.3rem;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.feature-showcase-benefits li:hover i {
+    transform: scale(1.15);
 }
 
 /* =====================

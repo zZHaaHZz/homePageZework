@@ -10,7 +10,7 @@
     padding-top: 9.6rem;
     padding-bottom: 9.6rem;
     position: relative;
-    background: #ffffff;
+    background: transparent;
 }
 
 .price-title {
@@ -87,6 +87,8 @@
     align-items: center;
     padding: 0.4rem;
     border-radius: 0.8rem;
+    border: 0.1rem solid rgba(2, 123, 255, 0.2);
+    box-shadow: 0 0.4rem 1.2rem rgba(2, 123, 255, 0.08);
 }
 
 .menu-price button {
@@ -234,6 +236,7 @@
     background: linear-gradient(to right, #027BFF, #4da3ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: bold;
 }
 
@@ -380,7 +383,7 @@
 
 @media (max-width: 430px) {
     .price-container {
-        width: 37.5rem;
+        width: 100%;
         height: auto;
         padding: 3.2rem 1.6rem;
         margin: 0rem auto;

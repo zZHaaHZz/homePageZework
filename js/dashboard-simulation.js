@@ -63,11 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Phases: Sync -> Distribute -> Security -> Analytics -> Tags
     let phase = 'sync';
     let lastPhaseSwitch = Date.now();
-    const PHASE_DURATION_SYNC = 4000;
+    const PHASE_DURATION_SYNC = 7000;
     const PHASE_DURATION_DIST = 7000;
-    const PHASE_DURATION_SECURE = 5000;
-    const PHASE_DURATION_ANALYTICS = 8000;
-    const PHASE_DURATION_TAGS = 8000;
+    const PHASE_DURATION_SECURE = 6000;
+    const PHASE_DURATION_ANALYTICS = 6000;
+    const PHASE_DURATION_TAGS = 6000;
 
     let hubY = h / 2;
     let targetHubY = h / 2;
@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const zaloNodes = [];
     const employeeNodes = [];
     const packets = [];
+    const timeouts = []; // Track timeouts to clear on phase switch
     const MAX_EMPLOYEES = 4;
 
     // Analytics Data
@@ -229,63 +230,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     class Packet {
-        constructor(startX, startY, endX, endY, image) {
-            this.x = startX;
-            this.y = startY;
-            this.startX = startX;
-            this.startY = startY;
-            this.endX = endX;
-            this.endY = endY;
+        constructor(source, target, image) {
+            this.source = source;
+            this.target = target;
             this.image = image;
-            this.progress = 0;
+            this.t = 0; // Use normalized time (0 to 1) for perfect synchronization
             this.done = false;
-            this.distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
-
-            // Trail system
         }
 
         update() {
-            this.progress += config.speed;
-            if (this.progress >= this.distance) {
-                this.progress = this.distance;
+            // Get current positions of moving source and target objects
+            const startX = this.source.currentX !== undefined ? this.source.currentX : (this.source.x || w / 2);
+            const startY = this.source.currentY !== undefined ? this.source.currentY : (this.source.y || hubY);
+            const endX = this.target.currentX !== undefined ? this.target.currentX : (this.target.x || w / 2);
+            const endY = this.target.currentY !== undefined ? this.target.currentY : (this.target.y || hubY);
+
+            const currentDistance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+
+            // Advance t based on constant speed divided by distance
+            if (currentDistance > 0) {
+                this.t += (config.speed * 2.5) / currentDistance; // Optimized speed for rhythm
+            } else {
+                this.t = 1;
+            }
+
+            if (this.t >= 1) {
+                this.t = 1;
                 this.done = true;
             }
-            const t = this.progress / this.distance;
-            this.x = this.startX + (this.endX - this.startX) * t;
-            this.y = this.startY + (this.endY - this.startY) * t;
+
+            // Interpolate position along the dynamic line
+            this.x = startX + (endX - startX) * this.t;
+            this.y = startY + (endY - startY) * this.t;
         }
 
         draw() {
-            const size = 16;
+            const size = 18;
             if (this.image && this.image.complete && this.image.naturalWidth > 0) {
                 ctx.drawImage(this.image, this.x - size / 2, this.y - size / 2, size, size);
             }
         }
     }
 
-    function spawnEmployee() {
-        if (employeeNodes.length >= MAX_EMPLOYEES) return;
+    function spawnEmployee(forcedIndex) {
+        if (employeeNodes.length >= MAX_EMPLOYEES && forcedIndex === undefined) return;
 
-        const i = employeeNodes.length;
-        // Center logic: Calculate total width based on MAX_EMPLOYEES
-        // Assume single row for few employees
-        const spacingX = w / (MAX_EMPLOYEES + 1);
+        const i = forcedIndex !== undefined ? forcedIndex : employeeNodes.length;
 
-        // Calculate x position: spacing * (index + 1)
-        // Or to perfectly center a group:
-        // totalGroupWidth = (MAX_EMPLOYEES - 1) * gap
-        // startX = (w - totalGroupWidth) / 2
+        // Prevent duplicate nodes by ID
+        if (employeeNodes.some(n => n.id === i)) return;
 
-        // Simple equal spacing approach for "centering" in the available space:
-        const x = spacingX * (i + 1);
-        const y = h * 0.75; // Move them down a bit to be safe
+        // Arc Logic: Calculate position on a semicircle below the hub
+        const hubTargetY = Math.max(h * 0.35, 140);
+        const radius = h * 0.38;
+        const angleStep = Math.PI * 0.2; // Spacing between nodes
+        const angle = (Math.PI / 2) + (i - 1.5) * angleStep;
+
+        const x = w / 2 + Math.cos(angle) * radius;
+        const y = hubTargetY + Math.sin(angle) * radius;
 
         const newNode = new Node(i, x, y, 'employee');
         employeeNodes.push(newNode);
 
-        setTimeout(() => {
-            packets.push(new Packet(w / 2, hubY, x, y, imgMsg));
-        }, 100);
+        // Send packet from hub to the new node after a short appearance delay
+        const t1 = setTimeout(() => {
+            const hubRef = { get currentX() { return w / 2; }, get currentY() { return hubY; } };
+            packets.push(new Packet(hubRef, newNode, imgMsg));
+        }, 300);
+        timeouts.push(t1);
     }
 
     function animate() {
@@ -299,14 +311,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (phase === 'tags') duration = PHASE_DURATION_TAGS;
 
         if (now - lastPhaseSwitch > duration) {
-            packets.length = 0; // Clear packets on phase switch
+            lastPhaseSwitch = now; // Move to start to prevent re-entry
+            packets.length = 0;
+            timeouts.forEach(clearTimeout); // Clear all pending spawns
+            timeouts.length = 0;
             // State Machine
             if (phase === 'sync') {
                 phase = 'distribute';
                 employeeNodes.length = 0;
-                spawnEmployee();
-                spawnEmployee();
-                spawnEmployee();
+                // Stage 1: Inner Nodes (after hub stabilizes)
+                const t1 = setTimeout(() => {
+                    spawnEmployee(1);
+                    spawnEmployee(2);
+                }, 800);
+                // Stage 2: Outer Nodes
+                const t2 = setTimeout(() => {
+                    spawnEmployee(0);
+                    spawnEmployee(3);
+                }, 1800);
+                timeouts.push(t1, t2);
             } else if (phase === 'distribute') {
                 phase = 'security';
                 let permIndex = 0;
@@ -327,7 +350,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 phase = 'sync';
                 employeeNodes.forEach(n => n.hasPermission = false);
             }
-            lastPhaseSwitch = now;
         }
 
         const centerX = w / 2;
@@ -359,10 +381,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (chartProgress < 1) chartProgress += 0.005;
 
                 // Live Update simulation
-                if (Math.random() < 0.1) { // 10% chance per frame (More frequent)
+                if (Math.random() < 0.3) { // 30% chance per frame for lots of motion
                     const emp = employeeNames[Math.floor(Math.random() * employeeNames.length)];
-                    // Large random jumps to force swapping
-                    emp.closed += Math.floor(Math.random() * 5) + 1;
+                    const change = Math.floor(Math.random() * 30) - 15; // Fluctuate +/- 15
+                    emp.closed += change;
+                    if (emp.closed < 50) emp.closed = 50; // Keep in reasonable range
 
                     const sorted = [...employeeNames].sort((a, b) => b.closed - a.closed);
                     sorted.forEach((e, idx) => {
@@ -432,19 +455,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.fillStyle = '#333';
                     ctx.textAlign = 'left';
                     ctx.font = 'bold 13px Arial';
-                    ctx.fillText(emp.name, rightX + 60, rowY + 12 + 10); // Align middle
+                    ctx.fillText(emp.name, rightX + 60, rowY + 4); // Adjusted for better vertical centering
 
                     ctx.fillStyle = '#777';
                     ctx.font = '11px Arial';
-                    ctx.fillText(emp.dept, rightX + 60, rowY + 28 + 10);
+                    ctx.fillText(emp.dept, rightX + 60, rowY + 18); // Adjusted to sit right below name
 
                     ctx.textAlign = 'right';
                     ctx.fillStyle = '#333';
                     ctx.font = 'bold 13px Arial';
-                    ctx.fillText(emp.closed.toString(), rightX + rightW - 20, rowY + 20 + 8);
+                    ctx.fillText(emp.closed.toString(), rightX + rightW - 20, rowY + 11); // Centered stats
 
                     ctx.fillStyle = '#f59e0b';
-                    ctx.fillText(emp.pending.toString(), rightX + rightW - 100, rowY + 20 + 8);
+                    ctx.fillText(emp.pending.toString(), rightX + rightW - 100, rowY + 11); // Centered stats
 
                     // Line
                     ctx.beginPath();
@@ -459,12 +482,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } else { // 'tags' Phase
 
                 // --- LIVE TAG UPDATES ---
-                if (Math.random() < 0.1) { // Frequent updates
+                if (now % 30 < 2) { // Every 30 frames (twice per second approx)
                     const tag = tagData[Math.floor(Math.random() * tagData.length)];
-                    // Fluctuate count
-                    const change = Math.floor(Math.random() * 5) - 1;
+                    const change = Math.floor(Math.random() * 20) - 8; // Fluctuate +/-
                     tag.count += change;
-                    if (tag.count < 0) tag.count = 0;
+                    if (tag.count < 10) tag.count = 10;
 
                     // Resort if needed
                     const sorted = [...tagData].sort((a, b) => b.count - a.count);
@@ -621,14 +643,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (Math.random() < 0.02) {
                 const node = activeNodes[Math.floor(Math.random() * activeNodes.length)];
                 if (node && node.opacity === 1) {
+                    const hubRef = { get currentX() { return w / 2; }, get currentY() { return hubY; } };
                     if (phase === 'sync') {
                         const pImg = Math.random() > 0.5 ? imgMsg : imgCall;
-                        packets.push(new Packet(node.currentX, node.currentY, centerX, hubY, pImg));
+                        packets.push(new Packet(node, hubRef, pImg));
                     } else if (phase === 'distribute') {
-                        packets.push(new Packet(centerX, hubY, node.currentX, node.currentY, imgMsg));
+                        packets.push(new Packet(hubRef, node, imgMsg));
 
                     } else if (phase === 'security') {
-                        packets.push(new Packet(centerX, hubY, node.currentX, node.currentY, imgLock));
+                        packets.push(new Packet(hubRef, node, imgLock));
                     }
                 }
             }
@@ -707,18 +730,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    let imagesLoaded = 0;
+    let simStarted = false;
     const requiredImages = [imgZalo, imgEmployee, imgZework, imgMsg, imgCall, imgLock];
-    const checkStart = () => {
+
+    const startSim = () => {
+        if (simStarted) return;
+        simStarted = true;
+        initZaloNodes();
+        animate();
+    };
+
+    let imagesLoaded = 0;
+    const checkImages = () => {
         imagesLoaded++;
         if (imagesLoaded >= requiredImages.length) {
-            initZaloNodes();
-            animate();
+            startSim();
         }
     };
+
     requiredImages.forEach(img => {
-        if (img.complete) checkStart(); else img.onload = checkStart;
+        if (img.complete) {
+            imagesLoaded++;
+        } else {
+            img.onload = checkImages;
+        }
     });
 
-    setTimeout(() => { if (imagesLoaded < requiredImages.length) { initZaloNodes(); animate(); } }, 1000);
+    if (imagesLoaded >= requiredImages.length) {
+        startSim();
+    }
+
+    // Secondary fallback
+    setTimeout(startSim, 1500);
 });

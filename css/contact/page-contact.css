@@ -64,14 +64,17 @@
 }
 
 .contact-info-card {
-    background: #fff;
-    border: 1px solid #EAECF0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(2, 123, 255, 0.1);
     border-radius: 1.6rem;
     padding: 3.2rem 2.4rem;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .contact-info-card::before {
@@ -152,11 +155,13 @@
 
 /* Form */
 .contact-form-wrapper {
-    background: #fff;
-    border: 1px solid #EAECF0;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(2, 123, 255, 0.08);
     border-radius: 2rem;
     padding: 4rem;
-    box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.04);
+    box-shadow: 0 8px 32px rgba(2, 123, 255, 0.08), 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .contact-form-header {

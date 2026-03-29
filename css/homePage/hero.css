@@ -5,14 +5,16 @@
 }
 
 .hero {
-    width: 100vw;
-    height: calc(112rem - 8.8rem);
+    width: 100%;
+    min-height: 110rem;
+    height: auto;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(170deg, #f0f7ff 0%, #e8f2ff 30%, #e0efff 50%, #f5f9ff 80%, #ffffff 100%);
+    background: transparent;
+    padding-bottom: 15rem; /* Increased padding to give dashboard more space */
 }
 
 .hero::before {
@@ -92,6 +94,7 @@
             rgba(2, 123, 255, 0.15));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     pointer-events: none;
 }
@@ -182,7 +185,7 @@
 .div-img-dashBoard video {
     width: 110.6rem;
     height: 51rem;
-    margin: 1.5rem auto;
+    margin: 6rem auto 0 auto; /* Added more space between CTA button and dashboard */
     display: block;
     z-index: 4;
 }
@@ -223,15 +226,19 @@
     }
 
     .hero {
-        width: 100vw;
-        height: 74.8rem;
+        width: 100%;
+        height: auto;
+        min-height: 74.8rem;
         position: relative;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        background: linear-gradient(170deg, #f0f7ff 0%, #e8f2ff 30%, #e0efff 50%, #f5f9ff 80%, #ffffff 100%);
+        background: transparent;
+        padding-bottom: 4rem;
+        -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
     }
 
     .head-line-hero {
@@ -276,7 +283,7 @@
     }
 
     .img-quare-5-mobile video {
-        width: 100vw;
+        width: 100%;
         height: 33.3rem;
         object-fit: cover;
         object-position: left;

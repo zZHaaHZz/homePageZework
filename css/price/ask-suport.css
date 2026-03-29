@@ -1,10 +1,17 @@
 .ask-suport {
-    width: 144rem;
+    width: 124.8rem;
     height: auto;
-    padding: 0rem 9.6rem 9.6rem 9.6rem;
+    padding: 6.4rem;
+    margin: 0 auto 9.6rem auto;
     display: flex;
     flex-direction: row;
     gap: 2.4rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 0.1rem solid rgba(2, 123, 255, 0.1);
+    border-radius: 2.4rem;
+    box-shadow: 0 8px 32px rgba(2, 123, 255, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .ask-suport-packages {
@@ -85,20 +92,20 @@
 }
 
 .faq-icon-minus {
-    display: none;
+    display: none !important;
     color: #027BFF;
 }
 
 .faq-icon-plus {
-    display: block;
+    display: block !important;
 }
 
 .faq-item.active .faq-icon-minus {
-    display: block;
+    display: block !important;
 }
 
 .faq-item.active .faq-icon-plus {
-    display: none;
+    display: none !important;
 }
 
 /* Answer */

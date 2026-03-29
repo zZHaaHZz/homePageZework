@@ -17,8 +17,7 @@ const signupButtons = document.querySelectorAll('.btn-header-signup, .btn-signup
 
 signupButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    window.location.href = "https://app.zework.com"
-
+    window.open("https://app.zework.com/register", "_blank");
   });
 });
 

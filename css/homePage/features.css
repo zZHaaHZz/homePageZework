@@ -8,7 +8,7 @@
    align-items: center;
    padding-top: 9.6rem;
    padding-bottom: 6rem;
-   background: #ffffff;
+   background: transparent;
 }
 
 .vector-logo-2 {
@@ -276,7 +276,7 @@
 /* ========== MOBILE ========== */
 @media (width<=430px) {
    .features {
-      width: 37.5rem;
+      width: 100%;
       height: auto;
       padding: 3.2rem 1.6rem;
       display: flex;

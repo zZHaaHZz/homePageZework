@@ -169,22 +169,22 @@
 @media (max-width: 430px) {
 
     .sales-feedback {
-        width: 37.5rem;
-        height: 116rem;
+        width: 100%;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 0rem auto;
+        padding: 4rem 0;
     }
 
     .sales-feedback-container {
-        height: 116rem;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 0;
-        ;
     }
 
     .sales-feedback-title {
@@ -219,7 +219,7 @@
         align-items: center;
         padding: 0rem;
         gap: 2rem;
-        height: 92.8rem;
+        height: auto;
     }
 
     .sales-feedback-content-box {

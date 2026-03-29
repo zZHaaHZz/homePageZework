@@ -194,5 +194,5 @@ function showPlans(month) {
 
 // Hiển thị mặc định 6 tháng khi load
 document.addEventListener("DOMContentLoaded", () => {
-    showPlans("1");
+    showPlans("6");
 });
