@@ -21,7 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const originalBtnText = submitBtn.innerHTML;
         
-        // 2. Prepare Data
+        // 2. Validate Turnstile CAPTCHA
+        const cfToken = (typeof turnstileToken !== 'undefined') ? turnstileToken : '';
+        if (!cfToken) {
+            showToast('Vui lòng xác nhận bạn không phải robot (CAPTCHA) trước khi gửi.', 'warning');
+            return;
+        }
+
+        // 3. Prepare Data
         // Mapping form fields to API fields
         const typeText = subjectSelect.options[subjectSelect.selectedIndex]?.text || '';
         
@@ -31,7 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
             email: emailInput.value.trim(),
             companyName: companyInput.value.trim() || 'N/A',
             type: typeText || 'Yêu cầu tư vấn chung',
-            content: messageInput.value.trim() || 'Người dùng gửi yêu cầu tư vấn từ website.'
+            content: messageInput.value.trim() || 'Người dùng gửi yêu cầu tư vấn từ website.',
+            'cf-turnstile-response': cfToken
         };
 
         // 3. UI Loading State
@@ -55,6 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Success
                 showToast('Gửi yêu cầu thành công! Đội ngũ Zework sẽ liên hệ với bạn sớm nhất.', 'success');
                 contactForm.reset();
+                // Reset Turnstile widget
+                turnstileToken = '';
+                if (typeof turnstile !== 'undefined') {
+                    turnstile.reset('#cf-turnstile');
+                }
             } else {
                 // Server Error
                 const errorData = await response.json().catch(() => ({}));

@@ -314,6 +314,20 @@
     transform: translateY(0);
 }
 
+/* Cloudflare Turnstile */
+.contact-turnstile-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 70px;
+    margin-bottom: 2rem;
+    overflow: visible;
+}
+
+.contact-turnstile-wrapper .cf-turnstile {
+    display: block;
+}
+
 /* Map */
 .contact-map-wrapper {
     display: flex;
