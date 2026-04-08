@@ -1,6 +1,14 @@
-
-
-
+// Auto-detect môi trường: local dùng file .html, production dùng slug
+const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+const routes = {
+  tinh_nang: isLocal ? '/pageFeature.html' : '/tinh-nang',
+  bang_gia: isLocal ? '/pagePrice.html' : '/bang-gia',
+  bai_viet: isLocal ? '/pageArticle.html' : '/bai-viet',
+  lien_he: isLocal ? '/pageContact.html' : '/lien-he',
+  bao_mat: isLocal ? '/policy.html' : '/bao-mat',
+  dieu_khoan: isLocal ? '/terms.html' : '/dieu-khoan-dich-vu',
+  ve_zework: isLocal ? '/company.html' : '/ve-zework',
+};
 
 const btnExperiences = document.querySelectorAll('.experience');
 const btnViewNow = document.querySelectorAll('.view-now');
@@ -67,16 +75,19 @@ menuLinks.forEach(link => {
 
     switch (href) {
       case '#tinhnang':
-        window.location.href = '/tinh-nang';
+        window.location.href = routes.tinh_nang;
         break;
       case '#banggia':
-        window.location.href = '/bang-gia';
+        window.location.href = routes.bang_gia;
         break;
       case '#baiviet':
-        window.location.href = '/bai-viet';
+        window.location.href = routes.bai_viet;
         break;
       case '#lienhe':
-        window.location.href = '/lien-he';
+        window.location.href = routes.lien_he;
+        break;
+      case '#baomat':
+        window.location.href = routes.bao_mat;
         break;
     }
 
@@ -104,7 +115,7 @@ const featureLink = document.querySelectorAll('a[href="#tinhnang"]');
 featureLink.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = '/tinh-nang';
+    window.location.href = routes.tinh_nang;
   });
 });
 
@@ -112,7 +123,7 @@ const priceLinks = document.querySelectorAll('a[href="#banggia"]');
 priceLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = '/bang-gia';
+    window.location.href = routes.bang_gia;
   });
 });
 
@@ -120,7 +131,7 @@ const articleLinks = document.querySelectorAll('a[href="#baiviet"]');
 articleLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = '/bai-viet';
+    window.location.href = routes.bai_viet;
   });
 });
 
@@ -128,8 +139,31 @@ const contactLinks = document.querySelectorAll('a[href="#lienhe"]');
 contactLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
+    window.location.href = routes.lien_he;
+  });
+});
 
-    window.location.href = '/lien-he';
+const baomatLinks = document.querySelectorAll('a[href="#baomat"]');
+baomatLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = routes.bao_mat;
+  });
+});
+
+const dieuKhoanLinks = document.querySelectorAll('a[href="#dieu-khoan"]');
+dieuKhoanLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = routes.dieu_khoan;
+  });
+});
+
+const vezeworkLinks = document.querySelectorAll('a[href="#vezework"]');
+vezeworkLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = routes.ve_zework;
   });
 });
 
@@ -145,19 +179,25 @@ document.addEventListener('click', (e) => {
 const getActiveMenuFromURL = () => {
   const pathname = window.location.pathname;
 
-  if (pathname.endsWith("/") || pathname === "/") {
+  if (pathname.endsWith("/") || pathname === "/" || pathname.endsWith("/index.html")) {
     return "#trangchu";
-  } else if (pathname.includes("/tinh-nang")) {
+  } else if (pathname.includes("/tinh-nang") || pathname.endsWith("/pageFeature.html")) {
     return "#tinhnang";
-  } else if (pathname.includes("/bang-gia")) {
+  } else if (pathname.includes("/bang-gia") || pathname.endsWith("/pagePrice.html")) {
     return "#banggia";
-  } else if (pathname.includes("/bai-viet")) {
+  } else if (pathname.includes("/bai-viet") || pathname.endsWith("/pageArticle.html")) {
     return "#baiviet";
-  } else if (pathname.includes("/lien-he")) {
+  } else if (pathname.includes("/lien-he") || pathname.endsWith("/pageContact.html")) {
     return "#lienhe";
+  } else if (pathname.includes("/bao-mat") || pathname.endsWith("/policy.html")) {
+    return "#baomat";
+  } else if (pathname.includes("/ve-zework") || pathname.endsWith("/company.html")) {
+    return "#vezework";
+  } else if (pathname.includes("/dieu-khoan") || pathname.endsWith("/terms.html")) {
+    return "#dieukhoan";
   }
 
-  return "#trangchu";
+  return null;
 };
 
 const setActiveMenu = getActiveMenuFromURL();

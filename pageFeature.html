@@ -2,29 +2,32 @@
 <html lang="vi">
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C8JGBS9ECN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8JGBS9ECN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-C8JGBS9ECN');
-</script>
+        gtag('config', 'G-C8JGBS9ECN');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
 
 
     <title>Tính năng Zework | Phân quyền, Đồng bộ tin nhắn & Call Center Zalo</title>
-    <meta name="description" content="Khám phá bộ công cụ mạnh mẽ: Phân quyền nhân viên, gọi điện trực tiếp trên web, lưu trữ Cloud không giới hạn, khôi phục tin nhắn cũ và báo cáo Dashboard trực quan.">
-    <meta name="keywords" content="tính năng zework, phân quyền tài khoản zalo, đồng bộ tin nhắn zalo, tổng đài zalo, ghi âm cuộc gọi zalo, gắn thẻ khách hàng, khôi phục tin nhắn zalo đã xóa, quản lý nhiều nick zalo trên máy tính, bảo mật dữ liệu khách hàng">
+    <meta name="description"
+        content="Khám phá bộ công cụ mạnh mẽ: Phân quyền nhân viên, gọi điện trực tiếp trên web, lưu trữ Cloud không giới hạn, khôi phục tin nhắn cũ và báo cáo Dashboard trực quan.">
+    <meta name="keywords"
+        content="tính năng zework, phân quyền tài khoản zalo, đồng bộ tin nhắn zalo, tổng đài zalo, ghi âm cuộc gọi zalo, gắn thẻ khách hàng, khôi phục tin nhắn zalo đã xóa, quản lý nhiều nick zalo trên máy tính, bảo mật dữ liệu khách hàng">
     <link rel="canonical" href="https://zework.com/tinh-nang">
 
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://zework.com/tinh-nang">
     <meta property="og:title" content="Tại sao 2000+ doanh nghiệp chọn Zework?">
-    <meta property="og:description" content="Tích hợp sâu với Zalo cá nhân. Quản lý trực tiếp hội thoại và danh bạ mà không cần đổi thiết bị. Xem chi tiết các tính năng!">
+    <meta property="og:description"
+        content="Tích hợp sâu với Zalo cá nhân. Quản lý trực tiếp hội thoại và danh bạ mà không cần đổi thiết bị. Xem chi tiết các tính năng!">
     <meta property="og:image" content="https://zework.com/img/imgFreature/feature-1.svg">
 
     <link rel="icon" type="image/png" href="./img/logoZework.svg">
@@ -42,7 +45,21 @@
     <link rel="stylesheet" href="./css/site/footer.css">
     <link rel="stylesheet" href="./css/site/tag-iconlist.css">
     <link rel="stylesheet" href="./css/site/logo-zework.css">
+    <link rel="stylesheet" href="./css/site/buttons.css">
+    <link rel="stylesheet" href="./css/site/consultation-modal.css">
     <link rel="stylesheet" href="./css/homePage/feature-showcase.css">
+
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script>
+        let turnstileToken = '';
+        function onTurnstileSuccess(token) {
+            turnstileToken = token;
+        }
+        function onTurnstileExpired() {
+            turnstileToken = '';
+        }
+    </script>
     <link rel="stylesheet" href="./css/scroll-reveal.css">
 </head>
 
@@ -205,9 +222,9 @@
                 </div>
 
                 <div class="menu-change-langue">
-                     <ul class="ul-menu-change-langue">
-                        <li>English</li>
-                        <li>Chinese</li>
+                    <ul class="ul-menu-change-langue">
+                        <li data-lang="vi" class="active-lang">Tiếng Việt</li>
+                        <li data-lang="en">English</li>
                     </ul>
                 </div>
                 <button class="btn-header-login">Đăng nhập</button>
@@ -259,7 +276,8 @@
     <section class="feature-showcase" id="tinhnang-chitiet">
         <div class="feature-showcase-header">
             <h2>Tất cả tính năng bạn cần, trong một nền tảng</h2>
-            <p>Zework tích hợp đầy đủ công cụ giúp doanh nghiệp quản lý Zalo chuyên nghiệp — từ nhắn tin, gọi điện, phân quyền đến AI và tự động hoá.</p>
+            <p>Zework tích hợp đầy đủ công cụ giúp doanh nghiệp quản lý Zalo chuyên nghiệp — từ nhắn tin, gọi điện, phân
+                quyền đến AI và tự động hoá.</p>
         </div>
 
         <!-- 1. Quản lý đa tài khoản Zalo -->
@@ -270,10 +288,12 @@
             <div class="feature-showcase-text">
                 <span class="feature-showcase-badge"><i class="fas fa-layer-group"></i> Đa tài khoản</span>
                 <h3>Quản lý nhiều tài khoản Zalo trên cùng một giao diện</h3>
-                <p>Tích hợp sâu với Zalo cá nhân — theo dõi tin nhắn, khách hàng và tương tác từ nhiều tài khoản cùng lúc mà không cần đổi thiết bị.</p>
+                <p>Tích hợp sâu với Zalo cá nhân — theo dõi tin nhắn, khách hàng và tương tác từ nhiều tài khoản cùng
+                    lúc mà không cần đổi thiết bị.</p>
                 <ul class="feature-showcase-benefits">
                     <li><i class="fas fa-check-circle"></i> Hỗ trợ từ 1 đến 30+ tài khoản Zalo trong cùng hệ thống</li>
-                    <li><i class="fas fa-check-circle"></i> Chuyển đổi nhanh giữa các tài khoản — không cần đăng nhập lại</li>
+                    <li><i class="fas fa-check-circle"></i> Chuyển đổi nhanh giữa các tài khoản — không cần đăng nhập
+                        lại</li>
                     <li><i class="fas fa-check-circle"></i> Đồng bộ danh bạ, nhóm và yêu cầu kết bạn tự động</li>
                     <li><i class="fas fa-check-circle"></i> Quản lý hội thoại cá nhân & nhóm đầy đủ tính năng</li>
                 </ul>
@@ -288,11 +308,13 @@
             <div class="feature-showcase-text">
                 <span class="feature-showcase-badge"><i class="fas fa-phone-alt"></i> Nhắn tin & Gọi điện</span>
                 <h3>Nhắn tin & gọi điện trực tiếp trên phần mềm</h3>
-                <p>Tích hợp Zalo Call ngay trên giao diện web — gọi thoại miễn phí, ghi âm cuộc gọi, gửi sticker, ghim/sửa/xoá tin nhắn như dùng Zalo thật.</p>
+                <p>Tích hợp Zalo Call ngay trên giao diện web — gọi thoại miễn phí, ghi âm cuộc gọi, gửi sticker,
+                    ghim/sửa/xoá tin nhắn như dùng Zalo thật.</p>
                 <ul class="feature-showcase-benefits">
                     <li><i class="fas fa-check-circle"></i> Gọi điện trực tiếp qua Zalo — hoàn toàn miễn phí</li>
                     <li><i class="fas fa-check-circle"></i> Ghi âm cuộc gọi tự động để lưu trữ và đánh giá</li>
-                    <li><i class="fas fa-check-circle"></i> Tin nhắn nhanh không giới hạn — template phản hồi tức thì</li>
+                    <li><i class="fas fa-check-circle"></i> Tin nhắn nhanh không giới hạn — template phản hồi tức thì
+                    </li>
                     <li><i class="fas fa-check-circle"></i> Hỗ trợ gửi sticker, ghim, sửa, xoá tin nhắn</li>
                 </ul>
             </div>
@@ -307,7 +329,8 @@
             <div class="feature-showcase-text">
                 <span class="feature-showcase-badge"><i class="fas fa-users-cog"></i> Phân quyền</span>
                 <h3>Phân quyền linh hoạt — quản lý nhân viên chuyên nghiệp</h3>
-                <p>Tuỳ chỉnh quyền truy cập theo chi nhánh, phòng ban, bộ phận — quản lý hội thoại, phân công và theo dõi hiệu suất từng nhân viên.</p>
+                <p>Tuỳ chỉnh quyền truy cập theo chi nhánh, phòng ban, bộ phận — quản lý hội thoại, phân công và theo
+                    dõi hiệu suất từng nhân viên.</p>
                 <ul class="feature-showcase-benefits">
                     <li><i class="fas fa-check-circle"></i> Phân quyền theo vai trò: Quản lý, Xử lý, Hỗ trợ, CTV</li>
                     <li><i class="fas fa-check-circle"></i> Phân công nhân viên phụ trách tài khoản Zalo cụ thể</li>
@@ -326,7 +349,8 @@
             <div class="feature-showcase-text">
                 <span class="feature-showcase-badge"><i class="fas fa-tags"></i> CRM & Khách hàng</span>
                 <h3>Phân loại khách hàng thông minh — CRM tích hợp sẵn</h3>
-                <p>Không giới hạn thẻ phân loại, tin nhắn nhanh, tuỳ chỉnh thông tin khách hàng — giúp lọc, tìm và phản hồi trong tích tắc.</p>
+                <p>Không giới hạn thẻ phân loại, tin nhắn nhanh, tuỳ chỉnh thông tin khách hàng — giúp lọc, tìm và phản
+                    hồi trong tích tắc.</p>
                 <ul class="feature-showcase-benefits">
                     <li><i class="fas fa-check-circle"></i> Gắn thẻ tag không giới hạn — phân loại khách tự do</li>
                     <li><i class="fas fa-check-circle"></i> Tuỳ chỉnh trường thông tin khách hàng linh hoạt</li>
@@ -345,10 +369,12 @@
             <div class="feature-showcase-text">
                 <span class="feature-showcase-badge"><i class="fas fa-cloud-upload-alt"></i> Lưu trữ Cloud</span>
                 <h3>Lưu trữ & sao lưu dữ liệu — không lo mất tin nhắn</h3>
-                <p>Toàn bộ dữ liệu tin nhắn, file đính kèm, ảnh/video được đồng bộ và lưu trữ Cloud an toàn. Khôi phục mọi lúc khi cần.</p>
+                <p>Toàn bộ dữ liệu tin nhắn, file đính kèm, ảnh/video được đồng bộ và lưu trữ Cloud an toàn. Khôi phục
+                    mọi lúc khi cần.</p>
                 <ul class="feature-showcase-benefits">
                     <li><i class="fas fa-check-circle"></i> Đồng bộ file đa phương tiện & danh bạ Zalo tự động</li>
-                    <li><i class="fas fa-check-circle"></i> Khôi phục tin nhắn cũ — lấy lại dữ liệu trước khi dùng Zework</li>
+                    <li><i class="fas fa-check-circle"></i> Khôi phục tin nhắn cũ — lấy lại dữ liệu trước khi dùng
+                        Zework</li>
                     <li><i class="fas fa-check-circle"></i> Nhân viên nghỉ việc — dữ liệu vẫn an toàn trên hệ thống</li>
                     <li><i class="fas fa-check-circle"></i> Mã hóa đầu cuối — bảo mật cấp doanh nghiệp</li>
                 </ul>
@@ -363,7 +389,8 @@
             <div class="feature-showcase-text">
                 <span class="feature-showcase-badge"><i class="fas fa-robot"></i> Tự động hoá</span>
                 <h3>Thiết lập quy tắc tự động — tiết kiệm 90% thời gian</h3>
-                <p>Cấu hình hành động tự động cho từng loại sự kiện: trả lời từ khoá, chào mừng kết bạn mới, chúc sinh nhật, và nhiều hơn nữa.</p>
+                <p>Cấu hình hành động tự động cho từng loại sự kiện: trả lời từ khoá, chào mừng kết bạn mới, chúc sinh
+                    nhật, và nhiều hơn nữa.</p>
                 <ul class="feature-showcase-benefits">
                     <li><i class="fas fa-check-circle"></i> Trả lời tự động theo từ khoá — phản hồi tức thì 24/7</li>
                     <li><i class="fas fa-check-circle"></i> Tự động chấp nhận kết bạn + gửi tin chào mừng</li>
@@ -381,7 +408,8 @@
             <div class="feature-showcase-text">
                 <span class="feature-showcase-badge"><i class="fas fa-brain"></i> Trí tuệ nhân tạo</span>
                 <h3>AI thông minh — nâng cao trải nghiệm khách hàng</h3>
-                <p>Tích hợp AI chatbot tự động trả lời, gắn tag phân loại, phân tích cảm xúc, dự đoán mua hàng và tóm tắt hội thoại.</p>
+                <p>Tích hợp AI chatbot tự động trả lời, gắn tag phân loại, phân tích cảm xúc, dự đoán mua hàng và tóm
+                    tắt hội thoại.</p>
                 <ul class="feature-showcase-benefits">
                     <li><i class="fas fa-check-circle"></i> AI tự động trả lời tin nhắn khách hàng 24/7</li>
                     <li><i class="fas fa-check-circle"></i> Tự động gắn tag — phân loại khách hàng thông minh</li>
@@ -399,7 +427,8 @@
             <div class="feature-showcase-text">
                 <span class="feature-showcase-badge"><i class="fas fa-chart-bar"></i> Dashboard</span>
                 <h3>Báo cáo trực quan — nắm bắt hiệu suất theo thời gian thực</h3>
-                <p>Dashboard tổng quan với biểu đồ trực quan — theo dõi số lượng tin nhắn, tỷ lệ phản hồi, hiệu suất nhân viên và xu hướng khách hàng.</p>
+                <p>Dashboard tổng quan với biểu đồ trực quan — theo dõi số lượng tin nhắn, tỷ lệ phản hồi, hiệu suất
+                    nhân viên và xu hướng khách hàng.</p>
                 <ul class="feature-showcase-benefits">
                     <li><i class="fas fa-check-circle"></i> Biểu đồ realtime — dữ liệu cập nhật liên tục</li>
                     <li><i class="fas fa-check-circle"></i> Thống kê theo nhân viên, tài khoản, khoảng thời gian</li>
@@ -425,8 +454,13 @@
                         <path d="m96 46h-82c-4.971 0-9 4.029-9 9s4.029 9 9 9h82c4.971 0 9-4.029 9-9s-4.029-9-9-9z">
                         </path>
                     </svg></div>1 phút để bắt đầu</h1>
-            <p>Hơn 2.000 doanh nghiệp đang dùng Zework để quản lý và chăm sóc khách hàng hiệu quả hơn mỗi ngày </p>
-            <button class="experience bottom">Trải nghiệm miễn phí ngay</button>
+            <p>Tối ưu hóa hiệu suất đội ngũ Sales và làm chủ dữ liệu khách hàng ngay hôm nay cùng Zework. </p>
+            <div style="display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap;">
+                <button class="experience">Dùng thử miễn phí 7 ngày</button>
+                <button class="btn-consult open-consult-modal">
+                    <i class="fas fa-headset"></i> Nhận tư vấn 1–1
+                </button>
+            </div>
         </div>
         <div class="main-footer">
             <div class="left-main-footer">
@@ -487,7 +521,9 @@
                         </button>
                     </div>
                     <p class="secondary-webapp-note">
-                        Bạn chỉ cần tải app khi muốn <b>Gọi</b>. Các tính năng khác hãy trải nghiệm ngay trên bản Web tại
+                        Bạn chỉ cần tải app khi muốn <b>Gọi</b>. Các tính năng khác hãy trải nghiệm ngay trên bản
+                        Web
+                        tại
                         <a href="https://app.zework.com" target="_blank">app.zework.com</a>
                     </p>
                 </div>
@@ -495,16 +531,30 @@
             <div class="right-main-footer">
                 <div>
                     <h2>Sản phẩm</h2>
-                        <a href="#trangchu"><p>Tổng quan</p></a>
-                        <a href="#tinhnang"><p>Tính năng</p></a>
-                        <a href="#banggia"> <p>Bảng giá</p></a>
-                        <a href="#baiviet"><p>Bài viết</p></a>
+                    <a href="#trangchu">
+                        <p>Tổng quan</p>
+                    </a>
+                    <a href="#tinhnang">
+                        <p>Tính năng</p>
+                    </a>
+                    <a href="#banggia">
+                        <p>Bảng giá</p>
+                    </a>
+                    <a href="#baiviet">
+                        <p>Bài viết</p>
+                    </a>
                 </div>
                 <div>
                     <h2>Điều khoản</h2>
-                    <p>Chính sách</p>
-                    <p>Bảo mật</p>
-                    <a href="#lienhe"><p>Liên hệ</p></a>
+                    <a href="#dieu-khoan">
+                        <p>Điều khoản</p>
+                    </a>
+                    <a href="#baomat">
+                        <p>Bảo mật</p>
+                    </a>
+                    <a href="#lienhe">
+                        <p>Liên hệ</p>
+                    </a>
                 </div>
                 <div>
                     <h2>Mạng xã hội</h2>
@@ -518,21 +568,24 @@
                 </div>
                 <div>
                     <h2>ZEWORK CO., LTD</h2>
-                    <a href="company.html"><p>Về chúng tôi</p></a>
+                    <a href="company.html">
+                        <p>Về chúng tôi</p>
+                    </a>
                     <p>Mã số thuế: 0111275923</p>
                     <h2 style="margin-top: 1rem; margin-bottom: 1rem;">Hotline</h2>
-                        <a href="tel:0982303333">
+                    <a href="tel:0982303333">
                         <p>
                             0982303333
                         </p>
-                        </a>
+                    </a>
 
                     <h2>Địa chỉ</h2>
-            
-                        <a href="https://maps.app.goo.gl/XqnTPHBvFXWi5mEZ6"><p>
+
+                    <a href="https://maps.app.goo.gl/XqnTPHBvFXWi5mEZ6">
+                        <p>
                             29-T1 P. Hoàng Đạo Thúy, Trung Hoà, Cầu Giấy, Hà Nội</p>
-                        </a>
-                    
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -569,9 +622,59 @@
             </div>
         </div>
     </footer>
+    <!-- ========== CONSULTATION MODAL ========== -->
+    <div class="consult-modal-overlay" id="consultModal">
+        <div class="consult-modal-content">
+            <button class="consult-modal-close" id="closeConsultModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="consult-modal-header">
+                <h2>Đặt lịch tư vấn miễn phí</h2>
+                <p>Zework sẽ liên hệ lại bạn trong vòng 30 phút để hỗ trợ giải pháp tối ưu nhất cho doanh nghiệp.
+                </p>
+            </div>
+            <form class="consult-form" id="consultForm" method="POST" action="javascript:void(0);">
+                <div class="consult-form-row">
+                    <div class="consult-form-group">
+                        <label for="consult-name"><i class="fas fa-user"></i> Họ và tên <span>*</span></label>
+                        <input type="text" id="consult-name" name="name" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="consult-form-group">
+                        <label for="consult-phone"><i class="fas fa-phone"></i> Số điện thoại <span>*</span></label>
+                        <input type="tel" id="consult-phone" name="phone" placeholder="0912 345 678" required>
+                    </div>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-email"><i class="fas fa-envelope"></i> Email <span>*</span></label>
+                    <input type="email" id="consult-email" name="email" placeholder="email@company.com" required>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-subject"><i class="fas fa-tag"></i> Bạn quan tâm đến</label>
+                    <select id="consult-subject" name="subject">
+                        <option value="consultation">Cần tư vấn giải pháp</option>
+                        <option value="demo">Đặt lịch demo sản phẩm</option>
+                        <option value="pricing">Hỏi về bảng giá</option>
+                        <option value="partnership">Hợp tác kinh doanh</option>
+                    </select>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-message"><i class="fas fa-comment-dots"></i> Ghi chú thêm</label>
+                    <textarea id="consult-message" name="message"
+                        placeholder="Ví dụ: Tôi muốn tư vấn cho đội ngũ 50 người..." rows="3"></textarea>
+                </div>
+                <!-- Turnstile placeholder -->
+                <div id="modal-turnstile" style="margin: 0 auto;"></div>
+
+                <button type="submit" class="consult-submit-btn">
+                    <i class="fas fa-paper-plane"></i> Gửi yêu cầu ngay
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/menu.js"></script>
+    <script src="js/scroll-reveal.js"></script>
+    <script src="js/consultation-handler.js"></script>
 </body>
 
 </html>
-
-<script src="js/menu.js"></script>
-<script src="js/scroll-reveal.js"></script>

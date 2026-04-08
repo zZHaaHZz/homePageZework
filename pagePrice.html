@@ -2,27 +2,30 @@
 <html lang="vi">
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C8JGBS9ECN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8JGBS9ECN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-C8JGBS9ECN');
-</script>
+        gtag('config', 'G-C8JGBS9ECN');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <title>Bảng giá Zework | Chỉ từ 90k/tháng - Gói cước linh hoạt</title>
-    <meta name="description" content="Bảng giá phần mềm Zework cập nhật mới nhất. Gói cá nhân chỉ 90.000đ. Đầy đủ tính năng quản lý Zalo, CRM, API. Mua thêm tài khoản nhân viên giá rẻ.">
-    <meta name="keywords" content="bảng giá zework, giá phần mềm crm zalo, chi phí quản lý zalo, mua tài khoản zework, gói cước zework khởi nghiệp, báo giá phần mềm telesale">
+    <meta name="description"
+        content="Bảng giá phần mềm Zework cập nhật mới nhất. Gói cá nhân chỉ 90.000đ. Đầy đủ tính năng quản lý Zalo, CRM, API. Mua thêm tài khoản nhân viên giá rẻ.">
+    <meta name="keywords"
+        content="bảng giá zework, giá phần mềm crm zalo, chi phí quản lý zalo, mua tài khoản zework, gói cước zework khởi nghiệp, báo giá phần mềm telesale">
     <link rel="canonical" href="https://zework.com/bang-gia">
 
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://zework.com/bang-gia">
     <meta property="og:title" content="Bảng giá Zework - Đầu tư nhỏ, Hiệu quả lớn">
-    <meta property="og:description" content="Chỉ với 3.000đ/ngày để sở hữu hệ thống CRM Zalo chuyên nghiệp. Xem ngay ưu đãi khi mua gói 6 tháng và 12 tháng.">
+    <meta property="og:description"
+        content="Chỉ với 3.000đ/ngày để sở hữu hệ thống CRM Zalo chuyên nghiệp. Xem ngay ưu đãi khi mua gói 6 tháng và 12 tháng.">
     <meta property="og:price:amount" content="90000">
     <meta property="og:price:currency" content="VND">
     <meta property="og:image" content="https://zework.com/img/Rectangle.png">
@@ -107,10 +110,24 @@
     <link rel="icon" type="image/png" href="./img/logoZework.svg">
     <link rel="stylesheet" href="./css/site/header.css">
     <link rel="stylesheet" href="./css/site/footer.css">
+    <link rel="stylesheet" href="./css/site/buttons.css">
+    <link rel="stylesheet" href="./css/site/consultation-modal.css">
     <link rel="stylesheet" href="./css/homePage/price.css">
     <link rel="stylesheet" href="./css/site/tag-iconlist.css">
     <link rel="stylesheet" href="./css/price/packages.css">
     <link rel="stylesheet" href="./css/price/ask-suport.css">
+
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script>
+        let turnstileToken = '';
+        function onTurnstileSuccess(token) {
+            turnstileToken = token;
+        }
+        function onTurnstileExpired() {
+            turnstileToken = '';
+        }
+    </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
@@ -278,8 +295,8 @@
 
                 <div class="menu-change-langue">
                     <ul class="ul-menu-change-langue">
-                        <li>English</li>
-                        <li>Chinese</li>
+                        <li data-lang="vi" class="active-lang">Tiếng Việt</li>
+                        <li data-lang="en">English</li>
                     </ul>
                 </div>
                 <button class="btn-header-login">Đăng nhập</button>
@@ -313,28 +330,26 @@
             </div>
         </div>
     </header>
-<div class="mobile-menu-popup" id="mobileMenu">
-                <ul class="ul-menu">
-                    <li><a href="#trangchu">Trang chủ</a></li>
-                    <li><a href="#tinhnang">Tính năng</a></li>
-                    <li><a href="#banggia">Bảng giá</a></li>
-                    <li><a href="#baiviet">Bài viết</a></li>
-                    <li><a href="#lienhe">Liên hệ</a></li>
-                </ul>
+    <div class="mobile-menu-popup" id="mobileMenu">
+        <ul class="ul-menu">
+            <li><a href="#trangchu">Trang chủ</a></li>
+            <li><a href="#tinhnang">Tính năng</a></li>
+            <li><a href="#banggia">Bảng giá</a></li>
+            <li><a href="#baiviet">Bài viết</a></li>
+            <li><a href="#lienhe">Liên hệ</a></li>
+        </ul>
 
-                <div class="mobile-auth">
-                    <button class="btn-signup">Đăng ký</button>
-                    <button class="btn-login">Đăng nhập</button>
-                </div>
-            </div>
+        <div class="mobile-auth">
+            <button class="btn-signup">Đăng ký</button>
+            <button class="btn-login">Đăng nhập</button>
+        </div>
+    </div>
     <div class="container-price">
         <div class="price-container">
             <div class="price-title">
                 <div class="tag-acc">
                     <div class="tag-inner">
-                        <div class="icon-list">
-                            <div class="extra"></div>
-                        </div>
+                        <i class="fas fa-tag" style="color: #0066db; font-size: 1.6rem;"></i>
                         <h6>BẢNG GIÁ</h6>
                     </div>
                 </div>
@@ -372,9 +387,7 @@
             <div class="tittle-packages">
                 <div class="tag-acc">
                     <div class="tag-inner">
-                        <div class="icon-list">
-                            <div class="extra"></div>
-                        </div>
+                        <i class="fas fa-layer-group" style="color: #0066db; font-size: 1.6rem;"></i>
                         <h6>SO SÁNH</h6>
                     </div>
                 </div>
@@ -505,15 +518,13 @@
                 <div class="">
                     <div class="tag-acc">
                         <div class="tag-inner">
-                            <div class="icon-list">
-                                <div class="extra"></div>
-                            </div>
+                            <i class="fas fa-headset" style="color: #0066db; font-size: 1.6rem;"></i>
                             <h6>HỖ TRỢ</h6>
                         </div>
                     </div>
                 </div>
                 <h1>Câu hỏi thường gặp</h1>
-                <p>Zework cung cấp các gói dịch vụ đa dạng, phục vụ khách hàng 
+                <p>Zework cung cấp các gói dịch vụ đa dạng, phục vụ khách hàng
                     nhu cầu mua lẻ hoặc mua theo tháng</p>
             </div>
 
@@ -525,7 +536,9 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>Bạn chỉ cần liên hệ đội ngũ ZeWork qua hotline <strong>0982303333</strong> hoặc gửi form đăng ký trên website. Đội ngũ nhân viên Zework sẽ trực tiếp liên hệ với bạn, tư vấn gói phù hợp và hướng dẫn chi tiết quy trình đăng ký.</span>
+                        <span>Bạn chỉ cần liên hệ đội ngũ ZeWork qua hotline <strong>0982303333</strong> hoặc gửi form
+                            đăng ký trên website. Đội ngũ nhân viên Zework sẽ trực tiếp liên hệ với bạn, tư vấn gói phù
+                            hợp và hướng dẫn chi tiết quy trình đăng ký.</span>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -535,7 +548,10 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>Bạn có thể liên hệ bộ phận hỗ trợ qua nhiều kênh: Hotline <strong>0982303333</strong> (hỗ trợ trong giờ hành chính), Zalo chính thức của ZeWork, hoặc gửi yêu cầu qua trang <a href="/lien-he">Liên hệ</a> trên website. Đội ngũ CSKH sẽ phản hồi trong vòng 24 giờ làm việc.</span>
+                        <span>Bạn có thể liên hệ bộ phận hỗ trợ qua nhiều kênh: Hotline <strong>0982303333</strong> (hỗ
+                            trợ trong giờ hành chính), Zalo chính thức của ZeWork, hoặc gửi yêu cầu qua trang <a
+                                href="/lien-he">Liên hệ</a> trên website. Đội ngũ CSKH sẽ phản hồi trong vòng 24 giờ làm
+                            việc.</span>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -545,7 +561,9 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>ZeWork hỗ trợ thanh toán qua chuyển khoản ngân hàng, ví điện tử (MoMo, ZaloPay, VNPay), và thẻ tín dụng/ghi nợ quốc tế (Visa, Mastercard). Đối với doanh nghiệp, chúng tôi hỗ trợ xuất hóa đơn VAT và thanh toán theo hợp đồng.</span>
+                        <span>ZeWork hỗ trợ thanh toán qua chuyển khoản ngân hàng, ví điện tử (MoMo, ZaloPay, VNPay), và
+                            thẻ tín dụng/ghi nợ quốc tế (Visa, Mastercard). Đối với doanh nghiệp, chúng tôi hỗ trợ xuất
+                            hóa đơn VAT và thanh toán theo hợp đồng.</span>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -555,7 +573,10 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>Có! ZeWork cung cấp gói dùng thử miễn phí để bạn trải nghiệm đầy đủ các tính năng cốt lõi trước khi quyết định mua. Bạn chỉ cần đăng ký tài khoản trên <a href="https://app.zework.com">app.zework.com</a> và bắt đầu sử dụng ngay, không cần nhập thông tin thanh toán.</span>
+                        <span>Có! ZeWork cung cấp gói dùng thử miễn phí để bạn trải nghiệm đầy đủ các tính năng cốt lõi
+                            trước khi quyết định mua. Bạn chỉ cần đăng ký tài khoản trên <a
+                                href="https://app.zework.com">app.zework.com</a> và bắt đầu sử dụng ngay, không cần nhập
+                            thông tin thanh toán.</span>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -565,7 +586,10 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>Tùy theo gói dịch vụ, ZeWork hỗ trợ từ 1 đến 30+ tài khoản Zalo cá nhân. Gói <strong>Mua lẻ</strong> hỗ trợ 1 tài khoản, <strong>Khởi nghiệp</strong> 5, <strong>Phổ biến</strong> 10, <strong>Nâng cao</strong> 20 và <strong>Cao cấp</strong> 30 tài khoản. Nếu cần nhiều hơn, hãy liên hệ để được tư vấn gói tùy chỉnh.</span>
+                        <span>Tùy theo gói dịch vụ, ZeWork hỗ trợ từ 1 đến 30+ tài khoản Zalo cá nhân. Gói <strong>Mua
+                                lẻ</strong> hỗ trợ 1 tài khoản, <strong>Khởi nghiệp</strong> 5, <strong>Phổ
+                                biến</strong> 10, <strong>Nâng cao</strong> 20 và <strong>Cao cấp</strong> 30 tài khoản.
+                            Nếu cần nhiều hơn, hãy liên hệ để được tư vấn gói tùy chỉnh.</span>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -575,7 +599,9 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>Có. Toàn bộ dữ liệu tin nhắn, file đính kèm, thông tin khách hàng được đồng bộ realtime và lưu trữ trên hệ thống Cloud bảo mật cao. Dữ liệu được mã hóa trong quá trình truyền tải và lưu trữ, đảm bảo chỉ tài khoản được phân quyền mới có thể truy cập.</span>
+                        <span>Có. Toàn bộ dữ liệu tin nhắn, file đính kèm, thông tin khách hàng được đồng bộ realtime và
+                            lưu trữ trên hệ thống Cloud bảo mật cao. Dữ liệu được mã hóa trong quá trình truyền tải và
+                            lưu trữ, đảm bảo chỉ tài khoản được phân quyền mới có thể truy cập.</span>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -585,7 +611,9 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>Không! Đây chính là ưu điểm lớn nhất của ZeWork. Toàn bộ dữ liệu được lưu trữ tập trung trên hệ thống doanh nghiệp. Khi nhân viên nghỉ việc, quản lý chỉ cần thu hồi quyền truy cập và chuyển giao tài khoản Zalo cho nhân viên mới — không mất bất kỳ dữ liệu nào.</span>
+                        <span>Không! Đây chính là ưu điểm lớn nhất của ZeWork. Toàn bộ dữ liệu được lưu trữ tập trung
+                            trên hệ thống doanh nghiệp. Khi nhân viên nghỉ việc, quản lý chỉ cần thu hồi quyền truy cập
+                            và chuyển giao tài khoản Zalo cho nhân viên mới — không mất bất kỳ dữ liệu nào.</span>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -595,7 +623,9 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>Có! ZeWork tích hợp tính năng Zalo Call trực tiếp trên phần mềm. Bạn có thể gọi thoại cho khách hàng ngay trên giao diện web mà không cần mở ứng dụng Zalo riêng. Cuộc gọi hoàn toàn miễn phí qua Zalo và có thể được ghi âm để lưu trữ.</span>
+                        <span>Có! ZeWork tích hợp tính năng Zalo Call trực tiếp trên phần mềm. Bạn có thể gọi thoại cho
+                            khách hàng ngay trên giao diện web mà không cần mở ứng dụng Zalo riêng. Cuộc gọi hoàn toàn
+                            miễn phí qua Zalo và có thể được ghi âm để lưu trữ.</span>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -605,7 +635,9 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>ZeWork phù hợp với mọi quy mô — từ cá nhân kinh doanh online, startup, SME đến tập đoàn lớn. Đặc biệt hiệu quả cho ngành bất động sản, giáo dục, thương mại điện tử, bảo hiểm, ngân hàng, và bất kỳ lĩnh vực nào sử dụng Zalo để chăm sóc khách hàng.</span>
+                        <span>ZeWork phù hợp với mọi quy mô — từ cá nhân kinh doanh online, startup, SME đến tập đoàn
+                            lớn. Đặc biệt hiệu quả cho ngành bất động sản, giáo dục, thương mại điện tử, bảo hiểm, ngân
+                            hàng, và bất kỳ lĩnh vực nào sử dụng Zalo để chăm sóc khách hàng.</span>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -615,12 +647,14 @@
                         <i class="fas fa-plus-circle faq-icon-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <span>Có! ZeWork hỗ trợ phân quyền chi tiết cho từng nhân viên. Quản lý có thể phân công nhân viên phụ trách tài khoản Zalo cụ thể, giới hạn quyền xem/trả lời tin nhắn, quản lý danh sách khách hàng, và theo dõi hiệu suất qua Dashboard realtime.</span>
+                        <span>Có! ZeWork hỗ trợ phân quyền chi tiết cho từng nhân viên. Quản lý có thể phân công nhân
+                            viên phụ trách tài khoản Zalo cụ thể, giới hạn quyền xem/trả lời tin nhắn, quản lý danh sách
+                            khách hàng, và theo dõi hiệu suất qua Dashboard realtime.</span>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
     </div>
     </div>
     <div class="icon-zalo-chat">
@@ -635,8 +669,13 @@
                         <path d="m96 46h-82c-4.971 0-9 4.029-9 9s4.029 9 9 9h82c4.971 0 9-4.029 9-9s-4.029-9-9-9z">
                         </path>
                     </svg></div>1 phút để bắt đầu</h1>
-            <p>Hơn 2.000 doanh nghiệp đang dùng Zework để quản lý và chăm sóc khách hàng hiệu quả hơn mỗi ngày </p>
-            <button class="experience bottom">Trải nghiệm miễn phí ngay</button>
+            <p>Tối ưu hóa hiệu suất đội ngũ Sales và làm chủ dữ liệu khách hàng ngay hôm nay cùng Zework. </p>
+            <div style="display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap;">
+                <button class="experience">Dùng thử miễn phí 7 ngày</button>
+                <button class="btn-consult open-consult-modal">
+                    <i class="fas fa-headset"></i> Nhận tư vấn 1–1
+                </button>
+            </div>
         </div>
         <div class="main-footer">
             <div class="left-main-footer">
@@ -697,7 +736,9 @@
                         </button>
                     </div>
                     <p class="secondary-webapp-note">
-                        Bạn chỉ cần tải app khi muốn <b>Gọi</b>. Các tính năng khác hãy trải nghiệm ngay trên bản Web tại
+                        Bạn chỉ cần tải app khi muốn <b>Gọi</b>. Các tính năng khác hãy trải nghiệm ngay trên bản
+                        Web
+                        tại
                         <a href="https://app.zework.com" target="_blank">app.zework.com</a>
                     </p>
                 </div>
@@ -705,16 +746,30 @@
             <div class="right-main-footer">
                 <div>
                     <h2>Sản phẩm</h2>
-                        <a href="#trangchu"><p>Tổng quan</p></a>
-                        <a href="#tinhnang"><p>Tính năng</p></a>
-                        <a href="#banggia"> <p>Bảng giá</p></a>
-                        <a href="#baiviet"><p>Bài viết</p></a>
+                    <a href="#trangchu">
+                        <p>Tổng quan</p>
+                    </a>
+                    <a href="#tinhnang">
+                        <p>Tính năng</p>
+                    </a>
+                    <a href="#banggia">
+                        <p>Bảng giá</p>
+                    </a>
+                    <a href="#baiviet">
+                        <p>Bài viết</p>
+                    </a>
                 </div>
                 <div>
                     <h2>Điều khoản</h2>
-                    <p>Chính sách</p>
-                    <p>Bảo mật</p>
-                    <a href="#lienhe"><p>Liên hệ</p></a>
+                    <a href="#dieu-khoan">
+                        <p>Điều khoản</p>
+                    </a>
+                    <a href="#baomat">
+                        <p>Bảo mật</p>
+                    </a>
+                    <a href="#lienhe">
+                        <p>Liên hệ</p>
+                    </a>
                 </div>
                 <div>
                     <h2>Mạng xã hội</h2>
@@ -728,21 +783,24 @@
                 </div>
                 <div>
                     <h2>ZEWORK CO., LTD</h2>
-                    <a href="company.html"><p>Về chúng tôi</p></a>
+                    <a href="company.html">
+                        <p>Về chúng tôi</p>
+                    </a>
                     <p>Mã số thuế: 0111275923</p>
                     <h2 style="margin-top: 1rem; margin-bottom: 1rem;">Hotline</h2>
-                        <a href="tel:0982303333">
+                    <a href="tel:0982303333">
                         <p>
                             0982303333
                         </p>
-                        </a>
+                    </a>
 
                     <h2>Địa chỉ</h2>
-            
-                        <a href="https://maps.app.goo.gl/XqnTPHBvFXWi5mEZ6"><p>
+
+                    <a href="https://maps.app.goo.gl/XqnTPHBvFXWi5mEZ6">
+                        <p>
                             29-T1 P. Hoàng Đạo Thúy, Trung Hoà, Cầu Giấy, Hà Nội</p>
-                        </a>
-                    
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -779,9 +837,60 @@
             </div>
         </div>
     </footer>
+    <!-- ========== CONSULTATION MODAL ========== -->
+    <div class="consult-modal-overlay" id="consultModal">
+        <div class="consult-modal-content">
+            <button class="consult-modal-close" id="closeConsultModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="consult-modal-header">
+                <h2>Đặt lịch tư vấn miễn phí</h2>
+                <p>Zework sẽ liên hệ lại bạn trong vòng 30 phút để hỗ trợ giải pháp tối ưu nhất cho doanh nghiệp.
+                </p>
+            </div>
+            <form class="consult-form" id="consultForm" method="POST" action="javascript:void(0);">
+                <div class="consult-form-row">
+                    <div class="consult-form-group">
+                        <label for="consult-name"><i class="fas fa-user"></i> Họ và tên <span>*</span></label>
+                        <input type="text" id="consult-name" name="name" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="consult-form-group">
+                        <label for="consult-phone"><i class="fas fa-phone"></i> Số điện thoại <span>*</span></label>
+                        <input type="tel" id="consult-phone" name="phone" placeholder="0912 345 678" required>
+                    </div>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-email"><i class="fas fa-envelope"></i> Email <span>*</span></label>
+                    <input type="email" id="consult-email" name="email" placeholder="email@company.com" required>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-subject"><i class="fas fa-tag"></i> Bạn quan tâm đến</label>
+                    <select id="consult-subject" name="subject">
+                        <option value="consultation">Cần tư vấn giải pháp</option>
+                        <option value="demo">Đặt lịch demo sản phẩm</option>
+                        <option value="pricing">Hỏi về bảng giá</option>
+                        <option value="partnership">Hợp tác kinh doanh</option>
+                    </select>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-message"><i class="fas fa-comment-dots"></i> Ghi chú thêm</label>
+                    <textarea id="consult-message" name="message"
+                        placeholder="Ví dụ: Tôi muốn tư vấn cho đội ngũ 50 người..." rows="3"></textarea>
+                </div>
+                <!-- Turnstile placeholder -->
+                <div id="modal-turnstile" style="margin: 0 auto;"></div>
+
+                <button type="submit" class="consult-submit-btn">
+                    <i class="fas fa-paper-plane"></i> Gửi yêu cầu ngay
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/menu.js"></script>
+    <script src="js/price.js"></script>
+    <script src="js/scroll-reveal.js"></script>
+    <script src="js/consultation-handler.js"></script>
 </body>
 
 </html>
-<script src="js/menu.js"></script>
-<script src="js/price.js"></script>
-<script src="js/faq.js"></script>

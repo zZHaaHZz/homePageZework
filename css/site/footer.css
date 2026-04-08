@@ -40,27 +40,6 @@ footer {
 }
 
 .experience.bottom {
-    cursor: pointer;
-    z-index: 3;
-    width: 27rem;
-    height: 5.6rem;
-    border-radius: 1.2rem;
-    background: linear-gradient(135deg, #027BFF, #4da3ff);
-    border: none;
-    color: #FFFFFF;
-    font-size: 1.6rem;
-    font-weight: 600;
-    box-shadow: 0 0.4rem 1.6rem rgba(2, 123, 255, 0.25);
-    transition: all 0.3s ease;
-}
-
-.experience:hover.bottom {
-    background: linear-gradient(135deg, #0066db, #3d93ff);
-    box-shadow: 0 0.6rem 2rem rgba(2, 123, 255, 0.35);
-    transform: translateY(-0.2rem);
-}
-
-.experience.bottom {
     left: 0;
 }
 

@@ -59,8 +59,20 @@
     <link rel="stylesheet" href="./css/site/tag-iconlist.css">
     <link rel="stylesheet" href="./css/contact/page-contact.css">
     <link rel="stylesheet" href="./css/site/toast.css">
+    <link rel="stylesheet" href="./css/site/buttons.css">
+    <link rel="stylesheet" href="./css/site/consultation-modal.css">
+
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script>
+        let turnstileToken = '';
+        function onTurnstileSuccess(token) {
+            turnstileToken = token;
+        }
+        function onTurnstileExpired() {
+            turnstileToken = '';
+        }
+    </script>
 </head>
 
 <body>
@@ -223,8 +235,8 @@
 
                 <div class="menu-change-langue">
                     <ul class="ul-menu-change-langue">
-                        <li>English</li>
-                        <li>Chinese</li>
+                        <li data-lang="vi" class="active-lang">Tiếng Việt</li>
+                        <li data-lang="en">English</li>
                     </ul>
                 </div>
                 <button class="btn-header-login">Đăng nhập</button>
@@ -373,15 +385,9 @@
                     </div>
                     <!-- Cloudflare Turnstile Widget -->
                     <div class="contact-turnstile-wrapper">
-                        <div
-                            id="cf-turnstile"
-                            class="cf-turnstile"
-                            data-sitekey="1x00000000000000000000AA"
-                            data-theme="light"
-                            data-size="normal"
-                            data-callback="onTurnstileSuccess"
-                            data-expired-callback="onTurnstileExpired"
-                        ></div>
+                        <div id="cf-turnstile" class="cf-turnstile" data-sitekey="1x00000000000000000000AA"
+                            data-theme="light" data-size="normal" data-callback="onTurnstileSuccess"
+                            data-expired-callback="onTurnstileExpired"></div>
                     </div>
                     <button type="submit" class="contact-form-submit">
                         <i class="fas fa-paper-plane"></i> Gửi yêu cầu tư vấn
@@ -428,8 +434,13 @@
                         <path d="m96 46h-82c-4.971 0-9 4.029-9 9s4.029 9 9 9h82c4.971 0 9-4.029 9-9s-4.029-9-9-9z">
                         </path>
                     </svg></div>1 phút để bắt đầu</h1>
-            <p>Hơn 2.000 doanh nghiệp đang dùng Zework để quản lý và chăm sóc khách hàng hiệu quả hơn mỗi ngày </p>
-            <button class="experience bottom">Trải nghiệm miễn phí ngay</button>
+            <p>Tối ưu hóa hiệu suất đội ngũ Sales và làm chủ dữ liệu khách hàng ngay hôm nay cùng Zework. </p>
+            <div style="display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap;">
+                <button class="experience">Dùng thử miễn phí 7 ngày</button>
+                <button class="btn-consult open-consult-modal">
+                    <i class="fas fa-headset"></i> Nhận tư vấn 1–1
+                </button>
+            </div>
         </div>
         <div class="main-footer">
             <div class="left-main-footer">
@@ -490,7 +501,8 @@
                         </button>
                     </div>
                     <p class="secondary-webapp-note">
-                        Bạn chỉ cần tải app khi muốn <b>Gọi</b>. Các tính năng khác hãy trải nghiệm ngay trên bản Web
+                        Bạn chỉ cần tải app khi muốn <b>Gọi</b>. Các tính năng khác hãy trải nghiệm ngay trên bản
+                        Web
                         tại
                         <a href="https://app.zework.com" target="_blank">app.zework.com</a>
                     </p>
@@ -514,8 +526,12 @@
                 </div>
                 <div>
                     <h2>Điều khoản</h2>
-                    <p>Chính sách</p>
-                    <p>Bảo mật</p>
+                    <a href="#dieu-khoan">
+                        <p>Điều khoản</p>
+                    </a>
+                    <a href="#baomat">
+                        <p>Bảo mật</p>
+                    </a>
                     <a href="#lienhe">
                         <p>Liên hệ</p>
                     </a>
@@ -586,18 +602,60 @@
             </div>
         </div>
     </footer>
-    <script src="js/menu.js"></script>
     <script src="js/contact-form-handler.js?v=1.2"></script>
-    <script>
-        // Turnstile global callbacks
-        let turnstileToken = '';
-        function onTurnstileSuccess(token) {
-            turnstileToken = token;
-        }
-        function onTurnstileExpired() {
-            turnstileToken = '';
-        }
-    </script>
+    <!-- ========== CONSULTATION MODAL ========== -->
+    <div class="consult-modal-overlay" id="consultModal">
+        <div class="consult-modal-content">
+            <button class="consult-modal-close" id="closeConsultModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="consult-modal-header">
+                <h2>Đặt lịch tư vấn miễn phí</h2>
+                <p>Zework sẽ liên hệ lại bạn trong vòng 30 phút để hỗ trợ giải pháp tối ưu nhất cho doanh nghiệp.
+                </p>
+            </div>
+            <form class="consult-form" id="consultForm" method="POST" action="javascript:void(0);">
+                <div class="consult-form-row">
+                    <div class="consult-form-group">
+                        <label for="consult-name"><i class="fas fa-user"></i> Họ và tên <span>*</span></label>
+                        <input type="text" id="consult-name" name="name" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="consult-form-group">
+                        <label for="consult-phone"><i class="fas fa-phone"></i> Số điện thoại <span>*</span></label>
+                        <input type="tel" id="consult-phone" name="phone" placeholder="0912 345 678" required>
+                    </div>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-email"><i class="fas fa-envelope"></i> Email <span>*</span></label>
+                    <input type="email" id="consult-email" name="email" placeholder="email@company.com" required>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-subject"><i class="fas fa-tag"></i> Bạn quan tâm đến</label>
+                    <select id="consult-subject" name="subject">
+                        <option value="consultation">Cần tư vấn giải pháp</option>
+                        <option value="demo">Đặt lịch demo sản phẩm</option>
+                        <option value="pricing">Hỏi về bảng giá</option>
+                        <option value="partnership">Hợp tác kinh doanh</option>
+                    </select>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-message"><i class="fas fa-comment-dots"></i> Ghi chú thêm</label>
+                    <textarea id="consult-message" name="message"
+                        placeholder="Ví dụ: Tôi muốn tư vấn cho đội ngũ 50 người..." rows="3"></textarea>
+                </div>
+                <!-- Turnstile placeholder -->
+                <div id="modal-turnstile" style="margin: 0 auto;"></div>
+
+                <button type="submit" class="consult-submit-btn">
+                    <i class="fas fa-paper-plane"></i> Gửi yêu cầu ngay
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/scroll-reveal.js"></script>
+    <script src="js/consultation-handler.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 
 </html>

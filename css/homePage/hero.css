@@ -14,7 +14,7 @@
     flex-direction: column;
     align-items: center;
     background: transparent;
-    padding-bottom: 15rem; /* Increased padding to give dashboard more space */
+    padding-bottom: 20rem; /* Increased padding to give dashboard more space */
 }
 
 .hero::before {
@@ -73,7 +73,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 118.6rem;
-    height: 120rem;
+    height: 68rem;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(1rem);
     border-radius: 2rem;
@@ -182,6 +182,11 @@
     color: #475467;
 }
 
+.div-img-dashBoard {
+    height: 100%;
+    width: 100%;
+}
+
 .div-img-dashBoard video {
     width: 110.6rem;
     height: 51rem;
@@ -190,34 +195,9 @@
     z-index: 4;
 }
 
-
-.experience.top {
-    cursor: pointer;
-    z-index: 3;
-    width: 27rem;
-    height: 5.6rem;
-    border-radius: 1.2rem;
-    background: linear-gradient(135deg, #027BFF, #4da3ff);
-    border: none;
-    color: #FFFFFF;
-    font-size: 1.6rem;
-    font-weight: 600;
-    box-shadow: 0 0.4rem 1.6rem rgba(2, 123, 255, 0.3);
-    padding-top: 0.2rem;
-    transition: all 0.3s ease;
-}
-
-.experience:hover.top {
-    background: linear-gradient(135deg, #0066db, #3d93ff);
-    box-shadow: 0 0.6rem 2.4rem rgba(2, 123, 255, 0.4);
-    transform: translateY(-0.2rem);
-}
-
-
 .img-quare-5-mobile {
     display: none;
 }
-
 @media (width<=430px) {
     .container {
         position: relative;
@@ -266,12 +246,8 @@
         color: #475467;
     }
 
-    .experience.top {
-        width: 25.2rem;
-        height: 4.8rem;
-        border-radius: 1.2rem;
-        font-size: 1.6rem;
-        border: none;
+    .experience {
+        padding-top: 0;
     }
 
     .square-5 {

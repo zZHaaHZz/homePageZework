@@ -14,25 +14,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>Blog Zework | Kiến thức Marketing Zalo & Chăm sóc khách hàng</title>
+    <title>Điều khoản sử dụng | Zework</title>
     <meta name="description"
-        content="Tổng hợp tin tức mới nhất về Zework, mẹo quản lý Zalo hiệu quả, chiến lược CSKH và chuyển đổi số cho doanh nghiệp vừa và nhỏ.">
-    <meta name="keywords"
-        content="tin tức zework, blog công nghệ, kinh nghiệm sale zalo, marketing zalo hiệu quả, hướng dẫn sử dụng zework, xu hướng crm">
-    <link rel="canonical" href="https://zework.com/bai-viet">
-
-    <meta property="og:type" content="blog">
-    <meta property="og:url" content="https://zework.com/bai-viet">
-    <meta property="og:title" content="Góc nhìn chuyên gia & Tin tức từ Zework">
-    <meta property="og:description"
-        content="Cập nhật các xu hướng mới nhất về công nghệ quản lý khách hàng và giải pháp doanh nghiệp.">
-    <meta property="og:image" content="https://zework.com/img/bai-viet/grid-bai-viet.svg">
+        content="Điều khoản sử dụng dịch vụ của Zework - Nền tảng quản lý Zalo tập trung cho doanh nghiệp và cá nhân.">
     <link rel="icon" type="image/png" href="./img/logoZework.svg">
-    <link rel="stylesheet" href="./css/site/header.css">
-    <link rel="stylesheet" href="./css/site/footer.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" href="./css/homePage/hero.css">
+    <link rel="stylesheet" href="./css/homePage/why-select-zework.css">
+    <link rel="stylesheet" href="./css/homePage/features.css">
+    <link rel="stylesheet" href="./css/homePage/feedback.css">
+    <link rel="stylesheet" href="./css/homePage/price.css">
     <link rel="stylesheet" href="./css/site/tag-iconlist.css">
+    <link rel="stylesheet" href="./css/site/header.css">
+    <link rel="stylesheet" href="./css/site/logo-zework.css">
+    <link rel="stylesheet" href="./css/site/footer.css">
+    <link rel="stylesheet" href="./css/security-animation.css">
+    <link rel="stylesheet" href="./css/homePage/feature-showcase.css">
+    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css">
+    <link rel="stylesheet" href="./css/homePage/team-experience.css">
+    <link rel="stylesheet" href="./css/scroll-reveal.css">
+    <link rel="stylesheet" href="./css/site/promotion-modal.css">
     <link rel="stylesheet" href="./css/site/buttons.css">
     <link rel="stylesheet" href="./css/site/consultation-modal.css">
+
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script>
@@ -44,13 +54,113 @@
             turnstileToken = '';
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/aricle/blog.css">
+
+    <style>
+        :root {
+            --primary-color: #027BFF;
+            --text-main: #101828;
+            --text-secondary: #475467;
+            --bg-light: #F9FAFB;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-main);
+            background-color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .terms-hero {
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(2, 123, 255, 0.1);
+        }
+
+        .terms-hero h1 {
+            font-size: 4.8rem;
+            font-weight: 800;
+            margin-bottom: 1.6rem;
+            background: linear-gradient(135deg, #027BFF, #0066db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .terms-hero p {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .terms-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .terms-section {
+            margin-bottom: 4rem;
+        }
+
+        .terms-section h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .terms-section h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .terms-content {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+        }
+
+        .terms-content p {
+            margin-bottom: 1.6rem;
+        }
+
+        .terms-content ul {
+            padding-left: 2rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .terms-content ul li {
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .terms-hero {
+                padding: 8rem 2rem 4rem;
+            }
+
+            .terms-hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .terms-container {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <script src="./js/security-animation.js"></script>
     <header>
         <div class="content-header">
             <a href="#trangchu">
@@ -79,36 +189,6 @@
                             </polygon>
                             <polygon fill="currentColor" style="fill:#FFDA44;" points="256,157.279 278.663,227.026 352,227.026 292.668,270.132 315.332,339.881 256,296.774 
 	196.668,339.881 219.332,270.132 160,227.026 233.337,227.026 "></polygon>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
                         </svg>
                     </div>
                     <div class="drop-dow"><svg version="1.1" id="fi_318426" xmlns="http://www.w3.org/2000/svg"
@@ -121,36 +201,6 @@
 			C514.096,145.416,514.096,131.933,505.755,123.592z"></path>
                                 </g>
                             </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
                         </svg></div>
 
                     <div class="drop-up">
@@ -161,58 +211,17 @@
                                 <path id="Expand_Less" d="M129.007,57.819c-4.68-4.68-12.499-4.68-17.191,0L3.555,165.803c-4.74,4.74-4.74,12.427,0,17.155
 		c4.74,4.74,12.439,4.74,17.179,0l99.683-99.406l99.671,99.418c4.752,4.74,12.439,4.74,17.191,0c4.74-4.74,4.74-12.427,0-17.155
 		L129.007,57.819z"></path>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
                             </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
-                            </g>
-                            <g>
                             </g>
                         </svg>
                     </div>
-                </div>
 
-                <div class="menu-change-langue">
-                    <ul class="ul-menu-change-langue">
-                        <li data-lang="vi" class="active-lang">Tiếng Việt</li>
-                        <li data-lang="en">English</li>
-                    </ul>
+                    <div class="menu-change-langue">
+                        <ul class="ul-menu-change-langue">
+                            <li data-lang="vi" class="active-lang">Tiếng Việt</li>
+                            <li data-lang="en">English</li>
+                        </ul>
+                    </div>
                 </div>
                 <button class="btn-header-login">Đăng nhập</button>
                 <button class="btn-header-signup">Đăng ký</button>
@@ -259,168 +268,70 @@
             <button class="btn-login">Đăng nhập</button>
         </div>
     </div>
-    <!-- ========== BLOG HERO ========== -->
-    <div class="blog-page-wrapper">
-        <section class="blog-hero">
-            <div class="blog-hero-content">
-                <span class="blog-hero-badge"><i class="fas fa-newspaper"></i> Blog & Tin tức</span>
-                <h1>Góc nhìn chuyên gia & Tin tức Zework</h1>
-                <p>Cập nhật xu hướng CRM, chiến lược chăm sóc khách hàng qua Zalo, mẹo quản lý bán hàng và tin tức mới
-                    nhất từ Zework.</p>
+
+    <main>
+
+        <section class="terms-hero">
+            <div class="container">
+                <h1>Điều khoản sử dụng</h1>
+                <p>Vui lòng đọc kỹ các điều khoản dưới đây trước khi bắt đầu sử dụng dịch vụ Zework.</p>
             </div>
         </section>
 
-        <!-- ========== FEATURED ARTICLE ========== -->
-        <section class="blog-featured">
-            <div class="blog-featured-card">
-                <div class="blog-featured-img">
-                    <img src="https://images.unsplash.com/photo-1581089781785-603411fa81e5?q=80&w=1170&auto=format&fit=crop"
-                        alt="Zework hợp tác mở rộng" loading="lazy">
-                    <span class="blog-featured-label"><i class="fas fa-star"></i> Nổi bật</span>
-                </div>
-                <div class="blog-featured-text">
-                    <div class="blog-meta">
-                        <span class="blog-category">Tin tức</span>
-                        <span class="blog-date"><i class="far fa-calendar-alt"></i> 07/03/2025</span>
-                    </div>
-                    <h2>Zework hợp tác cùng đối tác lớn mở rộng hệ sinh thái giải pháp doanh nghiệp</h2>
-                    <p>Với mục tiêu trở thành nền tảng CRM Zalo hàng đầu Việt Nam, Zework chính thức mở rộng hợp tác
-                        chiến lược với các đối tác công nghệ lớn, mang đến hệ sinh thái giải pháp toàn diện cho doanh
-                        nghiệp.</p>
-                    <a href="#" class="blog-read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+        <section class="terms-container">
+            <div class="terms-section">
+                <h2>1. Định nghĩa dịch vụ</h2>
+                <div class="terms-content">
+                    <p>Zework là nền tảng quản trị tài khoản Zalo tập trung, cung cấp các công cụ hỗ trợ doanh nghiệp và
+                        cá nhân quản lý tin nhắn, chăm sóc khách hàng và tối ưu hóa quy trình làm việc trên nền tảng
+                        Zalo.</p>
                 </div>
             </div>
-        </section>
 
-        <!-- ========== CATEGORY TABS ========== -->
-        <section class="blog-categories">
-            <div class="blog-category-tabs">
-                <button class="blog-tab active" data-category="all">Tất cả</button>
-                <button class="blog-tab" data-category="news">Tin tức</button>
-                <button class="blog-tab" data-category="guide">Hướng dẫn</button>
-                <button class="blog-tab" data-category="strategy">Chiến lược</button>
-                <button class="blog-tab" data-category="update">Cập nhật</button>
-            </div>
-        </section>
-
-        <!-- ========== ARTICLE GRID ========== -->
-        <section class="blog-grid-section">
-            <div class="blog-grid">
-                <!-- 1 -->
-                <article class="blog-card" data-category="news">
-                    <div class="blog-card-img">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800"
-                            alt="Zework Edtech" loading="lazy">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-meta">
-                            <span class="blog-category">Tin tức</span>
-                            <span class="blog-date"><i class="far fa-clock"></i> 17/03/2025</span>
-                        </div>
-                        <h3>Zework chính thức đồng hành cùng Edtech trong chuyển đổi số CSKH</h3>
-                        <p>Hợp tác chiến lược giúp các doanh nghiệp giáo dục tối ưu quy trình chăm sóc học viên qua
-                            Zalo.</p>
-                        <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- 2 -->
-                <article class="blog-card" data-category="update">
-                    <div class="blog-card-img">
-                        <img src="https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=2069&auto=format&fit=crop"
-                            alt="Zalo Enterprise" loading="lazy">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-meta">
-                            <span class="blog-category">Cập nhật</span>
-                            <span class="blog-date"><i class="far fa-clock"></i> 10/03/2025</span>
-                        </div>
-                        <h3>Ra mắt tính năng tích hợp Zalo phiên bản mới siêu mượt</h3>
-                        <p>Phiên bản 2.0 mang đến trải nghiệm nhắn tin và quản lý tài khoản Zalo nhanh hơn 3 lần.</p>
-                        <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- 3 -->
-                <article class="blog-card" data-category="guide">
-                    <div class="blog-card-img">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400" alt="Quản lý Zalo"
-                            loading="lazy">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-meta">
-                            <span class="blog-category">Hướng dẫn</span>
-                            <span class="blog-date"><i class="far fa-clock"></i> 05/03/2025</span>
-                        </div>
-                        <h3>Hướng dẫn quản lý đa tài khoản Zalo trên một nền tảng</h3>
-                        <p>Bước đầu tiên để chuyển đổi số — gom toàn bộ tài khoản Zalo về 1 giao diện duy nhất.</p>
-                        <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- 4 -->
-                <article class="blog-card" data-category="strategy">
-                    <div class="blog-card-img">
-                        <img src="https://images.unsplash.com/photo-1715635845783-a184542d95e5?q=80&w=1170&auto=format&fit=crop"
-                            alt="CSKH Strategy" loading="lazy">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-meta">
-                            <span class="blog-category">Chiến lược</span>
-                            <span class="blog-date"><i class="far fa-clock"></i> 01/03/2025</span>
-                        </div>
-                        <h3>5 chiến lược CSKH qua Zalo giúp tăng 40% tỷ lệ chốt đơn</h3>
-                        <p>Những bí quyết vàng từ các doanh nghiệp top đầu đang áp dụng hệ thống Zework.</p>
-                        <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- 5 -->
-                <article class="blog-card" data-category="guide">
-                    <div class="blog-card-img">
-                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800" alt="AI Chatbot"
-                            loading="lazy">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-meta">
-                            <span class="blog-category">Hướng dẫn</span>
-                            <span class="blog-date"><i class="far fa-clock"></i> 25/02/2025</span>
-                        </div>
-                        <h3>Hướng dẫn thiết lập AI Chatbot tự động trả lời khách hàng</h3>
-                        <p>Cấu hình AI nhanh trong 5 phút để chatbot xử lý 80% câu hỏi thường gặp.</p>
-                        <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- 6 -->
-                <article class="blog-card" data-category="strategy">
-                    <div class="blog-card-img">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="Dashboard"
-                            loading="lazy">
-                    </div>
-                    <div class="blog-card-body">
-                        <div class="blog-meta">
-                            <span class="blog-category">Chiến lược</span>
-                            <span class="blog-date"><i class="far fa-clock"></i> 20/02/2025</span>
-                        </div>
-                        <h3>Đọc hiểu Dashboard Zework — biến dữ liệu thành quyết định kinh doanh</h3>
-                        <p>Hướng dẫn phân tích các chỉ số quan trọng trên Dashboard để tối ưu hiệu suất đội ngũ.</p>
-                        <a href="#" class="blog-card-link">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+            <div class="terms-section">
+                <h2>2. Quyền và trách nhiệm của người dùng</h2>
+                <div class="terms-content">
+                    <ul>
+                        <li>Người dùng phải cung cấp thông tin chính xác khi đăng ký tài khoản.</li>
+                        <li>Người dùng chịu trách nhiệm hoàn toàn về việc bảo mật thông tin đăng nhập và các hoạt động
+                            diễn ra dưới tài khoản của mình.</li>
+                        <li>Nghiêm cấm sử dụng Zework vào các mục đích vi phạm pháp luật, phát tán mã độc, spam, lừa đảo
+                            hoặc gây rối trật tự công cộng trên nền tảng Zalo.</li>
+                        <li>Người dùng cam kết có toàn quyền quản lý đối với các tài khoản Zalo được kết nối vào hệ
+                            thống Zework.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="blog-load-more">
-                <button class="blog-load-more-btn">
-                    <i class="fas fa-plus-circle"></i> Xem thêm bài viết
-                </button>
+            <div class="terms-section">
+                <h2>3. Quy định về tích hợp Zalo</h2>
+                <div class="terms-content">
+                    <p>Zework hoạt dựa trên các giao thức kết nối với Zalo (API/Token/Cookie). Người dùng phải tuân thủ
+                        nghiêm ngặt "Chính sách cộng đồng" và "Điều khoản sử dụng" của Zalo.</p>
+                    <p>Zework không chịu trách nhiệm trong trường hợp tài khoản Zalo của người dùng bị khóa hoặc hạn chế
+                        do vi phạm chính sách của Zalo hoặc do các thay đổi đột ngột từ phía nhà cung cấp Zalo.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2>4. Sở hữu trí tuệ</h2>
+                <div class="terms-content">
+                    <p>Toàn bộ mã nguồn, thiết kế, giao diện, logo và các tài sản trí tuệ khác liên quan đến Zework
+                        thuộc sở hữu độc quyền của đội ngũ phát triển Zework. Người dùng không được phép sao chép, phân
+                        phối hoặc can thiệp vào mã nguồn dưới bất kỳ hình thức nào.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2>5. Giới hạn trách nhiệm</h2>
+                <div class="terms-content">
+                    <p>Trong mọi trường hợp, Zework không chịu trách nhiệm về bất kỳ thiệt hại trực tiếp, gián tiếp hoặc
+                        ngẫu nhiên nào (bao gồm mất lợi nhuận, mất dữ liệu) phát sinh từ việc sử dụng hoặc không thể sử
+                        dụng phần mềm, bao gồm cả các sự cố do hạ tầng mạng hoặc lỗi từ phía bên thứ ba (Zalo).</p>
+                </div>
             </div>
         </section>
-    </div>
-
-    <div class="icon-zalo-chat">
-        <img src="./img/Icon_of_Zalo.svg" alt="">
-    </div>
+    </main>
 
     <footer>
         <div class="CTA">

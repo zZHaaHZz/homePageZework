@@ -1,5 +1,5 @@
 .team-experience {
-    padding: 10rem 0;
+    padding: 0rem 0;
     background: transparent;
     text-align: center;
     overflow: hidden;
@@ -78,17 +78,44 @@
 }
 
 /* Card-specific colors */
-.team-exp-card:nth-child(1)::before { background: #007bff; }
-.team-exp-card:nth-child(1) .team-exp-icon { background: #eef4ff; color: #007bff; }
-.team-exp-card:nth-child(1) .team-exp-number { color: #007bff; }
+.team-exp-card:nth-child(1)::before {
+    background: #007bff;
+}
 
-.team-exp-card:nth-child(2)::before { background: #6366f1; }
-.team-exp-card:nth-child(2) .team-exp-icon { background: #eef2ff; color: #6366f1; }
-.team-exp-card:nth-child(2) .team-exp-number { color: #6366f1; }
+.team-exp-card:nth-child(1) .team-exp-icon {
+    background: #eef4ff;
+    color: #007bff;
+}
 
-.team-exp-card:nth-child(3)::before { background: #10b981; }
-.team-exp-card:nth-child(3) .team-exp-icon { background: #ecfdf5; color: #10b981; }
-.team-exp-card:nth-child(3) .team-exp-number { color: #10b981; }
+.team-exp-card:nth-child(1) .team-exp-number {
+    color: #007bff;
+}
+
+.team-exp-card:nth-child(2)::before {
+    background: #6366f1;
+}
+
+.team-exp-card:nth-child(2) .team-exp-icon {
+    background: #eef2ff;
+    color: #6366f1;
+}
+
+.team-exp-card:nth-child(2) .team-exp-number {
+    color: #6366f1;
+}
+
+.team-exp-card:nth-child(3)::before {
+    background: #10b981;
+}
+
+.team-exp-card:nth-child(3) .team-exp-icon {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.team-exp-card:nth-child(3) .team-exp-number {
+    color: #10b981;
+}
 
 .team-exp-icon {
     width: 8.4rem;
@@ -132,16 +159,20 @@
     .team-experience {
         padding: 6rem 0;
     }
+
     .team-exp-header h2 {
         font-size: 3.2rem;
     }
+
     .team-exp-grid {
         gap: 2rem;
     }
+
     .team-exp-card {
         padding: 4rem 2.4rem;
         max-width: 100%;
     }
+
     .team-exp-desc {
         font-size: 1.4rem;
     }
