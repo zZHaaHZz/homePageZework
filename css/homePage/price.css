@@ -9,10 +9,15 @@
     align-items: center;
     padding-top: 9.6rem;
     padding-bottom: 9.6rem;
+
+    animation: appearBottom linear;
+    animation-timeline: view();
+    animation-range: entry 5% cover 50%;
+}
+.box-price-container{
     position: relative;
     background: transparent;
 }
-
 .price-title {
     width: 124.8rem;
     height: 16.6rem;
