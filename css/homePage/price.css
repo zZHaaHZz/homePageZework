@@ -387,133 +387,124 @@
     opacity: 0.3;
 }
 
-@media (max-width: 430px) {
+@media (max-width: 768px) {
     .price-container {
         width: 100%;
         height: auto;
-        padding: 3.2rem 1.6rem;
-        margin: 0rem auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 2.4rem;
+        padding: 4.8rem 2rem;
+        gap: 3.2rem;
     }
 
     .price-title {
-        width: 34.3rem;
+        width: 100%;
         height: auto;
-        height: 11.2rem;
     }
 
     .price-title h1 {
-        font-size: 1.8rem;
+        font-size: 2.4rem;
+        line-height: 1.3;
     }
 
     .price-title p {
-        font-size: 1.4rem;
-        width: 34.3rem;
+        font-size: 1.5rem;
+        width: 100%;
+        line-height: 1.4;
     }
 
     .price-content {
-        width: 34.3rem;
+        width: 100%;
         height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 2.4rem;
+        gap: 3.2rem;
     }
 
     .price-conten-packages {
-        width: 34.3rem;
-        height: 17.2rem;
-    }
-
-    .price-conten-packages {
+        width: 100%;
+        height: auto;
         flex-direction: column;
-        justify-content: space-between;
-        width: 34.3rem;
-        height: 17.2rem;
-        padding: 1.6rem 0rem 1.6rem 0rem;
+        gap: 2rem;
+        padding: 1.6rem 0;
     }
 
     .left-price-conten-packages h2 {
         text-align: center;
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     .left-price-conten-packages p {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         text-align: center;
     }
 
     .product-container {
+        width: 100%;
         height: auto;
-        display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: start;
-        gap: 2.4rem;
-        margin-left: 2.5rem;
+        align-items: center;
+        gap: 3.2rem;
+        margin-left: 0;
     }
 
     .price-content-container {
-        height: 100%;
+        height: auto;
     }
 
-    .product-container {
-        height: 100%;
+    .product {
+        width: 100%;
+        max-width: 32rem;
+        height: auto;
+        min-height: 48rem;
+    }
+
+    .product.hot {
+        width: 100%;
+        max-width: 32rem;
+    }
+
+    .product.hot::after {
+        left: 50%;
+        transform: translateX(-50%);
+        top: -1.6rem;
     }
 
     .price-bottom {
         flex-direction: column;
-        width: 34.3rem;
-        height: 45.6rem;
+        width: 100%;
+        height: auto;
+        gap: 3.2rem;
+        padding: 3.2rem 2rem;
     }
 
     .price-bottom::after {
-        width: 29rem;
-        margin: 0 auto;
-        height: 45.6rem;
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        border-radius: inherit;
-        background-image: linear-gradient(to bottom,
-                transparent 0%,
-                transparent 22%,
-                white calc(22% + 0.1rem),
-                transparent calc(22% + 0.2rem),
-                transparent 50%,
-                white calc(50% + 0.1rem),
-                transparent calc(50% + 0.2rem));
-        opacity: 0.3;
+        display: none; /* Hide line pattern on mobile for clarity */
     }
 
     .price-bottom-box-1 {
-        margin: 0rem;
+        margin: 0;
         text-align: center;
     }
 
     .price-bottom-box-1 h2 {
-        margin-bottom: 0.4rem;
-        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+        font-size: 2.2rem;
     }
 
     .price-bottom-box-1 p {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     .price-bottom-box-2 {
         text-align: center;
+        justify-content: center;
+    }
+
+    .price-bottom-box-2 h2 {
+        font-size: 3.6rem;
     }
 
     .btn-bynow-bander {
-        width: 29.5rem;
-        font-style: 1.6rem;
-        color: #101828;
+        width: 100%;
+        max-width: 28rem;
+        height: 5rem;
+        font-size: 1.6rem;
     }
 }

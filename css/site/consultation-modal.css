@@ -173,3 +173,54 @@
 }
 
 
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .consult-modal-content {
+        padding: 3.2rem 2rem;
+        width: 95%;
+        border-radius: 20px;
+    }
+
+    .consult-modal-close {
+        top: 1.2rem;
+        right: 1.2rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        font-size: 1.6rem;
+    }
+
+    .consult-modal-header {
+        margin-bottom: 2.4rem;
+    }
+
+    .consult-modal-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .consult-modal-header p {
+        font-size: 1.4rem;
+    }
+
+    .consult-form {
+        gap: 1.6rem;
+    }
+
+    .consult-form-row {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+    }
+
+    .consult-form-group input, 
+    .consult-form-group select, 
+    .consult-form-group textarea {
+        font-size: 1.4rem;
+        padding: 1rem 1.4rem;
+    }
+
+    .consult-submit-btn {
+        height: 5rem;
+        font-size: 1.5rem;
+    }
+}
+
+

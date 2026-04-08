@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoSlideTimer;
 
     function switchToCanvas() {
+        // Only switch to canvas on desktop (width > 768px)
+        if (window.innerWidth <= 768) {
+            switchToVideo(); // Just restart video on mobile
+            return;
+        }
+
         currentSlide = 1;
         slider.classList.add('slid');
         updateDots();

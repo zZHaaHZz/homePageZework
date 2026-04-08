@@ -178,11 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initZaloNodes() {
-        zaloNodes.length = 0;
         const centerX = w / 2;
         const centerY = h / 2;
-        const radiusX = w * 0.35;
-        const radiusY = h * 0.30;
+        const radiusX = w * 0.38; // Increased slightly
+        const radiusY = h * 0.28; // Decreased slightly
 
         // Arrange in Top Arc (Left -> Right)
         // From PI (180deg) to 2*PI (360deg) -> Top semicircle
@@ -364,9 +363,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillStyle = '#101828';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'top';
-            ctx.font = 'bold 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            const titleFontSize = w < 500 ? 16 : 24;
+            ctx.font = `bold ${titleFontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
 
-            const headerTitle = phase === 'analytics' ? "THỐNG KÊ TỔNG HỢP CHI TIẾT DỮ LIỆU" : "Phân loại khách hàng thông minh";
+            const headerTitle = phase === 'analytics' ? "THỐNG KÊ CHI TIẾT DỮ LIỆU" : "Phân loại khách hàng thông minh";
             ctx.fillText(headerTitle, centerX, 20);
 
             // --- Layout Constants ---
@@ -399,34 +399,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.y += dy * 0.1; // Faster animation (0.1) so swaps look snappy
                 });
 
-                const leftW = containerW * 0.4;
-                const rightW = containerW * 0.55;
-                const rightX = margin + leftW + (containerW * 0.05);
+                const leftW = w < 600 ? containerW : containerW * 0.4;
+                const rightW = w < 600 ? containerW : containerW * 0.55;
+                const rightX = w < 600 ? margin : margin + leftW + (containerW * 0.05);
+                const chartH = w < 600 ? containerH * 0.4 : containerH * 0.8;
+                const leaderboardH = w < 600 ? containerH * 0.45 : containerH * 0.8;
+                const leaderboardY = w < 600 ? startY + chartH + 20 : startY;
 
                 // 1. Chart
-                drawCard(margin, startY, leftW, containerH * 0.8);
+                drawCard(margin, startY, leftW, chartH);
                 ctx.textAlign = 'left';
                 ctx.fillStyle = '#333';
-                ctx.font = 'bold 16px Arial';
+                ctx.font = 'bold 14px Arial';
                 ctx.fillText("Số lượng hội thoại", margin + 20, startY + 20);
-                drawMiniChart(margin + 20, startY + 60, leftW - 40, containerH * 0.8 - 80);
+                drawMiniChart(margin + 20, startY + 60, leftW - 40, chartH - 80);
 
                 // 2. Leaderboard
-                drawCard(rightX, startY, rightW, containerH * 0.8);
+                drawCard(rightX, leaderboardY, rightW, leaderboardH);
                 ctx.textAlign = 'left';
                 ctx.fillStyle = '#333';
-                ctx.font = 'bold 16px Arial';
-                ctx.fillText("Xếp hạng nhân viên", rightX + 20, startY + 20);
+                ctx.font = 'bold 14px Arial';
+                ctx.fillText("Xếp hạng nhân viên", rightX + 20, leaderboardY + 20);
 
-                ctx.font = '12px Arial';
+                ctx.font = '11px Arial';
                 ctx.fillStyle = '#888';
-                ctx.fillText("NHÂN VIÊN", rightX + 20, startY + 50);
+                ctx.fillText("NHÂN VIÊN", rightX + 20, leaderboardY + 50);
                 ctx.textAlign = 'right';
-                ctx.fillText("ĐÃ ĐÓNG", rightX + rightW - 20, startY + 50);
-                ctx.fillText("ĐANG CHỜ", rightX + rightW - 100, startY + 50);
+                ctx.fillText("ĐÃ ĐÓNG", rightX + rightW - 20, leaderboardY + 50);
+                ctx.fillText("ĐANG CHỜ", rightX + rightW - 90, leaderboardY + 50);
 
-                const listY = startY + 70;
-                const listHeight = containerH * 0.8 - 70;
+                const listY = leaderboardY + 70;
+                const listHeight = leaderboardH - 70;
 
                 ctx.save();
                 ctx.beginPath();
@@ -467,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.fillText(emp.closed.toString(), rightX + rightW - 20, rowY + 11); // Centered stats
 
                     ctx.fillStyle = '#f59e0b';
-                    ctx.fillText(emp.pending.toString(), rightX + rightW - 100, rowY + 11); // Centered stats
+                    ctx.fillText(emp.pending.toString(), rightX + rightW - 90, rowY + 11); // Centered stats
 
                     // Line
                     ctx.beginPath();
@@ -524,8 +527,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillStyle = '#888';
                 ctx.fillText("TRẠNG THÁI", tableX + 30, startY + 70);
                 ctx.textAlign = 'right';
-                ctx.fillText("%", tableX + tableW - 30, startY + 70);
-                ctx.fillText("ISSUE", tableX + tableW - 100, startY + 70);
+                ctx.fillText("%", tableX + tableW - 20, startY + 70);
+                ctx.fillText("SL", tableX + tableW - 80, startY + 70);
 
                 // Draw Rows
                 const rowStartH = startY + 100;
@@ -561,9 +564,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Stats
                     ctx.textAlign = 'right';
                     ctx.fillStyle = '#333';
-                    ctx.fillText(tag.pct, tableX + tableW - 30, badgeY + badgeH / 2);
+                    ctx.fillText(tag.pct, tableX + tableW - 20, badgeY + badgeH / 2);
 
-                    ctx.fillText(tag.count.toString(), tableX + tableW - 100, badgeY + badgeH / 2);
+                    ctx.fillText(tag.count.toString(), tableX + tableW - 80, badgeY + badgeH / 2);
 
                     // Reset baseline
                     ctx.textBaseline = 'top';
@@ -615,7 +618,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.drawImage(imgZework, centerX - logoSize / 2, hubY - logoSize / 2, logoSize, logoSize);
             }
 
-            ctx.font = 'bold 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            const phaseTitleFontSize = w < 500 ? 18 : 24;
+            ctx.font = `bold ${phaseTitleFontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'top';
             ctx.fillStyle = '#101828';

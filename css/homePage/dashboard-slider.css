@@ -164,9 +164,9 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .dashboard-visual-wrapper {
-        margin: 24px auto 0;
+        margin: 48px auto 0;
         padding: 0 16px;
     }
 
@@ -181,10 +181,24 @@
 
     .dashboard-slider {
         min-height: 200px;
+        aspect-ratio: 16 / 9;
+        height: auto;
+    }
+
+    /* Force Video to be always visible and Canvas to be hidden on Mobile */
+    #slideVideo {
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+        display: flex !important;
+        z-index: 5 !important;
+        position: relative !important;
+    }
+
+    #slideCanvas {
+        display: none !important;
     }
 
     .slider-indicators {
-        display: none;
-        /* Keep mobile clean */
+        display: none !important;
     }
 }

@@ -175,7 +175,7 @@
     left: -1rem;
 }
 
-@media (max-width: 430px) {
+@media (max-width: 768px) {
 
     .sales-feedback {
         width: 100%;

@@ -52,25 +52,8 @@ const FAQS = [
   },
 ];
 
-/** 2) SVG ICONS */
-const SVG_MINUS = `
-<svg fill="currentColor" height="22" viewBox="0 0 512 512" width="22" aria-hidden="true">
-  <path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"></path>
-  <path d="m368 272h-224c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h224c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
-</svg>
-`;
-
-const SVG_PLUS = `
-<svg fill="currentColor" height="22" viewBox="0 0 512 512" width="22" aria-hidden="true">
-  <path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"></path>
-  <path d="m368 272h-224c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h224c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
-  <path d="m256 384c-8.832031 0-16-7.167969-16-16v-224c0-8.832031 7.167969-16 16-16s16 7.167969 16 16v224c0 8.832031-7.167969 16-16 16zm0 0"></path>
-</svg>
-`;
-
 /** 3) Helpers */
 function escapeHtml(str) {
-  // chống vỡ HTML nếu nội dung có ký tự đặc biệt
   return String(str)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -82,15 +65,14 @@ function escapeHtml(str) {
 /** 4) Render */
 function renderFaqs(rootEl) {
   rootEl.innerHTML = FAQS.map((item, index) => `
-    <div class="body-list-ask-suport ${index === 0 ? "active-ask" : ""}" data-id="${item.id}">
-      <div class="active-ask-suport">
+    <div class="faq-item ${index === 0 ? "active" : ""}" data-id="${item.id}">
+      <div class="faq-question">
         <p>${escapeHtml(item.q)}</p>
-        <button type="button" class="faq-toggle">
-          ${index === 0 ? SVG_MINUS : SVG_PLUS}
-        </button>
+        <i class="fas fa-minus-circle faq-icon-minus"></i>
+        <i class="fas fa-plus-circle faq-icon-plus"></i>
       </div>
 
-      <div class="ask-detail">
+      <div class="faq-answer">
         <span>${escapeHtml(item.a)}</span>
       </div>
     </div>
@@ -106,22 +88,20 @@ function initFaqAccordion({ rootSelector = "#faqList", singleOpen = true } = {})
   renderFaqs(rootEl);
 
   rootEl.addEventListener("click", (e) => {
-    const btn = e.target.closest(".faq-toggle");
-    if (!btn) return;
+    const question = e.target.closest(".faq-question");
+    if (!question) return;
 
-    const item = btn.closest(".body-list-ask-suport");
-    const isOpen = item.classList.contains("active-ask");
+    const item = question.closest(".faq-item");
+    const isOpen = item.classList.contains("active");
 
     if (singleOpen) {
-      rootEl.querySelectorAll(".body-list-ask-suport").forEach(el => {
-        el.classList.remove("active-ask");
-        el.querySelector(".faq-toggle").innerHTML = SVG_PLUS;
+      rootEl.querySelectorAll(".faq-item.active").forEach(el => {
+        el.classList.remove("active");
       });
     }
 
     if (!isOpen) {
-      item.classList.add("active-ask");
-      btn.innerHTML = SVG_MINUS;
+      item.classList.add("active");
     }
   });
 }

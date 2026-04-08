@@ -405,7 +405,7 @@
 }
 
 /* ========== Mobile Responsive ========== */
-@media (max-width: 430px) {
+@media (max-width: 768px) {
     .contact-hero {
         width: 100%;
         padding: 8rem 1.6rem 4rem;
