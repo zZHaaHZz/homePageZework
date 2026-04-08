@@ -1,13 +1,12 @@
-// Auto-detect môi trường: local dùng file .html, production dùng slug
-const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+// Dùng trực tiếp file .html để trên Github Pages (hoặc bất kỳ server nào không cấu hình slug) vẫn hiển thị bình thường
 const routes = {
-  tinh_nang: isLocal ? '/pageFeature.html' : '/tinh-nang',
-  bang_gia: isLocal ? '/pagePrice.html' : '/bang-gia',
-  bai_viet: isLocal ? '/pageArticle.html' : '/bai-viet',
-  lien_he: isLocal ? '/pageContact.html' : '/lien-he',
-  bao_mat: isLocal ? '/policy.html' : '/bao-mat',
-  dieu_khoan: isLocal ? '/terms.html' : '/dieu-khoan-dich-vu',
-  ve_zework: isLocal ? '/company.html' : '/ve-zework',
+  tinh_nang: 'pageFeature.html',
+  bang_gia: 'pagePrice.html',
+  bai_viet: 'pageArticle.html',
+  lien_he: 'pageContact.html',
+  bao_mat: 'policy.html',
+  dieu_khoan: 'terms.html',
+  ve_zework: 'company.html',
 };
 
 const btnExperiences = document.querySelectorAll('.experience');
@@ -100,7 +99,7 @@ trangChuLinks.forEach(link => {
     removeActiveMenu();
     const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
     menuTrangChu?.classList.add('active-menu');
-    window.location.href = '/';
+    window.location.href = 'index.html';
   });
 });
 
