@@ -6,8 +6,8 @@
     'use strict';
 
     // Configuration
-    const REVEAL_THRESHOLD = 0.15; // 15% of element visible triggers animation
-    const ROOT_MARGIN = '0px 0px -50px 0px'; // Trigger slightly before fully in view
+    const REVEAL_THRESHOLD = 0.05; // 5% of element visible triggers animation
+    const ROOT_MARGIN = '0px 0px -10% 0px'; // Trigger based on viewport percentage
 
     // Selectors for elements to automatically animate
     const AUTO_REVEAL_SELECTORS = [

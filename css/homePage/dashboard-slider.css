@@ -1,13 +1,83 @@
-/* ========== DASHBOARD SLIDER ========== */
+/* ========== DASHBOARD SEQUENTIAL VISUAL ========== */
 
+.dashboard-visual-wrapper {
+    width: 100%;
+    max-width: 1140px;
+    margin: 40px auto 0;
+    position: relative;
+    z-index: 5;
+}
+
+.dashboard-device-frame {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        0 30px 60px -12px rgba(0, 0, 0, 0.15),
+        0 18px 36px -18px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+/* Browser-style Header */
+.frame-browser-header {
+    height: 44px;
+    background: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.frame-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.f-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.f-red {
+    background: #ff5f56;
+}
+
+.f-yellow {
+    background: #ffbd2e;
+}
+
+.f-green {
+    background: #27c93f;
+}
+
+.frame-url {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.04);
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #667085;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Slider Logic */
 .dashboard-slider {
     position: relative;
     width: 100%;
-    height: 100%;
-    min-height: 480px;
+    aspect-ratio: 16 / 7.5; /* Shorter aspect ratio to fit on one screen */
+    min-height: 380px;
+    max-height: 65vh; /* Ensure it stays within standard viewport */
     overflow: hidden;
-    border-radius: 12px;
-    padding-top: 5rem; /* Push content down slightly from top */
+    background: #000;
 }
 
 .dashboard-slide {
@@ -16,74 +86,105 @@
     left: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.8s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Slide 1: Image — starts visible */
-#slideImage {
+/* Slide 1: Video (Active default) */
+#slideVideo {
     transform: translateX(0);
+    opacity: 1;
     z-index: 2;
 }
 
-/* Slide 2: Canvas — starts off-screen to the right */
+/* Slide 2: Canvas (Off-screen default) */
 #slideCanvas {
     transform: translateX(100%);
+    opacity: 0;
     z-index: 1;
+    background: #fff;
+    /* Simulation looks better on white */
 }
 
-/* After sliding */
-.dashboard-slider.slid #slideImage {
+/* State: Slid to Canvas */
+.dashboard-slider.slid #slideVideo {
     transform: translateX(-100%);
+    opacity: 0;
 }
 
 .dashboard-slider.slid #slideCanvas {
     transform: translateX(0);
+    opacity: 1;
     z-index: 2;
 }
 
-/* ========== PREVIEW IMAGE ========== */
-
-.slide-preview-img {
+/* Elements Scaling */
+.hero-video-visual {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px;
+    object-position: top; /* Crops the "góc chân" (bottom 20%) while keeping the top menu visible */
+}
+
+.img-rounded-canvas {
+    width: 100%;
+    height: 100%;
     display: block;
 }
 
-/* ========== SLIDE INDICATOR DOTS ========== */
-
-.slider-dots {
+/* Indicators */
+.slider-indicators {
     position: absolute;
-    bottom: 1.2rem;
+    bottom: 16px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 0.8rem;
+    gap: 10px;
     z-index: 10;
 }
 
 .slider-dot {
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: rgba(2, 123, 255, 0.3);
+    background: rgba(255, 255, 255, 0.4);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.slider-dot.active {
-    background: #027BFF;
-    transform: scale(1.3);
+.slid .slider-dot {
+    background: rgba(0, 0, 0, 0.2);
 }
 
-/* ========== RESPONSIVE ========== */
+.slider-dot.active {
+    background: #375DFA !important;
+    transform: scale(1.4);
+}
 
-@media (max-width: 430px) {
+/* RESPONSIVE */
+@media (max-width: 480px) {
+    .dashboard-visual-wrapper {
+        margin: 24px auto 0;
+        padding: 0 16px;
+    }
+
+    .dashboard-device-frame {
+        border-radius: 12px;
+    }
+
+    .frame-browser-header {
+        height: 32px;
+        padding: 0 12px;
+    }
+
     .dashboard-slider {
+        min-height: 200px;
+    }
+
+    .slider-indicators {
         display: none;
+        /* Keep mobile clean */
     }
 }

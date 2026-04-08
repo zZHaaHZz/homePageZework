@@ -1,46 +1,76 @@
 /**
- * Dashboard Slider
- * Shows CRM screenshot in computer frame first,
- * then slides to animated canvas after 3 seconds.
+ * Dashboard Slider - Sequential Flow
+ * Synchronizes with Video playback and Simulation phases.
  */
 document.addEventListener('DOMContentLoaded', () => {
     const slider = document.getElementById('dashboardSlider');
-    if (!slider) return;
+    const video = document.getElementById('heroVideo');
+    if (!slider || !video) return;
 
     const dots = slider.querySelectorAll('.slider-dot');
-    const SLIDE_DELAY = 3000; // 3 seconds
+    const SIMULATION_DURATION = 33000;    // 33 seconds for all simulation phases to complete
 
-    function slideToCanvas() {
+    let currentSlide = 0; // 0 = Video, 1 = Canvas
+    let autoSlideTimer;
+
+    function switchToCanvas() {
+        currentSlide = 1;
         slider.classList.add('slid');
-        // Update dots
-        dots.forEach(d => d.classList.remove('active'));
-        if (dots[1]) dots[1].classList.add('active');
+        updateDots();
+
+        // Loop back to video after simulation finishes its cycle
+        clearTimeout(autoSlideTimer);
+        autoSlideTimer = setTimeout(switchToVideo, SIMULATION_DURATION);
     }
 
-    function slideToImage() {
+    function switchToVideo() {
+        currentSlide = 0;
         slider.classList.remove('slid');
-        // Update dots
-        dots.forEach(d => d.classList.remove('active'));
-        if (dots[0]) dots[0].classList.add('active');
+        updateDots();
+
+        // Reset and play video from the beginning
+        if (video) {
+            video.currentTime = 0;
+            video.play().catch(e => console.log("Autoplay hindered:", e));
+        }
+
+        // We NO LONGER set a timer here. 
+        // We wait for the 'ended' event to switch to canvas.
+        clearTimeout(autoSlideTimer);
+
+        // Safety Fallback: In case video fails to load or 'ended' never fires, 
+        // switch anyway after 60s so the user isn't stuck.
+        autoSlideTimer = setTimeout(() => {
+            if (currentSlide === 0) switchToCanvas();
+        }, 60000);
     }
 
-    // Auto-slide after 3 seconds
-    let autoSlideTimer = setTimeout(slideToCanvas, SLIDE_DELAY);
-
-    // Allow clicking dots to manually switch
-    if (dots[0]) {
-        dots[0].addEventListener('click', () => {
-            clearTimeout(autoSlideTimer);
-            slideToImage();
-            // Resume auto-slide after another 3s
-            autoSlideTimer = setTimeout(slideToCanvas, SLIDE_DELAY);
+    function updateDots() {
+        dots.forEach((dot, idx) => {
+            if (idx === currentSlide) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
         });
     }
 
-    if (dots[1]) {
-        dots[1].addEventListener('click', () => {
+    // TRIGGER: Switch to canvas ONLY after video finish
+    video.addEventListener('ended', () => {
+        if (currentSlide === 0) {
+            switchToCanvas();
+        }
+    });
+
+    // Manual controls resets the flow
+    dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
             clearTimeout(autoSlideTimer);
-            slideToCanvas();
+            if (idx === 0) switchToVideo();
+            else switchToCanvas();
         });
-    }
+    });
+
+    // Initial sequence
+    switchToVideo();
 });

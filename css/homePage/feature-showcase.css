@@ -5,7 +5,7 @@
 .feature-showcase {
     width: 100%;
     background: transparent;
-    padding: 9.6rem 0;
+    padding: 9.6rem 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;

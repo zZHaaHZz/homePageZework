@@ -6,7 +6,7 @@
 
 .hero {
     width: 100%;
-    min-height: 110rem;
+    min-height: 80rem;
     height: auto;
     position: relative;
     overflow: hidden;
@@ -14,7 +14,7 @@
     flex-direction: column;
     align-items: center;
     background: transparent;
-    padding-bottom: 20rem; /* Increased padding to give dashboard more space */
+    padding-bottom: 0;
 }
 
 .hero::before {
@@ -67,36 +67,14 @@
     opacity: 0.03;
 }
 
-.square-5 {
-    position: absolute;
-    top: 43%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 118.6rem;
-    height: 68rem;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(1rem);
-    border-radius: 2rem;
-    z-index: 1;
-    overflow: hidden;
-    box-shadow: 0 0.8rem 3.2rem rgba(2, 123, 255, 0.06);
-}
-
-.square-5::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 0.1rem;
-    background: linear-gradient(135deg,
-            rgba(2, 123, 255, 0.2),
-            rgba(180, 77, 255, 0.08),
-            rgba(2, 123, 255, 0.15));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    pointer-events: none;
+/* Unified Dashboard Visual Wrapper */
+.dashboard-visual-wrapper {
+    width: 100%;
+    max-width: 110rem;
+    margin: 4rem auto 0 auto;
+    position: relative;
+    z-index: 5;
+    background: transparent;
 }
 
 .square-6 {

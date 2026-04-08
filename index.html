@@ -253,90 +253,38 @@
                 </div>
             </div>
 
-            <div class="square-5">
-
-                <div class="div-img-dashBoard">
-                    <div class="dashboard-slider" id="dashboardSlider">
-                        <!-- Slide 1: Static CRM image -->
-                        <div class="dashboard-slide" id="slideImage">
-                            <img src="./img/dashboard-crm-preview.jpg" alt="Zework CRM Dashboard Preview"
-                                class="slide-preview-img">
+            <div class="dashboard-visual-wrapper reveal">
+                <div class="dashboard-device-frame">
+                    <div class="frame-browser-header">
+                        <div class="frame-dots">
+                            <span class="f-dot f-red"></span>
+                            <span class="f-dot f-yellow"></span>
+                            <span class="f-dot f-green"></span>
                         </div>
+                        <div class="frame-url">app.zework.com</div>
+                    </div>
+
+                    <div class="dashboard-slider" id="dashboardSlider">
+                        <!-- Slide 1: Video Demo -->
+                        <div class="dashboard-slide" id="slideVideo">
+                            <video id="heroVideo" src="img/videodash.mp4" autoplay muted playsinline
+                                class="hero-video-visual"></video>
+                        </div>
+
                         <!-- Slide 2: Animated canvas dashboard -->
                         <div class="dashboard-slide" id="slideCanvas">
-                            <canvas id="dashboardCanvas" class="img-rounded"></canvas>
+                            <canvas id="dashboardCanvas" class="img-rounded-canvas"></canvas>
                         </div>
-                        <!-- Slider dots -->
-                        <div class="slider-dots">
+
+                        <!-- Slider dots (hidden on mobile) -->
+                        <div class="slider-indicators">
                             <div class="slider-dot active" data-slide="0"></div>
                             <div class="slider-dot" data-slide="1"></div>
                         </div>
                     </div>
                     <script src="./js/dashboard-simulation.js"></script>
                     <script src="./js/dashboard-slider.js"></script>
-                    <style>
-                        .img-rounded {
-                            width: 100%;
-                            height: 100%;
-                            min-height: 480px;
-                            border-radius: 12px;
-                            display: block;
-                        }
-                    </style>
                 </div>
-                <div class="img-customer-ratio">
-
-                </div>
-
-
-                <!-- Security Animation HTML Structure -->
-                <div id="securityOverlay" class="security-overlay">
-                    <div class="network-container">
-                        <!-- Left Node (User/Phone) -->
-                        <div class="node left">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
-                        </div>
-
-                        <!-- Connection Lines -->
-                        <div class="connection-line line-left"></div>
-                        <div class="connection-line line-right"></div>
-
-                        <!-- Center Hub (Zework) -->
-                        <div class="hub-center">
-                            <div class="hub-pulse"></div>
-                            <img src="./img/logoZework.svg" alt="Zework">
-                        </div>
-
-                        <!-- Right Node (Zalo/Cloud) -->
-                        <div class="node right zalo-wave-node">
-                            <img src="./img/Icon_of_Zalo.svg" class="zalo-node-icon" alt="Zalo icon">
-                        </div>
-
-                        <!-- Packet Container -->
-                        <div id="packetLayer" style="position:absolute; width:100%; height:100%; pointer-events:none;">
-                        </div>
-                    </div>
-
-                    <div class="security-status">
-                        <h3 id="statusTitle">Kết nối hệ thống</h3>
-                        <p id="statusDesc">Đang thiết lập môi trường bảo mật...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="img-quare-5-mobile">
-                <video class="img-rounded" src="img/videodash.mp4" autoplay loop muted playsinline></video>
-
-                <style>
-                    .img-rounded {
-                        width: 160px;
-                        height: auto;
-                        /* giữ đúng tỉ lệ video */
-                        border-radius: 12px;
-                        /* bo góc nhẹ */
-                        display: block;
-                        object-fit: cover;
-                    }
-                </style>
             </div>
         </div>
 
@@ -344,10 +292,10 @@
             <div class="vector-logo">
                 <img src="img/Logo (2).svg" alt="">
             </div>
-            <div class="why-select-zework-title">
+            <div class="why-select-zework-title reveal">
                 <h2 class="gradient-text">ZEWORK giúp bạn giải quyết vấn đề gì?</h2>
             </div>
-            <div class="why-select-zework-1">
+            <div class="why-select-zework-1 reveal">
                 <div class="left-why-select-zework-1 why-ze-1">
                     <img src="img/why-1.svg" alt="">
                 </div>
@@ -384,7 +332,7 @@
                     </div>
                 </div>
             </div>
-            <div class="why-select-zework-1 why-select-zework-reverse">
+            <div class="why-select-zework-1 why-select-zework-reverse reveal">
                 <div class="left-why-select-zework-1 why-ze-2">
                     <img src="img/why-2.svg" alt="">
                 </div>
@@ -393,13 +341,25 @@
                         <div class="box-tag-acc-home">
                             <div class="tag-acc">
                                 <div class="tag-inner">
-                                    <svg id="fi_7827955" enable-background="new 0 0 2048 2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg" style="width: 2.2rem; height: 2.2rem; fill: #0066db; margin-right: 0.8rem; stroke: #0066db; stroke-width: 60px;">
+                                    <svg id="fi_7827955" enable-background="new 0 0 2048 2048" viewBox="0 0 2048 2048"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        style="width: 2.2rem; height: 2.2rem; fill: #0066db; margin-right: 0.8rem; stroke: #0066db; stroke-width: 60px;">
                                         <g>
-                                            <path d="m1035.019 1956h-22.037c-20.615 0-40.859-3.663-60.171-10.887-212.381-79.458-383.035-208.231-507.225-382.744-97.524-137.042-165.165-300.865-201.041-486.916-59.175-306.879-11.257-572.891-9.188-584.064 10.595-57.209 48.97-104.754 102.654-127.182l619.793-258.935c21.079-8.807 43.351-13.272 66.196-13.272 22.846 0 45.117 4.465 66.196 13.271l619.793 258.935c53.685 22.43 92.06 69.974 102.653 127.181 2.069 11.177 49.981 277.218-9.188 584.064-35.877 186.052-103.517 349.874-201.041 486.917-124.189 174.514-294.844 303.287-507.224 382.743-19.311 7.226-39.555 10.889-60.17 10.889zm-11.019-1800c-14.331 0-28.302 2.801-41.525 8.325l-619.793 258.935c-33.676 14.069-57.749 43.894-64.395 79.781-1.979 10.687-47.811 265.156 9.1 560.293 34.129 176.989 98.17 332.403 190.343 461.927 116.649 163.917 277.305 285.008 477.505 359.909 12.114 4.531 24.814 6.829 37.746 6.829h22.037c12.932 0 25.632-2.298 37.747-6.83 200.199-74.899 360.854-195.99 477.504-359.908 92.174-129.523 156.214-284.938 190.344-461.928 56.905-295.106 11.077-549.606 9.099-560.295-6.645-35.884-30.718-65.709-64.395-79.779l-619.792-258.935c-13.222-5.523-27.194-8.324-41.525-8.324z"></path>
-                                            <path d="m1035.019 1816.278h-22.037c-3.829 0-7.627-.688-11.213-2.029-185.79-69.508-334.615-181.509-442.344-332.891-85.842-120.628-145.625-266.095-177.686-432.361-28.345-146.994-29.329-283.518-25.164-372.163 4.527-96.322 15.694-157.45 16.167-160.004 1.967-10.623 9.161-19.536 19.129-23.7l619.792-258.935c7.893-3.298 16.777-3.298 24.671 0l619.792 258.935c9.968 4.165 17.162 13.077 19.129 23.7.474 2.555 11.64 63.683 16.167 160.004 4.166 88.645 3.182 225.168-25.163 372.163-32.061 166.267-91.843 311.733-177.686 432.361-107.729 151.382-256.554 263.383-442.344 332.891-3.583 1.342-7.381 2.029-11.21 2.029zm-16.204-64h10.369c312.42-118.785 505.595-359.444 574.234-715.399 44.014-228.25 20.178-432.847 11.584-491.569l-591.002-246.908-591.013 246.911c-3.535 24.037-9.641 72.461-12.571 136.462-3.901 85.201-2.812 216.295 24.529 356.979 68.978 354.934 262.024 594.96 573.87 713.524z"></path>
-                                            <path d="m1178.23 1420.12h-308.46c-82.837 0-150.23-67.397-150.23-150.24v-250.66c0-82.843 67.393-150.24 150.23-150.24h308.46c82.837 0 150.229 67.397 150.229 150.24v250.66c.001 82.843-67.392 150.24-150.229 150.24zm-308.46-487.14c-47.547 0-86.23 38.687-86.23 86.24v250.66c0 47.553 38.683 86.24 86.23 86.24h308.46c47.547 0 86.229-38.688 86.229-86.24v-250.66c0-47.553-38.683-86.24-86.229-86.24zm154.23 249.81c-48.887 0-88.66-39.772-88.66-88.66 0-48.893 39.773-88.67 88.66-88.67 48.888 0 88.66 39.777 88.66 88.67 0 48.888-39.772 88.66-88.66 88.66zm0-113.33c-13.598 0-24.66 11.066-24.66 24.67 0 13.598 11.063 24.66 24.66 24.66s24.66-11.063 24.66-24.66c0-13.604-11.062-24.67-24.66-24.67z"></path>
-                                            <path d="m1223.275 932.985c-17.673 0-32-14.327-32-32v-98.015c0-92.236-75.039-167.275-167.275-167.275s-167.275 75.04-167.275 167.275v98.015c0 17.673-14.327 32-32 32s-32-14.327-32-32v-98.015c0-61.776 24.057-119.854 67.739-163.536s101.76-67.739 163.536-67.739c61.775 0 119.854 24.057 163.536 67.739 43.683 43.682 67.739 101.76 67.739 163.536v98.015c0 17.673-14.327 32-32 32z"></path>
-                                            <path d="m1024 1278.3c-17.673 0-32-14.327-32-32v-95.51c0-17.673 14.327-32 32-32s32 14.327 32 32v95.51c0 17.673-14.327 32-32 32z"></path>
+                                            <path
+                                                d="m1035.019 1956h-22.037c-20.615 0-40.859-3.663-60.171-10.887-212.381-79.458-383.035-208.231-507.225-382.744-97.524-137.042-165.165-300.865-201.041-486.916-59.175-306.879-11.257-572.891-9.188-584.064 10.595-57.209 48.97-104.754 102.654-127.182l619.793-258.935c21.079-8.807 43.351-13.272 66.196-13.272 22.846 0 45.117 4.465 66.196 13.271l619.793 258.935c53.685 22.43 92.06 69.974 102.653 127.181 2.069 11.177 49.981 277.218-9.188 584.064-35.877 186.052-103.517 349.874-201.041 486.917-124.189 174.514-294.844 303.287-507.224 382.743-19.311 7.226-39.555 10.889-60.17 10.889zm-11.019-1800c-14.331 0-28.302 2.801-41.525 8.325l-619.793 258.935c-33.676 14.069-57.749 43.894-64.395 79.781-1.979 10.687-47.811 265.156 9.1 560.293 34.129 176.989 98.17 332.403 190.343 461.927 116.649 163.917 277.305 285.008 477.505 359.909 12.114 4.531 24.814 6.829 37.746 6.829h22.037c12.932 0 25.632-2.298 37.747-6.83 200.199-74.899 360.854-195.99 477.504-359.908 92.174-129.523 156.214-284.938 190.344-461.928 56.905-295.106 11.077-549.606 9.099-560.295-6.645-35.884-30.718-65.709-64.395-79.779l-619.792-258.935c-13.222-5.523-27.194-8.324-41.525-8.324z">
+                                            </path>
+                                            <path
+                                                d="m1035.019 1816.278h-22.037c-3.829 0-7.627-.688-11.213-2.029-185.79-69.508-334.615-181.509-442.344-332.891-85.842-120.628-145.625-266.095-177.686-432.361-28.345-146.994-29.329-283.518-25.164-372.163 4.527-96.322 15.694-157.45 16.167-160.004 1.967-10.623 9.161-19.536 19.129-23.7l619.792-258.935c7.893-3.298 16.777-3.298 24.671 0l619.792 258.935c9.968 4.165 17.162 13.077 19.129 23.7.474 2.555 11.64 63.683 16.167 160.004 4.166 88.645 3.182 225.168-25.163 372.163-32.061 166.267-91.843 311.733-177.686 432.361-107.729 151.382-256.554 263.383-442.344 332.891-3.583 1.342-7.381 2.029-11.21 2.029zm-16.204-64h10.369c312.42-118.785 505.595-359.444 574.234-715.399 44.014-228.25 20.178-432.847 11.584-491.569l-591.002-246.908-591.013 246.911c-3.535 24.037-9.641 72.461-12.571 136.462-3.901 85.201-2.812 216.295 24.529 356.979 68.978 354.934 262.024 594.96 573.87 713.524z">
+                                            </path>
+                                            <path
+                                                d="m1178.23 1420.12h-308.46c-82.837 0-150.23-67.397-150.23-150.24v-250.66c0-82.843 67.393-150.24 150.23-150.24h308.46c82.837 0 150.229 67.397 150.229 150.24v250.66c.001 82.843-67.392 150.24-150.229 150.24zm-308.46-487.14c-47.547 0-86.23 38.687-86.23 86.24v250.66c0 47.553 38.683 86.24 86.23 86.24h308.46c47.547 0 86.229-38.688 86.229-86.24v-250.66c0-47.553-38.683-86.24-86.229-86.24zm154.23 249.81c-48.887 0-88.66-39.772-88.66-88.66 0-48.893 39.773-88.67 88.66-88.67 48.888 0 88.66 39.777 88.66 88.67 0 48.888-39.772 88.66-88.66 88.66zm0-113.33c-13.598 0-24.66 11.066-24.66 24.67 0 13.598 11.063 24.66 24.66 24.66s24.66-11.063 24.66-24.66c0-13.604-11.062-24.67-24.66-24.67z">
+                                            </path>
+                                            <path
+                                                d="m1223.275 932.985c-17.673 0-32-14.327-32-32v-98.015c0-92.236-75.039-167.275-167.275-167.275s-167.275 75.04-167.275 167.275v98.015c0 17.673-14.327 32-32 32s-32-14.327-32-32v-98.015c0-61.776 24.057-119.854 67.739-163.536s101.76-67.739 163.536-67.739c61.775 0 119.854 24.057 163.536 67.739 43.683 43.682 67.739 101.76 67.739 163.536v98.015c0 17.673-14.327 32-32 32z">
+                                            </path>
+                                            <path
+                                                d="m1024 1278.3c-17.673 0-32-14.327-32-32v-95.51c0-17.673 14.327-32 32-32s32 14.327 32 32v95.51c0 17.673-14.327 32-32 32z">
+                                            </path>
                                         </g>
                                     </svg>
                                     <h6>BẢO MẬT</h6>
@@ -444,7 +404,7 @@
                     </div>
                 </div>
             </div>
-            <div class="why-select-zework-3">
+            <div class="why-select-zework-3 reveal">
                 <div class="top-why-select-zework-3">
                     <div class="left-top-why-select-zework-3">
                         <div class="box-tag-acc-home">
@@ -467,7 +427,7 @@
                     <img src="img/why-3.svg" alt="">
                 </div>
             </div>
-            <div class="why-select-zework-1">
+            <div class="why-select-zework-1 reveal">
                 <div class="left-why-select-zework-1 why-ze-4">
                     <img src="img/why-4.svg" alt="">
                 </div>

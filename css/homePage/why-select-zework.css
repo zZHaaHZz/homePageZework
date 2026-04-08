@@ -37,9 +37,6 @@
     justify-content: center;
     align-items: center;
     padding: 0 2rem;
-    animation: appearBottom linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 50%;
 }
 
 .why-select-zework-title h2 {
@@ -56,9 +53,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    animation: appearRight linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%
 }
 
 .left-why-select-zework-1 {
@@ -222,9 +216,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    animation: appearBottom linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 50%;
 }
 
 .top-why-select-zework-3 {
@@ -284,9 +275,6 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-    animation: appear linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%
 }
 
 

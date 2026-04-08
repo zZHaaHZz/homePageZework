@@ -18,7 +18,7 @@
 /* Slide from left */
 .reveal-left {
     opacity: 0;
-    transform: translateX(-60px);
+    transform: translateX(-100px);
     transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: opacity, transform;
@@ -32,7 +32,7 @@
 /* Slide from right */
 .reveal-right {
     opacity: 0;
-    transform: translateX(60px);
+    transform: translateX(100px);
     transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: opacity, transform;
@@ -111,22 +111,22 @@
 /* Why select zework sections */
 .why-select-zework-1 .left-why-select-zework-1 {
     opacity: 0;
-    transform: translateX(-50px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateX(-100px);
+    transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .why-select-zework-1 .right-why-select-zework-1 {
     opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
+    transform: translateX(100px);
+    transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s;
 }
 
 .why-select-zework-reverse .left-why-select-zework-1 {
-    transform: translateX(50px);
+    transform: translateX(100px);
 }
 
 .why-select-zework-reverse .right-why-select-zework-1 {
-    transform: translateX(-50px);
+    transform: translateX(-100px);
 }
 
 .why-select-zework-1.revealed .left-why-select-zework-1,
@@ -193,7 +193,7 @@
 /* Why select title */
 .why-select-zework-title {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(60px);
     transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
