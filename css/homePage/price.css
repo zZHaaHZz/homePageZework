@@ -8,10 +8,6 @@
     justify-content: flex-start;
     align-items: center;
     padding-bottom: 9.6rem;
-
-    animation: appearBottom linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 30%;
 }
 
 .box-price-container {
