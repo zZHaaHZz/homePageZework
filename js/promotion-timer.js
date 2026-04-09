@@ -4,18 +4,14 @@
 (function() {
     'use strict';
 
-    const STORAGE_KEY = 'zework_promo_seen';
-    const DEADLINE_KEY = 'zework_promo_deadline';
-    const SHOW_DELAY = 3000; // 3 seconds
+    const SHOW_DELAY = 5000; // 5 seconds
 
-    // Get or create a persistent 7-day deadline from first visit
-    let deadlineTs = localStorage.getItem(DEADLINE_KEY);
-    if (!deadlineTs) {
-        deadlineTs = (Date.now() + 7 * 24 * 60 * 60 * 1000).toString();
-        localStorage.setItem(DEADLINE_KEY, deadlineTs);
-    }
+    // Reset 7-day deadline on every visit
+    const deadlineTs = (Date.now() + 7 * 24 * 60 * 60 * 1000).toString();
     const targetDate = new Date(parseInt(deadlineTs));
 
+    const REAPPEAR_INTERVAL = 5 * 60 * 1000; // 5 minutes
+    
     function initPromoModal() {
         const modal = document.getElementById('promoModal');
         const closeBtn = document.getElementById('promoClose');
@@ -23,19 +19,15 @@
 
         if (!modal) return;
 
-        // Check if shown in the last 24 hours
-        const lastSeen = localStorage.getItem(STORAGE_KEY);
-        const now = new Date().getTime();
-        
-        if (lastSeen && (now - parseInt(lastSeen)) < 24 * 60 * 60 * 1000) {
-            return; // Don't show again so soon
-        }
-
-        // Show modal after delay
-        setTimeout(() => {
+        const showModal = () => {
             modal.classList.add('show');
-            localStorage.setItem(STORAGE_KEY, now.toString());
-        }, SHOW_DELAY);
+        };
+
+        // Show modal after initial delay
+        setTimeout(showModal, SHOW_DELAY);
+
+        // Repeatedly show modal every 5 minutes
+        setInterval(showModal, REAPPEAR_INTERVAL);
 
         // Close handlers
         closeBtn.onclick = () => modal.classList.remove('show');
