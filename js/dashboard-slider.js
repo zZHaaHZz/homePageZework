@@ -74,7 +74,7 @@ function switchToVideo() {
     clearTimeout(autoSlideTimer);
     autoSlideTimer = setTimeout(() => {
         if (currentSlide === 0) switchToCanvas();
-    }, 60000);
+    }, 33000);
 }
 
 function updateDots() {
@@ -103,5 +103,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start safety fallback for first slide
     autoSlideTimer = setTimeout(() => {
         if (currentSlide === 0) switchToCanvas();
-    }, 60000);
+    }, 33000);
 });
