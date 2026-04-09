@@ -12,6 +12,15 @@
         gtag('config', 'G-C8JGBS9ECN');
     </script>
     <meta charset="UTF-8">
+
+    <!-- Preconnect to YouTube for faster video load -->
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://www.youtube-nocookie.com">
+    <link rel="preconnect" href="https://i.ytimg.com">
+    <link rel="preconnect" href="https://yt3.ggpht.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
+    <link rel="dns-prefetch" href="https://googlevideo.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <title>Zework | Phần mềm Quản lý Zalo Sales & CRM cho Cá nhân & Doanh nghiệp</title>
@@ -26,12 +35,12 @@
     <meta property="og:title" content="Zework - Quản lý Zalo Sales & CSKH All-in-one">
     <meta property="og:description"
         content="Không còn nỗi lo mất khách khi nhân viên nghỉ việc. Quản lý tập trung, bảo mật dữ liệu và tăng tỷ lệ chốt đơn.">
-    <meta property="og:image" content="https://zework.com/img/dashboard.jpeg">
+    <meta property="og:image" content="https://zework.com/img/dashboard.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Zework - CRM Zalo Tối ưu cho Sales">
     <meta name="twitter:description" content="Giải pháp giúp bạn quản lý hàng trăm nick Zalo trên 1 thiết bị.">
-    <meta name="twitter:image" content="https://zework.com/img/dashboard.jpeg">
+    <meta name="twitter:image" content="https://zework.com/img/dashboard.webp">
 
     <script type="application/ld+json">
         {
@@ -245,7 +254,7 @@
                     trình
                     chăm sóc khách hàng
                 </div>
-                <div class="hero-buttons" style="display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 2rem;">
+                <div class="hero-buttons">
                     <button class="experience">Trải nghiệm miễn phí ngay</button>
                     <button class="btn-consult open-consult-modal">
                         <i class="fas fa-headset"></i> Nhận tư vấn 1–1
@@ -267,8 +276,11 @@
                     <div class="dashboard-slider" id="dashboardSlider">
                         <!-- Slide 1: Video Demo -->
                         <div class="dashboard-slide" id="slideVideo">
-                            <video id="heroVideo" src="img/videodash.mp4" autoplay muted playsinline
-                                class="hero-video-visual"></video>
+                            <iframe id="heroVideo" class="hero-video-visual" 
+                                src="https://www.youtube.com/embed/S_-az13i5ME?autoplay=1&mute=1&playsinline=1&controls=0&rel=0&enablejsapi=1" 
+                                title="Zework Demo" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen></iframe>
                         </div>
 
                         <!-- Slide 2: Animated canvas dashboard -->
@@ -282,8 +294,17 @@
                             <div class="slider-dot" data-slide="1"></div>
                         </div>
                     </div>
+                    <script src="https://www.youtube.com/iframe_api"></script>
                     <script src="./js/dashboard-simulation.js"></script>
                     <script src="./js/dashboard-slider.js"></script>
+
+                    <!-- Hidden Security Overlay structure to prevent JS errors -->
+                    <div id="securityOverlay" style="display:none;">
+                        <div id="packetLayer"></div>
+                        <div id="statusTitle"></div>
+                        <div id="statusDesc"></div>
+                        <div class="hub-center"></div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -229,12 +229,14 @@ btnMenu.addEventListener('click', () => {
   popupMenu.classList.add('show');
   btnMenu.style.display = "none";
   btnClose.style.display = "block";
+  document.body.style.overflow = 'hidden';
 });
 
 btnClose.addEventListener('click', () => {
   popupMenu.classList.remove('show');
   btnMenu.style.display = "block";
   btnClose.style.display = "none";
+  document.body.style.overflow = '';
 });
 
 // xu ly drop dow
@@ -269,9 +271,55 @@ btnDownMacOs.onclick = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const logoLinksZalo = document.querySelector('.icon-zalo-chat');
-  logoLinksZalo.onclick = () => {
-    window.location.href = "https://zalo.me/982303333"
+  if (logoLinksZalo) {
+    logoLinksZalo.onclick = () => {
+      window.location.href = "https://zalo.me/982303333"
+    }
   }
+
+  // Smart Header: Hide on scroll down, show on scroll up
+  let lastScrollTop = 0;
+  const header = document.querySelector('header');
+  const scrollThreshold = 70; // Header height
+  const delta = 10; // Minimum scroll distance to trigger hide/show
+
+  window.addEventListener('scroll', () => {
+    // Only apply hide-on-scroll for mobile devices (screen width <= 768px)
+    if (window.innerWidth > 768) {
+      header.classList.remove('header-hidden');
+      return;
+    }
+
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Show header at the top
+    if (scrollTop < scrollThreshold) {
+      header.classList.remove('header-hidden');
+      return;
+    }
+
+    // Don't hide header if mobile menu is open
+    if (popupMenu.classList.contains('show')) {
+      header.classList.remove('header-hidden');
+      return;
+    }
+
+    // Check minimum scroll distance (delta)
+    if (Math.abs(lastScrollTop - scrollTop) <= delta) {
+      return;
+    }
+
+    // Detect direction
+    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+      // Scrolling down - hide header
+      header.classList.add('header-hidden');
+    } else {
+      // Scrolling up - show header
+      header.classList.remove('header-hidden');
+    }
+
+    lastScrollTop = scrollTop;
+  }, { passive: true });
 });
 
 

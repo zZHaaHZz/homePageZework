@@ -176,7 +176,7 @@
    ===================== */
 @media (max-width: 768px) {
     .feature-showcase {
-        padding: 4rem 1.6rem;
+        padding: 10rem 1.6rem 4rem 1.6rem;
         gap: 4rem;
     }
 

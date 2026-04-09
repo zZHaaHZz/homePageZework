@@ -11,7 +11,7 @@
 
     animation: appearBottom linear;
     animation-timeline: view();
-    animation-range: entry 5% cover 50%;
+    animation-range: entry 0% cover 30%;
 }
 
 .box-price-container {
@@ -438,10 +438,13 @@
     .product-container {
         width: 100%;
         height: auto;
+        display: flex;
         flex-direction: column;
         align-items: center;
         gap: 3.2rem;
         margin-left: 0;
+        padding: 0;
+        overflow-x: hidden;
     }
 
     .price-content-container {
@@ -458,6 +461,7 @@
     .product.hot {
         width: 100%;
         max-width: 32rem;
+        flex-shrink: 1;
     }
 
     .product.hot::after {

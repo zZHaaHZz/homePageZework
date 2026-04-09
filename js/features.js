@@ -5,7 +5,7 @@ const features = [
     title: "Nhắn tin",
     desc: "Quản lý toàn bộ hội thoại trong một giao diện duy nhất. Dễ tìm, dễ follow, không bỏ sót khách nào vì mọi thứ đều được lưu tập trung.",
     shortDesc: "Quản lý hội thoại tập trung",
-    img: "./img/img_chat.png",
+    img: "./img/img_chat.webp",
   },
   {
     id: "role",

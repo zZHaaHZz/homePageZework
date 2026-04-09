@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const avatars = [];
     for (let i = 1; i <= 4; i++) {
         const img = new Image();
-        img.src = `./img/avatarFeedback/avatar_${i}.png`;
+        img.src = `./img/avatarFeedback/avatar_${i}.webp`;
         avatars.push(img);
     }
 

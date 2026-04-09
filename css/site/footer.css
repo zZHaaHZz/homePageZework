@@ -205,7 +205,6 @@ footer {
 
 .bottom-footer {
     width: 100%;
-    width: 100vw;
     background-color: #F9FAFB;
     border-top: 0.1rem solid #EAECF0;
 }
@@ -525,7 +524,7 @@ footer {
     .icon-zalo-chat {
         width: 5.6rem;
         height: 5.6rem;
-        right: 2.4rem;
+        right: 3.2rem;
         bottom: 2.8rem;
     }
 

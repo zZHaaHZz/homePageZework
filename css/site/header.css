@@ -37,6 +37,8 @@ html {
     font-size: 10px;
     min-height: 100%;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -70,16 +72,26 @@ header {
     backdrop-filter: blur(2rem);
     -webkit-backdrop-filter: blur(2rem);
     border-bottom: 0.1rem solid #EAECF0;
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    width: 100%;
     z-index: 999;
     padding: 1rem 4.8rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease-in-out;
+}
+
+.container {
+    padding-top: 7rem;
+}
+
+header.header-hidden {
+    transform: translateY(-100%);
 }
 
 .logo {
@@ -365,15 +377,19 @@ header {
         font-size: 10px;
     }
 
+    .container {
+        padding-top: 7.2rem;
+    }
+
     header {
-        height: 6.4rem;
+        height: 7.2rem;
         width: 100%;
-        padding: 0 1.6rem;
+        padding: 0 2rem;
     }
 
     .content-header {
         width: 100%;
-        height: 6.4rem;
+        height: 7.2rem;
         justify-content: space-between;
     }
 
@@ -421,6 +437,22 @@ header {
         border: none;
     }
 
+    .close-menu {
+        display: none;
+        /* JS toggles this */
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .close-menu svg {
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        background-color: transparent;
+        border: none;
+    }
+
     .menu {
         display: none;
     }
@@ -430,14 +462,14 @@ header {
         position: fixed;
         width: 100%;
         height: 100vh;
-        top: 6.4rem;
+        top: 7.2rem;
         left: 0;
         right: 0;
         background: #fff;
         padding: 2.4rem;
         flex-direction: column;
         justify-content: flex-start;
-        transform: translateY(-100%);
+        transform: translateY(-120%);
         transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
         box-shadow: 0 4rem 4rem rgba(0, 0, 0, 0.05);
         z-index: 998;
@@ -476,7 +508,8 @@ header {
         gap: 1.2rem;
     }
 
-    .btn-signup, .btn-login {
+    .btn-signup,
+    .btn-login {
         width: 100%;
         height: 5.2rem;
         border-radius: 1.2rem;
