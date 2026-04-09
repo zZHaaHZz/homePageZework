@@ -8,28 +8,23 @@ let isPlayerReady = false;
 let currentSlide = 0; // 0 = Video, 1 = Canvas
 let autoSlideTimer;
 
-// --- YT Player API Setup ---
-window.onYouTubeIframeAPIReady = function () {
-    console.log("YT API Ready, taking over existing iframe...");
-    player = new YT.Player('heroVideo', {
-        events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-        }
-    });
+// --- Coordinated YT Player Hooks ---
+// These are called by video-loader.js
+window.handleHeroReady = function (event) {
+    console.log("Hero Player Ready");
+    isPlayerReady = true;
 };
 
-function onPlayerReady(event) {
-    console.log("Player Ready");
-    isPlayerReady = true;
-    // Note: Autoplay/Mute is handled via the iframe URL parameters
-}
-
-function onPlayerStateChange(event) {
+window.handleHeroStateChange = function (event) {
     // YT.PlayerState.ENDED = 0
     if (event.data === YT.PlayerState.ENDED && currentSlide === 0) {
         switchToCanvas();
     }
+};
+
+// Access the player instance from the loader
+function getHeroPlayer() {
+    return VideoLoader.getPlayers().heroVideo;
 }
 
 function switchToCanvas() {
@@ -47,6 +42,7 @@ function switchToCanvas() {
     updateDots();
 
     // Pause video when hiding it
+    const player = getHeroPlayer();
     if (isPlayerReady && player && player.pauseVideo) {
         player.pauseVideo();
     }
@@ -66,6 +62,7 @@ function switchToVideo() {
     updateDots();
 
     // Reset and play video from the beginning
+    const player = getHeroPlayer();
     if (isPlayerReady && player && player.seekTo && player.playVideo) {
         player.seekTo(0);
         player.playVideo();

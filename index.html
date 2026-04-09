@@ -134,6 +134,7 @@
     <link rel="stylesheet" href="./css/homePage/sales-feedback.css">
     <link rel="stylesheet" href="./css/price/ask-suport.css">
     <link rel="stylesheet" href="./css/homePage/video-showcase.css">
+    <link rel="stylesheet" href="./css/site/video-loader.css">
 
 </head>
 
@@ -277,6 +278,29 @@
                     <div class="dashboard-slider" id="dashboardSlider">
                         <!-- Slide 1: Video Demo -->
                         <div class="dashboard-slide" id="slideVideo">
+                            <!-- Skeleton Loader -->
+                            <div class="video-skeleton">
+                                <div class="skeleton-header shimmer">
+                                    <div class="sk-dot"></div>
+                                    <div class="sk-dot"></div>
+                                    <div class="sk-dot"></div>
+                                    <div class="sk-url shimmer"></div>
+                                </div>
+                                <div class="skeleton-body">
+                                    <div class="skeleton-sidebar shimmer">
+                                        <div class="sk-item shimmer"></div>
+                                        <div class="sk-item shimmer"></div>
+                                        <div class="sk-item shimmer"></div>
+                                    </div>
+                                    <div class="skeleton-main">
+                                        <div class="sk-chart shimmer"></div>
+                                        <div class="sk-stats">
+                                            <div class="sk-stat-card shimmer"></div>
+                                            <div class="sk-stat-card shimmer"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <iframe id="heroVideo" class="hero-video-visual"
                                 src="https://www.youtube.com/embed/S_-az13i5ME?autoplay=1&mute=1&playsinline=1&controls=0&rel=0&enablejsapi=1"
                                 title="Zework Demo" frameborder="0"
@@ -676,8 +700,31 @@
                             <div class="v-url">chat.zework.com/messaging-demo</div>
                         </div>
                         <div class="video-wrapper">
-                            <iframe
-                                src="https://www.youtube.com/embed/Lk-qjhO1jPU?rel=0&showinfo=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=Lk-qjhO1jPU&controls=0"
+                            <!-- Skeleton Loader -->
+                            <div class="video-skeleton">
+                                <div class="skeleton-header shimmer">
+                                    <div class="sk-dot"></div>
+                                    <div class="sk-dot"></div>
+                                    <div class="sk-dot"></div>
+                                    <div class="sk-url shimmer"></div>
+                                </div>
+                                <div class="skeleton-body">
+                                    <div class="skeleton-sidebar shimmer">
+                                        <div class="sk-item shimmer"></div>
+                                        <div class="sk-item shimmer"></div>
+                                        <div class="sk-item shimmer"></div>
+                                    </div>
+                                    <div class="skeleton-main">
+                                        <div class="sk-chart shimmer"></div>
+                                        <div class="sk-stats">
+                                            <div class="sk-stat-card shimmer"></div>
+                                            <div class="sk-stat-card shimmer"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <iframe id="messagingDemoVideo"
+                                src="https://www.youtube.com/embed/Lk-qjhO1jPU?rel=0&showinfo=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=Lk-qjhO1jPU&controls=0&enablejsapi=1"
                                 title="Zework Messaging Demo"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen>
@@ -1232,6 +1279,7 @@
             </div>
         </div>
         <script src="js/menu.js"></script>
+        <script src="js/video-loader.js"></script>
         <script src="js/video-scroll-effect.js"></script>
         <script src="js/price.js"></script>
         <script src="js/feedback.js"></script>
