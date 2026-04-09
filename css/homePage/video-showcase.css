@@ -1,0 +1,190 @@
+/* ========== VIDEO SHOWCASE SECTION ========== */
+
+.video-showcase {
+    width: 100%;
+    padding: 10rem 0;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+}
+
+/* Background Glows */
+.video-showcase::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    width: 60rem;
+    height: 60rem;
+    background: radial-gradient(circle, rgba(2, 123, 255, 0.05) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.video-showcase::after {
+    content: "";
+    position: absolute;
+    bottom: 10%;
+    right: -5%;
+    width: 50rem;
+    height: 50rem;
+    background: radial-gradient(circle, rgba(77, 163, 255, 0.04) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.video-showcase-header {
+    text-align: center;
+    max-width: 80rem;
+    padding: 0 2rem;
+    z-index: 2;
+}
+
+.video-showcase-header h2 {
+    font-size: 4.2rem;
+    font-weight: 800;
+    color: #101828;
+    line-height: 1.2;
+    margin-top: 2rem;
+    text-wrap: balance;
+}
+
+.video-showcase-header p {
+    font-size: 1.8rem;
+    color: #475467;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Premium Browser Frame */
+.video-frame-container {
+    width: 100%;
+    max-width: 110rem;
+    padding: 0 2rem;
+    perspective: 2000px;
+    z-index: 2;
+}
+
+.video-browser-frame {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 2.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        0 40px 100px -20px rgba(0, 0, 0, 0.15),
+        0 20px 40px -15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    
+    /* Optimized for JS Scroll Effect */
+    will-change: transform, opacity, box-shadow;
+    
+    transition: transform 0.1s ease-out, opacity 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.video-browser-frame:hover {
+    transform: rotateX(0deg) translateY(-10px);
+}
+
+/* Browser Header */
+.video-frame-header {
+    height: 4.8rem;
+    background: rgba(249, 250, 251, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    padding: 0 2.4rem;
+    gap: 2.4rem;
+}
+
+.v-dots {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.v-dot {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+}
+
+.v-red {
+    background: #ff5f56;
+}
+
+.v-yellow {
+    background: #ffbd2e;
+}
+
+.v-green {
+    background: #27c93f;
+}
+
+.v-url {
+    flex: 1;
+    height: 2.8rem;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 0.8rem;
+    font-size: 1.3rem;
+    color: #667085;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.02em;
+}
+
+/* Iframe Scaling */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 6.65;
+    background: #000;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: -18%;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    border: none;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .video-showcase {
+        padding: 6rem 0;
+        gap: 4rem;
+    }
+
+    .video-showcase-header h2 {
+        font-size: 2.8rem;
+    }
+
+    .video-browser-frame {
+        border-radius: 1.6rem;
+        transform: none !important;
+    }
+
+    .video-frame-header {
+        height: 3.6rem;
+        padding: 0 1.6rem;
+    }
+
+    .v-dot {
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+
+    .v-url {
+        height: 2.4rem;
+        font-size: 1.1rem;
+    }
+}
