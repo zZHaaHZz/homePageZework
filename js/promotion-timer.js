@@ -1,17 +1,17 @@
 /**
  * Promotion Modal & Countdown Timer Logic
  */
-(function() {
+(function () {
     'use strict';
 
-    const SHOW_DELAY = 5000; // 5 seconds
+    const SHOW_DELAY = 10000; // 5 seconds
 
     // Reset 7-day deadline on every visit
     const deadlineTs = (Date.now() + 7 * 24 * 60 * 60 * 1000).toString();
     const targetDate = new Date(parseInt(deadlineTs));
 
     const REAPPEAR_INTERVAL = 5 * 60 * 1000; // 5 minutes
-    
+
     function initPromoModal() {
         const modal = document.getElementById('promoModal');
         const closeBtn = document.getElementById('promoClose');
@@ -35,7 +35,7 @@
             if (e.target === modal) modal.classList.remove('show');
         };
         ctaBtn.onclick = () => {
-            window.open('https://app.zework.com/', '_blank'); 
+            window.open('https://app.zework.com/', '_blank');
         };
 
         // Start Countdown

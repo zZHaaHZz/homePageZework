@@ -6,7 +6,6 @@
 
 .hero {
     width: 100%;
-    min-height: 80rem;
     height: auto;
     position: relative;
     overflow: hidden;
@@ -14,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     background: transparent;
-    padding-bottom: 0;
+    padding-bottom: 8rem;
 }
 
 .hero::before {
@@ -67,67 +66,7 @@
     opacity: 0.03;
 }
 
-/* Unified Dashboard Visual Wrapper */
-.dashboard-visual-wrapper {
-    width: 100%;
-    max-width: 110rem;
-    margin: 4rem auto 0 auto;
-    position: relative;
-    z-index: 5;
-    background: transparent;
-}
 
-.square-6 {
-    width: 8.4rem;
-    height: 28.4rem;
-    left: 9rem;
-    top: 7rem;
-    border: 0.1rem solid rgba(2, 123, 255, 0.1);
-    border-radius: 2rem;
-    opacity: 0.3;
-}
-
-.square-7 {
-    width: 8.4rem;
-    height: 33.4rem;
-    right: 9rem;
-    top: 9rem;
-    border: 0.1rem solid rgba(2, 123, 255, 0.1);
-    border-radius: 2rem;
-    background-color: rgba(2, 123, 255, 0.03);
-    opacity: 0.3;
-}
-
-.img-customer-ratio {
-    position: absolute;
-    left: 3.3rem;
-    top: 20rem;
-    z-index: 9;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    overflow: hidden;
-}
-
-.img-customer-ratio img {
-    width: 25.1rem;
-    height: auto;
-}
-
-.mouse-hero {
-    position: absolute;
-    top: 24rem;
-    left: 27rem;
-    transform: translateX(-50%);
-    border-radius: calc(2rem * 100vw / 1440);
-    z-index: 10;
-    overflow: hidden;
-}
-
-.mouse-hero img {
-    width: 7.2rem;
-    height: auto;
-}
 
 .head-line-hero {
     z-index: 2;

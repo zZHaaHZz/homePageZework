@@ -1,0 +1,88 @@
+/* ========== DASHBOARD SHOWCASE SECTION ========== */
+
+.dashboard-showcase-section {
+    width: 100%;
+    padding: 2rem 0 8rem 0;
+    position: relative;
+    background: transparent;
+    z-index: 5;
+}
+
+.dashboard-showcase-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ensure the white frame is prominent on any background */
+.dashboard-showcase-section .dashboard-device-frame {
+    box-shadow: 0 4rem 10rem -2rem rgba(0, 102, 219, 0.15);
+}
+
+@media (max-width: 768px) {
+    .dashboard-showcase-section {
+        padding: 0 0 4rem 0;
+    }
+}
+
+/* Dashboard Visual Elements (Moved from hero.css) */
+.dashboard-visual-wrapper {
+    width: 100%;
+    max-width: 110rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    background: transparent;
+}
+
+.square-6 {
+    width: 8.4rem;
+    height: 28.4rem;
+    left: 9rem;
+    top: 7rem;
+    border: 0.1rem solid rgba(2, 123, 255, 0.1);
+    border-radius: 2rem;
+    opacity: 0.3;
+}
+
+.square-7 {
+    width: 8.4rem;
+    height: 33.4rem;
+    right: 9rem;
+    top: 9rem;
+    border: 0.1rem solid rgba(2, 123, 255, 0.1);
+    border-radius: 2rem;
+    background-color: rgba(2, 123, 255, 0.03);
+    opacity: 0.3;
+}
+
+.img-customer-ratio {
+    position: absolute;
+    left: 3.3rem;
+    top: 20rem;
+    z-index: 9;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+
+.img-customer-ratio img {
+    width: 25.1rem;
+    height: auto;
+}
+
+.mouse-hero {
+    position: absolute;
+    top: 24rem;
+    left: 27rem;
+    transform: translateX(-50%);
+    border-radius: calc(2rem * 100vw / 1440);
+    z-index: 10;
+    overflow: hidden;
+}
+
+.mouse-hero img {
+    width: 7.2rem;
+    height: auto;
+}
