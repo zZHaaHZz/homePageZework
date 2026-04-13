@@ -97,50 +97,115 @@
         }
 
         .terms-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 2rem 2rem 8rem;
+        }
+
+        /* Document Paper Look */
+        .terms-document {
+            background: #ffffff;
+            border: 1px solid #EAECF0;
+            box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+            border-radius: 2.4rem;
+            padding: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terms-document::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #027BFF, #0066db);
+        }
+
+        .document-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5rem;
+            padding-bottom: 2.4rem;
+            border-bottom: 1px solid #F2F4F7;
+        }
+
+        .doc-meta {
+            text-align: left;
+        }
+
+        .doc-meta span {
+            display: block;
+            font-size: 1.3rem;
+            color: #667085;
+            margin-bottom: 0.4rem;
+        }
+
+        .doc-meta strong {
+            font-size: 1.4rem;
+            color: var(--text-main);
+        }
+
+        .btn-print {
+            padding: 1rem 1.6rem;
+            border-radius: 0.8rem;
+            border: 1px solid #D0D5DD;
+            background: #fff;
+            color: #344054;
+            font-size: 1.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-print:hover {
+            background: #F9FAFB;
+            border-color: #98A2B3;
         }
 
         .terms-section {
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .terms-section:last-child {
+            margin-bottom: 0;
         }
 
         .terms-section h2 {
-            font-size: 2.4rem;
+            font-size: 2.22rem;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 2rem;
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1.6rem;
+        }
+
+        .terms-section h2 i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            width: 3.2rem;
+            height: 3.2rem;
+            background: #f0f7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.8rem;
         }
 
         .terms-section h2::before {
-            content: '';
-            display: block;
-            width: 4px;
-            height: 24px;
-            background: var(--primary-color);
-            border-radius: 2px;
+            display: none;
         }
 
         .terms-content {
             font-size: 1.6rem;
             color: var(--text-secondary);
-        }
-
-        .terms-content p {
-            margin-bottom: 1.6rem;
-        }
-
-        .terms-content ul {
-            padding-left: 2rem;
-            margin-bottom: 1.6rem;
-        }
-
-        .terms-content ul li {
-            margin-bottom: 1rem;
+            padding-left: 4.8rem;
         }
 
         @media (max-width: 768px) {
@@ -148,12 +213,27 @@
                 padding: 8rem 2rem 4rem;
             }
 
-            .terms-hero h1 {
-                font-size: 3.2rem;
+            .terms-container {
+                padding: 2rem 1.6rem 6rem;
             }
 
-            .terms-container {
-                padding: 4rem 2rem;
+            .terms-document {
+                padding: 3.2rem 2rem;
+                border-radius: 1.6rem;
+            }
+
+            .document-header {
+                flex-direction: column;
+                gap: 2rem;
+                margin-bottom: 3.2rem;
+            }
+
+            .terms-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .terms-content {
+                padding-left: 0;
             }
         }
     </style>
@@ -279,55 +359,65 @@
         </section>
 
         <section class="terms-container">
-            <div class="terms-section">
-                <h2>1. Định nghĩa dịch vụ</h2>
-                <div class="terms-content">
-                    <p>Zework là nền tảng quản trị tài khoản Zalo tập trung, cung cấp các công cụ hỗ trợ doanh nghiệp và
-                        cá nhân quản lý tin nhắn, chăm sóc khách hàng và tối ưu hóa quy trình làm việc trên nền tảng
-                        Zalo.</p>
+            <div class="terms-document">
+                <div class="terms-section">
+                    <h2><i class="fas fa-info-circle"></i> 1. Định nghĩa dịch vụ</h2>
+                    <div class="terms-content">
+                        <p>Zework là nền tảng quản trị tài khoản Zalo tập trung, cung cấp các công cụ hỗ trợ doanh
+                            nghiệp và
+                            cá nhân quản lý tin nhắn, chăm sóc khách hàng và tối ưu hóa quy trình làm việc trên nền tảng
+                            Zalo.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="terms-section">
-                <h2>2. Quyền và trách nhiệm của người dùng</h2>
-                <div class="terms-content">
-                    <ul>
-                        <li>Người dùng phải cung cấp thông tin chính xác khi đăng ký tài khoản.</li>
-                        <li>Người dùng chịu trách nhiệm hoàn toàn về việc bảo mật thông tin đăng nhập và các hoạt động
-                            diễn ra dưới tài khoản của mình.</li>
-                        <li>Nghiêm cấm sử dụng Zework vào các mục đích vi phạm pháp luật, phát tán mã độc, spam, lừa đảo
-                            hoặc gây rối trật tự công cộng trên nền tảng Zalo.</li>
-                        <li>Người dùng cam kết có toàn quyền quản lý đối với các tài khoản Zalo được kết nối vào hệ
-                            thống Zework.</li>
-                    </ul>
+                <div class="terms-section">
+                    <h2><i class="fas fa-user-check"></i> 2. Quyền và trách nhiệm của người dùng</h2>
+                    <div class="terms-content">
+                        <ul>
+                            <li>Người dùng phải cung cấp thông tin chính xác khi đăng ký tài khoản.</li>
+                            <li>Người dùng chịu trách nhiệm hoàn toàn về việc bảo mật thông tin đăng nhập và các hoạt
+                                động
+                                diễn ra dưới tài khoản của mình.</li>
+                            <li>Nghiêm cấm sử dụng Zework vào các mục đích vi phạm pháp luật, phát tán mã độc, spam, lừa
+                                đảo
+                                hoặc gây rối trật tự công cộng trên nền tảng Zalo.</li>
+                            <li>Người dùng cam kết có toàn quyền quản lý đối với các tài khoản Zalo được kết nối vào hệ
+                                thống Zework.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="terms-section">
-                <h2>3. Quy định về tích hợp Zalo</h2>
-                <div class="terms-content">
-                    <p>Zework hoạt dựa trên các giao thức kết nối với Zalo (API/Token/Cookie). Người dùng phải tuân thủ
-                        nghiêm ngặt "Chính sách cộng đồng" và "Điều khoản sử dụng" của Zalo.</p>
-                    <p>Zework không chịu trách nhiệm trong trường hợp tài khoản Zalo của người dùng bị khóa hoặc hạn chế
-                        do vi phạm chính sách của Zalo hoặc do các thay đổi đột ngột từ phía nhà cung cấp Zalo.</p>
+                <div class="terms-section">
+                    <h2><i class="fas fa-plug"></i> 3. Quy định về tích hợp Zalo</h2>
+                    <div class="terms-content">
+                        <p>Zework hoạt dựa trên các giao thức kết nối với Zalo (API/Token/Cookie). Người dùng phải tuân
+                            thủ
+                            nghiêm ngặt "Chính sách cộng đồng" và "Điều khoản sử dụng" của Zalo.</p>
+                        <p>Zework không chịu trách nhiệm trong trường hợp tài khoản Zalo của người dùng bị khóa hoặc hạn
+                            chế
+                            do vi phạm chính sách của Zalo hoặc do các thay đổi đột ngột từ phía nhà cung cấp Zalo.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="terms-section">
-                <h2>4. Sở hữu trí tuệ</h2>
-                <div class="terms-content">
-                    <p>Toàn bộ mã nguồn, thiết kế, giao diện, logo và các tài sản trí tuệ khác liên quan đến Zework
-                        thuộc sở hữu độc quyền của đội ngũ phát triển Zework. Người dùng không được phép sao chép, phân
-                        phối hoặc can thiệp vào mã nguồn dưới bất kỳ hình thức nào.</p>
+                <div class="terms-section">
+                    <h2><i class="fas fa-copyright"></i> 4. Sở hữu trí tuệ</h2>
+                    <div class="terms-content">
+                        <p>Toàn bộ mã nguồn, thiết kế, giao diện, logo và các tài sản trí tuệ khác liên quan đến Zework
+                            thuộc sở hữu độc quyền của đội ngũ phát triển Zework. Người dùng không được phép sao chép,
+                            phân
+                            phối hoặc can thiệp vào mã nguồn dưới bất kỳ hình thức nào.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="terms-section">
-                <h2>5. Giới hạn trách nhiệm</h2>
-                <div class="terms-content">
-                    <p>Trong mọi trường hợp, Zework không chịu trách nhiệm về bất kỳ thiệt hại trực tiếp, gián tiếp hoặc
-                        ngẫu nhiên nào (bao gồm mất lợi nhuận, mất dữ liệu) phát sinh từ việc sử dụng hoặc không thể sử
-                        dụng phần mềm, bao gồm cả các sự cố do hạ tầng mạng hoặc lỗi từ phía bên thứ ba (Zalo).</p>
+                <div class="terms-section">
+                    <h2><i class="fas fa-balance-scale"></i> 5. Giới hạn trách nhiệm</h2>
+                    <div class="terms-content">
+                        <p>Trong mọi trường hợp, Zework không chịu trách nhiệm về bất kỳ thiệt hại trực tiếp, gián tiếp
+                            hoặc
+                            ngẫu nhiên nào (bao gồm mất lợi nhuận, mất dữ liệu) phát sinh từ việc sử dụng hoặc không thể
+                            sử
+                            dụng phần mềm, bao gồm cả các sự cố do hạ tầng mạng hoặc lỗi từ phía bên thứ ba (Zalo).</p>
+                    </div>
                 </div>
             </div>
         </section>
