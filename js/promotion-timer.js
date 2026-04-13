@@ -19,22 +19,31 @@
 
         if (!modal) return;
 
+        // Check if user has already dismissed the promo
+        const isDismissed = localStorage.getItem('zework_promo_dismissed');
+        if (isDismissed === 'true') return;
+
         const showModal = () => {
             modal.classList.add('show');
         };
 
-        // Show modal after initial delay
+        const dismissModal = () => {
+            modal.classList.remove('show');
+            localStorage.setItem('zework_promo_dismissed', 'true');
+        };
+
+        // Show modal after initial delay (if not dismissed)
         setTimeout(showModal, SHOW_DELAY);
 
-        // Repeatedly show modal every 5 minutes
-        setInterval(showModal, REAPPEAR_INTERVAL);
-
         // Close handlers
-        closeBtn.onclick = () => modal.classList.remove('show');
+        closeBtn.onclick = dismissModal;
+        
         modal.onclick = (e) => {
-            if (e.target === modal) modal.classList.remove('show');
+            if (e.target === modal) dismissModal();
         };
+
         ctaBtn.onclick = () => {
+            dismissModal();
             window.open('https://app.zework.com/', '_blank'); 
         };
 

@@ -1,0 +1,83 @@
+/* ========================================================
+   GLOBAL SKELETON LOADER — global-skeleton.css
+   Áp dụng cho tất cả <img> và inline <svg> trên toàn site
+   ======================================================== */
+
+/* ---------- KEYFRAME SHIMMER ---------- */
+@keyframes img-shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+}
+
+/* ---------- WRAPPER GIỮ CHỖ (skeleton placeholder) ---------- */
+/*
+ * .skeleton-placeholder được chèn bởi image-skeleton.js
+ * bao quanh mỗi <img> / <svg> trong khi chờ tải.
+ */
+.skeleton-placeholder {
+    /* Kế thừa kích thước của ảnh chứa bên trong */
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-radius: inherit; /* Kế thừa border-radius của ảnh gốc */
+
+    /* Nền xám nhạt */
+    background-color: #f0f2f5;
+
+    /* Hiệu ứng shimmer chạy ngang */
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0)   0%,
+        rgba(255, 255, 255, 0.65) 50%,
+        rgba(255, 255, 255, 0)   100%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    animation: img-shimmer 1.6s ease-in-out infinite;
+}
+
+/* Giữ đúng kích thước block cho các ảnh block-level */
+.skeleton-placeholder.sk-block {
+    display: block;
+    width: 100%;
+}
+
+/* ---------- TRẠNG THÁI ẨN ẢNH KHI ĐANG TẢI ---------- */
+/*
+ * .img-hidden được gán vào <img>/<svg> ngay khi bọc bởi JS.
+ * Ảnh đã chiếm không gian nhưng bị ẩn → tránh Layout Shift.
+ */
+.img-hidden {
+    opacity: 0;
+    transition: none; /* Không transition khi ẩn */
+}
+
+/* ---------- HIỆU ỨNG FADE-IN KHI ẢNH ĐÃ TẢI XONG ---------- */
+/*
+ * .img-fade-in được gán bởi JS khi sự kiện load() kết thúc.
+ * Placeholder shimmer bị xóa ngay sau khi class này được thêm.
+ */
+.img-fade-in {
+    opacity: 1;
+    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- NGOẠI LỆ: Bỏ qua ảnh icon nhỏ & logo ---------- */
+/*
+ * Các ảnh nhỏ hơn hoặc bằng 40px hoặc có class/attr đặc biệt
+ * sẽ không được áp skeleton (xử lý bên JS).
+ * CSS này chỉ là override an toàn.
+ */
+.no-skeleton,
+.no-skeleton .img-hidden {
+    opacity: 1 !important;
+    animation: none !important;
+}
+
+/* ---------- RESPONSIVE: Đảm bảo không bị layout shift ---------- */
+@media (max-width: 768px) {
+    .skeleton-placeholder {
+        /* Trên mobile vẫn giữ shimmer đầy đủ */
+        animation-duration: 1.4s;
+    }
+}
