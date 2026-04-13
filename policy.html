@@ -97,68 +97,170 @@
         }
 
         .policy-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 1rem 2rem 8rem;
+        }
+
+        /* Highlights Section */
+        .policy-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.4rem;
+            margin-bottom: 5rem;
+            margin-top: -4rem;
+            /* Overlap with hero slightly */
+            position: relative;
+            z-index: 10;
+        }
+
+        .highlight-card {
+            background: #ffffff;
+            border: 1px solid rgba(2, 123, 255, 0.1);
+            border-radius: 2rem;
+            padding: 3.2rem 2.4rem;
+            text-align: center;
+            box-shadow: 0 12px 24px rgba(16, 24, 40, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(16, 24, 40, 0.1);
+        }
+
+        .highlight-icon {
+            width: 5.6rem;
+            height: 5.6rem;
+            background: #f0f7ff;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            margin: 0 auto 1.6rem;
+        }
+
+        .highlight-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .highlight-card p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Document Paper Look */
+        .policy-document {
+            background: #ffffff;
+            border: 1px solid #EAECF0;
+            box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+            border-radius: 2.4rem;
+            padding: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-document::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #027BFF, #0066db);
+        }
+
+        .document-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5rem;
+            padding-bottom: 2.4rem;
+            border-bottom: 1px solid #F2F4F7;
+        }
+
+        .doc-meta {
+            text-align: left;
+        }
+
+        .doc-meta span {
+            display: block;
+            font-size: 1.3rem;
+            color: #667085;
+            margin-bottom: 0.4rem;
+        }
+
+        .doc-meta strong {
+            font-size: 1.4rem;
+            color: var(--text-main);
+        }
+
+        .btn-print {
+            padding: 1rem 1.6rem;
+            border-radius: 0.8rem;
+            border: 1px solid #D0D5DD;
+            background: #fff;
+            color: #344054;
+            font-size: 1.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-print:hover {
+            background: #F9FAFB;
+            border-color: #98A2B3;
         }
 
         .policy-section {
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .policy-section:last-child {
+            margin-bottom: 0;
         }
 
         .policy-section h2 {
-            font-size: 2.4rem;
+            font-size: 2.22rem;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 2rem;
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1.6rem;
+        }
+
+        .policy-section h2 i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            width: 3.2rem;
+            height: 3.2rem;
+            background: #f0f7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.8rem;
         }
 
         .policy-section h2::before {
-            content: '';
-            display: block;
-            width: 4px;
-            height: 24px;
-            background: var(--primary-color);
-            border-radius: 2px;
+            display: none;
         }
+
+        /* Override old style */
 
         .policy-content {
             font-size: 1.6rem;
             color: var(--text-secondary);
-        }
-
-        .policy-content p {
-            margin-bottom: 1.6rem;
-        }
-
-        .policy-content ul {
-            padding-left: 2rem;
-            margin-bottom: 1.6rem;
-        }
-
-        .policy-content ul li {
-            margin-bottom: 1rem;
-        }
-
-        .policy-contact-box {
-            background: var(--bg-light);
-            border-radius: 1.6rem;
-            padding: 3rem;
-            margin-top: 4rem;
-            border: 1px solid #EAECF0;
-        }
-
-        .policy-contact-box h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
-        }
-
-        .policy-contact-box p {
-            margin-bottom: 0.8rem;
+            padding-left: 4.8rem;
         }
 
         @media (max-width: 768px) {
@@ -171,7 +273,33 @@
             }
 
             .policy-container {
-                padding: 4rem 2rem;
+                padding: 2rem 1.6rem 6rem;
+            }
+
+            .policy-highlights {
+                grid-template-columns: 1fr;
+                gap: 1.6rem;
+                margin-top: -2rem;
+                margin-bottom: 3.2rem;
+            }
+
+            .policy-document {
+                padding: 3.2rem 2rem;
+                border-radius: 1.6rem;
+            }
+
+            .document-header {
+                flex-direction: column;
+                gap: 2rem;
+                margin-bottom: 3.2rem;
+            }
+
+            .policy-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .policy-content {
+                padding-left: 0;
             }
         }
     </style>
@@ -296,124 +424,150 @@
         </section>
 
         <section class="policy-container">
-            <div class="policy-section">
-                <h2>1. Thu thập thông tin</h2>
-                <div class="policy-content">
-                    <p>Chúng tôi thu thập các loại thông tin sau để duy trì dịch vụ:</p>
-                    <ul>
-                        <li><strong>Thông tin và nội dung bạn cung cấp:</strong> Chúng tôi thu thập nội dung, thông tin
-                            liên lạc và các thông tin khác mà bạn cung cấp khi sử dụng sản phẩm của chúng tôi, bao gồm
-                            cả khi bạn đăng ký một tài khoản, tạo hoặc chia sẻ nội dung và nhắn tin hay liên lạc với
-                            người khác bằng các nền tảng mà chúng tôi cung cấp.</li>
-                        <li><strong>Lưu trữ dữ liệu bạn hoặc khách hàng của bạn chia sẻ:</strong> Trong một số trường
-                            hợp, nhằm cung cấp đầy đủ dịch vụ của mình, chúng tôi có thể cần lưu trữ dữ liệu của bạn
-                            hoặc khách hàng của bạn đã cung cấp qua hệ thống Zework.</li>
-                        <li><strong>Dữ liệu kết nối nền tảng:</strong> Khi bạn tích hợp Zework với các bên thứ ba (như
-                            Zalo...), chúng tôi thu thập các thông tin công khai và dữ liệu cần thiết để đồng bộ tin
-                            nhắn, đơn hàng và danh sách khách hàng.</li>
-                        <li><strong>Thông tin thiết bị:</strong> Hệ điều hành, loại trình duyệt, địa chỉ IP và ID thiết
-                            bị để đảm bảo tính bảo mật và tối ưu hóa giao diện hiển thị.</li>
-                        <li><strong>Dữ liệu từ Cookie:</strong> Chúng tôi sử dụng cookie và các công nghệ tương tự để
-                            ghi nhớ tùy chọn đăng nhập và phân tích hiệu suất hệ thống.</li>
-                    </ul>
+            <!-- Document Card -->
+            <div class="policy-document">
+                <div class="policy-section">
+                    <h2><i class="fas fa-fingerprint"></i> 1. Thu thập thông tin</h2>
+                    <div class="policy-content">
+                        <p>Chúng tôi thu thập các loại thông tin sau để duy trì dịch vụ:</p>
+                        <ul>
+                            <li><strong>Thông tin và nội dung bạn cung cấp:</strong> Chúng tôi thu thập nội dung, thông
+                                tin
+                                liên lạc và các thông tin khác mà bạn cung cấp khi sử dụng sản phẩm của chúng tôi, bao
+                                gồm
+                                cả khi bạn đăng ký một tài khoản, tạo hoặc chia sẻ nội dung và nhắn tin hay liên lạc với
+                                người khác bằng các nền tảng mà chúng tôi cung cấp.</li>
+                            <li><strong>Lưu trữ dữ liệu bạn hoặc khách hàng của bạn chia sẻ:</strong> Trong một số
+                                trường
+                                hợp, nhằm cung cấp đầy đủ dịch vụ của mình, chúng tôi có thể cần lưu trữ dữ liệu của bạn
+                                hoặc khách hàng của bạn đã cung cấp qua hệ thống Zework.</li>
+                            <li><strong>Dữ liệu kết nối nền tảng:</strong> Khi bạn tích hợp Zework với các bên thứ ba
+                                (như
+                                Zalo...), chúng tôi thu thập các thông tin công khai và dữ liệu cần thiết để đồng bộ tin
+                                nhắn, đơn hàng và danh sách khách hàng.</li>
+                            <li><strong>Thông tin thiết bị:</strong> Hệ điều hành, loại trình duyệt, địa chỉ IP và ID
+                                thiết
+                                bị để đảm bảo tính bảo mật và tối ưu hóa giao diện hiển thị.</li>
+                            <li><strong>Dữ liệu từ Cookie:</strong> Chúng tôi sử dụng cookie và các công nghệ tương tự
+                                để
+                                ghi nhớ tùy chọn đăng nhập và phân tích hiệu suất hệ thống.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="policy-section">
-                <h2>2. Mục đích sử dụng thông tin</h2>
-                <div class="policy-content">
-                    <ul>
-                        <li>Vận hành và duy trì các tính năng quản lý, đồng bộ tin nhắn.</li>
-                        <li>Hỗ trợ kỹ thuật, giải quyết khiếu nại và tối ưu hóa trải nghiệm người dùng.</li>
-                        <li>Gửi thông báo về các cập nhật hệ thống, tính năng mới hoặc thay đổi chính sách.</li>
-                        <li>Đảm bảo an toàn hệ thống và ngăn chặn các hành vi xâm nhập trái phép.</li>
-                        <li>Nghiên cứu và phát triển sản phẩm: Tiến hành khảo sát và nghiên cứu, cũng như thử nghiệm và
-                            khắc phục sự cố các tính năng, sản phẩm mới.</li>
-                    </ul>
+                <div class="policy-section">
+                    <h2><i class="fas fa-bullseye"></i> 2. Mục đích sử dụng thông tin</h2>
+                    <div class="policy-content">
+                        <ul>
+                            <li>Vận hành và duy trì các tính năng quản lý, đồng bộ tin nhắn.</li>
+                            <li>Hỗ trợ kỹ thuật, giải quyết khiếu nại và tối ưu hóa trải nghiệm người dùng.</li>
+                            <li>Gửi thông báo về các cập nhật hệ thống, tính năng mới hoặc thay đổi chính sách.</li>
+                            <li>Đảm bảo an toàn hệ thống và ngăn chặn các hành vi xâm nhập trái phép.</li>
+                            <li>Nghiên cứu và phát triển sản phẩm: Tiến hành khảo sát và nghiên cứu, cũng như thử nghiệm
+                                và
+                                khắc phục sự cố các tính năng, sản phẩm mới.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="policy-section">
-                <h2>3. Cơ chế mã hoá và bảo mật</h2>
-                <div class="policy-content">
-                    <ul>
-                        <li><strong>Mã hóa thông tin tài khoản:</strong> Toàn bộ thông tin đăng ký và đăng nhập (đặc
-                            biệt là mật khẩu) được mã hóa một chiều (Hash). Mật khẩu gốc hoàn toàn không thể đọc được
-                            bởi nhân viên Zework.</li>
-                        <li><strong>Mã hóa nội dung tin nhắn:</strong> Mọi nội dung hội thoại, tin nhắn văn bản và tệp
-                            tin khi được đồng bộ về Zework đều được mã hóa trong quá trình truyền tải và khi lưu trữ.
-                        </li>
-                        <li><strong>Bảo mật Token:</strong> Các mã truy cập (Token) kết nối với Zalo được mã hóa bằng
-                            thuật toán AES-256. Chỉ có hệ thống tự động mới có quyền giải mã tạm thời để thực hiện tác
-                            vụ.</li>
-                    </ul>
+                <div class="policy-section">
+                    <h2><i class="fas fa-key"></i> 3. Cơ chế mã hoá và bảo mật</h2>
+                    <div class="policy-content">
+                        <ul>
+                            <li><strong>Mã hóa thông tin tài khoản:</strong> Toàn bộ thông tin đăng ký và đăng nhập (đặc
+                                biệt là mật khẩu) được mã hóa một chiều (Hash). Mật khẩu gốc hoàn toàn không thể đọc
+                                được
+                                bởi nhân viên Zework.</li>
+                            <li><strong>Mã hóa nội dung tin nhắn:</strong> Mọi nội dung hội thoại, tin nhắn văn bản và
+                                tệp
+                                tin khi được đồng bộ về Zework đều được mã hóa trong quá trình truyền tải và khi lưu
+                                trữ.
+                            </li>
+                            <li><strong>Bảo mật Token:</strong> Các mã truy cập (Token) kết nối với Zalo được mã hóa
+                                bằng
+                                thuật toán AES-256. Chỉ có hệ thống tự động mới có quyền giải mã tạm thời để thực hiện
+                                tác
+                                vụ.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="policy-section">
-                <h2>4. Cam kết lưu trữ</h2>
-                <div class="policy-content">
-                    <ul>
-                        <li>Dữ liệu của bạn là tài sản của bạn. Zework chỉ đóng vai trò là đơn vị lưu trữ và xử lý kỹ
-                            thuật.</li>
-                        <li>Chúng tôi không cung cấp, mua bán hoặc chia sẻ nội dung tin nhắn và thông tin cá nhân của
-                            bạn cho bất kỳ bên thứ ba nào.</li>
-                        <li>Hệ thống ghi lại nhật ký (Log) truy cập để đảm bảo tính minh bạch và giúp người dùng kiểm
-                            soát tài khoản.</li>
-                    </ul>
+                <div class="policy-section">
+                    <h2><i class="fas fa-hand-holding-heart"></i> 4. Cam kết lưu trữ</h2>
+                    <div class="policy-content">
+                        <ul>
+                            <li>Dữ liệu của bạn là tài sản của bạn. Zework chỉ đóng vai trò là đơn vị lưu trữ và xử lý
+                                kỹ
+                                thuật.</li>
+                            <li>Chúng tôi không cung cấp, mua bán hoặc chia sẻ nội dung tin nhắn và thông tin cá nhân
+                                của
+                                bạn cho bất kỳ bên thứ ba nào.</li>
+                            <li>Hệ thống ghi lại nhật ký (Log) truy cập để đảm bảo tính minh bạch và giúp người dùng
+                                kiểm
+                                soát tài khoản.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="policy-section">
-                <h2>5. Quyền của người dùng đối với dữ liệu</h2>
-                <div class="policy-content">
-                    <p>Người dùng có quyền:</p>
-                    <ul>
-                        <li>Truy cập và chỉnh sửa thông tin cá nhân bất cứ lúc nào.</li>
-                        <li>Yêu cầu trích xuất dữ liệu hoặc xóa hoàn toàn dữ liệu tài khoản trên hệ thống Zework.</li>
-                        <li>Ngắt kết nối các tài khoản Zalo để dừng việc đồng bộ dữ liệu về Zework.</li>
-                    </ul>
+                <div class="policy-section">
+                    <h2><i class="fas fa-user-shield"></i> 5. Quyền của người dùng đối với dữ liệu</h2>
+                    <div class="policy-content">
+                        <p>Người dùng có quyền:</p>
+                        <ul>
+                            <li>Truy cập và chỉnh sửa thông tin cá nhân bất cứ lúc nào.</li>
+                            <li>Yêu cầu trích xuất dữ liệu hoặc xóa hoàn toàn dữ liệu tài khoản trên hệ thống Zework.
+                            </li>
+                            <li>Ngắt kết nối các tài khoản Zalo để dừng việc đồng bộ dữ liệu về Zework.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="policy-section">
-                <h2>6. Trường hợp không được phép chia sẻ</h2>
-                <div class="policy-content">
-                    <p>Chúng tôi cam kết đối với các dữ liệu bảo mật tuyệt đối:</p>
-                    <ul>
-                        <li>Không chia sẻ cho bên thứ ba dưới bất kỳ hình thức nào nếu chưa được bạn cho phép.</li>
-                        <li>Không sử dụng dữ liệu của bạn để phục vụ kinh doanh, thương mại cho Zework hoặc bên thứ ba.
-                        </li>
-                        <li>Không sử dụng dữ liệu của bạn để chống lại bạn, trừ khi có yêu cầu của cơ quan pháp luật.
-                        </li>
-                        <li><strong>Quy trình pháp luật:</strong> Trong trường hợp bị buộc cung cấp thông tin theo yêu
-                            cầu của cơ quan có thẩm quyền, Zework sẽ tuân thủ quy định và chỉ cung cấp những gì bắt
-                            buộc.</li>
-                    </ul>
+                <div class="policy-section">
+                    <h2><i class="fas fa-exclamation-triangle"></i> 6. Trường hợp không được phép chia sẻ</h2>
+                    <div class="policy-content">
+                        <p>Chúng tôi cam kết đối với các dữ liệu bảo mật tuyệt đối:</p>
+                        <ul>
+                            <li>Không chia sẻ cho bên thứ ba dưới bất kỳ hình thức nào nếu chưa được bạn cho phép.</li>
+                            <li>Không sử dụng dữ liệu của bạn để phục vụ kinh doanh, thương mại cho Zework hoặc bên thứ
+                                ba.
+                            </li>
+                            <li>Không sử dụng dữ liệu của bạn để chống lại bạn, trừ khi có yêu cầu của cơ quan pháp
+                                luật.
+                            </li>
+                            <li><strong>Quy trình pháp luật:</strong> Trong trường hợp bị buộc cung cấp thông tin theo
+                                yêu
+                                cầu của cơ quan có thẩm quyền, Zework sẽ tuân thủ quy định và chỉ cung cấp những gì bắt
+                                buộc.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="policy-section">
-                <h2>7. Thời gian lưu trữ và xóa thông tin</h2>
-                <div class="policy-content">
-                    <p>Tất cả thông tin thu thập được sẽ được lưu trữ không thời hạn cho đến khi tài khoản người dùng bị
-                        xóa.</p>
-                    <p>Người dùng có thể yêu cầu xóa tài khoản bất kỳ lúc nào. Sau khi nhận được yêu cầu, chúng tôi sẽ
-                        tiến hành xóa bỏ tài khoản và các thông tin liên quan khỏi hệ thống trong khoảng 10 ngày làm
-                        việc.</p>
+                <div class="policy-section">
+                    <h2><i class="fas fa-history"></i> 7. Thời gian lưu trữ và xóa thông tin</h2>
+                    <div class="policy-content">
+                        <p>Tất cả thông tin thu thập được sẽ được lưu trữ không thời hạn cho đến khi tài khoản người
+                            dùng bị
+                            xóa.</p>
+                        <p>Người dùng có thể yêu cầu xóa tài khoản bất kỳ lúc nào. Sau khi nhận được yêu cầu, chúng tôi
+                            sẽ
+                            tiến hành xóa bỏ tài khoản và các thông tin liên quan khỏi hệ thống trong khoảng 10 ngày làm
+                            việc.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="policy-section">
-                <h2>8. Cam kết bảo mật cá nhân khách hàng</h2>
-                <div class="policy-content">
-                    <ul>
-                        <li>Bảo mật tuyệt đối thông tin thành viên theo chính sách bảo vệ thông tin cá nhân của Zework.
-                        </li>
-                        <li>Bảo mật tuyệt đối mọi thông tin giao dịch trực tuyến bao gồm hóa đơn, chứng từ số hóa.</li>
-                        <li>Yêu cầu thành viên cung cấp đầy đủ và chính xác thông tin cá nhân khi đăng ký để đảm bảo
-                            quyền lợi khi có khiếu nại.</li>
-                    </ul>
+                <div class="policy-section">
+                    <h2><i class="fas fa-user-lock"></i> 8. Cam kết bảo mật cá nhân khách hàng</h2>
+                    <div class="policy-content">
+                        <ul>
+                            <li>Bảo mật tuyệt đối thông tin thành viên theo chính sách bảo vệ thông tin cá nhân của
+                                Zework.
+                            </li>
+                            <li>Bảo mật tuyệt đối mọi thông tin giao dịch trực tuyến bao gồm hóa đơn, chứng từ số hóa.
+                            </li>
+                            <li>Yêu cầu thành viên cung cấp đầy đủ và chính xác thông tin cá nhân khi đăng ký để đảm bảo
+                                quyền lợi khi có khiếu nại.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
