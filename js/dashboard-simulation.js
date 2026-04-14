@@ -424,60 +424,52 @@
         }
     }
 
-<<<<<<< HEAD
-    // Public API
-    window.startDashboardSimulation = function () {
-        if (!simInitialized) {
-            loadImages();
-            initZaloNodes();
-            simInitialized = true;
-        }
-        if (isAnimating) return;
-        isAnimating = true;
-        animate();
-    };
-
-    window.stopDashboardSimulation = function () {
-        isAnimating = false;
-=======
-
+    // --- Startup Logic ---
     let simStarted = false;
     const requiredImages = [imgZalo, imgEmployee, imgZework, imgMsg, imgCall, imgLock];
 
     const startSim = () => {
         if (simStarted) return;
         simStarted = true;
+        isAnimating = true;
         
         // Phase 1: Immediate Node Init + First Frame Draw
         initZaloNodes();
-        animate(); // Call once to get visual on screen immediately
+        animate(); // Draw visual immediately
         
-        // Phase 2: Staggered Data Init (very short delay to yield for next frame)
+        // Phase 2: Staggered Data Init (30ms delay to yield main thread)
         setTimeout(() => {
             initChartData();
         }, 30);
     };
 
+    // Public API
+    window.startDashboardSimulation = startSim;
+    window.stopDashboardSimulation = () => { isAnimating = false; };
+
     let imagesLoaded = 0;
     const checkImages = () => {
         imagesLoaded++;
         if (imagesLoaded >= requiredImages.length) {
-            startSim(); // Start immediately when images are ready
+            startSim();
         }
->>>>>>> develop
     };
 
-    // Lazy load images after 2 seconds to keep initial load light
-    setTimeout(loadImages, 2000);
-})();
+    // Ensure images are loaded
+    if (!imagesLoadedFlag) loadImages();
 
-<<<<<<< HEAD
-=======
+    requiredImages.forEach(img => {
+        if (img && img.complete) {
+            imagesLoaded++;
+        } else if (img) {
+            img.onload = checkImages;
+        }
+    });
+
     if (imagesLoaded >= requiredImages.length) {
         startSim();
     }
 
     // Secondary fallback
     setTimeout(startSim, 2000);
-});
->>>>>>> develop
+})();
