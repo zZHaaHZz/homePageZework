@@ -37,18 +37,14 @@
 
         // Close handlers
         closeBtn.onclick = dismissModal;
-        
+
         modal.onclick = (e) => {
             if (e.target === modal) dismissModal();
         };
 
         ctaBtn.onclick = () => {
-<<<<<<< HEAD
-            window.open('https://app.zework.com/', '_blank');
-=======
             dismissModal();
-            window.open('https://app.zework.com/', '_blank'); 
->>>>>>> develop
+            window.open('https://app.zework.com/', '_blank');
         };
 
         // Start Countdown
