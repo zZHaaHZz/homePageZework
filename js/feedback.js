@@ -29,7 +29,8 @@ const feedbacks = [
   }
 ];
 const containerFeedback = document.querySelector('.sales-feedback-content');
-containerFeedback.innerHTML = feedbacks.map((fb, index) => `
+if (containerFeedback) {
+    containerFeedback.innerHTML = feedbacks.map((fb, index) => `
   <div class="sales-feedback-content-box box-sales-${index + 1}">
     <div class="head-sales-feedback-content-box">
       <img src="${fb.img}" alt="">
@@ -46,3 +47,4 @@ containerFeedback.innerHTML = feedbacks.map((fb, index) => `
     </div>
   </div>
 `).join('');
+}
