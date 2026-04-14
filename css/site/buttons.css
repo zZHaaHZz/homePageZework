@@ -32,8 +32,8 @@
     height: 5.6rem;
     border-radius: 1.2rem;
     background: #ffffff;
-    border: 0.2rem solid #027BFF;
-    color: #027BFF;
+    border: 0.2rem solid #0055CC;
+    color: #0055CC;
     font-size: 1.6rem;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -48,7 +48,7 @@
     background: #f0f7ff;
     transform: translateY(-0.2rem);
     box-shadow: 0 0.6rem 1.6rem rgba(2, 123, 255, 0.15);
-    color: #0066db;
+    color: #003d99;
 }
 
 .btn-consult i {
