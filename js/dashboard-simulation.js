@@ -431,16 +431,29 @@
     const startSim = () => {
         if (simStarted) return;
         simStarted = true;
-        isAnimating = true;
         
-        // Phase 1: Immediate Node Init + First Frame Draw
+        // Phase 1: Immediate Node Init + First Static Draw (Fast)
         initZaloNodes();
-        animate(); // Draw visual immediately
         
-        // Phase 2: Staggered Data Init (30ms delay to yield main thread)
+        // Draw one single static frame to show dashboard instantly
+        isAnimating = true;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        zaloNodes.forEach(n => n.draw());
+        ctx.fillStyle = '#fff';
+        drawCloud(ctx, w / 2, h / 2, config.hubRadius);
+        ctx.fill();
+        isAnimating = false; // Stop until phase 3
+
+        // Phase 2: Staggered Data Init (50ms gap to yield main thread)
         setTimeout(() => {
             initChartData();
-        }, 30);
+            
+            // Phase 3: Start Animation Loop (Another 50ms gap)
+            setTimeout(() => {
+                isAnimating = true;
+                animate();
+            }, 50);
+        }, 50);
     };
 
     // Public API

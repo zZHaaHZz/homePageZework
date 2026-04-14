@@ -101,42 +101,40 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <link rel="stylesheet" href="./css/homePage/hero.css">
-    <link rel="stylesheet" href="./css/homePage/why-select-zework.css">
-    <link rel="stylesheet" href="./css/homePage/features.css">
-    <link rel="stylesheet" href="./css/homePage/feedback.css">
-    <link rel="stylesheet" href="./css/homePage/price.css">
-    <link rel="stylesheet" href="./css/site/tag-iconlist.css">
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script>
         let turnstileToken = '';
-        function onTurnstileSuccess(token) {
-            turnstileToken = token;
-        }
-        function onTurnstileExpired() {
-            turnstileToken = '';
-        }
+        function onTurnstileSuccess(token) { turnstileToken = token; }
+        function onTurnstileExpired() { turnstileToken = ''; }
     </script>
+    <link rel="stylesheet" href="./css/homePage/hero.css">
     <link rel="stylesheet" href="./css/site/header.css">
-    <link rel="stylesheet" href="./css/site/logo-zework.css">
-    <link rel="stylesheet" href="./css/site/footer.css">
-    <link rel="stylesheet" href="./css/site/keyfreame.css">
-    <link rel="stylesheet" href="./css/site/toast.css">
-    <link rel="stylesheet" href="./css/site/buttons.css">
-    <link rel="stylesheet" href="./css/site/consultation-modal.css">
-    <link rel="stylesheet" href="./css/security-animation.css">
-    <link rel="stylesheet" href="./css/homePage/feature-showcase.css">
     <link rel="stylesheet" href="./css/homePage/dashboard-slider.css">
-    <link rel="stylesheet" href="./css/homePage/team-experience.css">
-    <link rel="stylesheet" href="./css/scroll-reveal.css">
-    <link rel="stylesheet" href="./css/site/promotion-modal.css">
-    <link rel="stylesheet" href="./css/homePage/sales-feedback.css">
-    <link rel="stylesheet" href="./css/price/ask-suport.css">
-    <link rel="stylesheet" href="./css/homePage/video-showcase.css">
     <link rel="stylesheet" href="./css/site/video-loader.css">
     <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css">
     <link rel="stylesheet" href="./css/site/global-skeleton.css">
+    <link rel="stylesheet" href="./css/site/logo-zework.css">
+    <link rel="stylesheet" href="./css/site/buttons.css">
+
+    <!-- Non-Critical CSS (Loaded Asynchronously) -->
+    <link rel="stylesheet" href="./css/homePage/why-select-zework.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/homePage/features.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/homePage/feedback.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/homePage/price.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/site/tag-iconlist.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/site/footer.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/site/keyfreame.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/site/toast.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/site/consultation-modal.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/security-animation.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/homePage/feature-showcase.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/homePage/team-experience.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/scroll-reveal.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/site/promotion-modal.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/homePage/sales-feedback.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/price/ask-suport.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/homePage/video-showcase.css" media="print" onload="this.media='all'">
 
     <!-- Critical Inline CSS for Instant Hero Skeleton -->
     <style>
@@ -1324,7 +1322,17 @@
         <script src="js/promotion-timer.js" defer></script>
         <script src="js/consultation-handler.js" defer></script>
         <script src="js/faq.js" defer></script>
-        <script src="https://www.youtube.com/iframe_api" defer></script>
+        <!-- Lazy Load Heavy Third-Party Scripts (YouTube API) -->
+        <script>
+            // Defer YouTube API by 4 seconds to ensure TBT remains low
+            setTimeout(() => {
+                const tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                const firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                console.log("YouTube API: Lazy loaded after 4s delay");
+            }, 4000);
+        </script>
 </body>
 
 </html>
