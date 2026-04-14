@@ -76,19 +76,8 @@ const VideoLoader = (function () {
     function initPlayers() {
         if (typeof YT === 'undefined' || !YT.Player) return;
 
-        // Initialize Hero Video
-        if (document.getElementById('heroVideo') && !players.heroVideo) {
-            players.heroVideo = new YT.Player('heroVideo', {
-                events: {
-                    'onReady': (e) => {
-                        if (typeof window.handleHeroReady === 'function') window.handleHeroReady(e);
-                        // Fallback: Remove skeleton on ready if playing is delayed
-                        setTimeout(() => onPlayerStateChange({data: 1, target: e.target}, 'heroVideo'), 2000);
-                    },
-                    'onStateChange': (e) => onPlayerStateChange(e, 'heroVideo')
-                }
-            });
-        }
+        // Hero Video is now initialized by dashboard-slider.js to ensure performance optimization.
+
 
         // Initialize Messaging Demo Video
         if (document.getElementById('messagingDemoVideo') && !players.messagingDemoVideo) {

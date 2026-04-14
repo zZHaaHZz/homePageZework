@@ -16,7 +16,7 @@
     flex-direction: column;
     /* backdrop-filter: blur(2px); */
     /* Slight blur or none to see video clearly */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-main);
     border-radius: 2rem;
     /* Match container radius */
 }
