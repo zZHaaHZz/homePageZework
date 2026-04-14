@@ -23,7 +23,6 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background: url("../../img/grid (1).svg") no-repeat center/cover;
     z-index: 0;
     pointer-events: none;
     opacity: 0.08;

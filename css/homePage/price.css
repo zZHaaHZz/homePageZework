@@ -189,6 +189,35 @@
     box-shadow: 0 0.4rem 1.2rem rgba(2, 123, 255, 0.3);
 }
 
+.discount-tag {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #FFEDD5;
+    color: #F97316;
+    padding: 0.4rem 1rem;
+    border-radius: 10rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border: 0.1rem solid #FED7AA;
+    box-shadow: 0 0.2rem 0.8rem rgba(249, 115, 22, 0.1);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    animation: pulse 2s infinite;
+}
+
+.discount-tag i {
+    font-size: 1.1rem;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 .name-price {
     margin-top: 0rem;
     width: 100%;
