@@ -134,12 +134,8 @@ const VideoLoader = (function () {
         }
     }
 
-    // Run init on dom ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
+    // Run init immediately (script uses defer, so DOM is accessible)
+    init();
 
     return {
         getPlayers: () => players

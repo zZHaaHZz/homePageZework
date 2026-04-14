@@ -56,6 +56,6 @@ window.addEventListener('load', () => {
     if (window.requestIdleCallback) {
         requestIdleCallback(initFeedback);
     } else {
-        setTimeout(initFeedback, 400);
+        setTimeout(initFeedback, 600);
     }
 });
