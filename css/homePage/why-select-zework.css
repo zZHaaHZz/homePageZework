@@ -256,19 +256,21 @@
 
 .bottom-why-select-zework-3 {
     width: 112.8rem;
-    height: 60rem;
-    padding: 6.4rem;
-
+    height: auto;
+    aspect-ratio: 3662 / 2190;
+    padding: 0 6.4rem 6.4rem;
+    overflow: hidden;
 }
 
 .bottom-why-select-zework-3 img {
     width: 100%;
-    height: 100%;   
+    height: 100%;
+    object-fit: contain;
+    display: block;
     transition: transform 0.6s ease;
-
 }
 .bottom-why-select-zework-3:hover img {
-   transform: scale(1.05);
+   transform: scale(1.02);
 }
 .why-select-zework-reverse {
     display: flex;
@@ -394,7 +396,7 @@
     .bottom-why-select-zework-3 {
         width: 100%;
         height: auto;
-        aspect-ratio: 16/9;
+        aspect-ratio: 3662 / 2190;
         padding: 0;
     }
 }
