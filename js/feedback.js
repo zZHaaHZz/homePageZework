@@ -15,7 +15,7 @@ const feedbacks = [
   },
   {
     img: "./img/avatarFeedback/avatar_3.webp",
-   name: "Sàn TMĐT Sắm Nhanh 24/7",
+    name: "Sàn TMĐT Sắm Nhanh 24/7",
     position: "Quản lý Sản phẩm",
     content: "Dashboard của Zework là công cụ không thể thiếu. Chúng tôi theo dõi được hiệu suất xử lý đơn hàng qua Zalo theo thời gian thực, nhờ đó đã giảm 15% thời gian chờ của khách hàng và tăng tỷ lệ hoàn thành đơn hàng thành công.",
     stars: 5
@@ -28,23 +28,34 @@ const feedbacks = [
     stars: 5
   }
 ];
-const containerFeedback = document.querySelector('.sales-feedback-content');
-if (containerFeedback) {
-    containerFeedback.innerHTML = feedbacks.map((fb, index) => `
-  <div class="sales-feedback-content-box box-sales-${index + 1}">
-    <div class="head-sales-feedback-content-box">
-      <img src="${fb.img}" alt="">
-      <div>
-        <h2>${fb.name}</h2>
-        <p>${fb.position}</p>
-      </div>
-    </div>
-    <div class="main-sales-feedback-content">
-      <p>${fb.content}</p>
-      <div class="start-feedback-sales">
-        ${'<i class="fa-solid fa-star"></i>'.repeat(fb.stars)}
-      </div>
-    </div>
-  </div>
-`).join('');
-}
+
+window.addEventListener('load', () => {
+    const initFeedback = () => {
+        const containerFeedback = document.querySelector('.sales-feedback-content');
+        if (!containerFeedback) return;
+        
+        containerFeedback.innerHTML = feedbacks.map((fb, index) => `
+          <div class="sales-feedback-content-box box-sales-${index + 1}">
+            <div class="head-sales-feedback-content-box">
+              <img src="${fb.img}" alt="">
+              <div>
+                <h2>${fb.name}</h2>
+                <p>${fb.position}</p>
+              </div>
+            </div>
+            <div class="main-sales-feedback-content">
+              <p>${fb.content}</p>
+              <div class="start-feedback-sales">
+                ${'<i class="fa-solid fa-star"></i>'.repeat(fb.stars)}
+              </div>
+            </div>
+          </div>
+        `).join('');
+    };
+
+    if (window.requestIdleCallback) {
+        requestIdleCallback(initFeedback);
+    } else {
+        setTimeout(initFeedback, 400);
+    }
+});

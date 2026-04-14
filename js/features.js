@@ -189,7 +189,14 @@ function startAutoScroll() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function () {
-  buildScrollMenu();
-  showFeature('inbox');
-  startAutoScroll();
+  const init = () => {
+    buildScrollMenu();
+    showFeature('inbox');
+    startAutoScroll();
+  };
+  if (window.requestIdleCallback) {
+    requestIdleCallback(init);
+  } else {
+    setTimeout(init, 200);
+  }
 });

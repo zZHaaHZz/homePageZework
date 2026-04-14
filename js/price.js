@@ -211,5 +211,10 @@ function showPlans(month) {
 
 // Hiển thị mặc định 6 tháng khi load
 document.addEventListener("DOMContentLoaded", () => {
-    showPlans("6");
+    const init = () => showPlans("6");
+    if (window.requestIdleCallback) {
+        requestIdleCallback(init);
+    } else {
+        setTimeout(init, 100);
+    }
 });

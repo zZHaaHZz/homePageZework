@@ -41,13 +41,6 @@
         return false;
     }
 
-    /* ── Utility: lấy class display của ảnh để gán đúng cho wrapper ── */
-    function getDisplayType(el) {
-        const cs = window.getComputedStyle(el);
-        const d  = cs.getPropertyValue('display');
-        return (d === 'block' || d === 'flex' || d === 'grid') ? 'sk-block' : '';
-    }
-
     /* ── Hàm bọc ảnh vào skeleton placeholder ── */
     function wrapWithSkeleton(img) {
         if (isExcluded(img)) return;
@@ -57,19 +50,32 @@
 
         // Tạo wrapper
         const wrapper = document.createElement('div');
-        wrapper.className = 'skeleton-placeholder ' + getDisplayType(img);
+        wrapper.className = 'skeleton-placeholder';
 
-        // Copy các style thiết yếu để wrapper khớp kích thước
-        const cs = window.getComputedStyle(img);
-        const w  = img.getAttribute('width')  || cs.width;
-        const h  = img.getAttribute('height') || cs.height;
+        // Optimized style detection to avoid layout thrashing
+        // 1. Try attributes first (cheap)
+        let w = img.getAttribute('width');
+        let h = img.getAttribute('height');
+        
+        // 2. Fallback to computed style ONLY if needed (expensive)
+        if (!w || !h || w === 'auto' || h === 'auto') {
+            const cs = window.getComputedStyle(img);
+            if (!w || w === 'auto') w = cs.width;
+            if (!h || h === 'auto') h = cs.height;
+            
+            // Inheritance (also slightly expensive)
+            const br = cs.getPropertyValue('border-radius');
+            if (br && br !== '0px') wrapper.style.borderRadius = br;
+            
+            // Display type detection
+            const d = cs.getPropertyValue('display');
+            if (d === 'block' || d === 'flex' || d === 'grid') {
+                wrapper.classList.add('sk-block');
+            }
+        }
 
         if (w && w !== 'auto' && w !== '0px') wrapper.style.width  = (w.includes('px') || w.includes('%') || w.includes('rem') || w.includes('em')) ? w : (w + 'px');
         if (h && h !== 'auto' && h !== '0px') wrapper.style.height = (h.includes('px') || h.includes('%') || h.includes('rem') || h.includes('em')) ? h : (h + 'px');
-
-        // Kế thừa border-radius nếu có
-        const br = cs.getPropertyValue('border-radius');
-        if (br && br !== '0px') wrapper.style.borderRadius = br;
 
         // Chèn wrapper vào DOM trước ảnh
         img.parentNode.insertBefore(wrapper, img);
@@ -92,7 +98,6 @@
 
         // Nếu ảnh đã được cache → hiện ngay
         if (img.complete && img.naturalWidth > 0) {
-            // Dùng requestAnimationFrame để tránh blocking paint
             requestAnimationFrame(revealImage);
             return;
         }
@@ -104,7 +109,6 @@
 
             if (img.naturalWidth > 0 && img.naturalWidth <= SKIP_SIZE_PX &&
                 img.naturalHeight > 0 && img.naturalHeight <= SKIP_SIZE_PX) {
-                // Ảnh icon nhỏ → hiện ngay không cần fade
                 img.classList.remove('img-hidden');
                 if (wrapper.parentNode) {
                     wrapper.parentNode.insertBefore(img, wrapper);
@@ -116,7 +120,6 @@
             revealImage();
         }, { once: true });
 
-        // Xử lý lỗi tải ảnh → cũng gỡ skeleton để không bị đóng băng
         function onError() {
             img.removeEventListener('load', revealImage);
             img.removeEventListener('error', onError);
@@ -124,10 +127,8 @@
         }
         img.addEventListener('error', onError, { once: true });
 
-        // Fail-safe: nếu sau FAILSAFE_MS vẫn còn skeleton → gỡ luôn
         setTimeout(function () {
             if (img.classList.contains('img-hidden')) {
-                console.warn('[ImageSkeleton] Fail-safe triggered for:', img.src);
                 revealImage();
             }
         }, FAILSAFE_MS);
@@ -136,25 +137,35 @@
     /* ── Khởi tạo: quét tất cả <img> ── */
     function init() {
         const images = document.querySelectorAll('img');
-
-        images.forEach(function (img) {
-            try {
-                wrapWithSkeleton(img);
-            } catch (e) {
-                // Không để lỗi của một ảnh phá vỡ toàn bộ
-                console.warn('[ImageSkeleton] Error wrapping image:', e);
+        
+        // Batch processing using requestAnimationFrame to avoid long tasks
+        let index = 0;
+        function processNextBatch() {
+            const batchSize = 5; // Process in small batches
+            const end = Math.min(index + batchSize, images.length);
+            
+            for (; index < end; index++) {
+                try {
+                    wrapWithSkeleton(images[index]);
+                } catch (e) {
+                    console.warn('[ImageSkeleton] Error:', e);
+                }
             }
-        });
-
-        console.log('[ImageSkeleton] Initialized — processed ' + images.length + ' images.');
+            
+            if (index < images.length) {
+                requestAnimationFrame(processNextBatch);
+            }
+        }
+        
+        requestAnimationFrame(processNextBatch);
     }
 
     /* ── Chạy khi DOM sẵn sàng ── */
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
-        // DOM đã tải xong (script defer hoặc cuối body)
-        init();
+        // Use a small delay to ensure initial paint has priority
+        setTimeout(init, 50);
     }
 
 })();

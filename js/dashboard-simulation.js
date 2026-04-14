@@ -424,6 +424,7 @@
         }
     }
 
+<<<<<<< HEAD
     // Public API
     window.startDashboardSimulation = function () {
         if (!simInitialized) {
@@ -438,9 +439,50 @@
 
     window.stopDashboardSimulation = function () {
         isAnimating = false;
+=======
+
+    let simStarted = false;
+    const requiredImages = [imgZalo, imgEmployee, imgZework, imgMsg, imgCall, imgLock];
+
+    const startSim = () => {
+        if (simStarted) return;
+        simStarted = true;
+        
+        // Non-blocking data initialization
+        const initData = () => {
+            initZaloNodes();
+            initChartData();
+            animate();
+        };
+
+        if (window.requestIdleCallback) {
+            requestIdleCallback(initData);
+        } else {
+            setTimeout(initData, 100);
+        }
+    };
+
+    let imagesLoaded = 0;
+    const checkImages = () => {
+        imagesLoaded++;
+        if (imagesLoaded >= requiredImages.length) {
+            // Add a small delay for priority handling
+            setTimeout(startSim, 200);
+        }
+>>>>>>> develop
     };
 
     // Lazy load images after 2 seconds to keep initial load light
     setTimeout(loadImages, 2000);
 })();
 
+<<<<<<< HEAD
+=======
+    if (imagesLoaded >= requiredImages.length) {
+        setTimeout(startSim, 300);
+    }
+
+    // Secondary fallback
+    setTimeout(startSim, 2000);
+});
+>>>>>>> develop
