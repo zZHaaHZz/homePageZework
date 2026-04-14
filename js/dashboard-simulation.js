@@ -426,11 +426,14 @@
 
     // --- Startup Logic ---
     let simStarted = false;
-    const requiredImages = [imgZalo, imgEmployee, imgZework, imgMsg, imgCall, imgLock];
+    let requiredImages = []; // Will be populated after loadImages()
 
     const startSim = () => {
         if (simStarted) return;
         simStarted = true;
+        
+        // Ensure images are initialized
+        loadImages();
         
         // Phase 1: Immediate Node Init + First Static Draw (Fast)
         initZaloNodes();
@@ -460,6 +463,10 @@
     window.startDashboardSimulation = startSim;
     window.stopDashboardSimulation = () => { isAnimating = false; };
 
+    // Start background loading immediately (non-blocking)
+    loadImages();
+    requiredImages = [imgZalo, imgEmployee, imgZework, imgMsg, imgCall, imgLock];
+
     let imagesLoaded = 0;
     const checkImages = () => {
         imagesLoaded++;
@@ -470,6 +477,7 @@
             imagesLoaded++;
         } else if (img) {
             img.onload = checkImages;
+            img.onerror = checkImages;
         }
     });
 })();
