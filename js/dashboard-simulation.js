@@ -31,6 +31,8 @@
         imagesLoadedFlag = true;
     }
 
+    let w = 0, h = 0;
+
     function resizeCanvas() {
         const parent = canvas.parentElement;
         if (!parent) return { width: 0, height: 0 };
@@ -46,8 +48,6 @@
         ctx.scale(dpr, dpr);
         return { width, height };
     }
-
-    let { width: w, height: h } = resizeCanvas();
     window.addEventListener('resize', () => {
         ({ width: w, height: h } = resizeCanvas());
         if (simInitialized) initZaloNodes();
@@ -435,6 +435,9 @@
         // Ensure images are initialized
         loadImages();
         
+        // Finalize canvas size (Layout Reflow deferred until here)
+        ({ width: w, height: h } = resizeCanvas());
+        
         // Phase 1: Immediate Node Init + First Static Draw (Fast)
         initZaloNodes();
         
@@ -463,21 +466,6 @@
     window.startDashboardSimulation = startSim;
     window.stopDashboardSimulation = () => { isAnimating = false; };
 
-    // Start background loading immediately (non-blocking)
-    loadImages();
-    requiredImages = [imgZalo, imgEmployee, imgZework, imgMsg, imgCall, imgLock];
-
-    let imagesLoaded = 0;
-    const checkImages = () => {
-        imagesLoaded++;
-    };
-
-    requiredImages.forEach(img => {
-        if (img && img.complete) {
-            imagesLoaded++;
-        } else if (img) {
-            img.onload = checkImages;
-            img.onerror = checkImages;
-        }
-    });
+    // We no longer call loadImages() or populate requiredImages here.
+    // They will be handled in startSim() to keep TBT at 150ms.
 })();

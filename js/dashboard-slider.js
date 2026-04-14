@@ -7,17 +7,13 @@ let heroPlayer;
 let isHeroPlayerReady = false;
 let currentSlide = 0; // 0 = Video, 1 = Canvas
 let autoSlideTimer;
+let videoFallbackTimer;
 
 const HERO_VIDEO_ID = 'S_-az13i5ME';
-const SIMULATION_DURATION = 33000; // Duration to show the canvas before looping back
+const SIMULATION_DURATION = 33000;
 
-/**
- * Initialize Hero Video Player
- * Using late initialization to reduce initial main thread blocking time.
- */
 function initHeroPlayer() {
     if (typeof YT === 'undefined' || !YT.Player) {
-        // Retry if YT API not loaded yet
         setTimeout(initHeroPlayer, 100);
         return;
     }
@@ -41,13 +37,26 @@ function initHeroPlayer() {
             'onStateChange': onHeroStateChange
         }
     });
+
+    // Fallback: If video takes > 4s to load, switch to Simulation automatically
+    videoFallbackTimer = setTimeout(() => {
+        if (!isHeroPlayerReady && currentSlide === 0) {
+            console.log("Slider: Video fallback triggered (4s timeout)");
+            switchToCanvas();
+        }
+    }, 4000);
 }
 
 function onHeroReady(event) {
     isHeroPlayerReady = true;
     console.log("Hero Player Ready");
     
-    // Hide skeleton once video is actually playing
+    // Clear fallback timer as video is successfully loading
+    if (videoFallbackTimer) {
+        clearTimeout(videoFallbackTimer);
+        videoFallbackTimer = null;
+    }
+    
     const skeleton = document.querySelector('#slideVideo .video-skeleton');
     if (skeleton) {
         setTimeout(() => {

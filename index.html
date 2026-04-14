@@ -1324,14 +1324,14 @@
         <script src="js/faq.js" defer></script>
         <!-- Lazy Load Heavy Third-Party Scripts (YouTube API) -->
         <script>
-            // Defer YouTube API by 4 seconds to ensure TBT remains low
+            // Defer YouTube API by 8 seconds to ensure TBT remains low
             setTimeout(() => {
                 const tag = document.createElement('script');
                 tag.src = "https://www.youtube.com/iframe_api";
                 const firstScriptTag = document.getElementsByTagName('script')[0];
                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-                console.log("YouTube API: Lazy loaded after 4s delay");
-            }, 4000);
+                console.log("YouTube API: Lazy loaded after 8s delay");
+            }, 8000);
         </script>
 </body>
 
