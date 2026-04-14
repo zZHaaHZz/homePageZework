@@ -463,13 +463,7 @@
     let imagesLoaded = 0;
     const checkImages = () => {
         imagesLoaded++;
-        if (imagesLoaded >= requiredImages.length) {
-            startSim();
-        }
     };
-
-    // Ensure images are loaded
-    if (!imagesLoadedFlag) loadImages();
 
     requiredImages.forEach(img => {
         if (img && img.complete) {
@@ -478,11 +472,4 @@
             img.onload = checkImages;
         }
     });
-
-    if (imagesLoaded >= requiredImages.length) {
-        startSim();
-    }
-
-    // Secondary fallback
-    setTimeout(startSim, 2000);
 })();

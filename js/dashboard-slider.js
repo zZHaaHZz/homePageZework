@@ -32,7 +32,9 @@ function initHeroPlayer() {
             'rel': 0,
             'modestbranding': 1,
             'enablejsapi': 1,
-            'origin': window.location.origin
+            'origin': window.location.origin,
+            'loop': 1,
+            'playlist': HERO_VIDEO_ID
         },
         events: {
             'onReady': onHeroReady,
@@ -48,7 +50,6 @@ function onHeroReady(event) {
     // Hide skeleton once video is actually playing
     const skeleton = document.querySelector('#slideVideo .video-skeleton');
     if (skeleton) {
-        // Give it a small delay for smooth transition
         setTimeout(() => {
             skeleton.classList.add('hidden');
             const container = document.getElementById('slideVideo');
@@ -60,15 +61,20 @@ function onHeroReady(event) {
 function onHeroStateChange(event) {
     // YT.PlayerState.ENDED = 0
     if (event.data === YT.PlayerState.ENDED && currentSlide === 0) {
-        switchToCanvas();
+        // If on mobile (no canvas), just replay
+        if (window.innerWidth <= 768) {
+            event.target.playVideo();
+        } else {
+            switchToCanvas();
+        }
     }
 }
 
 function switchToCanvas() {
+    clearTimeout(autoSlideTimer);
     const slider = document.getElementById('dashboardSlider');
     if (!slider) return;
 
-    // Only switch to canvas on desktop (width > 768px)
     if (window.innerWidth <= 768) {
         if (isHeroPlayerReady) heroPlayer.playVideo();
         return;
@@ -83,17 +89,19 @@ function switchToCanvas() {
         heroPlayer.pauseVideo();
     }
 
-    // START Simulation
-    if (typeof window.startDashboardSimulation === 'function') {
-        window.startDashboardSimulation();
-    }
+    // START Simulation - Delay slightly to allow CSS transition to finish smoothly
+    setTimeout(() => {
+        if (typeof window.startDashboardSimulation === 'function') {
+            window.startDashboardSimulation();
+        }
+    }, 200);
 
     // Loop back to video after duration
-    clearTimeout(autoSlideTimer);
     autoSlideTimer = setTimeout(switchToVideo, SIMULATION_DURATION);
 }
 
 function switchToVideo() {
+    clearTimeout(autoSlideTimer);
     const slider = document.getElementById('dashboardSlider');
     if (!slider) return;
 
@@ -112,7 +120,6 @@ function switchToVideo() {
         heroPlayer.playVideo();
     }
 
-    clearTimeout(autoSlideTimer);
     autoSlideTimer = setTimeout(() => {
         if (currentSlide === 0) switchToCanvas();
     }, 33000);
