@@ -138,26 +138,34 @@
     function init() {
         const images = document.querySelectorAll('img');
         
-        // Batch processing using requestAnimationFrame to avoid long tasks
+        // Use requestIdleCallback for background wrapping to ensure NO main thread blocking
         let index = 0;
-        function processNextBatch() {
-            const batchSize = 5; // Process in small batches
-            const end = Math.min(index + batchSize, images.length);
+        function processNextBatch(deadline) {
+            const batchSize = 3; // Smaller batches for safety
             
-            for (; index < end; index++) {
+            while (index < images.length && (deadline.timeRemaining() > 1 || deadline.didTimeout)) {
                 try {
                     wrapWithSkeleton(images[index]);
                 } catch (e) {
                     console.warn('[ImageSkeleton] Error:', e);
                 }
+                index++;
             }
             
             if (index < images.length) {
-                requestAnimationFrame(processNextBatch);
+                if (window.requestIdleCallback) {
+                    requestIdleCallback(processNextBatch);
+                } else {
+                    setTimeout(() => processNextBatch({ timeRemaining: () => 10, didTimeout: true }), 50);
+                }
             }
         }
         
-        requestAnimationFrame(processNextBatch);
+        if (window.requestIdleCallback) {
+            requestIdleCallback(processNextBatch);
+        } else {
+            setTimeout(() => processNextBatch({ timeRemaining: () => 10, didTimeout: true }), 100);
+        }
     }
 
     /* ── Chạy khi DOM sẵn sàng ── */

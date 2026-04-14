@@ -211,10 +211,6 @@ function showPlans(month) {
 
 // Hiển thị mặc định 6 tháng khi load
 document.addEventListener("DOMContentLoaded", () => {
-    const init = () => showPlans("6");
-    if (window.requestIdleCallback) {
-        requestIdleCallback(init);
-    } else {
-        setTimeout(init, 100);
-    }
+    // Staggered initialization (400ms) to break up TBT
+    setTimeout(() => showPlans("6"), 400);
 });

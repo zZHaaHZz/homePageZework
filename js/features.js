@@ -197,6 +197,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (window.requestIdleCallback) {
     requestIdleCallback(init);
   } else {
-    setTimeout(init, 200);
+    setTimeout(init, 800);
   }
 });

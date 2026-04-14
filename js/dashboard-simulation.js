@@ -448,26 +448,21 @@
         if (simStarted) return;
         simStarted = true;
         
-        // Non-blocking data initialization
-        const initData = () => {
-            initZaloNodes();
+        // Phase 1: Immediate Node Init + First Frame Draw
+        initZaloNodes();
+        animate(); // Call once to get visual on screen immediately
+        
+        // Phase 2: Staggered Data Init (very short delay to yield for next frame)
+        setTimeout(() => {
             initChartData();
-            animate();
-        };
-
-        if (window.requestIdleCallback) {
-            requestIdleCallback(initData);
-        } else {
-            setTimeout(initData, 100);
-        }
+        }, 30);
     };
 
     let imagesLoaded = 0;
     const checkImages = () => {
         imagesLoaded++;
         if (imagesLoaded >= requiredImages.length) {
-            // Add a small delay for priority handling
-            setTimeout(startSim, 200);
+            startSim(); // Start immediately when images are ready
         }
 >>>>>>> develop
     };
@@ -479,7 +474,7 @@
 <<<<<<< HEAD
 =======
     if (imagesLoaded >= requiredImages.length) {
-        setTimeout(startSim, 300);
+        startSim();
     }
 
     // Secondary fallback

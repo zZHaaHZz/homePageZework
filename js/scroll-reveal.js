@@ -81,10 +81,7 @@
 
     // Run when DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
-        if (window.requestIdleCallback) {
-            requestIdleCallback(initScrollReveal);
-        } else {
-            setTimeout(initScrollReveal, 150);
-        }
+        // Staggered initialization (1600ms) to break up TBT
+        setTimeout(initScrollReveal, 1600);
     });
 })();

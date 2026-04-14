@@ -18,6 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.requestIdleCallback) {
         requestIdleCallback(init);
     } else {
-        setTimeout(init, 300);
+        setTimeout(init, 1000);
     }
 });

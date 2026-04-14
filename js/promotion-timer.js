@@ -72,10 +72,7 @@
 
     // Run
     document.addEventListener('DOMContentLoaded', () => {
-        if (window.requestIdleCallback) {
-            requestIdleCallback(initPromoModal);
-        } else {
-            setTimeout(initPromoModal, 400);
-        }
+        // Staggered initialization (1400ms) to break up TBT
+        setTimeout(initPromoModal, 1400);
     });
 })();
