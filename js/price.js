@@ -13,7 +13,8 @@ const plans = {
                 { text: "Không giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: false,
-            href: "bynow"
+            href: "bynow",
+            discout: null
         },
         {
             name: "Khởi nghiệp", price: "337.500",
@@ -26,7 +27,8 @@ const plans = {
                 { text: "Không giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: true,
-            href: "bynow"
+            href: "bynow",
+            discout: "25%"
         }
     ],
     "6": [
@@ -41,7 +43,8 @@ const plans = {
                 { text: "Không giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: false,
-            href: "bynow"
+            href: "bynow",
+            discout: "30%"
         },
         {
             name: "Phổ biến", price: "2.862.000",
@@ -54,7 +57,8 @@ const plans = {
                 { text: "Không giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: true,
-            href: "bynow"
+            href: "bynow",
+            discout: "47%"
         },
         {
             name: "Nâng cao", price: "4.428.000",
@@ -67,7 +71,8 @@ const plans = {
                 { text: "Không giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: false,
-            href: "bynow"
+            href: "bynow",
+            discout: "59%"
         },
         {
             name: "Cao cấp", price: "5.994.000",
@@ -80,7 +85,8 @@ const plans = {
                 { text: "Không giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: false,
-            href: "bynow"
+            href: "bynow",
+            discout: "63%"
         }
     ],
     "12": [
@@ -95,7 +101,8 @@ const plans = {
                 { text: "Giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: false,
-            href: "bynow"
+            href: "bynow",
+            discout: "35%"
         },
         {
             name: "Phổ biến", price: "4.644.000",
@@ -108,7 +115,8 @@ const plans = {
                 { text: "Giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: true,
-            href: "bynow"
+            href: "bynow",
+            discout: "57%"
         },
         {
             name: "Nâng cao", price: "7.344.000",
@@ -121,7 +129,8 @@ const plans = {
                 { text: "Giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: false,
-            href: "bynow"
+            href: "bynow",
+            discout: "66%"
         },
         {
             name: "Cao cấp", price: "9.396.000",
@@ -134,7 +143,8 @@ const plans = {
                 { text: "Giới hạn data lưu trữ tin nhắn", ok: true }
             ],
             hot: false,
-            href: "bynow"
+            href: "bynow",
+            discout: "71%"
         }
 
     ]
@@ -153,6 +163,11 @@ function showPlans(month) {
         const product = document.createElement("div");
         product.className = "product" + (p.hot ? " hot" : "");
 
+        let discoutHTML = "";
+        if (p.discout && p.discout.includes("%")) {
+            discoutHTML = `<div class="discount-tag"><i class="fas fa-arrow-down"></i> Giảm ${p.discout}</div>`;
+        }
+
         let descHTML = "";
         p.desc.forEach(d => {
             const icon = d.ok
@@ -162,6 +177,7 @@ function showPlans(month) {
         });
         if (p.action != undefined) {
             product.innerHTML = `
+            ${discoutHTML}
             <div class="name-price">
             <h4>${p.name}</h4>
             <div class="price">
@@ -177,6 +193,7 @@ function showPlans(month) {
 
         } else {
             product.innerHTML = `
+            ${discoutHTML}
             <div class="name-price">
             <h4>${p.name}</h4>
             <div class="price">
