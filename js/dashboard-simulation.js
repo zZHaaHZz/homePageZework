@@ -740,15 +740,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const startSim = () => {
         if (simStarted) return;
         simStarted = true;
-        initZaloNodes();
-        animate();
+        
+        // Non-blocking data initialization
+        const initData = () => {
+            initZaloNodes();
+            initChartData();
+            animate();
+        };
+
+        if (window.requestIdleCallback) {
+            requestIdleCallback(initData);
+        } else {
+            setTimeout(initData, 100);
+        }
     };
 
     let imagesLoaded = 0;
     const checkImages = () => {
         imagesLoaded++;
         if (imagesLoaded >= requiredImages.length) {
-            startSim();
+            // Add a small delay for priority handling
+            setTimeout(startSim, 200);
         }
     };
 
@@ -761,9 +773,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (imagesLoaded >= requiredImages.length) {
-        startSim();
+        setTimeout(startSim, 300);
     }
 
     // Secondary fallback
-    setTimeout(startSim, 1500);
+    setTimeout(startSim, 2000);
 });

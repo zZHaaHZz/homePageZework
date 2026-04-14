@@ -71,9 +71,11 @@
     }
 
     // Run
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPromoModal);
-    } else {
-        initPromoModal();
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.requestIdleCallback) {
+            requestIdleCallback(initPromoModal);
+        } else {
+            setTimeout(initPromoModal, 400);
+        }
+    });
 })();

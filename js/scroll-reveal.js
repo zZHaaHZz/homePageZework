@@ -80,9 +80,11 @@
     }
 
     // Run when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initScrollReveal);
-    } else {
-        initScrollReveal();
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.requestIdleCallback) {
+            requestIdleCallback(initScrollReveal);
+        } else {
+            setTimeout(initScrollReveal, 150);
+        }
+    });
 })();
