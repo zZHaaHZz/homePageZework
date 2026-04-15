@@ -94,6 +94,9 @@
     </script>
     <link rel="icon" type="image/png" href="./img/logoZework.svg">
 
+    <!-- Preload LCP image: logo above-the-fold -->
+    <link rel="preload" as="image" href="img/logoZework.svg" fetchpriority="high">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style"
@@ -212,7 +215,8 @@
         <div class="content-header">
             <a href="#trangchu">
                 <div class="logo">
-                    <img src="img/logoZework.svg" alt="" class="logo-img">
+                    <img src="img/logoZework.svg" alt="Zework - Phần mềm quản lý Zalo" class="logo-img"
+                         fetchpriority="high" width="40" height="40">
                     <h1>ZEWORK</h1>
                 </div>
             </a>
@@ -1086,7 +1090,7 @@
                     <div class="logo-footer">
                         <a href="#trangchu">
                             <div class="logo">
-                                <img src="img/logoZework.svg" alt="" class="logo-img">
+                                <img src="img/logoZework.svg" alt="Zework" class="logo-img" loading="lazy" width="40" height="40">
                                 <h1>ZEWORK</h1>
                             </div>
                         </a>

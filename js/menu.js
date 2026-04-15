@@ -53,17 +53,14 @@ menuLinks.forEach(link => {
     removeActiveMenu();
     link.classList.add('active-menu');
     const href = link.getAttribute('href');
-
     const popupMenu = document.querySelector('.mobile-menu-popup');
     const btnMenu = document.querySelector('.menu-mobile');
     const btnClose = document.querySelector('.close-menu');
-
     if (popupMenu?.classList.contains("show")) {
       popupMenu.classList.remove("show");
       btnMenu.style.display = "block";
       btnClose.style.display = "none";
     }
-
     switch (href) {
       case '#tinhnang':
         window.location.href = routes.tinh_nang;
