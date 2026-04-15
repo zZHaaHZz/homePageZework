@@ -200,12 +200,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const slider = document.getElementById('dashboardSlider');
     if (slider) slider.classList.add('slid');
 
-    // Start canvas simulation (yield 100ms for layout)
-    setTimeout(() => {
+    // Start canvas simulation after first paint / idle to protect FCP and TBT
+    const startDashboard = () => {
         if (typeof window.startDashboardSimulation === 'function') {
             window.startDashboardSimulation();
         }
-    }, 100);
+    };
+
+    window.addEventListener('load', () => {
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(startDashboard, { timeout: 1200 });
+        } else {
+            setTimeout(startDashboard, 600);
+        }
+    }, { once: true });
 
     // Initialize YT.Player at 1500ms (needs YT API — polls until ready)
     setTimeout(initHeroPlayer, 1500);

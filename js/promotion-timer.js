@@ -27,11 +27,17 @@
         if (isDismissed === 'true') return;
 
         const showModal = () => {
+            modal.hidden = false;
+            modal.setAttribute('aria-hidden', 'false');
             modal.classList.add('show');
         };
 
         const dismissModal = () => {
             modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
+            setTimeout(() => {
+                modal.hidden = true;
+            }, 500);
             sessionStorage.setItem('zework_promo_dismissed', 'true');
         };
 

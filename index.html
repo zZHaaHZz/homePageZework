@@ -94,12 +94,20 @@
     </script>
     <link rel="icon" type="image/png" href="./img/logoZework.svg">
 
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    <link rel="preload" as="style"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </noscript>
 
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -163,10 +171,39 @@
     <!-- Critical Scripts (Early Load, Sequential Defer) -->
     <script src="js/video-loader.js" defer></script>
     <script src="js/dashboard-simulation.js" defer></script>
-    <script src="js/image-skeleton.js" defer></script>
-    <script src="js/security-animation.js" defer></script>
     <script src="js/dashboard-slider.js" defer></script>
-    <script src="js/video-scroll-effect.js" defer></script>
+    <script>
+        window.addEventListener('load', () => {
+            const loadNonCriticalAssets = () => {
+                [
+                    'js/image-skeleton.js',
+                    'js/security-animation.js',
+                    'js/video-scroll-effect.js'
+                ].forEach(src => {
+                    const script = document.createElement('script');
+                    script.src = src;
+                    script.defer = true;
+                    document.body.appendChild(script);
+                });
+
+                const ioniconsModule = document.createElement('script');
+                ioniconsModule.type = 'module';
+                ioniconsModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
+                document.body.appendChild(ioniconsModule);
+
+                const ioniconsNoModule = document.createElement('script');
+                ioniconsNoModule.setAttribute('nomodule', '');
+                ioniconsNoModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js';
+                document.body.appendChild(ioniconsNoModule);
+            };
+
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadNonCriticalAssets, { timeout: 2000 });
+            } else {
+                setTimeout(loadNonCriticalAssets, 1200);
+            }
+        });
+    </script>
 
 </head>
 
@@ -1210,7 +1247,7 @@
 
 
         <!-- Promotion Modal -->
-        <div id="promoModal" class="promo-modal-overlay">
+        <div id="promoModal" class="promo-modal-overlay" hidden aria-hidden="true">
             <div class="promo-modal-content">
                 <button id="promoClose" class="promo-modal-close">
                     <i class="fas fa-times"></i>
