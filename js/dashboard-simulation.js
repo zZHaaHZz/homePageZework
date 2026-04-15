@@ -72,7 +72,7 @@
     // State
     let phase = 'sync';
     let lastPhaseSwitch = Date.now();
-    const PHASE_DURATION_SYNC = 4500;
+    const PHASE_DURATION_SYNC = 5500;
     const PHASE_DURATION_DIST = 4500;
     const PHASE_DURATION_SECURE = 4500;
     const PHASE_DURATION_ANALYTICS = 5500;
@@ -179,8 +179,8 @@
         zaloNodes.length = 0;
         const centerX = w / 2;
         const centerY = h / 2;
-        const radiusX = w * 0.38;
-        const radiusY = h * 0.28;
+        const radiusX = w * 0.28;
+        const radiusY = h * 0.18;
         const startTo = Math.PI * 1.2;
         const endTo = Math.PI * 1.8;
         const step = config.zaloCount > 1 ? (endTo - startTo) / (config.zaloCount - 1) : 0;
@@ -188,7 +188,13 @@
         for (let i = 0; i < config.zaloCount; i++) {
             let angle = config.zaloCount > 1 ? (startTo + i * step) : Math.PI * 1.5;
             const x = centerX + Math.cos(angle) * radiusX;
-            const y = centerY + Math.sin(angle) * radiusY;
+            let y = centerY + Math.sin(angle) * radiusY;
+
+            // Pull the middle Zalo node upward a bit so it doesn't sit too close to the hub.
+            if (config.zaloCount % 2 === 1 && i === Math.floor(config.zaloCount / 2)) {
+                y -= Math.min(h * 0.1, 48);
+            }
+
             zaloNodes.push(new Node(i, x, y, 'zalo'));
         }
     }
@@ -455,7 +461,7 @@
         ctx.lineWidth = 3;
         ctx.strokeStyle = phase === 'security' ? '#ffc107' : config.color.zework;
         ctx.save();
-        const pulse = 1 + Math.sin(now / 300) * 0.05;
+        const pulse = phase === 'sync' ? 1 : 1 + Math.sin(now / 300) * 0.05;
         ctx.translate(centerX, hubY);
         ctx.scale(pulse, pulse);
         drawCloud(ctx, 0, 0, config.hubRadius);
@@ -471,12 +477,15 @@
         ctx.fillText(PHASE_TITLES[phase], centerX, 30);
 
         // Spawn packets
-        if (Math.random() < 0.02) {
+        const packetChance = isSync ? 0.06 : 0.02;
+        if (Math.random() < packetChance) {
             const node = nodes[Math.floor(Math.random() * nodes.length)];
             if (node && node.opacity === 1) {
                 const hubRef = { currentX: w / 2, currentY: hubY };
                 const [src, dst] = isSync ? [node, hubRef] : [hubRef, node];
-                const icon = phase === 'security' ? imgLock : (Math.random() > 0.5 ? imgMsg : imgCall);
+                const icon = phase === 'security'
+                    ? imgLock
+                    : (isSync ? (Math.random() > 0.45 ? imgMsg : imgCall) : (Math.random() > 0.5 ? imgMsg : imgCall));
                 packets.push(new Packet(src, dst, icon));
             }
         }
