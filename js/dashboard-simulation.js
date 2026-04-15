@@ -66,7 +66,7 @@
             packetOut: '#4caf50',
             text: '#333'
         },
-        speed: 0.8
+        speed: 0.5
     };
 
     // State
@@ -78,8 +78,8 @@
     const PHASE_DURATION_ANALYTICS = 5500;
     const PHASE_DURATION_TAGS = 5000;
 
-    let hubY = h / 2;
-    let targetHubY = h / 2;
+    let hubY = h * 0.62;
+    let targetHubY = h * 0.62;
 
     const zaloNodes = [];
     const employeeNodes = [];
@@ -178,9 +178,9 @@
     function initZaloNodes() {
         zaloNodes.length = 0;
         const centerX = w / 2;
-        const centerY = h / 2;
-        const radiusX = w * 0.28;
-        const radiusY = h * 0.18;
+        const centerY = h * 0.62;
+        const radiusX = w * 0.25;
+        const radiusY = h * 0.10;
         const startTo = Math.PI * 1.2;
         const endTo = Math.PI * 1.8;
         const step = config.zaloCount > 1 ? (endTo - startTo) / (config.zaloCount - 1) : 0;
@@ -190,9 +190,9 @@
             const x = centerX + Math.cos(angle) * radiusX;
             let y = centerY + Math.sin(angle) * radiusY;
 
-            // Pull the middle Zalo node upward a bit so it doesn't sit too close to the hub.
+            // Đẩy node giữa lên xa hơn để tạo khoảng cách rõ ràng với hub.
             if (config.zaloCount % 2 === 1 && i === Math.floor(config.zaloCount / 2)) {
-                y -= Math.min(h * 0.1, 48);
+                y -= Math.min(h * 0.32, 160);
             }
 
             zaloNodes.push(new Node(i, x, y, 'zalo'));
@@ -315,8 +315,8 @@
         lastPhaseSwitch = Date.now();
         employeeNodes.length = 0;
         packets.length = 0;
-        hubY = h / 2;
-        targetHubY = h / 2;
+        hubY = h * 0.62;
+        targetHubY = h * 0.62;
         initZaloNodes();
     }
 
@@ -448,7 +448,7 @@
 
     function renderPhase_network(now, centerX) {
         const isSync = phase === 'sync';
-        targetHubY = isSync ? h / 2 : Math.max(h * 0.2, 140);
+        targetHubY = isSync ? h * 0.62 : Math.max(h * 0.2, 140);
         hubY += (targetHubY - hubY) * 0.05;
 
         const nodes = isSync ? zaloNodes : employeeNodes;
@@ -476,9 +476,11 @@
         ctx.textAlign = 'center'; ctx.fillStyle = '#101828';
         ctx.fillText(PHASE_TITLES[phase], centerX, 30);
 
-        // Spawn packets
-        const packetChance = isSync ? 0.06 : 0.02;
-        if (Math.random() < packetChance) {
+        // Spawn packets — chỉ bắt đầu sau khi nodes đã vào vị trí (1.5s)
+        const MAX_PACKETS = 3;
+        const nodesSettled = (Date.now() - lastPhaseSwitch) > 1500;
+        const packetChance = isSync ? 0.02 : 0.01;
+        if (nodesSettled && packets.length < MAX_PACKETS && Math.random() < packetChance) {
             const node = nodes[Math.floor(Math.random() * nodes.length)];
             if (node && node.opacity === 1) {
                 const hubRef = { currentX: w / 2, currentY: hubY };
