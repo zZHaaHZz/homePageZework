@@ -35,15 +35,7 @@ btnExperiences.forEach(btn => {
   });
 });
 
-btnViewNow.forEach(btn => {
-  btn.addEventListener('click', () => {
 
-  });
-});
-btnSeeMore.forEach(btn => {
-  btn.addEventListener('click', () => {
-  });
-});
 
 
 const menuLinks = document.querySelectorAll(
@@ -199,7 +191,6 @@ const getActiveMenuFromURL = () => {
   return null;
 };
 
-const setActiveMenu = getActiveMenuFromURL();
 
 
 

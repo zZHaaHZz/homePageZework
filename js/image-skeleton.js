@@ -141,7 +141,6 @@
         // Use requestIdleCallback for background wrapping to ensure NO main thread blocking
         let index = 0;
         function processNextBatch(deadline) {
-            const batchSize = 3; // Smaller batches for safety
             
             while (index < images.length && (deadline.timeRemaining() > 1 || deadline.didTimeout)) {
                 try {

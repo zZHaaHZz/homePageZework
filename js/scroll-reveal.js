@@ -44,9 +44,7 @@
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
-                } else {
-                    // Remove class when element leaves viewport so it can animate again
-                    entry.target.classList.remove('revealed');
+                    observer.unobserve(entry.target); // Animate 1 lần, không theo dõi nữa
                 }
             });
         }, {

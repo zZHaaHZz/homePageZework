@@ -31,7 +31,11 @@ function initHeroPlayer() {
     const iframe = document.getElementById('heroVideo');
     if (!iframe || heroPlayer) return; // already initialized
 
-    // src is set directly in HTML — just wire up the YT.Player
+    // Lazy inject: move data-src → src (YouTube won't load until now)
+    if (!iframe.src && iframe.dataset.src) {
+        iframe.src = iframe.dataset.src;
+    }
+
     heroPlayer = new YT.Player('heroVideo', {
         events: {
             'onReady': onHeroReady,

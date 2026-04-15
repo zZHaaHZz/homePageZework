@@ -15,7 +15,7 @@
     const MIN_OPACITY = 0.6;
 
     let isVisible = false;
-    let animationId = null;
+    let ticking = false;
 
     /**
      * Use IntersectionObserver to track visibility and save performance
@@ -23,13 +23,13 @@
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             isVisible = entry.isIntersecting;
-            if (isVisible) {
-                if (!animationId) animationId = requestAnimationFrame(updateTransform);
-            } else {
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                    animationId = null;
-                }
+            // Apply vị trí ban đầu ngay khi vào viewport
+            if (isVisible && !ticking) {
+                ticking = true;
+                requestAnimationFrame(() => {
+                    updateTransform();
+                    ticking = false;
+                });
             }
         });
     }, {
@@ -39,14 +39,31 @@
 
     observer.observe(frame);
 
+    // Chỉ chạy khi có scroll event và element đang visible
+    window.addEventListener('scroll', () => {
+        if (!isVisible || ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            updateTransform();
+            ticking = false;
+        });
+    }, { passive: true });
+
+    // Cũng cập nhật khi resize
+    window.addEventListener('resize', () => {
+        if (!isVisible || ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            updateTransform();
+            ticking = false;
+        });
+    }, { passive: true });
+
     /**
      * Calculate and apply transformations
      */
     function updateTransform() {
-        if (!isVisible) {
-            animationId = null;
-            return;
-        }
+        if (!isVisible) return;
 
         const rect = frame.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
@@ -85,8 +102,6 @@
         const shadowOpacity = 0.15 + (Math.abs(progress) * 0.1);
         const shadowBlur = 40 - (Math.abs(progress) * 20);
         frame.style.boxShadow = `0 ${20 + (Math.abs(progress) * 20)}px ${shadowBlur}px -10px rgba(0, 0, 0, ${shadowOpacity})`;
-
-        animationId = requestAnimationFrame(updateTransform);
     }
 
 })();

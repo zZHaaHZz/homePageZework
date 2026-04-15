@@ -89,6 +89,8 @@
 
     let chartData = [];
     let chartProgress = 0;
+    let lastDataUpdate = 0; // Throttle sort/random — chỉ update mỗi 1500ms
+    const DATA_UPDATE_INTERVAL = 1500;
 
     const employeeNames = [
         { id: 1, name: "Trần Minh Hằng", dept: "Chăm sóc khách hàng", pending: 2, closed: 120, y: 0, targetY: 0 },
@@ -231,7 +233,7 @@
             const startY = this.source.currentY !== undefined ? this.source.currentY : (hubY);
             const endX = this.target.currentX !== undefined ? this.target.currentX : (w / 2);
             const endY = this.target.currentY !== undefined ? this.target.currentY : (hubY);
-            const dist = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+            const dist = Math.hypot(endX - startX, endY - startY);
             if (dist > 0) this.t += (config.speed * 2.5) / dist; else this.t = 1;
             if (this.t >= 1) { this.t = 1; this.done = true; }
             this.x = startX + (endX - startX) * this.t;
@@ -332,7 +334,9 @@
     function renderPhase_analytics(margin, containerW, containerH, startY) {
         if (chartProgress < 1) chartProgress += 0.005;
 
-        if (Math.random() < 0.3) {
+        const now_t = Date.now();
+        if (now_t - lastDataUpdate > DATA_UPDATE_INTERVAL) {
+            lastDataUpdate = now_t;
             const emp = employeeNames[Math.floor(Math.random() * employeeNames.length)];
             emp.closed = Math.max(50, emp.closed + Math.floor(Math.random() * 30) - 15);
             [...employeeNames]
@@ -353,7 +357,7 @@
 
         // Left chart card
         drawCard(margin, startY, leftW, chartH);
-        ctx.textAlign = 'left'; ctx.fillStyle = '#333'; ctx.font = 'bold 14px Arial';
+        ctx.textAlign = 'left'; ctx.fillStyle = '#333'; ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
         ctx.fillText("Số lượng hội thoại", margin + 20, startY + 20);
         drawMiniChart(margin + 20, startY + 60, leftW - 40, chartH - 80);
 
@@ -472,7 +476,7 @@
             ctx.drawImage(imgZework, centerX - 30, hubY - 30, 60, 60);
 
         // Title
-        ctx.font = `bold ${w < 500 ? 18 : 24}px sans-serif`;
+        ctx.font = `bold ${w < 500 ? 18 : 24}px -apple-system, BlinkMacSystemFont, Inter, sans-serif`;
         ctx.textAlign = 'center'; ctx.fillStyle = '#101828';
         ctx.fillText(PHASE_TITLES[phase], centerX, 30);
 
@@ -518,7 +522,7 @@
         if (phase === 'analytics' || phase === 'tags') {
             // Shared header for data phases
             ctx.fillStyle = '#101828'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-            ctx.font = `bold ${w < 500 ? 16 : 24}px -apple-system, BlinkMacSystemFont, sans-serif`;
+            ctx.font = `bold ${w < 500 ? 16 : 24}px -apple-system, BlinkMacSystemFont, Inter, sans-serif`;
             ctx.fillText(PHASE_TITLES[phase], centerX, 20);
 
             const margin = 20;
@@ -638,7 +642,7 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Title
-        ctx.font = `bold ${w < 500 ? 18 : 24}px sans-serif`;
+        ctx.font = `bold ${w < 500 ? 18 : 24}px -apple-system, BlinkMacSystemFont, Inter, sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'top';
         ctx.fillStyle = '#101828';
