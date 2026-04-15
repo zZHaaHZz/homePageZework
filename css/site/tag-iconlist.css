@@ -28,7 +28,7 @@
     opacity: 0.9;
 }
 
-.tag-inner h6 {
+.tag-inner .tag-label {
     width: auto;
     font-size: 1.8rem;
     line-height: 2.8rem;
@@ -60,7 +60,7 @@
 }
 
 @media (width<=768px) {
-    .tag-inner h6 {
+    .tag-inner .tag-label {
         width: auto;
         font-size: 1.2rem;
     }
