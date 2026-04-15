@@ -2,14 +2,38 @@
 <html lang="vi">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8JGBS9ECN"></script>
+    <!-- Delayed Google Tag Manager (GTM) Load Strategy -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+        (function() {
+            let gtmLoaded = false;
+            function loadGTM() {
+                if (gtmLoaded) return;
+                gtmLoaded = true;
+                
+                // Load script
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-C8JGBS9ECN';
+                document.head.appendChild(script);
 
-        gtag('config', 'G-C8JGBS9ECN');
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', 'G-C8JGBS9ECN');
+                
+                console.log('GTM: Lazy loaded successfully');
+            }
+
+            // Load after 5s of idle time OR first scroll
+            const timer = setTimeout(loadGTM, 5000);
+
+            window.addEventListener('scroll', function onScroll() {
+                loadGTM();
+                clearTimeout(timer);
+                window.removeEventListener('scroll', onScroll);
+            }, { passive: true });
+        })();
     </script>
     <meta charset="UTF-8">
 

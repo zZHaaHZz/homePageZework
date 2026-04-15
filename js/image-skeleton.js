@@ -52,26 +52,21 @@
         const wrapper = document.createElement('div');
         wrapper.className = 'skeleton-placeholder';
 
-        // Optimized style detection to avoid layout thrashing
-        // 1. Try attributes first (cheap)
+        // Optimized detection to avoid layout thrashing
+        // 1. Try attributes first (instant/cheap)
         let w = img.getAttribute('width');
         let h = img.getAttribute('height');
         
-        // 2. Fallback to computed style ONLY if needed (expensive)
-        if (!w || !h || w === 'auto' || h === 'auto') {
-            const cs = window.getComputedStyle(img);
-            if (!w || w === 'auto') w = cs.width;
-            if (!h || h === 'auto') h = cs.height;
-            
-            // Inheritance (also slightly expensive)
-            const br = cs.getPropertyValue('border-radius');
-            if (br && br !== '0px') wrapper.style.borderRadius = br;
-            
-            // Display type detection
-            const d = cs.getPropertyValue('display');
-            if (d === 'block' || d === 'flex' || d === 'grid') {
-                wrapper.classList.add('sk-block');
-            }
+        // 2. Try inline styles (also cheap)
+        if (!w || !h) {
+            w = w || img.style.width;
+            h = h || img.style.height;
+        }
+
+        // 3. DO NOT use getComputedStyle here as it forces reflow in the loop.
+        // Instead, apply aspect-ratio if possible or let CSS handle it.
+        if (w && h && !w.includes('%') && !h.includes('%')) {
+            wrapper.style.aspectRatio = `${w.replace('px','')}/${h.replace('px','')}`;
         }
 
         if (w && w !== 'auto' && w !== '0px') wrapper.style.width  = (w.includes('px') || w.includes('%') || w.includes('rem') || w.includes('em')) ? w : (w + 'px');

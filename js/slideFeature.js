@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let slidersInitialized = false; 
+    let slidersInitialized = false;
     let sliderIntervals = [];
 
     function initSliders() {
@@ -17,9 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             return;
         }
-
         if (slidersInitialized) return;
-
         const sliders = document.querySelectorAll(".list-introduce-mini");
 
         sliders.forEach(slider => {

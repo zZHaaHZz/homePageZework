@@ -44,7 +44,7 @@
     background: #ffffff;
     padding: 40px 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     flex: 1;
     min-width: 280px;
     max-width: 350px;
@@ -152,7 +152,7 @@
     font-size: 1.8rem;
     color: #475467;
     line-height: 1.6;
-    text-wrap: pretty;
+    text-wrap: balance;
 }
 
 @media (max-width: 768px) {
