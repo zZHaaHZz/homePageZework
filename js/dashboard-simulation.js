@@ -622,4 +622,58 @@
 
     // We no longer call loadImages() or populate requiredImages here.
     // They will be handled in startSim() to keep TBT at 150ms.
+
+    // ─── Immediate Placeholder Draw ──────────────────────────────────────────
+    // Vẽ 1 frame tĩnh ngay khi DOMContentLoaded (không cần ảnh) để tránh
+    // khoảng trắng ~0.5s trước khi animation thật bắt đầu qua requestIdleCallback.
+    document.addEventListener('DOMContentLoaded', () => {
+        ({ width: w, height: h } = resizeCanvas());
+        if (w === 0 || h === 0) return;
+
+        hubY = h * 0.62;
+        targetHubY = h * 0.62;
+        initZaloNodes();
+
+        const cx = w / 2;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Title
+        ctx.font = `bold ${w < 500 ? 18 : 24}px sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillStyle = '#101828';
+        ctx.fillText(PHASE_TITLES.sync, cx, 20);
+
+        // Lines + circles (no images needed)
+        zaloNodes.forEach(n => {
+            ctx.beginPath();
+            ctx.moveTo(n.currentX, n.currentY);
+            ctx.lineTo(cx, hubY);
+            ctx.strokeStyle = config.color.line;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(n.currentX, n.currentY, 30, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = config.color.zalo;
+            ctx.shadowColor = config.color.zalo;
+            ctx.shadowBlur = 12;
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        });
+
+        // Cloud (Zework hub)
+        ctx.fillStyle = '#fff';
+        drawCloud(ctx, cx, hubY, config.hubRadius);
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = config.color.zework;
+        drawCloud(ctx, cx, hubY, config.hubRadius);
+        ctx.stroke();
+
+        simInitialized = true;
+    }, { once: true });
 })();
