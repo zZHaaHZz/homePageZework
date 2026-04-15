@@ -179,7 +179,7 @@ function showPlans(month) {
             product.innerHTML = `
             ${discoutHTML}
             <div class="name-price">
-            <h4>${p.name}</h4>
+                <p class="plan-name">${p.name}</p>
             <div class="price">
              <h3 style="font-size: 1.9rem ;padding-right: 0.5rem; padding-top: 1rem ;padding-botton: 0rem">Chỉ từ </h3> 
                 <h3 style="font-size: 3rem; padding-top: 1rem"> ${p.price}</h3>
@@ -195,7 +195,7 @@ function showPlans(month) {
             product.innerHTML = `
             ${discoutHTML}
             <div class="name-price">
-            <h4>${p.name}</h4>
+            <p class="plan-name">${p.name}</p>
             <div class="price">
                 <h3>${p.price}</h3>
                 <p>${p.money}</p>
