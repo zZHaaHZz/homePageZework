@@ -227,11 +227,15 @@ footer {
     align-items: center;
 }
 
-.icon-Social a {
+.icon-Social a,
+.icon-Social span {
     width: 2.5rem;
     height: 2.5rem;
     color: #475467;
     transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-Social a:hover {
