@@ -72,11 +72,11 @@
     // State
     let phase = 'sync';
     let lastPhaseSwitch = Date.now();
-    const PHASE_DURATION_SYNC = 7000;
-    const PHASE_DURATION_DIST = 7000;
-    const PHASE_DURATION_SECURE = 6000;
-    const PHASE_DURATION_ANALYTICS = 6000;
-    const PHASE_DURATION_TAGS = 6000;
+    const PHASE_DURATION_SYNC = 4500;
+    const PHASE_DURATION_DIST = 4500;
+    const PHASE_DURATION_SECURE = 4500;
+    const PHASE_DURATION_ANALYTICS = 5500;
+    const PHASE_DURATION_TAGS = 5000;
 
     let hubY = h / 2;
     let targetHubY = h / 2;
@@ -252,147 +252,278 @@
         }, 300);
     }
 
+    // ─── Phase Duration Map ───────────────────────────────────────────────────
+    const PHASE_DURATIONS = {
+        sync: PHASE_DURATION_SYNC,
+        distribute: PHASE_DURATION_DIST,
+        security: PHASE_DURATION_SECURE,
+        analytics: PHASE_DURATION_ANALYTICS,
+        tags: PHASE_DURATION_TAGS,
+    };
+
+    // ─── Phase Transition State Machine ──────────────────────────────────────
+    const PHASE_TRANSITIONS = {
+        sync() {
+            phase = 'distribute';
+            employeeNodes.length = 0;
+            setTimeout(() => { spawnEmployee(1); spawnEmployee(2); }, 800);
+            setTimeout(() => { spawnEmployee(0); spawnEmployee(3); }, 1800);
+        },
+        distribute() {
+            phase = 'security';
+            let permIndex = 0;
+            const interval = setInterval(() => {
+                if (permIndex < employeeNodes.length) {
+                    employeeNodes[permIndex].hasPermission = true;
+                    permIndex++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 500);
+        },
+        security() {
+            // Load messagingDemoVideo (section further down the page)
+            const demoIframe = document.getElementById('messagingDemoVideo');
+            if (demoIframe && !demoIframe.src && demoIframe.dataset.src) {
+                demoIframe.src = demoIframe.dataset.src;
+                if (typeof VideoLoader !== 'undefined' && VideoLoader.loadDeferredVideo) {
+                    VideoLoader.loadDeferredVideo();
+                }
+            }
+
+            phase = 'analytics';
+            initChartData();
+        },
+        analytics() { phase = 'tags'; },
+        tags() {
+            if (typeof window.switchSliderToVideo === 'function') {
+                window.switchSliderToVideo();
+            } else {
+                resetToSyncCycle();
+            }
+        },
+    };
+
+    function resetToSyncCycle() {
+        phase = 'sync';
+        lastPhaseSwitch = Date.now();
+        employeeNodes.length = 0;
+        packets.length = 0;
+        hubY = h / 2;
+        targetHubY = h / 2;
+        initZaloNodes();
+    }
+
+    // ─── Per-Phase Renderers ──────────────────────────────────────────────────
+    const PHASE_TITLES = {
+        sync: 'ĐỒNG BỘ DỮ LIỆU TỪ ZALO',
+        distribute: 'PHÂN CHIA CÔNG VIỆC',
+        security: 'BẢO MẬT & MÃ HOÁ DỮ LIỆU',
+        analytics: 'THỐNG KÊ CHI TIẾT DỮ LIỆU',
+        tags: 'Phân loại khách hàng thông minh',
+    };
+
+    function renderPhase_analytics(margin, containerW, containerH, startY) {
+        if (chartProgress < 1) chartProgress += 0.005;
+
+        if (Math.random() < 0.3) {
+            const emp = employeeNames[Math.floor(Math.random() * employeeNames.length)];
+            emp.closed = Math.max(50, emp.closed + Math.floor(Math.random() * 30) - 15);
+            [...employeeNames]
+                .sort((a, b) => b.closed - a.closed)
+                .forEach((e, idx) => {
+                    const obj = employeeNames.find(x => x.id === e.id);
+                    if (obj) obj.targetY = idx * 50;
+                });
+        }
+        employeeNames.forEach(e => e.y += (e.targetY - e.y) * 0.1);
+
+        const isNarrow = w < 600;
+        const leftW = isNarrow ? containerW : containerW * 0.4;
+        const rightW = isNarrow ? containerW : containerW * 0.55;
+        const rightX = isNarrow ? margin : margin + leftW + containerW * 0.05;
+        const chartH = isNarrow ? containerH * 0.4 : containerH * 0.8;
+        const leaderboardY = isNarrow ? startY + chartH + 20 : startY;
+
+        // Left chart card
+        drawCard(margin, startY, leftW, chartH);
+        ctx.textAlign = 'left'; ctx.fillStyle = '#333'; ctx.font = 'bold 14px Arial';
+        ctx.fillText("Số lượng hội thoại", margin + 20, startY + 20);
+        drawMiniChart(margin + 20, startY + 60, leftW - 40, chartH - 80);
+
+        // Right leaderboard card
+        drawCard(rightX, leaderboardY, rightW, chartH);
+        ctx.textAlign = 'left';
+        ctx.fillText("Xếp hạng nhân viên", rightX + 20, leaderboardY + 20);
+
+        ctx.font = '11px Arial'; ctx.fillStyle = '#888';
+        ctx.textAlign = 'left'; ctx.fillText("NHÂN VIÊN", rightX + 20, leaderboardY + 42);
+        ctx.textAlign = 'right'; ctx.fillText("ĐÃ ĐÓNG", rightX + rightW - 20, leaderboardY + 42);
+        ctx.fillText("ĐANG CHỜ", rightX + rightW - 90, leaderboardY + 42);
+
+        const listY = leaderboardY + 58;
+        const listHeight = chartH - 58;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(rightX, listY, rightW, listHeight);
+        ctx.clip();
+
+        employeeNames.forEach(emp => {
+            const rowY = listY + emp.y;
+            if (rowY > listY + listHeight) return;
+
+            // Avatar tròn
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(rightX + 35, rowY + 15, 15, 0, Math.PI * 2);
+            ctx.clip();
+            ctx.fillStyle = '#eee'; ctx.fill();
+            const avatarImg = avatars[emp.id % avatars.length] || imgEmployee;
+            if (avatarImg && avatarImg.complete) ctx.drawImage(avatarImg, rightX + 20, rowY, 30, 30);
+            ctx.restore();
+
+            ctx.fillStyle = '#333'; ctx.textAlign = 'left'; ctx.font = 'bold 13px Arial';
+            ctx.fillText(emp.name, rightX + 60, rowY + 4);
+            ctx.fillStyle = '#777'; ctx.font = '11px Arial';
+            ctx.fillText(emp.dept, rightX + 60, rowY + 18);
+
+            ctx.textAlign = 'right'; ctx.fillStyle = '#333'; ctx.font = 'bold 13px Arial';
+            ctx.fillText(emp.closed.toString(), rightX + rightW - 20, rowY + 11);
+            ctx.fillStyle = '#f59e0b';
+            ctx.fillText(emp.pending.toString(), rightX + rightW - 90, rowY + 11);
+
+            ctx.beginPath();
+            ctx.moveTo(rightX + 20, rowY + 46);
+            ctx.lineTo(rightX + rightW - 20, rowY + 46);
+            ctx.strokeStyle = '#f1f1f1'; ctx.lineWidth = 1; ctx.stroke();
+        });
+
+        ctx.restore();
+        ctx.textAlign = 'left';
+    }
+
+    function renderPhase_tags(now, margin, containerW, containerH, startY) {
+        if (now % 30 < 2) {
+            const tag = tagData[Math.floor(Math.random() * tagData.length)];
+            tag.count = Math.max(10, tag.count + Math.floor(Math.random() * 20) - 8);
+            [...tagData]
+                .sort((a, b) => b.count - a.count)
+                .forEach((t, idx) => {
+                    const obj = tagData.find(x => x.id === t.id);
+                    if (obj) obj.targetY = idx * 40;
+                });
+            const total = tagData.reduce((a, c) => a + c.count, 0);
+            tagData.forEach(t => t.pct = ((t.count / total) * 100).toFixed(2) + "%");
+        }
+        tagData.forEach(t => t.y += (t.targetY - t.y) * 0.1);
+
+        const tableW = Math.min(600, containerW);
+        const tableX = (w - tableW) / 2;
+        drawCard(tableX, startY, tableW, containerH * 0.9);
+
+        ctx.textAlign = 'left'; ctx.fillStyle = '#333'; ctx.font = 'bold 18px Arial';
+        ctx.fillText("Xếp hạng trạng thái", tableX + 30, startY + 20);
+
+        tagData.forEach(tag => {
+            const y = startY + 40 + tag.y;
+            ctx.fillStyle = tag.color;
+            ctx.beginPath();
+            ctx.roundRect(tableX + 30, y, ctx.measureText(tag.label).width + 20, 28, 4);
+            ctx.fill();
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = tag.text; ctx.font = 'bold 13px Arial';
+            ctx.fillText(tag.label, tableX + 40, y + 14);
+            ctx.textAlign = 'right'; ctx.fillStyle = '#333';
+            ctx.fillText(tag.pct, tableX + tableW - 20, y + 14);
+            ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+        });
+    }
+
+    function renderPhase_network(now, centerX) {
+        const isSync = phase === 'sync';
+        targetHubY = isSync ? h / 2 : Math.max(h * 0.2, 140);
+        hubY += (targetHubY - hubY) * 0.05;
+
+        const nodes = isSync ? zaloNodes : employeeNodes;
+        nodes.forEach(n => { n.update(); n.draw(); });
+
+        // Hub cloud
+        ctx.fillStyle = '#fff';
+        drawCloud(ctx, centerX, hubY, config.hubRadius);
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = phase === 'security' ? '#ffc107' : config.color.zework;
+        ctx.save();
+        const pulse = 1 + Math.sin(now / 300) * 0.05;
+        ctx.translate(centerX, hubY);
+        ctx.scale(pulse, pulse);
+        drawCloud(ctx, 0, 0, config.hubRadius);
+        ctx.stroke();
+        ctx.restore();
+
+        if (imgZework && imgZework.complete)
+            ctx.drawImage(imgZework, centerX - 30, hubY - 30, 60, 60);
+
+        // Title
+        ctx.font = `bold ${w < 500 ? 18 : 24}px sans-serif`;
+        ctx.textAlign = 'center'; ctx.fillStyle = '#101828';
+        ctx.fillText(PHASE_TITLES[phase], centerX, 30);
+
+        // Spawn packets
+        if (Math.random() < 0.02) {
+            const node = nodes[Math.floor(Math.random() * nodes.length)];
+            if (node && node.opacity === 1) {
+                const hubRef = { currentX: w / 2, currentY: hubY };
+                const [src, dst] = isSync ? [node, hubRef] : [hubRef, node];
+                const icon = phase === 'security' ? imgLock : (Math.random() > 0.5 ? imgMsg : imgCall);
+                packets.push(new Packet(src, dst, icon));
+            }
+        }
+
+        for (let i = packets.length - 1; i >= 0; i--) {
+            packets[i].update(); packets[i].draw();
+            if (packets[i].done) packets.splice(i, 1);
+        }
+    }
+
+    // ─── Main Animation Loop ──────────────────────────────────────────────────
     function animate() {
         if (!isAnimating) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const now = Date.now();
-        let duration = phase === 'sync' ? PHASE_DURATION_SYNC : (phase === 'distribute' ? PHASE_DURATION_DIST : (phase === 'security' ? PHASE_DURATION_SECURE : (phase === 'analytics' ? PHASE_DURATION_ANALYTICS : PHASE_DURATION_TAGS)));
 
+        const now = Date.now();
+        const duration = PHASE_DURATIONS[phase];
+
+        // State-machine: advance phase when timer expires
         if (now - lastPhaseSwitch > duration) {
             lastPhaseSwitch = now;
             packets.length = 0;
-            if (phase === 'sync') {
-                phase = 'distribute';
-                employeeNodes.length = 0;
-                setTimeout(() => { spawnEmployee(1); spawnEmployee(2); }, 800);
-                setTimeout(() => { spawnEmployee(0); spawnEmployee(3); }, 1800);
-            } else if (phase === 'distribute') {
-                phase = 'security';
-                let permIndex = 0;
-                const interval = setInterval(() => {
-                    if (permIndex < employeeNodes.length) { employeeNodes[permIndex].hasPermission = true; permIndex++; }
-                    else clearInterval(interval);
-                }, 500);
-            } else if (phase === 'security') { phase = 'analytics'; initChartData(); }
-            else if (phase === 'analytics') phase = 'tags';
-            else { phase = 'sync'; employeeNodes.forEach(n => n.hasPermission = false); }
+            PHASE_TRANSITIONS[phase]();
         }
 
         const centerX = w / 2;
+
         if (phase === 'analytics' || phase === 'tags') {
+            // Shared header for data phases
             ctx.fillStyle = '#101828'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
             ctx.font = `bold ${w < 500 ? 16 : 24}px -apple-system, BlinkMacSystemFont, sans-serif`;
-            ctx.fillText(phase === 'analytics' ? "THỐNG KÊ CHI TIẾT DỮ LIỆU" : "Phân loại khách hàng thông minh", centerX, 20);
-            const margin = 20; const containerW = w - margin * 2; const containerH = h - 60; const startY = 70;
+            ctx.fillText(PHASE_TITLES[phase], centerX, 20);
+
+            const margin = 20;
+            const containerW = w - margin * 2;
+            const containerH = h - 60;
+            const startY = 70;
 
             if (phase === 'analytics') {
-                if (chartProgress < 1) chartProgress += 0.005;
-                if (Math.random() < 0.3) {
-                    const emp = employeeNames[Math.floor(Math.random() * employeeNames.length)];
-                    emp.closed += Math.floor(Math.random() * 30) - 15;
-                    if (emp.closed < 50) emp.closed = 50;
-                    [...employeeNames].sort((a, b) => b.closed - a.closed).forEach((e, idx) => {
-                        const obj = employeeNames.find(x => x.id === e.id); if (obj) obj.targetY = idx * 50;
-                    });
-                }
-                employeeNames.forEach(e => e.y += (e.targetY - e.y) * 0.1);
-                const leftW = w < 600 ? containerW : containerW * 0.4;
-                const rightW = w < 600 ? containerW : containerW * 0.55;
-                const rightX = w < 600 ? margin : margin + leftW + containerW * 0.05;
-                const chartH = w < 600 ? containerH * 0.4 : containerH * 0.8;
-                drawCard(margin, startY, leftW, chartH);
-                ctx.textAlign = 'left'; ctx.fillStyle = '#333'; ctx.font = 'bold 14px Arial'; ctx.fillText("Số lượng hội thoại", margin + 20, startY + 20);
-                drawMiniChart(margin + 20, startY + 60, leftW - 40, chartH - 80);
-                drawCard(rightX, w < 600 ? startY + chartH + 20 : startY, rightW, chartH);
-                ctx.textAlign = 'left'; ctx.fillText("Xếp hạng nhân viên", rightX + 20, (w < 600 ? startY + chartH + 20 : startY) + 20);
-                // Vẽ đầy đủ cột headers và thông tin nhân viên
-                const leaderboardY = w < 600 ? startY + chartH + 20 : startY;
-                ctx.font = '11px Arial'; ctx.fillStyle = '#888';
-                ctx.textAlign = 'left'; ctx.fillText("NHÂN VIÊN", rightX + 20, leaderboardY + 42);
-                ctx.textAlign = 'right';
-                ctx.fillText("ĐÃ ĐÓNG", rightX + rightW - 20, leaderboardY + 42);
-                ctx.fillText("ĐANG CHỜ", rightX + rightW - 90, leaderboardY + 42);
-                const listY = leaderboardY + 58;
-                const listHeight = chartH - 58;
-                ctx.save(); ctx.beginPath(); ctx.rect(rightX, listY, rightW, listHeight); ctx.clip();
-                employeeNames.forEach(emp => {
-                    const rowY = listY + emp.y;
-                    if (rowY > listY + listHeight) return;
-                    // Avatar tròn
-                    ctx.save();
-                    ctx.beginPath();
-                    ctx.arc(rightX + 35, rowY + 15, 15, 0, Math.PI * 2);
-                    ctx.clip();
-                    ctx.fillStyle = '#eee'; ctx.fill();
-                    const avatarImg = avatars[emp.id % avatars.length] || imgEmployee;
-                    if (avatarImg && avatarImg.complete) ctx.drawImage(avatarImg, rightX + 20, rowY, 30, 30);
-                    ctx.restore();
-                    // Tên nhân viên
-                    ctx.fillStyle = '#333'; ctx.textAlign = 'left'; ctx.font = 'bold 13px Arial';
-                    ctx.fillText(emp.name, rightX + 60, rowY + 4);
-                    // Phòng ban
-                    ctx.fillStyle = '#777'; ctx.font = '11px Arial';
-                    ctx.fillText(emp.dept, rightX + 60, rowY + 18);
-                    // Số liệu
-                    ctx.textAlign = 'right'; ctx.fillStyle = '#333'; ctx.font = 'bold 13px Arial';
-                    ctx.fillText(emp.closed.toString(), rightX + rightW - 20, rowY + 11);
-                    ctx.fillStyle = '#f59e0b';
-                    ctx.fillText(emp.pending.toString(), rightX + rightW - 90, rowY + 11);
-                    // Đường kẻ phân cách
-                    ctx.beginPath();
-                    ctx.moveTo(rightX + 20, rowY + 46);
-                    ctx.lineTo(rightX + rightW - 20, rowY + 46);
-                    ctx.strokeStyle = '#f1f1f1'; ctx.lineWidth = 1; ctx.stroke();
-                });
-                ctx.restore();
-                ctx.textAlign = 'left';
+                renderPhase_analytics(margin, containerW, containerH, startY);
             } else {
-                if (now % 30 < 2) {
-                    const tag = tagData[Math.floor(Math.random() * tagData.length)];
-                    tag.count += Math.floor(Math.random() * 20) - 8;
-                    if (tag.count < 10) tag.count = 10;
-                    [...tagData].sort((a, b) => b.count - a.count).forEach((t, idx) => {
-                        const obj = tagData.find(x => x.id === t.id); if (obj) obj.targetY = idx * 40;
-                    });
-                    const total = tagData.reduce((a, c) => a + c.count, 0);
-                    tagData.forEach(t => t.pct = ((t.count / total) * 100).toFixed(2) + "%");
-                }
-                tagData.forEach(t => t.y += (t.targetY - t.y) * 0.1);
-                const tableW = Math.min(600, containerW); const tableX = (w - tableW) / 2;
-                drawCard(tableX, startY, tableW, containerH * 0.9);
-                ctx.textAlign = 'left'; ctx.fillStyle = '#333'; ctx.font = 'bold 18px Arial'; ctx.fillText("Xếp hạng trạng thái", tableX + 30, startY + 20);
-                tagData.forEach(tag => {
-                    const y = startY + 40 + tag.y;
-                    ctx.fillStyle = tag.color; ctx.beginPath(); ctx.roundRect(tableX + 30, y, ctx.measureText(tag.label).width + 20, 28, 4); ctx.fill();
-                    ctx.textBaseline = 'middle';
-                    ctx.fillStyle = tag.text; ctx.font = 'bold 13px Arial'; ctx.fillText(tag.label, tableX + 40, y + 14);
-                    ctx.textAlign = 'right'; ctx.fillStyle = '#333'; ctx.fillText(tag.pct, tableX + tableW - 20, y + 14);
-                    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-                });
+                renderPhase_tags(now, margin, containerW, containerH, startY);
             }
         } else {
-            targetHubY = phase === 'sync' ? h / 2 : Math.max(h * 0.2, 140);
-            hubY += (targetHubY - hubY) * 0.05;
-            let nodes = phase === 'sync' ? zaloNodes : employeeNodes;
-            nodes.forEach(n => { n.update(); n.draw(); });
-            ctx.fillStyle = '#fff'; drawCloud(ctx, centerX, hubY, config.hubRadius); ctx.fill();
-            ctx.lineWidth = 3; ctx.strokeStyle = phase === 'security' ? '#ffc107' : config.color.zework;
-            ctx.save(); ctx.translate(centerX, hubY); ctx.scale(1 + Math.sin(now / 300) * 0.05, 1 + Math.sin(now / 300) * 0.05); drawCloud(ctx, 0, 0, config.hubRadius); ctx.stroke(); ctx.restore();
-            if (imgZework && imgZework.complete) ctx.drawImage(imgZework, centerX - 30, hubY - 30, 60, 60);
-            ctx.font = `bold ${w < 500 ? 18 : 24}px sans-serif`; ctx.textAlign = 'center'; ctx.fillStyle = '#101828';
-            ctx.fillText(phase === 'sync' ? 'ĐỒNG BỘ DỮ LIỆU TỪ ZALO' : (phase === 'distribute' ? 'PHÂN CHIA CÔNG VIỆC' : 'BẢO MẬT & MÃ HOÁ DỮ LIỆU'), centerX, 30);
-            if (Math.random() < 0.02) {
-                const node = nodes[Math.floor(Math.random() * nodes.length)];
-                if (node && node.opacity === 1) {
-                    const hubRef = { currentX: w / 2, currentY: hubY };
-                    packets.push(new Packet(phase === 'sync' ? node : hubRef, phase === 'sync' ? hubRef : node, phase === 'security' ? imgLock : (Math.random() > 0.5 ? imgMsg : imgCall)));
-                }
-            }
-            for (let i = packets.length - 1; i >= 0; i--) {
-                packets[i].update(); packets[i].draw();
-                if (packets[i].done) packets.splice(i, 1);
-            }
+            renderPhase_network(now, centerX);
         }
+
         requestAnimationFrame(animate);
     }
 
@@ -431,16 +562,16 @@
     const startSim = () => {
         if (simStarted) return;
         simStarted = true;
-        
+
         // Ensure images are initialized
         loadImages();
-        
+
         // Finalize canvas size (Layout Reflow deferred until here)
         ({ width: w, height: h } = resizeCanvas());
-        
+
         // Phase 1: Immediate Node Init + First Static Draw (Fast)
         initZaloNodes();
-        
+
         // Draw one single static frame to show dashboard instantly
         isAnimating = true;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -453,7 +584,7 @@
         // Phase 2: Staggered Data Init (50ms gap to yield main thread)
         setTimeout(() => {
             initChartData();
-            
+
             // Phase 3: Start Animation Loop (Another 50ms gap)
             setTimeout(() => {
                 isAnimating = true;
@@ -465,6 +596,18 @@
     // Public API
     window.startDashboardSimulation = startSim;
     window.stopDashboardSimulation = () => { isAnimating = false; };
+    window.pauseDashboardSimulationForVideo = () => { isAnimating = false; };
+
+    /**
+     * Called by dashboard-slider.js after the hero video finishes its display window.
+     * Resumes the animation from the beginning of the cycle.
+     */
+    window.resumeDashboardSimulation = () => {
+        if (isAnimating) return; // already running
+        resetToSyncCycle();
+        isAnimating = true;
+        animate();
+    };
 
     // We no longer call loadImages() or populate requiredImages here.
     // They will be handled in startSim() to keep TBT at 150ms.

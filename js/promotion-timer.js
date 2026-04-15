@@ -19,8 +19,11 @@
 
         if (!modal) return;
 
-        // Check if user has already dismissed the promo
-        const isDismissed = localStorage.getItem('zework_promo_dismissed');
+        // Clear stale localStorage key (migration from old logic)
+        localStorage.removeItem('zework_promo_dismissed');
+
+        // Use sessionStorage so modal shows again on every new tab/visit
+        const isDismissed = sessionStorage.getItem('zework_promo_dismissed');
         if (isDismissed === 'true') return;
 
         const showModal = () => {
@@ -29,7 +32,7 @@
 
         const dismissModal = () => {
             modal.classList.remove('show');
-            localStorage.setItem('zework_promo_dismissed', 'true');
+            sessionStorage.setItem('zework_promo_dismissed', 'true');
         };
 
         // Show modal after initial delay (if not dismissed)

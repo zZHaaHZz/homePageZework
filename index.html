@@ -311,29 +311,7 @@
                     <div class="dashboard-slider" id="dashboardSlider">
                         <!-- Slide 1: Video Demo -->
                         <div class="dashboard-slide" id="slideVideo">
-                            <!-- Skeleton Loader -->
-                            <div class="video-skeleton">
-                                <div class="skeleton-header shimmer">
-                                    <div class="sk-dot"></div>
-                                    <div class="sk-dot"></div>
-                                    <div class="sk-dot"></div>
-                                    <div class="sk-url shimmer"></div>
-                                </div>
-                                <div class="skeleton-body">
-                                    <div class="skeleton-sidebar shimmer">
-                                        <div class="sk-item shimmer"></div>
-                                        <div class="sk-item shimmer"></div>
-                                        <div class="sk-item shimmer"></div>
-                                    </div>
-                                    <div class="skeleton-main">
-                                        <div class="sk-chart shimmer"></div>
-                                        <div class="sk-stats">
-                                            <div class="sk-stat-card shimmer"></div>
-                                            <div class="sk-stat-card shimmer"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- No skeleton: hero video loads in background during 3 canvas phases -->
                             <iframe id="heroVideo" class="hero-video-visual"
                                 src="https://www.youtube-nocookie.com/embed/S_-az13i5ME?autoplay=1&mute=1&playsinline=1&controls=0&rel=0&enablejsapi=1&loop=1&playlist=S_-az13i5ME"
                                 title="Zework Demo" frameborder="0"
@@ -348,8 +326,8 @@
 
                         <!-- Slider dots (hidden on mobile) -->
                         <div class="slider-indicators">
-                            <div class="slider-dot active" data-slide="0"></div>
-                            <div class="slider-dot" data-slide="1"></div>
+                            <div class="slider-dot" data-slide="0"></div>
+                            <div class="slider-dot active" data-slide="1"></div>
                         </div>
                     </div>
                     </div>
@@ -755,7 +733,7 @@
                                 </div>
                             </div>
                             <iframe id="messagingDemoVideo"
-                                src="https://www.youtube-nocookie.com/embed/Lk-qjhO1jPU?rel=0&showinfo=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=Lk-qjhO1jPU&controls=0&enablejsapi=1"
+                                data-src="https://www.youtube-nocookie.com/embed/Lk-qjhO1jPU?rel=0&showinfo=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=Lk-qjhO1jPU&controls=0&enablejsapi=1"
                                 title="Zework Messaging Demo"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen>

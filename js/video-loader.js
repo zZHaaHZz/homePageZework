@@ -37,20 +37,23 @@ const VideoLoader = (function () {
         initPlayers();
     };
 
+    function initPlayer_messagingDemo() {
+        const msgDemo = document.getElementById('messagingDemoVideo');
+        // Only initialize when src has been set (lazy injection via data-src)
+        if (!msgDemo || !msgDemo.src || players.messagingDemoVideo) return;
+
+        players.messagingDemoVideo = new YT.Player('messagingDemoVideo', {
+            events: {
+                'onStateChange': (e) => onPlayerStateChange(e, 'messagingDemoVideo')
+            }
+        });
+    }
+
     function initPlayers() {
         if (typeof YT === 'undefined' || !YT.Player) return;
 
         // Note: Hero Video is initialized by dashboard-slider.js
-
-        // Initialize Messaging Demo Video if present
-        const msgDemo = document.getElementById('messagingDemoVideo');
-        if (msgDemo && !players.messagingDemoVideo) {
-            players.messagingDemoVideo = new YT.Player('messagingDemoVideo', {
-                events: {
-                    'onStateChange': (e) => onPlayerStateChange(e, 'messagingDemoVideo')
-                }
-            });
-        }
+        initPlayer_messagingDemo();
 
         // Global Failsafe: Ensure all skeletons hide after 8s
         setTimeout(() => {
@@ -62,6 +65,17 @@ const VideoLoader = (function () {
                 }
             });
         }, 8000);
+    }
+
+    /**
+     * Called by dashboard-simulation.js after injecting src into the deferred iframe.
+     * Initializes the YT.Player at the right moment.
+     */
+    function loadDeferredVideo() {
+        if (typeof YT !== 'undefined' && YT.Player) {
+            initPlayer_messagingDemo();
+        }
+        // If YT API not ready yet, onYouTubeIframeAPIReady will call initPlayers() anyway
     }
 
     /**
@@ -92,6 +106,7 @@ const VideoLoader = (function () {
     }
 
     return {
-        getPlayers: () => players
+        getPlayers: () => players,
+        loadDeferredVideo,
     };
 })();

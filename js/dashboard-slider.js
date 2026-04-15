@@ -1,16 +1,26 @@
 /**
- * Dashboard Slider - Sequential Flow (YouTube Integration)
- * High-performance synchronization between Hero Video and Dashboard Simulation.
+ * Dashboard Slider - Flow:
+ *   Canvas (sync→distribute→security→analytics→tags) → Hero Video → loop
+ *
+ * Hero video loads silently in background while 3 canvas phases run.
+ * Before switching to video, we poll until YT.PlayerState is PLAYING or BUFFERING
+ * so there is never a white/black flash.
  */
 
-let heroPlayer; 
+let heroPlayer;
 let isHeroPlayerReady = false;
-let currentSlide = 0; // 0 = Video, 1 = Canvas
+let currentSlide = 1; // Start on Canvas (1), not Video (0)
 let autoSlideTimer;
-let videoFallbackTimer;
+let isWaitingForHeroVideo = false;
+let heroVideoWaitStartedAt = 0;
 
-const HERO_VIDEO_ID = 'S_-az13i5ME';
-const SIMULATION_DURATION = 33000;
+// How long to show the hero video before switching back to canvas
+const VIDEO_DISPLAY_DURATION = 33000; // 33s
+
+const VIDEO_POLL_INTERVAL_MS = 300;
+const VIDEO_READY_TIMEOUT_MS = 5000;
+
+// ─── YouTube Player Setup ─────────────────────────────────────────────────────
 
 function initHeroPlayer() {
     if (typeof YT === 'undefined' || !YT.Player) {
@@ -18,152 +28,188 @@ function initHeroPlayer() {
         return;
     }
 
+    const iframe = document.getElementById('heroVideo');
+    if (!iframe || heroPlayer) return; // already initialized
+
+    // src is set directly in HTML — just wire up the YT.Player
     heroPlayer = new YT.Player('heroVideo', {
-        videoId: HERO_VIDEO_ID,
-        playerVars: {
-            'autoplay': 1,
-            'mute': 1,
-            'playsinline': 1,
-            'controls': 0,
-            'rel': 0,
-            'modestbranding': 1,
-            'enablejsapi': 1,
-            'origin': window.location.origin,
-            'loop': 1,
-            'playlist': HERO_VIDEO_ID
-        },
         events: {
             'onReady': onHeroReady,
-            'onStateChange': onHeroStateChange
+            'onStateChange': onHeroStateChange,
         }
     });
-
-    // Fallback: If video takes > 4s to load, switch to Simulation automatically
-    videoFallbackTimer = setTimeout(() => {
-        if (!isHeroPlayerReady && currentSlide === 0) {
-            console.log("Slider: Video fallback triggered (4s timeout)");
-            switchToCanvas();
-        }
-    }, 4000);
 }
 
-function onHeroReady(event) {
+function onHeroReady() {
     isHeroPlayerReady = true;
-    console.log("Hero Player Ready");
-    
-    // Clear fallback timer as video is successfully loading
-    if (videoFallbackTimer) {
-        clearTimeout(videoFallbackTimer);
-        videoFallbackTimer = null;
-    }
-    
-    const skeleton = document.querySelector('#slideVideo .video-skeleton');
-    if (skeleton) {
-        setTimeout(() => {
-            skeleton.classList.add('hidden');
-            const container = document.getElementById('slideVideo');
-            if (container) container.classList.add('video-loaded');
-        }, 500);
-    }
+    console.log('Slider: Hero video ready');
+
+    // Warm the hidden player during phases 1-3 so the handoff feels instant.
+    try {
+        heroPlayer.mute();
+        heroPlayer.playVideo();
+    } catch (e) {}
 }
 
 function onHeroStateChange(event) {
-    // YT.PlayerState.ENDED = 0
+    if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.BUFFERING) {
+        markHeroVideoLoaded();
+    }
+
+    // If video ends while showing, switch back to canvas (analytics phase)
     if (event.data === YT.PlayerState.ENDED && currentSlide === 0) {
-        // If on mobile (no canvas), just replay
         if (window.innerWidth <= 768) {
             event.target.playVideo();
         } else {
-            switchToCanvas();
+            switchToCanvas_analytics();
         }
     }
 }
 
-function switchToCanvas() {
+// ─── Video Ready Polling ──────────────────────────────────────────────────────
+
+/**
+ * Polls YouTube player state until video is PLAYING or BUFFERING,
+ * then executes the actual slide switch.
+ */
+function waitForVideoThenSwitch() {
+    if (!isWaitingForHeroVideo) return;
+
+    if (isHeroPlayerReady && heroPlayer) {
+        try {
+            const state = heroPlayer.getPlayerState();
+            // YT.PlayerState: PLAYING = 1, BUFFERING = 3
+            if (state === 1 || state === 3) {
+                console.log('Slider: Video confirmed playing/buffering — switching');
+                doSwitchToVideo();
+                return;
+            }
+            // Kick-start playback if it stalled while hidden
+            heroPlayer.mute();
+            heroPlayer.playVideo();
+        } catch (e) { /* YT API not fully ready yet */ }
+    }
+
+    if (Date.now() - heroVideoWaitStartedAt >= VIDEO_READY_TIMEOUT_MS) {
+        console.warn('Slider: Hero video not ready in time, switching with fallback background');
+        doSwitchToVideo();
+        return;
+    }
+
+    // Not ready yet — poll again
+    setTimeout(waitForVideoThenSwitch, VIDEO_POLL_INTERVAL_MS);
+}
+
+/**
+ * Performs the actual visual slide switch once video is confirmed ready.
+ */
+function doSwitchToVideo() {
+    if (currentSlide === 0) return;
+
     clearTimeout(autoSlideTimer);
     const slider = document.getElementById('dashboardSlider');
     if (!slider) return;
 
-    if (window.innerWidth <= 768) {
-        if (isHeroPlayerReady) heroPlayer.playVideo();
-        return;
+    isWaitingForHeroVideo = false;
+    currentSlide = 0;
+
+    if (typeof window.pauseDashboardSimulationForVideo === 'function') {
+        window.pauseDashboardSimulationForVideo();
     }
+
+    slider.classList.remove('slid'); // slid = canvas visible, no slid = video visible
+    updateDots();
+
+    // Ensure video is playing from start
+    if (isHeroPlayerReady && heroPlayer) {
+        try {
+            heroPlayer.seekTo(0);
+            heroPlayer.playVideo();
+        } catch (e) {}
+    }
+
+    // Auto-switch back to canvas (analytics) after VIDEO_DISPLAY_DURATION
+    autoSlideTimer = setTimeout(switchToCanvas_analytics, VIDEO_DISPLAY_DURATION);
+}
+
+function markHeroVideoLoaded() {
+    const container = document.getElementById('slideVideo');
+    if (container) {
+        container.classList.add('video-loaded');
+    }
+}
+
+// ─── Slide Switching ──────────────────────────────────────────────────────────
+
+/**
+ * Called by simulation after 'security' phase.
+ * Waits for video to be ready before switching.
+ */
+function switchToVideo() {
+    // On mobile: keep canvas running, ignore video switch
+    if (window.innerWidth <= 768) return;
+    if (isWaitingForHeroVideo || currentSlide === 0) return;
+
+    isWaitingForHeroVideo = true;
+    heroVideoWaitStartedAt = Date.now();
+    waitForVideoThenSwitch();
+}
+
+/**
+ * Called after video finishes (or timer). Resumes simulation from the start.
+ */
+function switchToCanvas_analytics() {
+    clearTimeout(autoSlideTimer);
+    const slider = document.getElementById('dashboardSlider');
+    if (!slider) return;
 
     currentSlide = 1;
     slider.classList.add('slid');
     updateDots();
 
-    // Pause video when hiding it to save resources
-    if (isHeroPlayerReady && heroPlayer.pauseVideo) {
-        heroPlayer.pauseVideo();
+    // Pause video to save resources
+    if (isHeroPlayerReady && heroPlayer) {
+        try { heroPlayer.pauseVideo(); } catch (e) {}
     }
 
-    // START Simulation - Delay slightly to allow CSS transition to finish smoothly
-    setTimeout(() => {
-        if (typeof window.startDashboardSimulation === 'function') {
-            window.startDashboardSimulation();
-        }
-    }, 200);
-
-    // Loop back to video after duration
-    autoSlideTimer = setTimeout(switchToVideo, SIMULATION_DURATION);
-}
-
-function switchToVideo() {
-    clearTimeout(autoSlideTimer);
-    const slider = document.getElementById('dashboardSlider');
-    if (!slider) return;
-
-    currentSlide = 0;
-    slider.classList.remove('slid');
-    updateDots();
-
-    // STOP Simulation animation loop to save CPU
-    if (typeof window.stopDashboardSimulation === 'function') {
-        window.stopDashboardSimulation();
+    // Signal simulation to resume from the start of the cycle
+    if (typeof window.resumeDashboardSimulation === 'function') {
+        setTimeout(window.resumeDashboardSimulation, 200);
     }
-
-    // Reset and play video from the beginning
-    if (isHeroPlayerReady && heroPlayer.seekTo && heroPlayer.playVideo) {
-        heroPlayer.seekTo(0);
-        heroPlayer.playVideo();
-    }
-
-    autoSlideTimer = setTimeout(() => {
-        if (currentSlide === 0) switchToCanvas();
-    }, 33000);
 }
 
 function updateDots() {
-    const dots = document.querySelectorAll('.slider-dot');
-    dots.forEach((dot, idx) => {
-        if (idx === currentSlide) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
+    document.querySelectorAll('.slider-dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlide);
     });
 }
 
-// Global initialization
+// ─── Initialization ───────────────────────────────────────────────────────────
+
 document.addEventListener('DOMContentLoaded', () => {
     const dots = document.querySelectorAll('.slider-dot');
-    
     dots.forEach((dot, idx) => {
         dot.addEventListener('click', () => {
             clearTimeout(autoSlideTimer);
             if (idx === 0) switchToVideo();
-            else switchToCanvas();
+            else switchToCanvas_analytics();
         });
     });
 
-    // Strategy: Delay Video Initialization slightly to allow page layout to settle
-    // This helps reduce the initial Backlog Time.
-    setTimeout(initHeroPlayer, 1000);
+    // Start on canvas slide immediately
+    const slider = document.getElementById('dashboardSlider');
+    if (slider) slider.classList.add('slid');
 
-    // Initial timeout for auto-switch
-    autoSlideTimer = setTimeout(() => {
-        if (currentSlide === 0) switchToCanvas();
-    }, 33000);
+    // Start canvas simulation (yield 100ms for layout)
+    setTimeout(() => {
+        if (typeof window.startDashboardSimulation === 'function') {
+            window.startDashboardSimulation();
+        }
+    }, 100);
+
+    // Initialize YT.Player at 1500ms (needs YT API — polls until ready)
+    setTimeout(initHeroPlayer, 1500);
 });
 
+// Expose for simulation to call
+window.switchSliderToVideo = switchToVideo;
