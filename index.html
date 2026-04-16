@@ -35,6 +35,7 @@
             }, { passive: true });
         })();
     </script>
+    <script src="js/device-detect.js"></script>
     <meta charset="UTF-8">
 
     <!-- Essential Preconnects for LCP and Fonts (Minimized to < 4 to avoid PENALTY) -->
@@ -119,8 +120,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+        
+    <!-- Desktop/Tablet (> 768px): Tải chặn render bình thường để tránh chớp giật -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        media="(min-width: 769px)">
+
+    <!-- Mobile (<= 768px): Tải không đồng bộ để tối ưu hoàn toàn FCP -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        media="print" onload="if(window.innerWidth <= 768) this.media='all'">
+        
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    </noscript>
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
@@ -138,12 +152,21 @@
     </script>
     <link rel="stylesheet" href="./css/homePage/hero.css">
     <link rel="stylesheet" href="./css/site/header.css">
-    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css">
-    <link rel="stylesheet" href="./css/site/video-loader.css">
-    <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css">
-    <link rel="stylesheet" href="./css/site/global-skeleton.css">
     <link rel="stylesheet" href="./css/site/logo-zework.css">
     <link rel="stylesheet" href="./css/site/buttons.css">
+    
+    <!-- Desktop/Tablet (> 768px): Tải chặn render cho giao diện Dashboard -->
+    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css" media="(min-width: 769px)">
+    <link rel="stylesheet" href="./css/site/video-loader.css" media="(min-width: 769px)">
+    <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css" media="(min-width: 769px)">
+    <link rel="stylesheet" href="./css/site/global-skeleton.css" media="(min-width: 769px)">
+
+    <!-- Mobile (<= 768px): Defer Dashboard CSS do nằm bên dưới nếp gấp -->
+    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
+    <link rel="stylesheet" href="./css/site/video-loader.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
+    <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
+    <link rel="stylesheet" href="./css/site/global-skeleton.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
+
 
     <!-- Non-Critical CSS (Loaded Asynchronously) -->
     <link rel="stylesheet" href="./css/homePage/why-select-zework.css" media="print" onload="this.media='all'">
@@ -425,7 +448,7 @@
                         <button class="btn-consult open-consult-modal">
                             <i class="fas fa-headset"></i> Nhận tư vấn 1–1
                         </button>
-                        <a href="https://apps.apple.com/us/app/zework/id6761233933" target="_blank" class="btn-download-app-mobile">
+                        <a href="https://apps.apple.com/us/app/zework/id6761233933" target="_blank" class="btn-download-app-device">
                             <i class="fab fa-apple"></i> Tải App trên iOS
                         </a>
                     </div>

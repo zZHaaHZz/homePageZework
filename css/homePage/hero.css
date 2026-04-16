@@ -111,7 +111,15 @@
     display: block;
     z-index: 4;
 }
-
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 3.2rem;
+}
 
 .experience.top {
     cursor: pointer;
@@ -237,36 +245,44 @@
         border-radius: 1.4rem !important;
     }
 
-    .hero-buttons .btn-download-app-mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 36rem;
-        padding: 0;
-        height: 6.4rem;
-        border-radius: 1.4rem;
-        background-color: #000000;
-        color: #FFFFFF;
-        font-size: 1.8rem;
-        font-weight: 600;
-        text-decoration: none;
-        gap: 1.2rem;
-        box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
-        transition: transform 0.2s ease, background-color 0.2s;
-    }
-
-    .hero-buttons .btn-download-app-mobile:active {
-        transform: scale(0.97);
-        background-color: #333333;
-    }
-
-    .hero-buttons .btn-download-app-mobile i {
-        font-size: 2.8rem;
-        margin-bottom: 0.2rem;
-    }
 }
 
-.btn-download-app-mobile {
+body.is-mobile .btn-download-app-device,
+body.is-tablet .btn-download-app-device {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 36rem;
+    padding: 0;
+    height: 6.4rem;
+    border-radius: 1.4rem;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    gap: 1.2rem;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, background-color 0.2s;
+}
+
+body.is-mobile .btn-download-app-device:active,
+body.is-tablet .btn-download-app-device:active {
+    transform: scale(0.97);
+    background-color: #333333;
+}
+
+body.is-mobile .btn-download-app-device i,
+body.is-tablet .btn-download-app-device i {
+    font-size: 2.8rem;
+    margin-bottom: 0.2rem;
+}
+
+body.is-desktop .btn-download-app-device {
+    display: none !important;
+}
+
+.btn-download-app-device {
     display: none;
 }
