@@ -43,6 +43,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
+    padding: 0 2rem;
 }
 
 /* FAQ Accordion - Standardized with Index */
@@ -180,7 +181,7 @@
 
     .list-ask-suport {
         width: 100%;
-        padding: 0;
+        padding: 0 2rem;
     }
 
     .faq-question {

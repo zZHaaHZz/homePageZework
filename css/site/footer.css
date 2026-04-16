@@ -257,11 +257,18 @@ footer {
 }
 
 .box-download {
-    display: block;
-    width: auto;
     display: flex;
     justify-content: center;
     gap: 2rem;
+}
+
+body.is-mobile .download-caption,
+body.is-tablet .download-caption,
+body.is-mobile .box-download,
+body.is-tablet .box-download,
+body.is-mobile .secondary-webapp-note,
+body.is-tablet .secondary-webapp-note {
+    display: none !important;
 }
 
 .downMacOs,

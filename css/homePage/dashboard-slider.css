@@ -185,6 +185,7 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+    /* Mobile-specific adjustments (spacing) */
     .dashboard-visual-wrapper {
         margin: 48px auto 0;
         padding: 0 16px;
@@ -198,33 +199,38 @@
         height: 32px;
         padding: 0 12px;
     }
+}
 
-    .dashboard-slider {
-        min-height: 200px;
-        aspect-ratio: 16 / 9;
-        height: auto;
-    }
+/* Force Video to be always visible and Canvas to be hidden on Mobile & Tablet */
+body.is-mobile .dashboard-slider,
+body.is-tablet .dashboard-slider {
+    min-height: 200px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+}
 
-    /* Force Video to be always visible and Canvas to be hidden on Mobile */
-    #slideVideo {
-        transform: translateX(0) !important;
-        opacity: 1 !important;
-        display: flex !important;
-        z-index: 5 !important;
-        position: relative !important;
-    }
+body.is-mobile #slideVideo,
+body.is-tablet #slideVideo {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    display: flex !important;
+    z-index: 5 !important;
+    position: relative !important;
+}
 
-    #slideCanvas {
-        display: none !important;
-    }
+body.is-mobile #slideCanvas,
+body.is-tablet #slideCanvas {
+    display: none !important;
+}
 
-    .slider-indicators {
-        display: none !important;
-    }
+body.is-mobile .slider-indicators,
+body.is-tablet .slider-indicators {
+    display: none !important;
+}
 
-    /* Mobile-specific YouTube iframe adjustment */
-    #slideVideo iframe {
-        height: 135%;
-        top: -40px;
-    }
+/* Mobile & Tablet YouTube iframe adjustment to prevent black borders */
+body.is-mobile #slideVideo iframe,
+body.is-tablet #slideVideo iframe {
+    height: 140%;
+    top: -45px;
 }

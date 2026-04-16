@@ -150,19 +150,19 @@
         function onTurnstileSuccess(token) { turnstileToken = token; }
         function onTurnstileExpired() { turnstileToken = ''; }
     </script>
-    <link rel="stylesheet" href="./css/homePage/hero.css">
+    <link rel="stylesheet" href="./css/homePage/hero.css?v=2">
     <link rel="stylesheet" href="./css/site/header.css">
     <link rel="stylesheet" href="./css/site/logo-zework.css">
-    <link rel="stylesheet" href="./css/site/buttons.css">
+    <link rel="stylesheet" href="./css/site/buttons.css?v=2">
     
     <!-- Desktop/Tablet (> 768px): Tải chặn render cho giao diện Dashboard -->
-    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css" media="(min-width: 769px)">
+    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css?v=2" media="(min-width: 769px)">
     <link rel="stylesheet" href="./css/site/video-loader.css" media="(min-width: 769px)">
     <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css" media="(min-width: 769px)">
     <link rel="stylesheet" href="./css/site/global-skeleton.css" media="(min-width: 769px)">
 
     <!-- Mobile (<= 768px): Defer Dashboard CSS do nằm bên dưới nếp gấp -->
-    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
+    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css?v=2" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
     <link rel="stylesheet" href="./css/site/video-loader.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
     <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
     <link rel="stylesheet" href="./css/site/global-skeleton.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
@@ -174,7 +174,7 @@
     <link rel="stylesheet" href="./css/homePage/feedback.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/homePage/price.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/site/tag-iconlist.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="./css/site/footer.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/site/footer.css?v=2" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/site/keyfreame.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/site/toast.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/site/consultation-modal.css" media="print" onload="this.media='all'">
@@ -184,7 +184,7 @@
     <link rel="stylesheet" href="./css/scroll-reveal.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/site/promotion-modal.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/homePage/sales-feedback.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="./css/price/ask-suport.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="./css/price/ask-suport.css?v=2" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/homePage/video-showcase.css" media="print" onload="this.media='all'">
 
     <!-- Critical Inline CSS for Instant Hero Skeleton -->
@@ -1131,7 +1131,7 @@
                         nhất để bạn yên tâm bắt đầu cùng Zework</p>
                 </div>
 
-                <div class="list-ask-suport" style="max-width: 900px; margin: 0 auto;">
+                <div class="list-ask-suport" style="margin: 0 auto;">
                     <div class="faq-item">
                         <div class="faq-question">
                             <p>ZeWork có dùng thử miễn phí không?</p>
@@ -1199,7 +1199,7 @@
                         </path>
                     </svg></div>1 phút để bắt đầu</h1>
             <p>Hơn 2.000 doanh nghiệp đang dùng Zework để quản lý và chăm sóc khách hàng hiệu quả hơn mỗi ngày </p>
-            <div style="display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap;">
+            <div class="hero-buttons" style="margin-top: 3.2rem;">
                 <button class="experience">Trải nghiệm miễn phí ngay</button>
                 <button class="btn-consult open-consult-modal">
                     <i class="fas fa-headset"></i> Nhận tư vấn 1–1
@@ -1271,6 +1271,10 @@
                         tại
                         <a href="https://app.zework.com" target="_blank">app.zework.com</a>
                     </p>
+
+                    <a href="https://apps.apple.com/us/app/zework/id6761233933" target="_blank" class="btn-download-app-device" style="margin-top: 1.6rem;">
+                        <i class="fab fa-apple"></i> Tải App trên iOS
+                    </a>
                 </div>
             </div>
             <div class="right-main-footer">
