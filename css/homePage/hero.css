@@ -204,6 +204,4 @@
     }
 }
 
-.btn-download-app-device {
-    display: none;
-}
+/* Specific overrides moved to buttons.css */

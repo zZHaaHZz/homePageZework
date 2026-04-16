@@ -52,7 +52,7 @@
                 }
             }
             const deviceClass = detectDevice();
-            if (document.body) { document.body.classList.add(deviceClass); } 
+            if (document.body) { document.body.classList.add(deviceClass); }
             else { document.addEventListener('DOMContentLoaded', () => document.body.classList.add(deviceClass)); }
         })();
     </script>
@@ -140,7 +140,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
-        
+
     <!-- Desktop/Tablet (> 768px): Tải chặn render bình thường để tránh chớp giật -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -148,9 +148,9 @@
 
     <!-- Mobile (<= 768px): Tải không đồng bộ để tối ưu hoàn toàn FCP -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        media="print" onload="if(window.innerWidth <= 768) this.media='all'">
-        
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print"
+        onload="if(window.innerWidth <= 768) this.media='all'">
+
     <noscript>
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
@@ -170,15 +170,16 @@
             font-weight: 900;
             font-display: swap;
             src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2") format("woff2"),
-                 url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.ttf") format("truetype");
+                url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.ttf") format("truetype");
         }
+
         @font-face {
             font-family: 'Font Awesome 6 Brands';
             font-style: normal;
             font-weight: 400;
             font-display: swap;
             src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2") format("woff2"),
-                 url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.ttf") format("truetype");
+                url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.ttf") format("truetype");
         }
     </style>
 
@@ -194,7 +195,7 @@
     <link rel="stylesheet" href="./css/site/header.css">
     <link rel="stylesheet" href="./css/site/logo-zework.css">
     <link rel="stylesheet" href="./css/site/buttons.css?v=3">
-    
+
     <!-- Desktop/Tablet/Mobile: Tải CSS cho giao diện Dashboard -->
     <link rel="stylesheet" href="./css/homePage/dashboard-slider.css?v=2">
     <link rel="stylesheet" href="./css/site/video-loader.css">
@@ -331,7 +332,7 @@
                 document.head.appendChild(script);
             });
         }
-        
+
         // Script Slider chạy trên cả Mobile và Desktop để xử lý Video/Image
         const sliderScript = document.createElement('script');
         sliderScript.src = 'js/dashboard-slider.js';
@@ -342,7 +343,7 @@
         window.addEventListener('load', () => {
             const loadNonCriticalAssets = () => {
                 const isMobile = window.innerWidth <= 768;
-                
+
                 // Các script chỉ tải trên Desktop
                 if (!isMobile) {
                     [
@@ -514,8 +515,31 @@
                         <button class="btn-consult open-consult-modal">
                             <i class="fas fa-headset"></i> Nhận tư vấn 1–1
                         </button>
-                        <a href="https://apps.apple.com/us/app/zework/id6761233933" target="_blank" class="btn-download-app-device">
-                            <i class="fab fa-apple"></i> Tải App trên iOS
+                        <a href="https://apps.apple.com/us/app/zework/id6761233933" target="_blank"
+                            class="btn-download-app-device">
+                            <span>Có sẵn trên</span>
+                            <svg class="svg-appstore" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path d="M407,0H105C47.103,0,0,47.103,0,105v302c0,57.897,47.103,105,105,105h302c57.897,0,105-47.103,105-105V105
+                                            C512,47.103,464.897,0,407,0z M482,407c0,41.355-33.645,75-75,75H105c-41.355,0-75-33.645-75-75V105c0-41.355,33.645-75,75-75h302
+                                            c41.355,0,75,33.645,75,75V407z" />
+                                </g>
+                                <g>
+                                    <path d="M305.646,123.531c-1.729-6.45-5.865-11.842-11.648-15.18c-11.936-6.892-27.256-2.789-34.15,9.151L256,124.166
+                                            l-3.848-6.665c-6.893-11.937-22.212-16.042-34.15-9.151h-0.001c-11.938,6.893-16.042,22.212-9.15,34.151l18.281,31.664
+                                            L159.678,291H110.5c-13.785,0-25,11.215-25,25c0,13.785,11.215,25,25,25h189.86l-28.868-50h-54.079l85.735-148.498
+                                            C306.487,136.719,307.375,129.981,305.646,123.531z" />
+                                </g>
+                                <g>
+                                    <path d="M401.5,291h-49.178l-55.907-96.834l-28.867,50l86.804,150.348c3.339,5.784,8.729,9.921,15.181,11.65
+                                            c2.154,0.577,4.339,0.863,6.511,0.863c4.332,0,8.608-1.136,12.461-3.361c11.938-6.893,16.042-22.213,9.149-34.15L381.189,341
+                                            H401.5c13.785,0,25-11.215,25-25C426.5,302.215,415.285,291,401.5,291z" />
+                                </g>
+                                <g>
+                                    <path d="M119.264,361l-4.917,8.516c-6.892,11.938-2.787,27.258,9.151,34.15c3.927,2.267,8.219,3.345,12.458,3.344
+                                            c8.646,0,17.067-4.484,21.693-12.495L176.999,361H119.264z" />
+                                </g>
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1343,7 +1367,8 @@
                         <a href="https://app.zework.com" target="_blank">app.zework.com</a>
                     </p>
 
-                    <a href="https://apps.apple.com/us/app/zework/id6761233933" target="_blank" class="btn-download-app-device" style="margin-top: 1.6rem;">
+                    <a href="https://apps.apple.com/us/app/zework/id6761233933" target="_blank"
+                        class="btn-download-app-device" style="margin-top: 1.6rem;">
                         <i class="fab fa-apple"></i> Tải App trên iOS
                     </a>
                 </div>
@@ -1542,7 +1567,7 @@
     <!-- Lazy Load Heavy Third-Party Scripts (YouTube API) -->
     <script>
         // Chỉ tải YouTube API khi người dùng thực sự có tương tác để tránh làm nặng FCP/TBT do load iframe ngầm
-        (function() {
+        (function () {
             let ytLoaded = false;
             function loadYouTubeAPI() {
                 if (ytLoaded) return;
