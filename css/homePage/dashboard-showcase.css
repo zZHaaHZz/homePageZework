@@ -21,7 +21,23 @@
 
 @media (max-width: 768px) {
     .dashboard-showcase-section {
-        display: none !important;
+        display: block; /* Hiện lại trên mobile */
+    }
+    
+    #slideCanvas {
+        display: none !important; /* Ẩn Canvas trên mobile */
+    }
+
+    .mobile-dashboard-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #fff;
+    }
+    
+    .dashboard-slider {
+        /* Đảm bảo chiều cao khung hình tốt trên mobile */
+        min-height: 250px;
     }
 }
 

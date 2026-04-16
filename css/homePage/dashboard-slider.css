@@ -112,19 +112,39 @@
     opacity: 0;
     z-index: 1;
     background: #fff;
-    /* Simulation looks better on white */
+}
+
+/* Slide 3: Mobile Placeholder (Off-screen default) */
+#slideMobile {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 1;
+    background: #fff;
+}
+
+#slideMobile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* State: Slid to Canvas */
-.dashboard-slider.slid #slideVideo {
+.dashboard-slider.slid #slideCanvas {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 3;
+}
+
+/* State: Slid to Mobile Image */
+.dashboard-slider.slid-mobile #slideVideo {
     transform: translateX(-100%);
     opacity: 0;
 }
 
-.dashboard-slider.slid #slideCanvas {
+.dashboard-slider.slid-mobile #slideMobile {
     transform: translateX(0);
     opacity: 1;
-    z-index: 2;
+    z-index: 3;
 }
 
 /* Elements Scaling */
@@ -185,6 +205,7 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+
     /* Mobile-specific adjustments (spacing) */
     .dashboard-visual-wrapper {
         margin: 48px auto 0;
@@ -201,36 +222,37 @@
     }
 }
 
-/* Force Video to be always visible and Canvas to be hidden on Mobile & Tablet */
-body.is-mobile .dashboard-slider,
-body.is-tablet .dashboard-slider {
-    min-height: 200px;
-    aspect-ratio: 16 / 9;
-    height: auto;
-}
+/* Force Video context for Mobile */
+@media (max-width: 768px) {
+    .dashboard-slider {
+        aspect-ratio: 16 / 3.4;
+        /* Thu ngắn thêm nữa theo yêu cầu */
+        min-height: auto;
+        height: auto;
+    }
 
-body.is-mobile #slideVideo,
-body.is-tablet #slideVideo {
-    transform: translateX(0) !important;
-    opacity: 1 !important;
-    display: flex !important;
-    z-index: 5 !important;
-    position: relative !important;
-}
+    #slideVideo iframe {
+        height: 140%;
+        /* Tăng độ phóng để phủ kín khung hình mỏng */
+        top: -65px;
+        /* Căn chỉnh lại vị trí để tập trung vào nội dung chính */
+    }
 
-body.is-mobile #slideCanvas,
-body.is-tablet #slideCanvas {
-    display: none !important;
-}
+    /* Lớp mask trắng để che dải đen phía dưới video */
+    #slideVideo::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 32px; /* Tăng độ cao để che phủ dải đen tốt hơn */
+        background: #fff;
+        z-index: 5;
+    }
 
-body.is-mobile .slider-indicators,
-body.is-tablet .slider-indicators {
-    display: none !important;
-}
-
-/* Mobile & Tablet YouTube iframe adjustment to prevent black borders */
-body.is-mobile #slideVideo iframe,
-body.is-tablet #slideVideo iframe {
-    height: 140%;
-    top: -45px;
+    #slideMobile img {
+        object-fit: cover;
+        /* Lấp đầy toàn bộ khung hình, không để khoảng trắng */
+        object-position: top;
+    }
 }

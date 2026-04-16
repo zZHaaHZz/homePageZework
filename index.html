@@ -195,10 +195,10 @@
     <link rel="stylesheet" href="./css/site/logo-zework.css">
     <link rel="stylesheet" href="./css/site/buttons.css?v=3">
     
-    <!-- Desktop/Tablet (> 768px): Tải CSS cho giao diện Dashboard (Chỉ tải trên màn hình lớn) -->
-    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css?v=2" media="(min-width: 769px)">
-    <link rel="stylesheet" href="./css/site/video-loader.css" media="(min-width: 769px)">
-    <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css" media="(min-width: 769px)">
+    <!-- Desktop/Tablet/Mobile: Tải CSS cho giao diện Dashboard -->
+    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css?v=2">
+    <link rel="stylesheet" href="./css/site/video-loader.css">
+    <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css">
     <link rel="stylesheet" href="./css/site/global-skeleton.css" media="(min-width: 769px)">
 
 
@@ -322,15 +322,21 @@
     <!-- Critical Scripts (Early Load, Sequential Defer) -->
     <script src="js/video-loader.js" defer></script>
     <script>
-        // Chỉ tải script animation Dashboard khi dùng Màn hình lớn (Tránh lỗi unused JS trên Mobile)
+        // Script simulation (Canvas) chỉ chạy trên Desktop
         if (window.innerWidth > 768) {
-            ['js/dashboard-simulation.js', 'js/dashboard-slider.js'].forEach(src => {
+            ['js/dashboard-simulation.js'].forEach(src => {
                 const script = document.createElement('script');
                 script.src = src;
                 script.defer = true;
                 document.head.appendChild(script);
             });
         }
+        
+        // Script Slider chạy trên cả Mobile và Desktop để xử lý Video/Image
+        const sliderScript = document.createElement('script');
+        sliderScript.src = 'js/dashboard-slider.js';
+        sliderScript.defer = true;
+        document.head.appendChild(sliderScript);
     </script>
     <script>
         window.addEventListener('load', () => {
@@ -528,6 +534,11 @@
                         </div>
 
                         <div class="dashboard-slider" id="dashboardSlider">
+                            <!-- Slide 0: Mobile Image Placeholder (Chỉ hiện trên Mobile ban đầu) -->
+                            <div class="dashboard-slide" id="slideMobile">
+                                <img src="img/img_chat.webp" alt="Zework Chat Mobile" class="mobile-dashboard-img">
+                            </div>
+
                             <!-- Slide 1: Video Demo -->
                             <div class="dashboard-slide" id="slideVideo">
                                 <!-- No skeleton: hero video loads in background during 3 canvas phases -->
