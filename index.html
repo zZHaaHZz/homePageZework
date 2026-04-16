@@ -1556,6 +1556,24 @@
             const ytEvents = ['scroll', 'mousemove', 'touchstart', 'click'];
             function triggerYT() {
                 loadYouTubeAPI();
+
+                // Kích hoạt nạp video cho các iframe có data-src (trừ heroVideo đã có slider tự xử lý)
+                document.querySelectorAll('iframe[data-src]').forEach(iframe => {
+                    if (!iframe.src && iframe.id !== 'heroVideo' && iframe.id !== 'messagingDemoVideo') {
+                        iframe.src = iframe.dataset.src;
+                    }
+                });
+
+                // Riêng messagingDemoVideo cần được nạp src để VideoLoader khởi tạo Player
+                const msgDemo = document.getElementById('messagingDemoVideo');
+                if (msgDemo && !msgDemo.src && msgDemo.dataset.src) {
+                    msgDemo.src = msgDemo.dataset.src;
+                    // Sau khi nạp src, báo cho VideoLoader khởi tạo YT.Player
+                    if (window.VideoLoader && typeof window.VideoLoader.loadDeferredVideo === 'function') {
+                        setTimeout(window.VideoLoader.loadDeferredVideo, 500);
+                    }
+                }
+
                 ytEvents.forEach(event => window.removeEventListener(event, triggerYT, { passive: true }));
             }
             ytEvents.forEach(event => window.addEventListener(event, triggerYT, { passive: true }));
