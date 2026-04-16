@@ -222,3 +222,13 @@
         padding: 0.4rem 1.2rem;
     }
 }
+
+.feature-showcase-benefits li {
+    font-size: 1.4rem;
+}
+
+.feature-showcase-badge {
+    font-size: 1.2rem;
+    padding: 0.4rem 1.2rem;
+}
+}

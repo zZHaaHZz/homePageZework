@@ -1,50 +1,38 @@
 (function () {
     const canvas = document.getElementById('dashboardCanvas');
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     let isAnimating = false;
     let imagesLoadedFlag = false;
     let simInitialized = false;
-
-    // Image holders
     let imgZalo, imgEmployee, imgZework, imgMsg, imgCall, imgLock;
     const avatars = [];
-
     function loadImages() {
         if (imagesLoadedFlag) return;
-
         imgZalo = new Image(); imgZalo.src = './img/Icon_of_Zalo.svg';
         imgEmployee = new Image(); imgEmployee.src = './img/icon-employee.svg';
         imgZework = new Image(); imgZework.src = './img/logoZework.svg';
-
         for (let i = 1; i <= 4; i++) {
             const img = new Image();
             img.src = `./img/avatarFeedback/avatar_${i}.webp`;
             avatars.push(img);
         }
-
         imgMsg = new Image(); imgMsg.src = './img/icon-message.svg';
         imgCall = new Image(); imgCall.src = './img/icon-call.svg';
         imgLock = new Image(); imgLock.src = './img/icon-lock.svg';
-
         imagesLoadedFlag = true;
     }
-
     let w = 0, h = 0;
-
     function resizeCanvas() {
         const parent = canvas.parentElement;
         if (!parent) return { width: 0, height: 0 };
         const width = parent.clientWidth;
         const height = parent.clientHeight || (width * 0.5625);
-
         const dpr = window.devicePixelRatio || 1;
         canvas.width = width * dpr;
         canvas.height = height * dpr;
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
-
         ctx.scale(dpr, dpr);
         return { width, height };
     }
@@ -52,7 +40,6 @@
         ({ width: w, height: h } = resizeCanvas());
         if (simInitialized) initZaloNodes();
     });
-
     const config = {
         zaloCount: 3,
         nodeRadius: 20,
@@ -68,8 +55,6 @@
         },
         speed: 0.5
     };
-
-    // State
     let phase = 'sync';
     let lastPhaseSwitch = Date.now();
     const PHASE_DURATION_SYNC = 5500;
@@ -77,21 +62,17 @@
     const PHASE_DURATION_SECURE = 4500;
     const PHASE_DURATION_ANALYTICS = 5500;
     const PHASE_DURATION_TAGS = 5000;
-
     let hubY = h * 0.62;
     let targetHubY = h * 0.62;
-
     const zaloNodes = [];
     const employeeNodes = [];
     const packets = [];
     const timeouts = [];
     const MAX_EMPLOYEES = 4;
-
     let chartData = [];
     let chartProgress = 0;
-    let lastDataUpdate = 0; // Throttle sort/random — chỉ update mỗi 1500ms
     const DATA_UPDATE_INTERVAL = 1500;
-
+    let lastDataUpdate = 0;
     const employeeNames = [
         { id: 1, name: "Trần Minh Hằng", dept: "Chăm sóc khách hàng", pending: 2, closed: 120, y: 0, targetY: 0 },
         { id: 2, name: "Đặng Minh Tú", dept: "Dịch vụ khách hàng", pending: 3, closed: 118, y: 0, targetY: 0 },
@@ -99,7 +80,6 @@
         { id: 4, name: "Lữ Mạnh Nha", dept: "Sales", pending: 4, closed: 114, y: 0, targetY: 0 },
         { id: 5, name: "Phạm Văn A", dept: "Sales", pending: 5, closed: 112, y: 0, targetY: 0 }
     ];
-
     const tagData = [
         { id: 1, label: "Đã xử lý", count: 78, color: "#e6f4ea", text: "#1e8e3e", y: 0, targetY: 0 },
         { id: 2, label: "Đang xử lý", count: 76, color: "#e8f0fe", text: "#1967d2", y: 0, targetY: 0 },
@@ -108,7 +88,6 @@
         { id: 5, label: "Chốt đơn", count: 20, color: "#1e8e3e", text: "#ffffff", y: 0, targetY: 0 },
         { id: 6, label: "Chờ chuyển tiền", count: 18, color: "#9334e6", text: "#ffffff", y: 0, targetY: 0 }
     ];
-
     class Node {
         constructor(id, x, y, type) {
             this.id = id;
@@ -120,45 +99,36 @@
             this.opacity = type === 'employee' ? 0 : 1;
             this.hasPermission = false;
         }
-
         update() {
             const dx = this.targetX - this.currentX;
             const dy = this.targetY - this.currentY;
             this.currentX += dx * 0.05;
             this.currentY += dy * 0.05;
-
             if (this.type === 'employee' && this.opacity < 1) {
                 this.opacity += 0.05;
             }
         }
-
         draw() {
             ctx.globalAlpha = this.opacity;
-
             ctx.beginPath();
             ctx.moveTo(this.currentX, this.currentY);
             ctx.lineTo(w / 2, hubY);
             ctx.lineWidth = phase === 'security' ? 2 : 1;
             ctx.strokeStyle = phase === 'security' ? config.color.lineSecure : config.color.line;
             ctx.stroke();
-
             const radius = this.type === 'zalo' ? 30 : 28;
-
             ctx.beginPath();
             ctx.arc(this.currentX, this.currentY, radius, 0, Math.PI * 2);
             ctx.fillStyle = '#fff';
             ctx.fill();
-
             ctx.lineWidth = 2;
             ctx.strokeStyle = (phase === 'security' && this.hasPermission) ? '#ffc107' : (this.type === 'zalo' ? config.color.zalo : config.color.employee);
-
             if (this.type === 'zalo' && phase === 'sync') {
                 ctx.shadowColor = config.color.zalo;
                 ctx.shadowBlur = 15;
             }
             ctx.stroke();
             ctx.shadowBlur = 0;
-
             const img = this.type === 'zalo' ? imgZalo : (avatars[this.id % avatars.length] || imgEmployee);
             if (img && img.complete && img.naturalWidth > 0) {
                 ctx.save();
@@ -168,7 +138,6 @@
                 const imgSize = this.type === 'zalo' ? 44 : 40;
                 ctx.drawImage(img, this.currentX - imgSize / 2, this.currentY - imgSize / 2, imgSize, imgSize);
                 ctx.restore();
-
                 if (phase === 'security' && this.hasPermission && imgLock.complete) {
                     ctx.drawImage(imgLock, this.currentX + 10, this.currentY - 24, 16, 16);
                 }
@@ -176,7 +145,6 @@
             ctx.globalAlpha = 1.0;
         }
     }
-
     function initZaloNodes() {
         zaloNodes.length = 0;
         const centerX = w / 2;
@@ -186,21 +154,16 @@
         const startTo = Math.PI * 1.2;
         const endTo = Math.PI * 1.8;
         const step = config.zaloCount > 1 ? (endTo - startTo) / (config.zaloCount - 1) : 0;
-
         for (let i = 0; i < config.zaloCount; i++) {
             let angle = config.zaloCount > 1 ? (startTo + i * step) : Math.PI * 1.5;
             const x = centerX + Math.cos(angle) * radiusX;
             let y = centerY + Math.sin(angle) * radiusY;
-
-            // Đẩy node giữa lên xa hơn để tạo khoảng cách rõ ràng với hub.
             if (config.zaloCount % 2 === 1 && i === Math.floor(config.zaloCount / 2)) {
                 y -= Math.min(h * 0.32, 160);
             }
-
             zaloNodes.push(new Node(i, x, y, 'zalo'));
         }
     }
-
     function initChartData() {
         chartData = [];
         let val = 50;
@@ -215,11 +178,9 @@
         employeeNames.forEach((e, idx) => { e.y = idx * 50; e.targetY = idx * 50; });
         tagData.sort((a, b) => b.count - a.count);
         tagData.forEach((t, idx) => { t.y = idx * 40; t.targetY = idx * 40; });
-        // Khởi tạo pct để tránh hiển thị "undefined" ở frame đầu tiên
         const initTotal = tagData.reduce((a, c) => a + c.count, 0);
         tagData.forEach(t => t.pct = ((t.count / initTotal) * 100).toFixed(2) + "%");
     }
-
     class Packet {
         constructor(source, target, image) {
             this.source = source;
@@ -245,7 +206,6 @@
             }
         }
     }
-
     function spawnEmployee(forcedIndex) {
         if (employeeNodes.length >= MAX_EMPLOYEES && forcedIndex === undefined) return;
         const i = forcedIndex !== undefined ? forcedIndex : employeeNodes.length;
@@ -259,8 +219,6 @@
             packets.push(new Packet({ currentX: w / 2, currentY: hubY }, newNode, imgMsg));
         }, 300);
     }
-
-    // ─── Phase Duration Map ───────────────────────────────────────────────────
     const PHASE_DURATIONS = {
         sync: PHASE_DURATION_SYNC,
         distribute: PHASE_DURATION_DIST,
@@ -268,8 +226,6 @@
         analytics: PHASE_DURATION_ANALYTICS,
         tags: PHASE_DURATION_TAGS,
     };
-
-    // ─── Phase Transition State Machine ──────────────────────────────────────
     const PHASE_TRANSITIONS = {
         sync() {
             phase = 'distribute';
@@ -290,7 +246,6 @@
             }, 500);
         },
         security() {
-            // Load messagingDemoVideo (section further down the page)
             const demoIframe = document.getElementById('messagingDemoVideo');
             if (demoIframe && !demoIframe.src && demoIframe.dataset.src) {
                 demoIframe.src = demoIframe.dataset.src;
@@ -298,7 +253,6 @@
                     VideoLoader.loadDeferredVideo();
                 }
             }
-
             phase = 'analytics';
             initChartData();
         },
@@ -311,7 +265,6 @@
             }
         },
     };
-
     function resetToSyncCycle() {
         phase = 'sync';
         lastPhaseSwitch = Date.now();
@@ -321,8 +274,6 @@
         targetHubY = h * 0.62;
         initZaloNodes();
     }
-
-    // ─── Per-Phase Renderers ──────────────────────────────────────────────────
     const PHASE_TITLES = {
         sync: 'ĐỒNG BỘ DỮ LIỆU TỪ ZALO',
         distribute: 'PHÂN CHIA CÔNG VIỆC',
@@ -330,10 +281,8 @@
         analytics: 'THỐNG KÊ CHI TIẾT DỮ LIỆU',
         tags: 'Phân loại khách hàng thông minh',
     };
-
     function renderPhase_analytics(margin, containerW, containerH, startY) {
         if (chartProgress < 1) chartProgress += 0.005;
-
         const now_t = Date.now();
         if (now_t - lastDataUpdate > DATA_UPDATE_INTERVAL) {
             lastDataUpdate = now_t;
@@ -347,43 +296,37 @@
                 });
         }
         employeeNames.forEach(e => e.y += (e.targetY - e.y) * 0.1);
-
         const isNarrow = w < 600;
         const leftW = isNarrow ? containerW : containerW * 0.4;
         const rightW = isNarrow ? containerW : containerW * 0.55;
         const rightX = isNarrow ? margin : margin + leftW + containerW * 0.05;
         const chartH = isNarrow ? containerH * 0.4 : containerH * 0.8;
         const leaderboardY = isNarrow ? startY + chartH + 20 : startY;
-
-        // Left chart card
         drawCard(margin, startY, leftW, chartH);
         ctx.textAlign = 'left'; ctx.fillStyle = '#333'; ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
         ctx.fillText("Số lượng hội thoại", margin + 20, startY + 20);
         drawMiniChart(margin + 20, startY + 60, leftW - 40, chartH - 80);
-
-        // Right leaderboard card
         drawCard(rightX, leaderboardY, rightW, chartH);
+        
+        ctx.fillStyle = '#333'; 
+        ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, Inter, sans-serif';
         ctx.textAlign = 'left';
-        ctx.fillText("Xếp hạng nhân viên", rightX + 20, leaderboardY + 20);
-
+        ctx.fillText("Xếp hạng nhân viên", rightX + 20, leaderboardY + 16);
+        
         ctx.font = '11px Arial'; ctx.fillStyle = '#888';
-        ctx.textAlign = 'left'; ctx.fillText("NHÂN VIÊN", rightX + 20, leaderboardY + 42);
-        ctx.textAlign = 'right'; ctx.fillText("ĐÃ ĐÓNG", rightX + rightW - 20, leaderboardY + 42);
-        ctx.fillText("ĐANG CHỜ", rightX + rightW - 90, leaderboardY + 42);
-
-        const listY = leaderboardY + 58;
-        const listHeight = chartH - 58;
-
+        ctx.textAlign = 'left'; ctx.fillText("NHÂN VIÊN", rightX + 20, leaderboardY + 38);
+        ctx.textAlign = 'right'; ctx.fillText("ĐÃ ĐÓNG", rightX + rightW - 20, leaderboardY + 38);
+        ctx.fillText("ĐANG CHỜ", rightX + rightW - 90, leaderboardY + 38);
+        
+        const listY = leaderboardY + 54;
+        const listHeight = chartH - 54;
         ctx.save();
         ctx.beginPath();
         ctx.rect(rightX, listY, rightW, listHeight);
         ctx.clip();
-
         employeeNames.forEach(emp => {
             const rowY = listY + emp.y;
             if (rowY > listY + listHeight) return;
-
-            // Avatar tròn
             ctx.save();
             ctx.beginPath();
             ctx.arc(rightX + 35, rowY + 15, 15, 0, Math.PI * 2);
@@ -392,27 +335,22 @@
             const avatarImg = avatars[emp.id % avatars.length] || imgEmployee;
             if (avatarImg && avatarImg.complete) ctx.drawImage(avatarImg, rightX + 20, rowY, 30, 30);
             ctx.restore();
-
             ctx.fillStyle = '#333'; ctx.textAlign = 'left'; ctx.font = 'bold 13px Arial';
             ctx.fillText(emp.name, rightX + 60, rowY + 4);
             ctx.fillStyle = '#777'; ctx.font = '11px Arial';
             ctx.fillText(emp.dept, rightX + 60, rowY + 18);
-
             ctx.textAlign = 'right'; ctx.fillStyle = '#333'; ctx.font = 'bold 13px Arial';
             ctx.fillText(emp.closed.toString(), rightX + rightW - 20, rowY + 11);
             ctx.fillStyle = '#f59e0b';
             ctx.fillText(emp.pending.toString(), rightX + rightW - 90, rowY + 11);
-
             ctx.beginPath();
             ctx.moveTo(rightX + 20, rowY + 46);
             ctx.lineTo(rightX + rightW - 20, rowY + 46);
             ctx.strokeStyle = '#f1f1f1'; ctx.lineWidth = 1; ctx.stroke();
         });
-
         ctx.restore();
         ctx.textAlign = 'left';
     }
-
     function renderPhase_tags(now, margin, containerW, containerH, startY) {
         if (now % 30 < 2) {
             const tag = tagData[Math.floor(Math.random() * tagData.length)];
@@ -427,16 +365,27 @@
             tagData.forEach(t => t.pct = ((t.count / total) * 100).toFixed(2) + "%");
         }
         tagData.forEach(t => t.y += (t.targetY - t.y) * 0.1);
-
         const tableW = Math.min(600, containerW);
         const tableX = (w - tableW) / 2;
-        drawCard(tableX, startY, tableW, containerH * 0.9);
-
+        const cardH = containerH * 0.9;
+        
+        drawCard(tableX, startY, tableW, cardH);
         ctx.textAlign = 'left'; ctx.fillStyle = '#333'; ctx.font = 'bold 18px Arial';
         ctx.fillText("Xếp hạng trạng thái", tableX + 30, startY + 20);
-
+        
+        const listY = startY + 40;
+        const listHeight = cardH - 40;
+        
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(tableX, listY, tableW, listHeight);
+        ctx.clip();
+        
         tagData.forEach(tag => {
             const y = startY + 40 + tag.y;
+            // Dọn bớt việc vẽ nếu nó nằm hoàn toàn ngoài tầm nhìn (Tối ưu nhẹ)
+            if (y > listY + listHeight) return; 
+            
             ctx.fillStyle = tag.color;
             ctx.beginPath();
             ctx.roundRect(tableX + 30, y, ctx.measureText(tag.label).width + 20, 28, 4);
@@ -448,17 +397,15 @@
             ctx.fillText(tag.pct, tableX + tableW - 20, y + 14);
             ctx.textAlign = 'left'; ctx.textBaseline = 'top';
         });
+        
+        ctx.restore();
     }
-
     function renderPhase_network(now, centerX) {
         const isSync = phase === 'sync';
         targetHubY = isSync ? h * 0.62 : Math.max(h * 0.2, 140);
         hubY += (targetHubY - hubY) * 0.05;
-
         const nodes = isSync ? zaloNodes : employeeNodes;
         nodes.forEach(n => { n.update(); n.draw(); });
-
-        // Hub cloud
         ctx.fillStyle = '#fff';
         drawCloud(ctx, centerX, hubY, config.hubRadius);
         ctx.fill();
@@ -471,16 +418,11 @@
         drawCloud(ctx, 0, 0, config.hubRadius);
         ctx.stroke();
         ctx.restore();
-
         if (imgZework && imgZework.complete)
             ctx.drawImage(imgZework, centerX - 30, hubY - 30, 60, 60);
-
-        // Title
         ctx.font = `bold ${w < 500 ? 18 : 24}px -apple-system, BlinkMacSystemFont, Inter, sans-serif`;
         ctx.textAlign = 'center'; ctx.fillStyle = '#101828';
         ctx.fillText(PHASE_TITLES[phase], centerX, 30);
-
-        // Spawn packets — chỉ bắt đầu sau khi nodes đã vào vị trí (1.5s)
         const MAX_PACKETS = 3;
         const nodesSettled = (Date.now() - lastPhaseSwitch) > 1500;
         const packetChance = isSync ? 0.02 : 0.01;
@@ -495,41 +437,30 @@
                 packets.push(new Packet(src, dst, icon));
             }
         }
-
         for (let i = packets.length - 1; i >= 0; i--) {
             packets[i].update(); packets[i].draw();
             if (packets[i].done) packets.splice(i, 1);
         }
     }
-
-    // ─── Main Animation Loop ──────────────────────────────────────────────────
     function animate() {
         if (!isAnimating) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         const now = Date.now();
         const duration = PHASE_DURATIONS[phase];
-
-        // State-machine: advance phase when timer expires
         if (now - lastPhaseSwitch > duration) {
             lastPhaseSwitch = now;
             packets.length = 0;
             PHASE_TRANSITIONS[phase]();
         }
-
         const centerX = w / 2;
-
         if (phase === 'analytics' || phase === 'tags') {
-            // Shared header for data phases
             ctx.fillStyle = '#101828'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
             ctx.font = `bold ${w < 500 ? 16 : 24}px -apple-system, BlinkMacSystemFont, Inter, sans-serif`;
             ctx.fillText(PHASE_TITLES[phase], centerX, 20);
-
             const margin = 20;
             const containerW = w - margin * 2;
             const containerH = h - 60;
             const startY = 70;
-
             if (phase === 'analytics') {
                 renderPhase_analytics(margin, containerW, containerH, startY);
             } else {
@@ -538,10 +469,8 @@
         } else {
             renderPhase_network(now, centerX);
         }
-
         requestAnimationFrame(animate);
     }
-
     function drawCloud(ctx, x, y, r) {
         const s = r / 50; ctx.beginPath(); ctx.moveTo(x - 30 * s, y + 20 * s);
         ctx.bezierCurveTo(x - 65 * s, y + 20 * s, x - 65 * s, y - 20 * s, x - 35 * s, y - 25 * s);
@@ -550,12 +479,10 @@
         ctx.bezierCurveTo(x + 20 * s, y + 45 * s, x - 20 * s, y + 45 * s, x - 30 * s, y + 20 * s);
         ctx.closePath();
     }
-
     function drawCard(x, y, w, h) {
         ctx.fillStyle = 'rgba(255, 255, 255, 0.95)'; ctx.shadowColor = "rgba(0,0,0,0.05)"; ctx.shadowBlur = 10;
         ctx.beginPath(); ctx.roundRect(x, y, w, h, 12); ctx.fill(); ctx.shadowBlur = 0;
     }
-
     function drawMiniChart(x, y, w, h) {
         ctx.strokeStyle = '#e0e0e0'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x + w, y + h); ctx.stroke();
         if (chartData.length > 1) {
@@ -569,86 +496,48 @@
             ctx.stroke();
         }
     }
-
-    // --- Startup Logic ---
     let simStarted = false;
-    let requiredImages = []; // Will be populated after loadImages()
-
     const startSim = () => {
         if (simStarted) return;
         simStarted = true;
-
-        // Ensure images are initialized
         loadImages();
-
-        // Finalize canvas size (Layout Reflow deferred until here)
         ({ width: w, height: h } = resizeCanvas());
-
-        // Phase 1: Immediate Node Init + First Static Draw (Fast)
         initZaloNodes();
-
-        // Draw one single static frame to show dashboard instantly
         isAnimating = true;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         zaloNodes.forEach(n => n.draw());
         ctx.fillStyle = '#fff';
         drawCloud(ctx, w / 2, h / 2, config.hubRadius);
         ctx.fill();
-        isAnimating = false; // Stop until phase 3
-
-        // Phase 2: Staggered Data Init (50ms gap to yield main thread)
         setTimeout(() => {
             initChartData();
-
-            // Phase 3: Start Animation Loop (Another 50ms gap)
             setTimeout(() => {
                 isAnimating = true;
                 animate();
             }, 50);
         }, 50);
     };
-
-    // Public API
     window.startDashboardSimulation = startSim;
     window.stopDashboardSimulation = () => { isAnimating = false; };
     window.pauseDashboardSimulationForVideo = () => { isAnimating = false; };
-
-    /**
-     * Called by dashboard-slider.js after the hero video finishes its display window.
-     * Resumes the animation from the beginning of the cycle.
-     */
     window.resumeDashboardSimulation = () => {
-        if (isAnimating) return; // already running
         resetToSyncCycle();
         isAnimating = true;
         animate();
     };
-
-    // We no longer call loadImages() or populate requiredImages here.
-    // They will be handled in startSim() to keep TBT at 150ms.
-
-    // ─── Immediate Placeholder Draw ──────────────────────────────────────────
-    // Vẽ 1 frame tĩnh ngay khi DOMContentLoaded (không cần ảnh) để tránh
-    // khoảng trắng ~0.5s trước khi animation thật bắt đầu qua requestIdleCallback.
     document.addEventListener('DOMContentLoaded', () => {
         ({ width: w, height: h } = resizeCanvas());
         if (w === 0 || h === 0) return;
-
         hubY = h * 0.62;
         targetHubY = h * 0.62;
         initZaloNodes();
-
         const cx = w / 2;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Title
         ctx.font = `bold ${w < 500 ? 18 : 24}px -apple-system, BlinkMacSystemFont, Inter, sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'top';
         ctx.fillStyle = '#101828';
         ctx.fillText(PHASE_TITLES.sync, cx, 20);
-
-        // Lines + circles (no images needed)
         zaloNodes.forEach(n => {
             ctx.beginPath();
             ctx.moveTo(n.currentX, n.currentY);
@@ -656,7 +545,6 @@
             ctx.strokeStyle = config.color.line;
             ctx.lineWidth = 1;
             ctx.stroke();
-
             ctx.beginPath();
             ctx.arc(n.currentX, n.currentY, 30, 0, Math.PI * 2);
             ctx.fillStyle = '#fff';
@@ -668,8 +556,6 @@
             ctx.stroke();
             ctx.shadowBlur = 0;
         });
-
-        // Cloud (Zework hub)
         ctx.fillStyle = '#fff';
         drawCloud(ctx, cx, hubY, config.hubRadius);
         ctx.fill();
@@ -677,7 +563,6 @@
         ctx.strokeStyle = config.color.zework;
         drawCloud(ctx, cx, hubY, config.hubRadius);
         ctx.stroke();
-
         simInitialized = true;
     }, { once: true });
 })();

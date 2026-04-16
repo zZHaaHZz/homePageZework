@@ -2,7 +2,6 @@
     width: 100%;
     height: calc(69.8rem - 8.8rem);
     background:
-        url("/img/bai-viet/grid-bai-viet.svg") no-repeat center/cover,
         linear-gradient(to bottom, #C4D2FF, #DAE3FF);
 
     display: flex;
@@ -104,9 +103,11 @@
     color: #FFF;
     font-size: 1.6rem;
 }
-.view-now:hover{
-          background-color: #0f37d5;
+
+.view-now:hover {
+    background-color: #0f37d5;
 }
+
 .right-banner-aricle {
     z-index: 2;
     width: 50.6rem;
@@ -165,15 +166,18 @@
         font-size: 2rem;
         line-height: 2.8rem;
     }
-    .view-now{
+
+    .view-now {
         width: 11.6rem;
         height: 4rem;
     }
-    .right-banner-aricle{
+
+    .right-banner-aricle {
         width: 34.3rem;
         height: 28.064rem;
     }
-    .right-banner-aricle img{
+
+    .right-banner-aricle img {
         width: 34.3rem;
         height: 28.064rem;
         border-radius: 2rem;

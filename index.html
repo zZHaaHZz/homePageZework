@@ -4,12 +4,12 @@
 <head>
     <!-- Delayed Google Tag Manager (GTM) Load Strategy -->
     <script>
-        (function() {
+        (function () {
             let gtmLoaded = false;
             function loadGTM() {
                 if (gtmLoaded) return;
                 gtmLoaded = true;
-                
+
                 // Load script
                 const script = document.createElement('script');
                 script.async = true;
@@ -21,7 +21,7 @@
                 window.gtag = gtag;
                 gtag('js', new Date());
                 gtag('config', 'G-C8JGBS9ECN');
-                
+
                 console.log('GTM: Lazy loaded successfully');
             }
 
@@ -37,14 +37,9 @@
     </script>
     <meta charset="UTF-8">
 
-    <!-- Preconnect to YouTube for faster video load -->
-    <link rel="preconnect" href="https://www.youtube.com">
+    <!-- Essential Preconnects for LCP and Fonts (Minimized to < 4 to avoid PENALTY) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.youtube-nocookie.com">
-    <link rel="preconnect" href="https://i.ytimg.com">
-    <link rel="preconnect" href="https://yt3.ggpht.com">
-    <link rel="dns-prefetch" href="https://www.youtube.com">
-    <link rel="dns-prefetch" href="https://i.ytimg.com">
-    <link rel="dns-prefetch" href="https://googlevideo.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <title>Zework | Phần mềm Quản lý Zalo Sales & CRM cho Cá nhân & Doanh nghiệp</title>
@@ -122,13 +117,11 @@
     <link rel="preload" as="image" href="img/logoZework.svg" fetchpriority="high">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
-    <link rel="preload" as="style"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -174,24 +167,98 @@
     <!-- Critical Inline CSS for Instant Hero Skeleton -->
     <style>
         .video-skeleton {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: #f9fafb; z-index: 10; display: flex; flex-direction: column;
-            overflow: hidden; transition: opacity 0.8s ease, visibility 0.8s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f9fafb;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: opacity 0.8s ease, visibility 0.8s;
         }
-        .video-skeleton.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .video-skeleton.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
         .shimmer {
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
-            background-size: 200% 100%; animation: shimmer 1.5s infinite;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
         }
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-        .skeleton-header { height: 4.8rem; background: #f3f4f6; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 2rem; gap: 1.5rem; }
-        .sk-dot { width: 1rem; height: 1rem; border-radius: 50%; background: #e5e7eb; }
-        .sk-url { height: 2.4rem; flex: 1; background: #e5e7eb; border-radius: 0.6rem; max-width: 30rem; margin: 0 auto; }
-        .skeleton-body { flex: 1; display: flex; padding: 2rem; gap: 2rem; }
-        .skeleton-sidebar { width: 22rem; display: flex; flex-direction: column; gap: 1.2rem; }
-        .sk-item { height: 3.6rem; background: #f3f4f6; border-radius: 0.8rem; }
-        @media (max-width: 768px) { .skeleton-sidebar { display: none; } }
-        .dashboard-visual-wrapper { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .skeleton-header {
+            height: 4.8rem;
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            gap: 1.5rem;
+        }
+
+        .sk-dot {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #e5e7eb;
+        }
+
+        .sk-url {
+            height: 2.4rem;
+            flex: 1;
+            background: #e5e7eb;
+            border-radius: 0.6rem;
+            max-width: 30rem;
+            margin: 0 auto;
+        }
+
+        .skeleton-body {
+            flex: 1;
+            display: flex;
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .skeleton-sidebar {
+            width: 22rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .sk-item {
+            height: 3.6rem;
+            background: #f3f4f6;
+            border-radius: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .skeleton-sidebar {
+                display: none;
+            }
+        }
+
+        .dashboard-visual-wrapper {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
     </style>
 
     <!-- Optimized Script Loading (Parallel Download, Sequential Defer Execution) -->
@@ -240,7 +307,7 @@
             <a href="#trangchu">
                 <div class="logo">
                     <img src="img/logoZework.svg" alt="Zework - Phần mềm quản lý Zalo" class="logo-img"
-                         fetchpriority="high" width="40" height="40">
+                        fetchpriority="high" width="40" height="40">
                     <h1>ZEWORK</h1>
                 </div>
             </a>
@@ -344,58 +411,61 @@
         </div>
     </div>
     <main id="main-content">
-    <div class="container">
-        <div class="hero">
-            <div class="head-line-hero">
-                <h2>Giải pháp thông minh tích hợp Zalo cho doanh nghiệp</h2>
-                <div>
-                    Quản lý đồng thời nhiều tài khoản Zalo trong cùng 1 nền tảng - tập trung dữ liệu, tối ưu quy
-                    trình
-                    chăm sóc khách hàng
+        <div class="container">
+            <div class="hero">
+                <div class="head-line-hero">
+                    <h2>Giải pháp thông minh tích hợp Zalo cho doanh nghiệp</h2>
+                    <div>
+                        Quản lý đồng thời nhiều tài khoản Zalo trong cùng 1 nền tảng - tập trung dữ liệu, tối ưu quy
+                        trình
+                        chăm sóc khách hàng
+                    </div>
+                    <div class="hero-buttons">
+                        <button class="experience">Trải nghiệm miễn phí ngay</button>
+                        <button class="btn-consult open-consult-modal">
+                            <i class="fas fa-headset"></i> Nhận tư vấn 1–1
+                        </button>
+                        <a href="https://apps.apple.com/us/app/zework/id6761233933" target="_blank" class="btn-download-app-mobile">
+                            <i class="fab fa-apple"></i> Tải App trên iOS
+                        </a>
+                    </div>
                 </div>
-                <div class="hero-buttons">
-                    <button class="experience">Trải nghiệm miễn phí ngay</button>
-                    <button class="btn-consult open-consult-modal">
-                        <i class="fas fa-headset"></i> Nhận tư vấn 1–1
-                    </button>
-                </div>
+
             </div>
-
-        </div>
-        <section class="dashboard-showcase-section">
-            <div class="dashboard-visual-wrapper">
-                <div class="dashboard-device-frame">
-                    <div class="frame-browser-header">
-                        <div class="frame-dots">
-                            <span class="f-dot f-red"></span>
-                            <span class="f-dot f-yellow"></span>
-                            <span class="f-dot f-green"></span>
-                        </div>
-                        <div class="frame-url">app.zework.com</div>
-                    </div>
-
-                    <div class="dashboard-slider" id="dashboardSlider">
-                        <!-- Slide 1: Video Demo -->
-                        <div class="dashboard-slide" id="slideVideo">
-                            <!-- No skeleton: hero video loads in background during 3 canvas phases -->
-                            <iframe id="heroVideo" class="hero-video-visual"
-                                data-src="https://www.youtube-nocookie.com/embed/S_-az13i5ME?autoplay=1&mute=1&playsinline=1&controls=0&rel=0&enablejsapi=1&loop=1&playlist=S_-az13i5ME"
-                                title="Zework Demo" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
+            <section class="dashboard-showcase-section">
+                <div class="dashboard-visual-wrapper">
+                    <div class="dashboard-device-frame">
+                        <div class="frame-browser-header">
+                            <div class="frame-dots">
+                                <span class="f-dot f-red"></span>
+                                <span class="f-dot f-yellow"></span>
+                                <span class="f-dot f-green"></span>
+                            </div>
+                            <div class="frame-url">app.zework.com</div>
                         </div>
 
-                        <!-- Slide 2: Animated canvas dashboard -->
-                        <div class="dashboard-slide" id="slideCanvas">
-                            <canvas id="dashboardCanvas" class="img-rounded-canvas"></canvas>
-                        </div>
+                        <div class="dashboard-slider" id="dashboardSlider">
+                            <!-- Slide 1: Video Demo -->
+                            <div class="dashboard-slide" id="slideVideo">
+                                <!-- No skeleton: hero video loads in background during 3 canvas phases -->
+                                <iframe id="heroVideo" class="hero-video-visual"
+                                    data-src="https://www.youtube-nocookie.com/embed/S_-az13i5ME?autoplay=1&mute=1&playsinline=1&controls=0&rel=0&enablejsapi=1&loop=1&playlist=S_-az13i5ME"
+                                    title="Zework Demo" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                            </div>
 
-                        <!-- Slider dots (hidden on mobile) -->
-                        <div class="slider-indicators">
-                            <div class="slider-dot" data-slide="0"></div>
-                            <div class="slider-dot active" data-slide="1"></div>
+                            <!-- Slide 2: Animated canvas dashboard -->
+                            <div class="dashboard-slide" id="slideCanvas">
+                                <canvas id="dashboardCanvas" class="img-rounded-canvas"></canvas>
+                            </div>
+
+                            <!-- Slider dots (hidden on mobile) -->
+                            <div class="slider-indicators">
+                                <div class="slider-dot" data-slide="0"></div>
+                                <div class="slider-dot active" data-slide="1"></div>
+                            </div>
                         </div>
-                    </div>
                     </div>
 
                     <!-- Hidden Security Overlay structure to prevent JS errors -->
@@ -406,7 +476,7 @@
                         <div class="hub-center"></div>
                     </div>
                 </div>
-            </div>
+        </div>
         </section>
 
         <div class="why-select-zework">
@@ -455,7 +525,8 @@
             </div>
             <div class="why-select-zework-1 why-select-zework-reverse reveal">
                 <div class="left-why-select-zework-1 why-ze-2">
-                    <img src="img/why-2.webp" alt="Bảo mật dữ liệu khách hàng" loading="lazy" width="1224" height="1206">
+                    <img src="img/why-2.webp" alt="Bảo mật dữ liệu khách hàng" loading="lazy" width="1224"
+                        height="1206">
                 </div>
                 <div class="right-why-select-zework-1">
                     <div class="title-right-why-select-zework-1">
@@ -545,12 +616,14 @@
                     </div>
                 </div>
                 <div class="bottom-why-select-zework-3">
-                    <img src="img/why-3.webp" alt="Báo cáo và thống kê chi tiết" loading="lazy" width="3662" height="2190">
+                    <img src="img/why-3.webp" alt="Báo cáo và thống kê chi tiết" loading="lazy" width="3662"
+                        height="2190">
                 </div>
             </div>
             <div class="why-select-zework-1 reveal">
                 <div class="left-why-select-zework-1 why-ze-4">
-                    <img src="img/why-4.webp" alt="Quản lý nhiều tài khoản Zalo" loading="lazy" width="1912" height="1875">
+                    <img src="img/why-4.webp" alt="Quản lý nhiều tài khoản Zalo" loading="lazy" width="1912"
+                        height="1875">
                 </div>
                 <div class="right-why-select-zework-1">
                     <div class="title-right-why-select-zework-1">
@@ -603,7 +676,8 @@
             </div>
             <div class="why-select-zework-1 why-select-zework-reverse">
                 <div class="left-why-select-zework-1 why-ze-5">
-                    <img src="img/why-5.webp" alt="CRM cho cá nhân và doanh nghiệp" loading="lazy" width="1912" height="1793">
+                    <img src="img/why-5.webp" alt="CRM cho cá nhân và doanh nghiệp" loading="lazy" width="1912"
+                        height="1793">
                 </div>
                 <div class="right-why-select-zework-1">
                     <div class="title-right-why-select-zework-1">
@@ -1093,292 +1167,291 @@
         </section>
     </main>
 
-        <footer>
-            <div class="CTA">
-                <h1>Trải nghiệm miễn phí <div class="hyphen"><svg id="fi_13132410" fill="currentColor"
-                            enable-background="new 0 0 110 110" height="110" viewBox="0 0 110 110" width="110"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="m96 46h-82c-4.971 0-9 4.029-9 9s4.029 9 9 9h82c4.971 0 9-4.029 9-9s-4.029-9-9-9z">
-                            </path>
-                        </svg></div>1 phút để bắt đầu</h1>
-                <p>Hơn 2.000 doanh nghiệp đang dùng Zework để quản lý và chăm sóc khách hàng hiệu quả hơn mỗi ngày </p>
-                <div style="display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap;">
-                    <button class="experience">Trải nghiệm miễn phí ngay</button>
-                    <button class="btn-consult open-consult-modal">
-                        <i class="fas fa-headset"></i> Nhận tư vấn 1–1
-                    </button>
-                </div>
+    <footer>
+        <div class="CTA">
+            <h1>Trải nghiệm miễn phí <div class="hyphen"><svg id="fi_13132410" fill="currentColor"
+                        enable-background="new 0 0 110 110" height="110" viewBox="0 0 110 110" width="110"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="m96 46h-82c-4.971 0-9 4.029-9 9s4.029 9 9 9h82c4.971 0 9-4.029 9-9s-4.029-9-9-9z">
+                        </path>
+                    </svg></div>1 phút để bắt đầu</h1>
+            <p>Hơn 2.000 doanh nghiệp đang dùng Zework để quản lý và chăm sóc khách hàng hiệu quả hơn mỗi ngày </p>
+            <div style="display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap;">
+                <button class="experience">Trải nghiệm miễn phí ngay</button>
+                <button class="btn-consult open-consult-modal">
+                    <i class="fas fa-headset"></i> Nhận tư vấn 1–1
+                </button>
             </div>
-            <div class="main-footer">
-                <div class="left-main-footer">
-                    <div class="logo-footer">
-                        <a href="#trangchu">
-                            <div class="logo">
-                                <img src="img/logoZework.svg" alt="Zework" class="logo-img" loading="lazy" width="40" height="40">
-                                <h1>ZEWORK</h1>
-                            </div>
-                        </a>
-                    </div>
-                    <p>Nền tảng quản lý dữ liệu tập trung, tối ưu quy trình chăm sóc khách hàng</p>
+        </div>
+        <div class="main-footer">
+            <div class="left-main-footer">
+                <div class="logo-footer">
+                    <a href="#trangchu">
+                        <div class="logo">
+                            <img src="img/logoZework.svg" alt="Zework" class="logo-img" loading="lazy" width="40"
+                                height="40">
+                            <h1>ZEWORK</h1>
+                        </div>
+                    </a>
+                </div>
+                <p>Nền tảng quản lý dữ liệu tập trung, tối ưu quy trình chăm sóc khách hàng</p>
 
-                    <div class="footer-download-container">
-                        <p class="download-caption">Bản cài đặt cho máy tính</p>
-                        <div class="box-download">
-                            <button class="downMacOs">
-                                <svg fill="currentColor" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
-                                    style="width: 2.2rem;">
-                                    <g fill="currentColor" id="Mac" fill="#222">
-                                        <path fill="currentColor"
-                                            d="m24.69 62.05a10.17 10.17 0 0 1 -3.58-.67c-4.55-1.71-6.74-6.57-8.5-10.47-.43-.95-.84-1.85-1.25-2.64-2.94-5.74-3.36-14.27-1-20.76 1.42-3.93 3.68-6.64 6.52-7.83 5.25-2.23 9.18-1.11 12.33-.21a13.89 13.89 0 0 0 3.65.74 2 2 0 0 1 0 4 17.28 17.28 0 0 1 -4.75-.89c-2.81-.8-5.72-1.63-9.68 0-1.76.74-3.29 2.7-4.31 5.51-2 5.43-1.64 12.82.8 17.57.46.89.88 1.83 1.33 2.82 1.54 3.4 3.27 7.25 6.27 8.37 2.3.87 4 .21 6.07-.54a12.16 12.16 0 0 1 4.27-1 2 2 0 0 1 0 4 9.2 9.2 0 0 0 -2.88.77 14.76 14.76 0 0 1 -5.29 1.23z">
-                                        </path>
-                                        <path fill="currentColor"
-                                            d="m41 62.05a14.76 14.76 0 0 1 -5.29-1.21 9.2 9.2 0 0 0 -2.88-.77 2 2 0 0 1 0-4 12.26 12.26 0 0 1 4.28 1c2 .76 3.77 1.41 6.07.54 3-1.12 4.73-5 6.26-8.37.45-1 .88-1.93 1.33-2.82.18-.36.36-.74.52-1.13a2 2 0 1 1 3.71 1.53c-.2.49-.42 1-.65 1.43-.42.81-.82 1.71-1.25 2.65-1.76 3.91-3.95 8.77-8.51 10.48a10.17 10.17 0 0 1 -3.59.67z">
-                                        </path>
-                                        <path fill="currentColor"
-                                            d="m52.13 27.31a2 2 0 0 1 -1.71-1 7 7 0 0 0 -3.13-3c-3.95-1.67-6.86-.84-9.68 0a17.65 17.65 0 0 1 -4.75.88 2 2 0 0 1 0-4 14.32 14.32 0 0 0 3.66-.73c3.15-.9 7.07-2 12.33.2a10.88 10.88 0 0 1 5 4.6 2 2 0 0 1 -1.71 3z">
-                                        </path>
-                                        <path
-                                            d="m32.55 18.67a7.77 7.77 0 0 1 -1-.06 2 2 0 0 1 -1.75-2c-.06-8 4.75-13.87 12-14.67a2 2 0 0 1 2.2 1.77 14 14 0 0 1 -4 11.56 10.9 10.9 0 0 1 -7.45 3.4zm7.52-12.23c-3.31 1.17-5.54 4.08-6.1 8a8 8 0 0 0 3.23-2 10 10 0 0 0 2.87-6z">
-                                        </path>
-                                        <path fill="currentColor"
-                                            d="m53.17 48.06a2 2 0 0 1 -1.17-.34c-3.67-2.51-6.17-7.34-6.37-12.3a13.91 13.91 0 0 1 5.2-11.67 2 2 0 1 1 2.52 3.11 9.89 9.89 0 0 0 -3.72 8.39 12 12 0 0 0 4.63 9.16 2 2 0 0 1 .52 2.78 2 2 0 0 1 -1.61.87z">
-                                        </path>
-                                    </g>
-                                </svg>
-                                <span>macOS</span>
-                            </button>
-                            <button class="downWin">
-                                <svg fill="currentColor" version="1.1" id="fi_888882" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-                                    style="width: 2.1rem;" xml:space="preserve">
-                                    <path style="fill:#F44336;" d="M201.302,49.754l-192,24.939C3.949,75.384-0.044,79.963,0,85.36v149.333
+                <div class="footer-download-container">
+                    <p class="download-caption">Bản cài đặt cho máy tính</p>
+                    <div class="box-download">
+                        <button class="downMacOs">
+                            <svg fill="currentColor" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
+                                style="width: 2.2rem;">
+                                <g fill="currentColor" id="Mac" fill="#222">
+                                    <path fill="currentColor"
+                                        d="m24.69 62.05a10.17 10.17 0 0 1 -3.58-.67c-4.55-1.71-6.74-6.57-8.5-10.47-.43-.95-.84-1.85-1.25-2.64-2.94-5.74-3.36-14.27-1-20.76 1.42-3.93 3.68-6.64 6.52-7.83 5.25-2.23 9.18-1.11 12.33-.21a13.89 13.89 0 0 0 3.65.74 2 2 0 0 1 0 4 17.28 17.28 0 0 1 -4.75-.89c-2.81-.8-5.72-1.63-9.68 0-1.76.74-3.29 2.7-4.31 5.51-2 5.43-1.64 12.82.8 17.57.46.89.88 1.83 1.33 2.82 1.54 3.4 3.27 7.25 6.27 8.37 2.3.87 4 .21 6.07-.54a12.16 12.16 0 0 1 4.27-1 2 2 0 0 1 0 4 9.2 9.2 0 0 0 -2.88.77 14.76 14.76 0 0 1 -5.29 1.23z">
+                                    </path>
+                                    <path fill="currentColor"
+                                        d="m41 62.05a14.76 14.76 0 0 1 -5.29-1.21 9.2 9.2 0 0 0 -2.88-.77 2 2 0 0 1 0-4 12.26 12.26 0 0 1 4.28 1c2 .76 3.77 1.41 6.07.54 3-1.12 4.73-5 6.26-8.37.45-1 .88-1.93 1.33-2.82.18-.36.36-.74.52-1.13a2 2 0 1 1 3.71 1.53c-.2.49-.42 1-.65 1.43-.42.81-.82 1.71-1.25 2.65-1.76 3.91-3.95 8.77-8.51 10.48a10.17 10.17 0 0 1 -3.59.67z">
+                                    </path>
+                                    <path fill="currentColor"
+                                        d="m52.13 27.31a2 2 0 0 1 -1.71-1 7 7 0 0 0 -3.13-3c-3.95-1.67-6.86-.84-9.68 0a17.65 17.65 0 0 1 -4.75.88 2 2 0 0 1 0-4 14.32 14.32 0 0 0 3.66-.73c3.15-.9 7.07-2 12.33.2a10.88 10.88 0 0 1 5 4.6 2 2 0 0 1 -1.71 3z">
+                                    </path>
+                                    <path
+                                        d="m32.55 18.67a7.77 7.77 0 0 1 -1-.06 2 2 0 0 1 -1.75-2c-.06-8 4.75-13.87 12-14.67a2 2 0 0 1 2.2 1.77 14 14 0 0 1 -4 11.56 10.9 10.9 0 0 1 -7.45 3.4zm7.52-12.23c-3.31 1.17-5.54 4.08-6.1 8a8 8 0 0 0 3.23-2 10 10 0 0 0 2.87-6z">
+                                    </path>
+                                    <path fill="currentColor"
+                                        d="m53.17 48.06a2 2 0 0 1 -1.17-.34c-3.67-2.51-6.17-7.34-6.37-12.3a13.91 13.91 0 0 1 5.2-11.67 2 2 0 1 1 2.52 3.11 9.89 9.89 0 0 0 -3.72 8.39 12 12 0 0 0 4.63 9.16 2 2 0 0 1 .52 2.78 2 2 0 0 1 -1.61.87z">
+                                    </path>
+                                </g>
+                            </svg>
+                            <span>macOS</span>
+                        </button>
+                        <button class="downWin">
+                            <svg fill="currentColor" version="1.1" id="fi_888882" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                                style="width: 2.1rem;" xml:space="preserve">
+                                <path style="fill:#F44336;" d="M201.302,49.754l-192,24.939C3.949,75.384-0.044,79.963,0,85.36v149.333
 	c0,5.891,4.776,10.667,10.667,10.667h192c5.891,0,10.667-4.776,10.667-10.667V60.314c-0.004-3.064-1.325-5.978-3.627-8
 	C207.388,50.32,204.339,49.391,201.302,49.754z"></path>
-                                    <path style="fill:#4CAF50;" d="M508.374,13.36c-2.286-2.06-5.35-3.032-8.405-2.667l-256,33.387
+                                <path style="fill:#4CAF50;" d="M508.374,13.36c-2.286-2.06-5.35-3.032-8.405-2.667l-256,33.387
 	c-5.352,0.691-9.346,5.27-9.301,10.667v179.947c0,5.891,4.776,10.667,10.667,10.667h256c5.891,0,10.667-4.776,10.667-10.667V21.36
 	C511.997,18.296,510.675,15.382,508.374,13.36z"></path>
-                                    <path style="fill:#2196F3;" d="M202.667,266.693h-192C4.776,266.693,0,271.469,0,277.36v149.333
+                                <path style="fill:#2196F3;" d="M202.667,266.693h-192C4.776,266.693,0,271.469,0,277.36v149.333
 	c-0.044,5.397,3.949,9.976,9.301,10.667l192,25.045c0.455,0.031,0.911,0.031,1.365,0c5.891,0,10.667-4.776,10.667-10.667V277.36
 	C213.334,271.469,208.558,266.693,202.667,266.693z"></path>
-                                    <path style="fill:#FFC107;" d="M501.334,266.693h-256c-5.891,0-10.667,4.776-10.667,10.667v179.947
+                                <path style="fill:#FFC107;" d="M501.334,266.693h-256c-5.891,0-10.667,4.776-10.667,10.667v179.947
 	c-0.044,5.397,3.949,9.976,9.301,10.667l256,33.387c0.455,0.031,0.911,0.031,1.365,0c5.891,0,10.667-4.776,10.667-10.667v0V277.36
 	C512,271.469,507.225,266.693,501.334,266.693z"></path>
-                                </svg>
-                                <span>Windows</span>
-                            </button>
-                        </div>
-                        <p class="secondary-webapp-note">
-                            Bạn chỉ cần tải app khi muốn <b>Gọi</b>. Các tính năng khác hãy trải nghiệm ngay trên bản
-                            Web
-                            tại
-                            <a href="https://app.zework.com" target="_blank">app.zework.com</a>
-                        </p>
+                            </svg>
+                            <span>Windows</span>
+                        </button>
                     </div>
-                </div>
-                <div class="right-main-footer">
-                    <div>
-                        <h2>Sản phẩm</h2>
-                        <a href="#trangchu">
-                            <p>Tổng quan</p>
-                        </a>
-                        <a href="#tinhnang">
-                            <p>Tính năng</p>
-                        </a>
-                        <a href="#banggia">
-                            <p>Bảng giá</p>
-                        </a>
-                        <a href="#baiviet">
-                            <p>Bài viết</p>
-                        </a>
-                    </div>
-                    <div>
-                        <h2>Điều khoản</h2>
-                        <a href="#dieu-khoan">
-                            <p>Điều khoản</p>
-                        </a>
-                        <a href="#baomat">
-                            <p>Bảo mật</p>
-                        </a>
-                        <a href="#lienhe">
-                            <p>Liên hệ</p>
-                        </a>
-                    </div>
-                    <div>
-                        <h2>Mạng xã hội</h2>
-                        <a href="https://www.facebook.com/zeworkcom" target="_blank" rel="noopener noreferrer">
-                            <p>Facebook</p>
-                        </a>
-                        <a href="https://x.com/_zework" target="_blank" rel="noopener noreferrer">
-                            <p>X</p>
-                        </a>
-                        <p>LinkedIn</p>
-                    </div>
-                    <div>
-                        <h2>ZEWORK CO., LTD</h2>
-                        <a href="company.html">
-                            <p>Về chúng tôi</p>
-                        </a>
-                        <p>Mã số thuế: 0111275923</p>
-                        <h2 style="margin-top: 1rem; margin-bottom: 1rem;">Hotline</h2>
-                        <a href="tel:0982303333">
-                            <p>
-                                0982303333
-                            </p>
-                        </a>
-
-                        <h2>Địa chỉ</h2>
-
-                        <a href="https://maps.app.goo.gl/XqnTPHBvFXWi5mEZ6">
-                            <p>
-                                29-T1 P. Hoàng Đạo Thúy, Trung Hoà, Cầu Giấy, Hà Nội</p>
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-            <div class="bottom-footer">
-                <div class="main-bottom-footer">
-                    <p>© 2025 ZEWORK CO., LTD</p>
-                    <div class="icon-Social">
-                        <a href="https://www.facebook.com/zeworkcom" target="_blank" rel="noopener noreferrer"
-                            aria-label="Facebook của Zework"><i
-                                class="fa-brands fa-facebook"></i></a>
-                        <a href="https://x.com/_zework" target="_blank" rel="noopener noreferrer"
-                            aria-label="X của Zework">
-                            <svg fill="currentColor" id="fi_5968958" enable-background="new 0 0 1226.37 1226.37"
-                                viewBox="0 0 1226.37 1226.37" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="m727.348 519.284 446.727-519.284h-105.86l-387.893 450.887-309.809-450.887h-357.328l468.492 681.821-468.492 544.549h105.866l409.625-476.152 327.181 476.152h357.328l-485.863-707.086zm-144.998 168.544-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721h-162.604l-323.311-462.446z">
-                                </path>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                                <g></g>
-                            </svg></a>
-                        <a href="https://www.tiktok.com/@zeworkapp" target="_blank" rel="noopener noreferrer"
-                            aria-label="TikTok của Zework">
-                            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-
-        <!-- Promotion Modal -->
-        <div id="promoModal" class="promo-modal-overlay" hidden aria-hidden="true">
-            <div class="promo-modal-content">
-                <button id="promoClose" class="promo-modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-                <h2>ƯU ĐÃI DÙNG THỬ CÓ HẠN</h2>
-                <p>Đăng ký ngay hôm nay để nhận 7 ngày trải nghiệm toàn bộ tính năng cao cấp của Zework hoàn toàn miễn
-                    phí.
-                </p>
-
-                <div class="promo-countdown">
-                    <div class="countdown-box">
-                        <span id="promoDays" class="countdown-number">00</span>
-                        <span class="countdown-label">Ngày</span>
-                    </div>
-                    <div class="countdown-box">
-                        <span id="promoHours" class="countdown-number">00</span>
-                        <span class="countdown-label">Giờ</span>
-                    </div>
-                    <div class="countdown-box">
-                        <span id="promoMins" class="countdown-number">00</span>
-                        <span class="countdown-label">Phút</span>
-                    </div>
-                    <div class="countdown-box">
-                        <span id="promoSecs" class="countdown-number">00</span>
-                        <span class="countdown-label">Giây</span>
-                    </div>
-                </div>
-
-                <button id="promoCTA" class="promo-cta-btn">Đăng ký trải nghiệm ngay</button>
-            </div>
-        </div>
-
-        <!-- ========== CONSULTATION MODAL ========== -->
-        <div class="consult-modal-overlay" id="consultModal">
-            <div class="consult-modal-content">
-                <button class="consult-modal-close" id="closeConsultModal">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="consult-modal-header">
-                    <h2>Đặt lịch tư vấn miễn phí</h2>
-                    <p>Zework sẽ liên hệ lại bạn trong vòng 30 phút để hỗ trợ giải pháp tối ưu nhất cho doanh nghiệp.
+                    <p class="secondary-webapp-note">
+                        Bạn chỉ cần tải app khi muốn <b>Gọi</b>. Các tính năng khác hãy trải nghiệm ngay trên bản
+                        Web
+                        tại
+                        <a href="https://app.zework.com" target="_blank">app.zework.com</a>
                     </p>
                 </div>
-                <form class="consult-form" id="consultForm" method="POST" action="javascript:void(0);">
-                    <div class="consult-form-row">
-                        <div class="consult-form-group">
-                            <label for="consult-name"><i class="fas fa-user"></i> Họ và tên <span>*</span></label>
-                            <input type="text" id="consult-name" name="name" placeholder="Nguyễn Văn A" required>
-                        </div>
-                        <div class="consult-form-group">
-                            <label for="consult-phone"><i class="fas fa-phone"></i> Số điện thoại <span>*</span></label>
-                            <input type="tel" id="consult-phone" name="phone" placeholder="0912 345 678" required>
-                        </div>
-                    </div>
-                    <div class="consult-form-group">
-                        <label for="consult-email"><i class="fas fa-envelope"></i> Email <span>*</span></label>
-                        <input type="email" id="consult-email" name="email" placeholder="email@company.com" required>
-                    </div>
-                    <div class="consult-form-group">
-                        <label for="consult-subject"><i class="fas fa-tag"></i> Bạn quan tâm đến</label>
-                        <select id="consult-subject" name="subject">
-                            <option value="consultation">Cần tư vấn giải pháp</option>
-                            <option value="demo">Đặt lịch demo sản phẩm</option>
-                            <option value="pricing">Hỏi về bảng giá</option>
-                            <option value="partnership">Hợp tác kinh doanh</option>
-                        </select>
-                    </div>
-                    <div class="consult-form-group">
-                        <label for="consult-message"><i class="fas fa-comment-dots"></i> Ghi chú thêm</label>
-                        <textarea id="consult-message" name="message"
-                            placeholder="Ví dụ: Tôi muốn tư vấn cho đội ngũ 50 người..." rows="3"></textarea>
-                    </div>
-                    <!-- Turnstile placeholder -->
-                    <div id="modal-turnstile" style="margin: 0 auto;"></div>
+            </div>
+            <div class="right-main-footer">
+                <div>
+                    <h2>Sản phẩm</h2>
+                    <a href="#trangchu">
+                        <p>Tổng quan</p>
+                    </a>
+                    <a href="#tinhnang">
+                        <p>Tính năng</p>
+                    </a>
+                    <a href="#banggia">
+                        <p>Bảng giá</p>
+                    </a>
+                    <a href="#baiviet">
+                        <p>Bài viết</p>
+                    </a>
+                </div>
+                <div>
+                    <h2>Điều khoản</h2>
+                    <a href="#dieu-khoan">
+                        <p>Điều khoản</p>
+                    </a>
+                    <a href="#baomat">
+                        <p>Bảo mật</p>
+                    </a>
+                    <a href="#lienhe">
+                        <p>Liên hệ</p>
+                    </a>
+                </div>
+                <div>
+                    <h2>Mạng xã hội</h2>
+                    <a href="https://www.facebook.com/zeworkcom" target="_blank" rel="noopener noreferrer">
+                        <p>Facebook</p>
+                    </a>
+                    <a href="https://x.com/_zework" target="_blank" rel="noopener noreferrer">
+                        <p>X</p>
+                    </a>
+                    <p>LinkedIn</p>
+                </div>
+                <div>
+                    <h2>ZEWORK CO., LTD</h2>
+                    <a href="company.html">
+                        <p>Về chúng tôi</p>
+                    </a>
+                    <p>Mã số thuế: 0111275923</p>
+                    <h2 style="margin-top: 1rem; margin-bottom: 1rem;">Hotline</h2>
+                    <a href="tel:0982303333">
+                        <p>
+                            0982303333
+                        </p>
+                    </a>
 
-                    <button type="submit" class="consult-submit-btn">
-                        <i class="fas fa-paper-plane"></i> Gửi yêu cầu ngay
-                    </button>
-                </form>
+                    <h2>Địa chỉ</h2>
+
+                    <a href="https://maps.app.goo.gl/XqnTPHBvFXWi5mEZ6">
+                        <p>
+                            29-T1 P. Hoàng Đạo Thúy, Trung Hoà, Cầu Giấy, Hà Nội</p>
+                    </a>
+
+                </div>
             </div>
         </div>
-        <!-- Non-Critical Scripts (Delayed to break execution cluster) -->
-        <script src="js/menu.js" defer></script>
-        <script src="js/price.js" defer></script>
-        <script src="js/feedback.js" defer></script>
-        <script src="js/features.js" defer></script>
-        <script src="js/scroll-reveal.js" defer></script>
-        <script src="js/promotion-timer.js" defer></script>
-        <script src="js/consultation-handler.js" defer></script>
-        <script src="js/faq.js" defer></script>
-        <!-- Lazy Load Heavy Third-Party Scripts (YouTube API) -->
-        <script>
-            // Defer YouTube API by 8 seconds to ensure TBT remains low
-            setTimeout(() => {
-                const tag = document.createElement('script');
-                tag.src = "https://www.youtube.com/iframe_api";
-                const firstScriptTag = document.getElementsByTagName('script')[0];
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-                console.log("YouTube API: Lazy loaded after 8s delay");
-            }, 8000);
-        </script>
+        <div class="bottom-footer">
+            <div class="main-bottom-footer">
+                <p>© 2025 ZEWORK CO., LTD</p>
+                <div class="icon-Social">
+                    <a href="https://www.facebook.com/zeworkcom" target="_blank" rel="noopener noreferrer"
+                        aria-label="Facebook của Zework"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://x.com/_zework" target="_blank" rel="noopener noreferrer" aria-label="X của Zework">
+                        <svg fill="currentColor" id="fi_5968958" enable-background="new 0 0 1226.37 1226.37"
+                            viewBox="0 0 1226.37 1226.37" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m727.348 519.284 446.727-519.284h-105.86l-387.893 450.887-309.809-450.887h-357.328l468.492 681.821-468.492 544.549h105.866l409.625-476.152 327.181 476.152h357.328l-485.863-707.086zm-144.998 168.544-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721h-162.604l-323.311-462.446z">
+                            </path>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                        </svg></a>
+                    <a href="https://www.tiktok.com/@zeworkapp" target="_blank" rel="noopener noreferrer"
+                        aria-label="TikTok của Zework">
+                        <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Promotion Modal -->
+    <div id="promoModal" class="promo-modal-overlay" hidden aria-hidden="true">
+        <div class="promo-modal-content">
+            <button id="promoClose" class="promo-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>ƯU ĐÃI DÙNG THỬ CÓ HẠN</h2>
+            <p>Đăng ký ngay hôm nay để nhận 7 ngày trải nghiệm toàn bộ tính năng cao cấp của Zework hoàn toàn miễn
+                phí.
+            </p>
+
+            <div class="promo-countdown">
+                <div class="countdown-box">
+                    <span id="promoDays" class="countdown-number">00</span>
+                    <span class="countdown-label">Ngày</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="promoHours" class="countdown-number">00</span>
+                    <span class="countdown-label">Giờ</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="promoMins" class="countdown-number">00</span>
+                    <span class="countdown-label">Phút</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="promoSecs" class="countdown-number">00</span>
+                    <span class="countdown-label">Giây</span>
+                </div>
+            </div>
+
+            <button id="promoCTA" class="promo-cta-btn">Đăng ký trải nghiệm ngay</button>
+        </div>
+    </div>
+
+    <!-- ========== CONSULTATION MODAL ========== -->
+    <div class="consult-modal-overlay" id="consultModal">
+        <div class="consult-modal-content">
+            <button class="consult-modal-close" id="closeConsultModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="consult-modal-header">
+                <h2>Đặt lịch tư vấn miễn phí</h2>
+                <p>Zework sẽ liên hệ lại bạn trong vòng 30 phút để hỗ trợ giải pháp tối ưu nhất cho doanh nghiệp.
+                </p>
+            </div>
+            <form class="consult-form" id="consultForm" method="POST" action="javascript:void(0);">
+                <div class="consult-form-row">
+                    <div class="consult-form-group">
+                        <label for="consult-name"><i class="fas fa-user"></i> Họ và tên <span>*</span></label>
+                        <input type="text" id="consult-name" name="name" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="consult-form-group">
+                        <label for="consult-phone"><i class="fas fa-phone"></i> Số điện thoại <span>*</span></label>
+                        <input type="tel" id="consult-phone" name="phone" placeholder="0912 345 678" required>
+                    </div>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-email"><i class="fas fa-envelope"></i> Email <span>*</span></label>
+                    <input type="email" id="consult-email" name="email" placeholder="email@company.com" required>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-subject"><i class="fas fa-tag"></i> Bạn quan tâm đến</label>
+                    <select id="consult-subject" name="subject">
+                        <option value="consultation">Cần tư vấn giải pháp</option>
+                        <option value="demo">Đặt lịch demo sản phẩm</option>
+                        <option value="pricing">Hỏi về bảng giá</option>
+                        <option value="partnership">Hợp tác kinh doanh</option>
+                    </select>
+                </div>
+                <div class="consult-form-group">
+                    <label for="consult-message"><i class="fas fa-comment-dots"></i> Ghi chú thêm</label>
+                    <textarea id="consult-message" name="message"
+                        placeholder="Ví dụ: Tôi muốn tư vấn cho đội ngũ 50 người..." rows="3"></textarea>
+                </div>
+                <!-- Turnstile placeholder -->
+                <div id="modal-turnstile" style="margin: 0 auto;"></div>
+
+                <button type="submit" class="consult-submit-btn">
+                    <i class="fas fa-paper-plane"></i> Gửi yêu cầu ngay
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Non-Critical Scripts (Delayed to break execution cluster) -->
+    <script src="js/menu.js" defer></script>
+    <script src="js/price.js" defer></script>
+    <script src="js/feedback.js" defer></script>
+    <script src="js/features.js" defer></script>
+    <script src="js/scroll-reveal.js" defer></script>
+    <script src="js/promotion-timer.js" defer></script>
+    <script src="js/consultation-handler.js" defer></script>
+    <script src="js/faq.js" defer></script>
+    <!-- Lazy Load Heavy Third-Party Scripts (YouTube API) -->
+    <script>
+        // Defer YouTube API by 8 seconds to ensure TBT remains low
+        setTimeout(() => {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            console.log("YouTube API: Lazy loaded after 8s delay");
+        }, 8000);
+    </script>
 </body>
 
 </html>
