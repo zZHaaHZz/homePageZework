@@ -373,8 +373,8 @@
         ctx.textAlign = 'left'; ctx.fillStyle = '#333'; ctx.font = 'bold 18px Arial';
         ctx.fillText("Xếp hạng trạng thái", tableX + 30, startY + 20);
         
-        const listY = startY + 40;
-        const listHeight = cardH - 40;
+        const listY = startY + 45;
+        const listHeight = cardH - 45;
         
         ctx.save();
         ctx.beginPath();
@@ -382,7 +382,7 @@
         ctx.clip();
         
         tagData.forEach(tag => {
-            const y = startY + 40 + tag.y;
+            const y = startY + 45 + tag.y;
             // Dọn bớt việc vẽ nếu nó nằm hoàn toàn ngoài tầm nhìn (Tối ưu nhẹ)
             if (y > listY + listHeight) return; 
             
@@ -525,7 +525,7 @@
         isAnimating = true;
         animate();
     };
-    document.addEventListener('DOMContentLoaded', () => {
+    const initOnLoad = () => {
         ({ width: w, height: h } = resizeCanvas());
         if (w === 0 || h === 0) return;
         hubY = h * 0.62;
@@ -564,5 +564,11 @@
         drawCloud(ctx, cx, hubY, config.hubRadius);
         ctx.stroke();
         simInitialized = true;
-    }, { once: true });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initOnLoad, { once: true });
+    } else {
+        initOnLoad();
+    }
 })();

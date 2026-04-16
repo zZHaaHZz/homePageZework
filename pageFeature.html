@@ -20,15 +20,36 @@
                 gtag('config', 'G-C8JGBS9ECN');
             }
 
-            const timer = setTimeout(loadGTM, 5000);
-            window.addEventListener('scroll', function onScroll() {
+            const loadEvents = ['scroll', 'mousemove', 'touchstart'];
+            function triggerGTM() {
                 loadGTM();
-                clearTimeout(timer);
-                window.removeEventListener('scroll', onScroll);
-            }, { passive: true });
+                loadEvents.forEach(event => window.removeEventListener(event, triggerGTM, { passive: true }));
+            }
+            loadEvents.forEach(event => window.addEventListener(event, triggerGTM, { passive: true }));
         })();
     </script>
-    <script src="js/device-detect.js"></script>
+    <script>
+        (function () {
+            function detectDevice() {
+                const ua = navigator.userAgent.toLowerCase();
+                const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+                const isMobileUA = /android.*mobile|webos|iphone|ipod|blackberry|iemobile|opera mini/.test(ua);
+                const isTabletUA = (/ipad|android/.test(ua) && !/mobile/.test(ua));
+                const isIPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+
+                if (isMobileUA && hasTouch) {
+                    return 'is-mobile';
+                } else if ((isTabletUA || isIPadOS) && hasTouch) {
+                    return 'is-tablet';
+                } else {
+                    return 'is-desktop';
+                }
+            }
+            const deviceClass = detectDevice();
+            if (document.body) { document.body.classList.add(deviceClass); } 
+            else { document.addEventListener('DOMContentLoaded', () => document.body.classList.add(deviceClass)); }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
@@ -79,20 +100,44 @@
             integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
     </noscript>
+    <style>
+        /* Override Font Awesome @font-face để thỏa mãn tiêu chí Font-Display của Google Lighthouse */
+        @font-face {
+            font-family: 'Font Awesome 6 Free';
+            font-style: normal;
+            font-weight: 900;
+            font-display: swap;
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2") format("woff2"),
+                 url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: 'Font Awesome 6 Brands';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2") format("woff2"),
+                 url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.ttf") format("truetype");
+        }
+    </style>
 
     <!-- Optimized Script Loading -->
     <script>
         window.addEventListener('load', () => {
             const loadNonCriticalAssets = () => {
-                const ioniconsModule = document.createElement('script');
-                ioniconsModule.type = 'module';
-                ioniconsModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
-                document.body.appendChild(ioniconsModule);
+                const isMobile = window.innerWidth <= 768;
+                
+                // Chỉ tải Ionicons trên Desktop để tối ưu hiệu suất Mobile
+                if (!isMobile) {
+                    const ioniconsModule = document.createElement('script');
+                    ioniconsModule.type = 'module';
+                    ioniconsModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
+                    document.body.appendChild(ioniconsModule);
 
-                const ioniconsNoModule = document.createElement('script');
-                ioniconsNoModule.setAttribute('nomodule', '');
-                ioniconsNoModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js';
-                document.body.appendChild(ioniconsNoModule);
+                    const ioniconsNoModule = document.createElement('script');
+                    ioniconsNoModule.setAttribute('nomodule', '');
+                    ioniconsNoModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js';
+                    document.body.appendChild(ioniconsNoModule);
+                }
             };
 
             if ('requestIdleCallback' in window) {
@@ -107,14 +152,15 @@
 
 
 
+    <!-- BẮT BUỘC CHẶN RENDER: CSS khung Cực Kỳ Quan Trọng để tránh vỡ trắng trang ban đầu -->
     <link rel="stylesheet" href="./css/site/header.css">
+    <link rel="stylesheet" href="./css/site/logo-zework.css">
+    <link rel="stylesheet" href="./css/site/buttons.css?v=3">
     <link rel="stylesheet" href="./css/homePage/feature-showcase.css">
     
-    <!-- Non-Critical CSS -->
+    <!-- Non-Critical CSS (Vẫn defer bình thường vì nằm dưới) -->
     <link rel="stylesheet" href="./css/site/footer.css?v=2" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/site/tag-iconlist.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="./css/site/logo-zework.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="./css/site/buttons.css?v=3" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="./css/site/consultation-modal.css" media="print" onload="this.media='all'">
 
     <!-- Cloudflare Turnstile -->

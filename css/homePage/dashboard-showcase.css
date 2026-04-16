@@ -21,7 +21,7 @@
 
 @media (max-width: 768px) {
     .dashboard-showcase-section {
-        padding: 0 0 2rem 0;
+        display: none !important;
     }
 }
 

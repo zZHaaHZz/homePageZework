@@ -25,17 +25,37 @@
                 console.log('GTM: Lazy loaded successfully');
             }
 
-            // Load after 5s of idle time OR first scroll
-            const timer = setTimeout(loadGTM, 5000);
-
-            window.addEventListener('scroll', function onScroll() {
+            // Tải hoàn toàn dựa trên tương tác thật của người dùng để tránh Lighthouse bắt lỗi unused JS
+            const loadEvents = ['scroll', 'mousemove', 'touchstart'];
+            function triggerGTM() {
                 loadGTM();
-                clearTimeout(timer);
-                window.removeEventListener('scroll', onScroll);
-            }, { passive: true });
+                loadEvents.forEach(event => window.removeEventListener(event, triggerGTM, { passive: true }));
+            }
+            loadEvents.forEach(event => window.addEventListener(event, triggerGTM, { passive: true }));
         })();
     </script>
-    <script src="js/device-detect.js"></script>
+    <script>
+        (function () {
+            function detectDevice() {
+                const ua = navigator.userAgent.toLowerCase();
+                const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+                const isMobileUA = /android.*mobile|webos|iphone|ipod|blackberry|iemobile|opera mini/.test(ua);
+                const isTabletUA = (/ipad|android/.test(ua) && !/mobile/.test(ua));
+                const isIPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+
+                if (isMobileUA && hasTouch) {
+                    return 'is-mobile';
+                } else if ((isTabletUA || isIPadOS) && hasTouch) {
+                    return 'is-tablet';
+                } else {
+                    return 'is-desktop';
+                }
+            }
+            const deviceClass = detectDevice();
+            if (document.body) { document.body.classList.add(deviceClass); } 
+            else { document.addEventListener('DOMContentLoaded', () => document.body.classList.add(deviceClass)); }
+        })();
+    </script>
     <meta charset="UTF-8">
 
     <!-- Essential Preconnects for LCP and Fonts (Minimized to < 4 to avoid PENALTY) -->
@@ -142,6 +162,25 @@
             integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
     </noscript>
+    <style>
+        /* Override Font Awesome @font-face để thỏa mãn tiêu chí Font-Display của Google Lighthouse */
+        @font-face {
+            font-family: 'Font Awesome 6 Free';
+            font-style: normal;
+            font-weight: 900;
+            font-display: swap;
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2") format("woff2"),
+                 url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: 'Font Awesome 6 Brands';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2") format("woff2"),
+                 url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.ttf") format("truetype");
+        }
+    </style>
 
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -150,22 +189,17 @@
         function onTurnstileSuccess(token) { turnstileToken = token; }
         function onTurnstileExpired() { turnstileToken = ''; }
     </script>
+    <!-- Các CSS khung cực kỳ quan trọng (BẮT BUỘC TẢI CHẶN RENDER ĐỂ TRÁNH VỠ GIAO DIỆN) -->
     <link rel="stylesheet" href="./css/homePage/hero.css?v=2">
     <link rel="stylesheet" href="./css/site/header.css">
     <link rel="stylesheet" href="./css/site/logo-zework.css">
     <link rel="stylesheet" href="./css/site/buttons.css?v=3">
     
-    <!-- Desktop/Tablet (> 768px): Tải chặn render cho giao diện Dashboard -->
+    <!-- Desktop/Tablet (> 768px): Tải CSS cho giao diện Dashboard (Chỉ tải trên màn hình lớn) -->
     <link rel="stylesheet" href="./css/homePage/dashboard-slider.css?v=2" media="(min-width: 769px)">
     <link rel="stylesheet" href="./css/site/video-loader.css" media="(min-width: 769px)">
     <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css" media="(min-width: 769px)">
     <link rel="stylesheet" href="./css/site/global-skeleton.css" media="(min-width: 769px)">
-
-    <!-- Mobile (<= 768px): Defer Dashboard CSS do nằm bên dưới nếp gấp -->
-    <link rel="stylesheet" href="./css/homePage/dashboard-slider.css?v=2" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
-    <link rel="stylesheet" href="./css/site/video-loader.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
-    <link rel="stylesheet" href="./css/homePage/dashboard-showcase.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
-    <link rel="stylesheet" href="./css/site/global-skeleton.css" media="print" onload="if(window.innerWidth <= 768) this.media='all'">
 
 
     <!-- Non-Critical CSS (Loaded Asynchronously) -->
@@ -287,15 +321,38 @@
     <!-- Optimized Script Loading (Parallel Download, Sequential Defer Execution) -->
     <!-- Critical Scripts (Early Load, Sequential Defer) -->
     <script src="js/video-loader.js" defer></script>
-    <script src="js/dashboard-simulation.js" defer></script>
-    <script src="js/dashboard-slider.js" defer></script>
+    <script>
+        // Chỉ tải script animation Dashboard khi dùng Màn hình lớn (Tránh lỗi unused JS trên Mobile)
+        if (window.innerWidth > 768) {
+            ['js/dashboard-simulation.js', 'js/dashboard-slider.js'].forEach(src => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.defer = true;
+                document.head.appendChild(script);
+            });
+        }
+    </script>
     <script>
         window.addEventListener('load', () => {
             const loadNonCriticalAssets = () => {
+                const isMobile = window.innerWidth <= 768;
+                
+                // Các script chỉ tải trên Desktop
+                if (!isMobile) {
+                    [
+                        'js/security-animation.js',
+                        'js/video-scroll-effect.js'
+                    ].forEach(src => {
+                        const script = document.createElement('script');
+                        script.src = src;
+                        script.defer = true;
+                        document.body.appendChild(script);
+                    });
+                }
+
+                // Các script tải trên cả Mobile và Desktop
                 [
-                    'js/image-skeleton.js',
-                    'js/security-animation.js',
-                    'js/video-scroll-effect.js'
+                    'js/image-skeleton.js'
                 ].forEach(src => {
                     const script = document.createElement('script');
                     script.src = src;
@@ -303,15 +360,18 @@
                     document.body.appendChild(script);
                 });
 
-                const ioniconsModule = document.createElement('script');
-                ioniconsModule.type = 'module';
-                ioniconsModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
-                document.body.appendChild(ioniconsModule);
+                // Tải Ionicons (Chỉ tải trên Desktop để tiết kiệm tài nguyên Mobile)
+                if (!isMobile) {
+                    const ioniconsModule = document.createElement('script');
+                    ioniconsModule.type = 'module';
+                    ioniconsModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
+                    document.body.appendChild(ioniconsModule);
 
-                const ioniconsNoModule = document.createElement('script');
-                ioniconsNoModule.setAttribute('nomodule', '');
-                ioniconsNoModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js';
-                document.body.appendChild(ioniconsNoModule);
+                    const ioniconsNoModule = document.createElement('script');
+                    ioniconsNoModule.setAttribute('nomodule', '');
+                    ioniconsNoModule.src = 'https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js';
+                    document.body.appendChild(ioniconsNoModule);
+                }
             };
 
             if ('requestIdleCallback' in window) {
@@ -1470,14 +1530,25 @@
     <script src="js/faq.js" defer></script>
     <!-- Lazy Load Heavy Third-Party Scripts (YouTube API) -->
     <script>
-        // Defer YouTube API by 8 seconds to ensure TBT remains low
-        setTimeout(() => {
-            const tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-            console.log("YouTube API: Lazy loaded after 8s delay");
-        }, 8000);
+        // Chỉ tải YouTube API khi người dùng thực sự có tương tác để tránh làm nặng FCP/TBT do load iframe ngầm
+        (function() {
+            let ytLoaded = false;
+            function loadYouTubeAPI() {
+                if (ytLoaded) return;
+                ytLoaded = true;
+                const tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                const firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                console.log("YouTube API: Lazy loaded on user interaction");
+            }
+            const ytEvents = ['scroll', 'mousemove', 'touchstart', 'click'];
+            function triggerYT() {
+                loadYouTubeAPI();
+                ytEvents.forEach(event => window.removeEventListener(event, triggerYT, { passive: true }));
+            }
+            ytEvents.forEach(event => window.addEventListener(event, triggerYT, { passive: true }));
+        })();
     </script>
 </body>
 

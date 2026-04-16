@@ -103,30 +103,71 @@
     width: 100%;
 }
 
-.div-img-dashBoard video {
-    width: 110.6rem;
-    height: 51rem;
-    margin: 6rem auto 0 auto;
-    /* Added more space between CTA button and dashboard */
-    display: block;
-    z-index: 4;
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 3.2rem;
 }
 
-
-.experience.top {
+.hero-buttons .btn-consult {
     cursor: pointer;
     z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 25.2rem;
     height: 5.6rem;
-    border-radius: 1.2rem;
-    background-color: #375DFA;
-    border: 0.2rem solid #FFFFFF;
+    border-radius: 1.4rem;
+    background-color: #ffffff;
+    border: 0.2rem solid #0066db;
+    color: #0066db;
+    font-size: 1.6rem;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    gap: 1.2rem;
+}
+
+.hero-buttons .btn-consult:hover {
+    background-color: rgba(0, 102, 219, 0.04);
+    border-color: #0052b3;
+    color: #0052b3;
+    transform: translateY(-0.1rem);
+}
+
+.hero-buttons .btn-consult i {
+    font-size: 1.8rem;
+    color: #0066db;
+}
+
+.hero-buttons .experience {
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25.2rem;
+    height: 5.6rem;
+    border-radius: 1.4rem;
+    background-color: #2b82fb;
+    border: 0.1rem solid #0066db;
     color: #FFFFFF;
     font-size: 1.6rem;
-    box-shadow: 0 0 0.3rem 0.1rem rgba(255, 255, 255, 0.4);
-    padding-top: 0.2rem;
-    transition: all 0.4s ease;
+    font-weight: 600;
+    box-shadow: 0 0.4rem 1.4rem rgba(0, 102, 219, 0.25);
+    transition: all 0.3s ease;
     animation: pulseScale 1s ease-in-out infinite;
+    text-decoration: none;
+}
+
+.hero-buttons .experience:hover {
+    background-color: #0066db;
+    transform: scale(1.05);
+    animation: none;
 }
 
 @keyframes pulseScale {
@@ -223,16 +264,7 @@
         padding: 0 2rem;
         margin-top: 4rem;
     }
-
-    
-
-    
-
 }
-
-
-
-
 
 .btn-download-app-device {
     display: none;

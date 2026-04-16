@@ -190,38 +190,48 @@ function updateDots() {
 
 // ─── Initialization ───────────────────────────────────────────────────────────
 
-document.addEventListener('DOMContentLoaded', () => {
-    const dots = document.querySelectorAll('.slider-dot');
-    dots.forEach((dot, idx) => {
-        dot.addEventListener('click', () => {
-            clearTimeout(autoSlideTimer);
-            if (idx === 0) switchToVideo();
-            else switchToCanvas_analytics();
+    const initSlider = () => {
+        const dots = document.querySelectorAll('.slider-dot');
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                clearTimeout(autoSlideTimer);
+                if (idx === 0) switchToVideo();
+                else switchToCanvas_analytics();
+            });
         });
-    });
 
-    // Start on canvas slide immediately
-    const slider = document.getElementById('dashboardSlider');
-    if (slider) slider.classList.add('slid');
+        // Start on canvas slide immediately
+        const slider = document.getElementById('dashboardSlider');
+        if (slider) slider.classList.add('slid');
 
-    // Start canvas simulation after first paint / idle to protect FCP and TBT
-    const startDashboard = () => {
-        if (typeof window.startDashboardSimulation === 'function') {
-            window.startDashboardSimulation();
+        // Start canvas simulation after first paint / idle to protect FCP and TBT
+        const startDashboard = () => {
+            if (typeof window.startDashboardSimulation === 'function') {
+                window.startDashboardSimulation();
+            }
+        };
+
+        if (document.readyState === 'complete') {
+            startDashboard();
+        } else {
+            window.addEventListener('load', () => {
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(startDashboard, { timeout: 1200 });
+                } else {
+                    setTimeout(startDashboard, 600);
+                }
+            }, { once: true });
         }
+
+        // Initialize YT.Player at 1500ms (needs YT API — polls until ready)
+        setTimeout(initHeroPlayer, 1500);
     };
 
-    window.addEventListener('load', () => {
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(startDashboard, { timeout: 1200 });
-        } else {
-            setTimeout(startDashboard, 600);
-        }
-    }, { once: true });
-
-    // Initialize YT.Player at 1500ms (needs YT API — polls until ready)
-    setTimeout(initHeroPlayer, 1500);
-});
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSlider);
+    } else {
+        initSlider();
+    }
 
 // Expose for simulation to call
 window.switchSliderToVideo = switchToVideo;
