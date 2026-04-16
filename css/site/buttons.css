@@ -70,7 +70,8 @@
     }
 }
 
-.hero-buttons {
+.hero-buttons,
+.footer-cta-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,7 +86,9 @@
         display: none;
     }
 
-    .hero-buttons .experience {
+    .hero-buttons .experience,
+    .footer-cta-buttons .experience,
+    .footer-cta-buttons .btn-consult {
         width: 100% !important;
         max-width: 36rem !important;
         padding: 0 !important;
