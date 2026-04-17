@@ -1,12 +1,16 @@
-// Dùng trực tiếp file .html để trên Github Pages (hoặc bất kỳ server nào không cấu hình slug) vẫn hiển thị bình thường
+const subdirs = ['/tinh-nang-zework', '/bang-gia', '/bai-viet', '/lien-he-zework', '/bao-mat', '/dieu-khoan', '/ve-zework'];
+const isSubdir = subdirs.some(dir => window.location.pathname.includes(dir));
+const prefix = isSubdir ? '../' : '';
+
 const routes = {
-  tinh_nang: 'pageFeature.html',
-  bang_gia: 'pagePrice.html',
-  bai_viet: 'pageArticle.html',
-  lien_he: 'pageContact.html',
-  bao_mat: 'policy.html',
-  dieu_khoan: 'terms.html',
-  ve_zework: 'company.html',
+  trang_chu: prefix + 'index.html',
+  tinh_nang: prefix + 'tinh-nang-zework/',
+  bang_gia: prefix + 'bang-gia/',
+  bai_viet: prefix + 'bai-viet/',
+  lien_he: prefix + 'lien-he-zework/',
+  bao_mat: prefix + 'bao-mat/',
+  dieu_khoan: prefix + 'dieu-khoan/',
+  ve_zework: prefix + 've-zework/',
 };
 
 const btnExperiences = document.querySelectorAll('.experience');
@@ -88,7 +92,7 @@ trangChuLinks.forEach(link => {
     removeActiveMenu();
     const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
     menuTrangChu?.classList.add('active-menu');
-    window.location.href = 'index.html';
+    window.location.href = routes.trang_chu;
   });
 });
 
@@ -167,9 +171,7 @@ document.addEventListener('click', (e) => {
 const getActiveMenuFromURL = () => {
   const pathname = window.location.pathname;
 
-  if (pathname.endsWith("/") || pathname === "/" || pathname.endsWith("/index.html")) {
-    return "#trangchu";
-  } else if (pathname.includes("/tinh-nang") || pathname.endsWith("/pageFeature.html")) {
+  if (pathname.includes("/tinh-nang") || pathname.endsWith("/pageFeature.html")) {
     return "#tinhnang";
   } else if (pathname.includes("/bang-gia") || pathname.endsWith("/pagePrice.html")) {
     return "#banggia";
@@ -183,6 +185,8 @@ const getActiveMenuFromURL = () => {
     return "#vezework";
   } else if (pathname.includes("/dieu-khoan") || pathname.endsWith("/terms.html")) {
     return "#dieukhoan";
+  } else if (pathname.endsWith("/") || pathname === "/" || pathname.endsWith("/index.html")) {
+    return "#trangchu";
   }
 
   return null;
