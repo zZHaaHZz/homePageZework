@@ -54,26 +54,38 @@
 
         // Observe all target elements
         const selector = AUTO_REVEAL_SELECTORS.join(',');
-        document.querySelectorAll(selector).forEach(function (el) {
-            // Skip elements already in viewport on load (above the fold)
+        const elements = document.querySelectorAll(selector);
+        
+        // 1. Batch Read: Collect all elements and their initial positions
+        const toRevealImmediately = [];
+        const toObserve = [];
+        const vh = window.innerHeight;
+
+        elements.forEach(function (el) {
             const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.85 && rect.top > 0) {
-                // Element is already visible — reveal immediately without animation
-                el.style.transition = 'none';
-                el.classList.add('revealed');
-                // Re-enable transitions after a frame
-                requestAnimationFrame(function () {
-                    requestAnimationFrame(function () {
-                        el.style.transition = '';
-                    });
-                });
+            if (rect.top < vh * 0.85 && rect.top > 0) {
+                toRevealImmediately.push(el);
             } else if (rect.top <= 0) {
-                // Element is above viewport (already scrolled past)
-                el.classList.add('revealed');
+                // Element is already above viewport
+                el.classList.add('revealed'); 
             } else {
-                // Element is below viewport — observe it
-                observer.observe(el);
+                toObserve.push(el);
             }
+        });
+
+        // 2. Batch Write: Apply changes
+        toRevealImmediately.forEach(function(el) {
+            el.style.transition = 'none';
+            el.classList.add('revealed');
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    el.style.transition = '';
+                });
+            });
+        });
+
+        toObserve.forEach(function(el) {
+            observer.observe(el);
         });
     }
 

@@ -174,16 +174,23 @@ function startAutoScroll() {
     showFeature(features[currentFeatureIndex].id);
 
     // Scroll within the menu container only (not the page)
-    var menuContainer = document.querySelector('.menu-features-1');
-    var activeItem = menuContainer.querySelector('.feature-menu-item.active-menu-feature');
-    if (activeItem && menuContainer) {
-      var itemTop = activeItem.offsetTop;
-      var containerHeight = menuContainer.clientHeight;
-      var itemHeight = activeItem.offsetHeight;
-      // Center the active item in the menu container
-      var scrollTo = itemTop - (containerHeight / 2) + (itemHeight / 2);
-      menuContainer.scrollTo({ top: Math.max(0, scrollTo), behavior: 'smooth' });
-    }
+    requestAnimationFrame(() => {
+      var menuContainer = document.querySelector('.menu-features-1');
+      var activeItem = menuContainer ? menuContainer.querySelector('.feature-menu-item.active-menu-feature') : null;
+      if (activeItem && menuContainer) {
+        // Cache layout values
+        const containerHeight = menuContainer.clientHeight;
+        const itemTop = activeItem.offsetTop;
+        const itemHeight = activeItem.offsetHeight;
+        
+        // Center the active item in the menu container
+        const scrollTo = itemTop - (containerHeight / 2) + (itemHeight / 2);
+        
+        requestAnimationFrame(() => {
+            menuContainer.scrollTo({ top: Math.max(0, scrollTo), behavior: 'smooth' });
+        });
+      }
+    });
   }, AUTO_SCROLL_DELAY);
 }
 

@@ -274,25 +274,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector('header');
   const scrollThreshold = 70; // Header height
   const delta = 10; // Minimum scroll distance to trigger hide/show
+  let windowWidth = window.innerWidth;
+
+  window.addEventListener('resize', () => {
+    windowWidth = window.innerWidth;
+  }, { passive: true });
 
   window.addEventListener('scroll', () => {
     // Only apply hide-on-scroll for mobile devices (screen width <= 768px)
-    if (window.innerWidth > 768) {
-      header.classList.remove('header-hidden');
+    if (windowWidth > 768) {
+      if (header.classList.contains('header-hidden')) {
+        header.classList.remove('header-hidden');
+      }
       return;
     }
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    // Show header at the top
+    // Detect direction and threshold
     if (scrollTop < scrollThreshold) {
       header.classList.remove('header-hidden');
+      lastScrollTop = scrollTop;
       return;
     }
 
     // Don't hide header if mobile menu is open
     if (popupMenu.classList.contains('show')) {
       header.classList.remove('header-hidden');
+      lastScrollTop = scrollTop;
       return;
     }
 
@@ -304,14 +313,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Detect direction
     if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
       // Scrolling down - hide header
-      header.classList.add('header-hidden');
+      if (!header.classList.contains('header-hidden')) {
+        header.classList.add('header-hidden');
+      }
     } else {
       // Scrolling up - show header
-      header.classList.remove('header-hidden');
+      if (header.classList.contains('header-hidden')) {
+        header.classList.remove('header-hidden');
+      }
     }
 
     lastScrollTop = scrollTop;
   }, { passive: true });
 });
-
 
