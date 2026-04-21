@@ -1,0 +1,451 @@
+/* ZeWork Mobile Page Styles */
+
+.mobile-hero {
+    padding: 12rem 4.8rem 8rem;
+    background: radial-gradient(circle at 70% 30%, rgba(2, 123, 255, 0.08) 0%, transparent 50%);
+    overflow: hidden;
+}
+
+.mobile-hero-container {
+    max-width: 120rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 8rem;
+}
+
+.mobile-hero-content h1 {
+    font-size: 5.6rem;
+    line-height: 1.1;
+    margin-bottom: 2.4rem;
+    color: #101828;
+}
+
+.mobile-hero-content p {
+    font-size: 2rem;
+    color: #475467;
+    margin-bottom: 4rem;
+    line-height: 1.6;
+}
+
+.sync-feature-section {
+    padding: 10rem 4.8rem;
+    background: #ffffff;
+}
+
+.sync-card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.2rem;
+    margin-top: 6rem;
+}
+
+.sync-card {
+    padding: 4rem;
+    border-radius: 2.4rem;
+    background: #F9FAFB;
+    border: 0.1rem solid #EAECF0;
+    transition: all 0.3s ease;
+}
+
+.sync-card:hover {
+    transform: translateY(-1rem);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.06);
+    border-color: #027BFF;
+}
+
+.sync-icon-box {
+    width: 6.4rem;
+    height: 6.4rem;
+    background: #027BFF;
+    border-radius: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.4rem;
+    color: white;
+}
+
+.sync-card h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1.6rem;
+    color: #101828;
+}
+
+.sync-card p {
+    font-size: 1.6rem;
+    color: #475467;
+    line-height: 1.6;
+}
+
+.mobile-mockup-img {
+    width: 100%;
+    height: auto;
+    border-radius: 3.2rem;
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.15);
+    animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2rem);
+    }
+}
+
+@media (max-width: 1024px) {
+    .mobile-hero {
+        padding: 10rem 2.4rem 6rem;
+    }
+
+    .mobile-hero-container {
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 6rem;
+    }
+
+    .sync-card-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2.4rem;
+    }
+
+    .mobile-hero-content h1 {
+        font-size: 3.6rem;
+        line-height: 1.2;
+    }
+
+    .mobile-hero-content p {
+        font-size: 1.8rem;
+    }
+
+    .hero-buttons {
+        justify-content: center !important;
+        flex-wrap: wrap;
+    }
+
+    .mobile-mockup-img {
+        max-width: 40rem;
+        margin: 0 auto;
+    }
+}
+
+/* Exclusive Sync Feature Section */
+.exclusive-sync-feature {
+    padding: 5rem 4.8rem;
+    background: #fcfdfe;
+    position: relative;
+    overflow: hidden;
+}
+
+.sync-container {
+    max-width: 120rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 10rem;
+}
+
+.sync-visual {
+    position: relative;
+}
+
+.sync-mockup-main {
+    width: 100%;
+    max-width: 48rem;
+    height: auto;
+    border-radius: 2.4rem;
+    box-shadow: 0 4rem 10rem rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    display: block;
+}
+
+.glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(2, 123, 255, 0.1) 0%, transparent 70%);
+    z-index: 1;
+}
+
+.sync-badge {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    background: rgba(2, 123, 255, 0.1);
+    color: #027BFF;
+    border-radius: 10rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.sync-text h2 {
+    font-size: 4.8rem;
+    line-height: 1.2;
+    color: #101828;
+    margin-bottom: 2.4rem;
+}
+
+.sync-desc {
+    font-size: 1.8rem;
+    color: #475467;
+    line-height: 1.6;
+    margin-bottom: 4rem;
+}
+
+.sync-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+.sync-step-item {
+    display: flex;
+    gap: 2.4rem;
+    align-items: flex-start;
+}
+
+.step-icon {
+    width: 4.8rem;
+    height: 4.8rem;
+    background: #ffffff;
+    border: 0.1rem solid #EAECF0;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #027BFF;
+    font-size: 2rem;
+    flex-shrink: 0;
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+.step-info h3 {
+    font-size: 2rem;
+    color: #101828;
+    margin-bottom: 0.8rem;
+}
+
+.step-info p {
+    font-size: 1.6rem;
+    color: #475467;
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .exclusive-sync-feature {
+        padding: 8rem 2.4rem;
+    }
+
+    .sync-container {
+        grid-template-columns: 1fr;
+        gap: 6rem;
+        text-align: center;
+    }
+
+    .sync-text h2 {
+        font-size: 3.2rem;
+    }
+
+    .sync-step-item {
+        text-align: left;
+    }
+
+    .sync-steps-list {
+        max-width: 50rem;
+        margin: 0 auto;
+    }
+}
+
+/* Sync Context Section */
+.sync-context-section {
+    padding: 5rem 4.8rem;
+    background: #ffffff;
+}
+
+.container-narrow {
+    max-width: 100rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.context-header {
+    margin-bottom: 6rem;
+}
+
+.context-header h2 {
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 2.4rem;
+    color: #101828;
+    white-space: nowrap;
+}
+
+.context-header p {
+    font-size: 2.2rem;
+    color: #475467;
+    line-height: 1.6;
+    max-width: 86rem;
+    margin: 0 auto;
+}
+
+.badge-warning {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background: #FEF0C7;
+    color: #B54708;
+    border-radius: 10rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.text-red {
+    color: #D92D20;
+}
+
+.context-visual-full {
+    position: relative;
+    margin-bottom: 6rem;
+    border-radius: 2rem;
+    padding: 1.2rem;
+    background: #F2F4F7;
+    border: 0.1rem solid #EAECF0;
+}
+
+.full-dashboard-img {
+    width: 100%;
+    height: auto;
+    border-radius: 1.2rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1);
+}
+
+.device-label {
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #101828;
+    color: #fff;
+    padding: 0.6rem 1.6rem;
+    border-radius: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.feature-tag-float {
+    position: absolute;
+    background: #ffffff;
+    padding: 1.2rem 2rem;
+    border-radius: 10rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #101828;
+    z-index: 3;
+}
+
+.feature-tag-float i {
+    color: #12B76A;
+}
+
+.tag-1 {
+    top: 20%;
+    left: -5rem;
+    animation: floatAnim 4s ease-in-out infinite;
+}
+
+.tag-2 {
+    bottom: 20%;
+    right: -5rem;
+    animation: floatAnim 4s ease-in-out infinite reverse;
+}
+
+@keyframes floatAnim {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-1.5rem);
+    }
+}
+
+.solution-highlight {
+    display: flex;
+    justify-content: center;
+}
+
+.solution-card {
+    display: flex;
+    gap: 3.2rem;
+    background: #F0F7FF;
+    border: 0.1rem solid #B2DDFF;
+    padding: 4rem;
+    border-radius: 2.4rem;
+    text-align: left;
+    max-width: 80rem;
+    align-items: center;
+}
+
+.solution-card i {
+    font-size: 4.8rem;
+    color: #027BFF;
+}
+
+.solution-card h3 {
+    font-size: 2.4rem;
+    color: #004EEB;
+    margin-bottom: 1.2rem;
+}
+
+.solution-card p {
+    font-size: 1.7rem;
+    color: #344054;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .sync-context-section {
+        padding: 6rem 2rem;
+    }
+
+    .feature-tag-float {
+        display: none;
+    }
+
+    .solution-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 3rem 2rem;
+    }
+
+    .context-header h2 {
+        font-size: 3.2rem;
+        white-space: normal;
+    }
+
+    .context-header p {
+        font-size: 1.8rem;
+    }
+}

@@ -518,7 +518,7 @@ body.is-tablet .secondary-webapp-note {
             width: 100%;
             height: auto;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             padding: 3.2rem 2rem;
             gap: 2.4rem;

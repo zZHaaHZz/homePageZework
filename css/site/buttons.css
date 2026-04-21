@@ -3,16 +3,17 @@
 .experience {
     cursor: pointer;
     z-index: 3;
-    width: 27rem;
-    height: 5.6rem;
+    width: 28rem;
+    height: 6.0rem;
     border-radius: 1.2rem;
     background: linear-gradient(135deg, #027BFF, #4da3ff);
     border: none;
     color: #FFFFFF;
     font-size: 1.6rem;
     font-weight: 600;
+    white-space: nowrap;
     box-shadow: 0 0.4rem 1.6rem rgba(2, 123, 255, 0.3);
-    padding-top: 0.2rem;
+    padding: 0;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
@@ -28,7 +29,8 @@
 
 .btn-consult {
     cursor: pointer;
-    width: 23rem; /* Thu nhỏ để vừa hàng 3 nút */
+    width: 23rem;
+    /* Thu nhỏ để vừa hàng 3 nút */
     height: 5.6rem;
     border-radius: 1.2rem;
     background: #ffffff;
@@ -63,7 +65,9 @@
 
 /* Responsive adjustment */
 @media (max-width: 768px) {
-    .experience, .btn-consult {
+
+    .experience,
+    .btn-consult {
         width: 30rem;
         height: 6rem;
         font-size: 1.8rem;
@@ -74,7 +78,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap; /* Cưỡng bức nằm trên 1 hàng trên Desktop */
+    flex-wrap: nowrap;
+    /* Cưỡng bức nằm trên 1 hàng trên Desktop */
     gap: 2rem;
     width: 100%;
     margin-top: 3.2rem;
@@ -98,15 +103,19 @@
     }
 
     .hero-buttons .btn-consult {
-        display: none !important; /* Ẩn thực sự trên Mobile để nhường chỗ cho App Store */
+        display: none !important;
+        /* Ẩn thực sự trên Mobile để nhường chỗ cho App Store */
     }
 
     .hero-buttons .experience,
     .hero-buttons .btn-download-app-device {
         width: 100% !important;
-        max-width: 32rem !important; /* Thu nhỏ chiều rộng tối đa */
-        height: 5.4rem !important;  /* Thu nhỏ chiều cao */
-        font-size: 1.6rem !important; /* Giảm font chữ nhẹ */
+        max-width: 32rem !important;
+        /* Thu nhỏ chiều rộng tối đa */
+        height: 5.4rem !important;
+        /* Thu nhỏ chiều cao */
+        font-size: 1.6rem !important;
+        /* Giảm font chữ nhẹ */
         border-radius: 1.2rem !important;
         margin: 0 auto;
     }
@@ -117,31 +126,31 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 23rem;
+    width: 19rem;
     height: 5.6rem;
     border-radius: 1.2rem;
-    background: linear-gradient(135deg, #027BFF, #4da3ff); /* Sử dụng màu xanh thương hiệu */
+    background: transparent;
     border: none;
     color: #FFFFFF;
     font-size: 1.6rem;
     font-weight: 600;
     text-decoration: none;
-    gap: 1rem;
-    box-shadow: 0 0.4rem 1.6rem rgba(2, 123, 255, 0.3);
+    gap: 0;
+    padding: 0;
+    box-shadow: none;
     transition: all 0.3s ease;
 }
 
 .btn-download-app-device:hover {
-    background: linear-gradient(135deg, #0066db, #3d93ff);
+    background: transparent;
     transform: translateY(-0.2rem);
-    box-shadow: 0 0.6rem 2.4rem rgba(2, 123, 255, 0.4);
     color: #ffffff;
 }
 
 .btn-download-app-device .svg-appstore {
-    width: 2.8rem;
-    height: 2.8rem;
-    fill: #ffffff; /* Biểu tượng màu trắng trên nền xanh */
+    width: 100%;
+    height: 100%;
+    display: block;
     flex-shrink: 0;
 }
 

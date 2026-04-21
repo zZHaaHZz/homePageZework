@@ -1,3 +1,83 @@
+// === Unified Event Delegation for Buttons ===
+document.addEventListener('click', (e) => {
+  // Debug log: uncomment the line below to log every click for troubleshooting
+  // console.log("Document clicked:", e.target);
+
+  // 1. Login Buttons
+  const loginBtn = e.target.closest('.btn-header-login, .btn-login');
+  if (loginBtn) {
+    console.log("Login button clicked");
+    window.location.href = "https://chat.zework.com/";
+    return;
+  }
+
+  // 2. Signup Buttons
+  const signupBtn = e.target.closest('.btn-header-signup, .btn-signup');
+  if (signupBtn) {
+    console.log("Signup button clicked");
+    window.open("https://app.zework.com/register", "_blank");
+    return;
+  }
+
+  // 3. Experience Buttons
+  const btnExperience = e.target.closest('.experience');
+  if (btnExperience) {
+    console.log("Experience button clicked");
+    window.location.href = "https://chat.zework.com/";
+    return;
+  }
+
+  // 4. Windows Download
+  const btnDownWin = e.target.closest('.downWin');
+  if (btnDownWin) {
+    console.log("Windows download clicked");
+    window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.msi';
+    return;
+  }
+
+  // 5. Mac Download
+  const btnDownMacOs = e.target.closest('.downMacOs');
+  if (btnDownMacOs) {
+    console.log("Mac download clicked");
+    window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.dmg';
+    return;
+  }
+
+  // 6. Buy Now
+  const buyNowBtn = e.target.closest('a[href="#bynow"], .btn-bynow-bander');
+  if (buyNowBtn) {
+    e.preventDefault();
+    console.log("Buy Now clicked");
+    window.location.href = "https://app.zework.com/vn/price";
+    return;
+  }
+
+  // 7. Contact Info Cards (Make whole card clickable)
+  const contactCard = e.target.closest('.contact-info-card');
+  if (contactCard) {
+    const link = contactCard.querySelector('a');
+    if (link && e.target !== link) {
+      console.log("Contact card clicked, triggering link:", link.href);
+      // For tel: or mailto:, location.href is better
+      if (link.href.startsWith('tel:') || link.href.startsWith('mailto:')) {
+        window.location.href = link.href;
+      } else {
+        window.open(link.href, link.target || '_self');
+      }
+      return;
+    }
+  }
+
+  // 8. Zalo Contact
+  const btnZalo = e.target.closest('.icon-zalo-chat');
+  if (btnZalo) {
+    console.log("Zalo contact clicked");
+    window.location.href = "https://zalo.me/982303333";
+    return;
+  }
+
+});
+
 const subdirs = ['/tinh-nang-zework', '/bang-gia', '/bai-viet', '/lien-he-zework', '/bao-mat', '/dieu-khoan', '/ve-zework'];
 const isSubdir = subdirs.some(dir => window.location.pathname.includes(dir));
 const prefix = isSubdir ? '../' : '';
@@ -11,269 +91,124 @@ const routes = {
   bao_mat: prefix + 'bao-mat/',
   dieu_khoan: prefix + 'dieu-khoan/',
   ve_zework: prefix + 've-zework/',
+  di_dong: prefix + 'zework-mobile/',
 };
 
-const btnExperiences = document.querySelectorAll('.experience');
-const btnViewNow = document.querySelectorAll('.view-now');
-const btnSeeMore = document.querySelectorAll('.btn-see-more-articles');
-const loginButtons = document.querySelectorAll('.btn-header-login, .btn-login');
+// --- Navigation Link Handling ---
+document.addEventListener('DOMContentLoaded', () => {
+  const menuLinks = document.querySelectorAll('header .ul-menu a, .mobile-menu-popup .ul-menu a');
 
-loginButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    window.location.href = "https://chat.zework.com/"
+  menuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      // If it's a relative internal link starting with #, handle it
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const pageKey = href.substring(1); // e.g. "tinhnang"
+
+        // Map anchor to actual route
+        const routeMap = {
+          'trangchu': routes.trang_chu,
+          'tinhnang': routes.tinh_nang,
+          'banggia': routes.bang_gia,
+          'baiviet': routes.bai_viet,
+          'lienhe': routes.lien_he,
+          'baomat': routes.bao_mat,
+          'didong': routes.di_dong,
+          'vezework': routes.ve_zework,
+          'dieukhoan': routes.dieu_khoan
+        };
+
+        if (routeMap[pageKey]) {
+          window.location.href = routeMap[pageKey];
+        }
+      }
+    });
   });
-});
 
-const signupButtons = document.querySelectorAll('.btn-header-signup, .btn-signup');
-
-signupButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    window.open("https://app.zework.com/register", "_blank");
+  // Logo handling
+  const logoLinks = document.querySelectorAll('a[href="#trangchu"]');
+  logoLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = routes.trang_chu;
+    });
   });
-});
 
+  // Active state logic
+  const getActiveMenuFromURL = () => {
+    const pathname = window.location.pathname;
+    if (pathname.includes("/tinh-nang")) return "#tinhnang";
+    if (pathname.includes("/bang-gia")) return "#banggia";
+    if (pathname.includes("/bai-viet")) return "#baiviet";
+    if (pathname.includes("/lien-he")) return "#lienhe";
+    if (pathname.includes("/bao-mat")) return "#baomat";
+    if (pathname.includes("/ve-zework")) return "#vezework";
+    if (pathname.includes("/dieu-khoan")) return "#dieukhoan";
+    if (pathname.includes("/zework-mobile")) return "#didong";
+    if (pathname.endsWith("/") || pathname === "" || pathname.includes("index.html")) return "#trangchu";
+    return null;
+  };
 
-btnExperiences.forEach(btn => {
-  btn.addEventListener('click', () => {
-    window.location.href = "https://chat.zework.com/"
-  });
-});
+  const activeMenu = getActiveMenuFromURL();
+  if (activeMenu) {
+    document.querySelectorAll(`header .ul-menu a[href="${activeMenu}"], .mobile-menu-popup .ul-menu a[href="${activeMenu}"]`)
+      .forEach(a => a.classList.add("active-menu"));
+  }
 
+  // Mobile Menu Toggles
+  const btnMenu = document.querySelector('.menu-mobile');
+  const btnClose = document.querySelector('.close-menu');
+  const popupMenu = document.querySelector('.mobile-menu-popup');
 
+  if (btnMenu && btnClose && popupMenu) {
+    btnMenu.addEventListener('click', () => {
+      popupMenu.classList.add('show');
+      btnMenu.style.display = "none";
+      btnClose.style.display = "block";
+      document.body.style.overflow = 'hidden';
+    });
 
-
-const menuLinks = document.querySelectorAll(
-  'header .ul-menu a, .mobile-menu-popup .ul-menu a'
-);
-const trangChuLinks = document.querySelectorAll('a[href="#trangchu"]');
-
-function removeActiveMenu() {
-  menuLinks.forEach(link => link.classList.remove('active-menu'));
-}
-
-menuLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    removeActiveMenu();
-    link.classList.add('active-menu');
-    const href = link.getAttribute('href');
-    const popupMenu = document.querySelector('.mobile-menu-popup');
-    const btnMenu = document.querySelector('.menu-mobile');
-    const btnClose = document.querySelector('.close-menu');
-    if (popupMenu?.classList.contains("show")) {
-      popupMenu.classList.remove("show");
+    btnClose.addEventListener('click', () => {
+      popupMenu.classList.remove('show');
       btnMenu.style.display = "block";
       btnClose.style.display = "none";
-    }
-    switch (href) {
-      case '#tinhnang':
-        window.location.href = routes.tinh_nang;
-        break;
-      case '#banggia':
-        window.location.href = routes.bang_gia;
-        break;
-      case '#baiviet':
-        window.location.href = routes.bai_viet;
-        break;
-      case '#lienhe':
-        window.location.href = routes.lien_he;
-        break;
-      case '#baomat':
-        window.location.href = routes.bao_mat;
-        break;
-    }
-
-  });
-});
-
-trangChuLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    removeActiveMenu();
-    const menuTrangChu = document.querySelector('.ul-menu a[href="#trangchu"]');
-    menuTrangChu?.classList.add('active-menu');
-    window.location.href = routes.trang_chu;
-  });
-});
-
-const logoLinks = document.querySelectorAll('a[href="#trangchu"]');
-logoLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-  });
-});
-
-const featureLink = document.querySelectorAll('a[href="#tinhnang"]');
-featureLink.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = routes.tinh_nang;
-  });
-});
-
-const priceLinks = document.querySelectorAll('a[href="#banggia"]');
-priceLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = routes.bang_gia;
-  });
-});
-
-const articleLinks = document.querySelectorAll('a[href="#baiviet"]');
-articleLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = routes.bai_viet;
-  });
-});
-
-const contactLinks = document.querySelectorAll('a[href="#lienhe"]');
-contactLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = routes.lien_he;
-  });
-});
-
-const baomatLinks = document.querySelectorAll('a[href="#baomat"]');
-baomatLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = routes.bao_mat;
-  });
-});
-
-const dieuKhoanLinks = document.querySelectorAll('a[href="#dieu-khoan"]');
-dieuKhoanLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = routes.dieu_khoan;
-  });
-});
-
-const vezeworkLinks = document.querySelectorAll('a[href="#vezework"]');
-vezeworkLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = routes.ve_zework;
-  });
-});
-
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('a[href="#bynow"], .btn-bynow-bander');
-  if (btn) {
-    e.preventDefault();
-    window.location.href = "https://app.zework.com/vn/price";
-  }
-});
-
-// Hàm lấy active menu dựa trên URL hiện tại
-const getActiveMenuFromURL = () => {
-  const pathname = window.location.pathname;
-
-  if (pathname.includes("/tinh-nang") || pathname.endsWith("/pageFeature.html")) {
-    return "#tinhnang";
-  } else if (pathname.includes("/bang-gia") || pathname.endsWith("/pagePrice.html")) {
-    return "#banggia";
-  } else if (pathname.includes("/bai-viet") || pathname.endsWith("/pageArticle.html")) {
-    return "#baiviet";
-  } else if (pathname.includes("/lien-he") || pathname.endsWith("/pageContact.html")) {
-    return "#lienhe";
-  } else if (pathname.includes("/bao-mat") || pathname.endsWith("/policy.html")) {
-    return "#baomat";
-  } else if (pathname.includes("/ve-zework") || pathname.endsWith("/company.html")) {
-    return "#vezework";
-  } else if (pathname.includes("/dieu-khoan") || pathname.endsWith("/terms.html")) {
-    return "#dieukhoan";
-  } else if (pathname.endsWith("/") || pathname === "/" || pathname.endsWith("/index.html")) {
-    return "#trangchu";
+      document.body.style.overflow = '';
+    });
   }
 
-  return null;
-};
+  // Language Dropdown
+  const dropDow = document.querySelector('.drop-dow');
+  const dropUp = document.querySelector('.drop-up');
+  const popupMenuChangeLangue = document.querySelector('.menu-change-langue');
 
+  if (dropDow && dropUp && popupMenuChangeLangue) {
+    dropDow.addEventListener('click', () => {
+      dropDow.style.display = 'none';
+      dropUp.style.display = 'block';
+      popupMenuChangeLangue.classList.add('show');
+    });
 
-
-
-window.addEventListener('DOMContentLoaded', () => {
-  removeActiveMenu();
-
-  // Lấy active menu từ URL
-  const activeMenuFromURL = getActiveMenuFromURL();
-
-  // Thêm class active-menu vào tất cả các link menu tương ứng
-  const activeLinks = document.querySelectorAll(
-    `header .ul-menu a[href="${activeMenuFromURL}"], 
-     .mobile-menu-popup .ul-menu a[href="${activeMenuFromURL}"]`
-  );
-
-  if (activeLinks.length > 0) {
-    activeLinks.forEach(a => a.classList.add("active-menu"));
+    dropUp.addEventListener('click', () => {
+      dropUp.style.display = 'none';
+      dropDow.style.display = 'block';
+      popupMenuChangeLangue.classList.remove('show');
+    });
   }
-});
 
-const btnMenu = document.querySelector('.menu-mobile');
-const btnClose = document.querySelector('.close-menu');
-const popupMenu = document.querySelector('.mobile-menu-popup');
-const popupMenuChangeLangue = document.querySelector('.menu-change-langue');
-
-btnMenu.addEventListener('click', () => {
-  popupMenu.classList.add('show');
-  btnMenu.style.display = "none";
-  btnClose.style.display = "block";
-  document.body.style.overflow = 'hidden';
-});
-
-btnClose.addEventListener('click', () => {
-  popupMenu.classList.remove('show');
-  btnMenu.style.display = "block";
-  btnClose.style.display = "none";
-  document.body.style.overflow = '';
-});
-
-// xu ly drop dow
-const dropDow = document.querySelector('.drop-dow');
-const dropUp = document.querySelector('.drop-up');
-
-// click drop-dow → show dropdown
-dropDow.addEventListener('click', () => {
-  dropDow.style.display = 'none';
-  dropUp.style.display = 'block';
-  popupMenuChangeLangue.classList.add('show');
-});
-
-// click drop-up → hide dropdown
-dropUp.addEventListener('click', () => {
-  dropUp.style.display = 'none';
-  dropDow.style.display = 'block';
-  popupMenuChangeLangue.classList.remove('show');
-});
-
-const btnDownWin = document.querySelector('.downWin');
-btnDownWin.onclick = () => {
-  window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.msi';
-}
-
-
-const btnDownMacOs = document.querySelector('.downMacOs');
-btnDownMacOs.onclick = () => {
-  window.location.href = 'https://zeworkuser.s3.ap-southeast-1.amazonaws.com/download/ZeworkDesktop.dmg';
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
+  // Zalo Floating Icon
   const logoLinksZalo = document.querySelector('.icon-zalo-chat');
   if (logoLinksZalo) {
-    logoLinksZalo.onclick = () => {
-      window.location.href = "https://zalo.me/982303333"
-    }
+    logoLinksZalo.addEventListener('click', () => {
+      window.location.href = "https://zalo.me/982303333";
+    });
   }
 
-  // Smart Header: Hide on scroll down, show on scroll up
+  // Smart Header logic
   let lastScrollTop = 0;
   const header = document.querySelector('header');
-  const scrollThreshold = 70; // Header height
-  const delta = 10; // Minimum scroll distance to trigger hide/show
+  const scrollThreshold = 70;
+  const delta = 10;
   let windowWidth = window.innerWidth;
 
   window.addEventListener('resize', () => {
@@ -281,48 +216,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { passive: true });
 
   window.addEventListener('scroll', () => {
-    // Only apply hide-on-scroll for mobile devices (screen width <= 768px)
     if (windowWidth > 768) {
-      if (header.classList.contains('header-hidden')) {
-        header.classList.remove('header-hidden');
-      }
+      header?.classList.remove('header-hidden');
       return;
     }
-
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Detect direction and threshold
     if (scrollTop < scrollThreshold) {
-      header.classList.remove('header-hidden');
+      header?.classList.remove('header-hidden');
       lastScrollTop = scrollTop;
       return;
     }
-
-    // Don't hide header if mobile menu is open
-    if (popupMenu.classList.contains('show')) {
-      header.classList.remove('header-hidden');
+    if (popupMenu?.classList.contains('show')) {
+      header?.classList.remove('header-hidden');
       lastScrollTop = scrollTop;
       return;
     }
+    if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
 
-    // Check minimum scroll distance (delta)
-    if (Math.abs(lastScrollTop - scrollTop) <= delta) {
-      return;
-    }
-
-    // Detect direction
     if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-      // Scrolling down - hide header
-      if (!header.classList.contains('header-hidden')) {
-        header.classList.add('header-hidden');
-      }
+      header?.classList.add('header-hidden');
     } else {
-      // Scrolling up - show header
-      if (header.classList.contains('header-hidden')) {
-        header.classList.remove('header-hidden');
-      }
+      header?.classList.remove('header-hidden');
     }
-
     lastScrollTop = scrollTop;
   }, { passive: true });
 });

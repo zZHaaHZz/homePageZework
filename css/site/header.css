@@ -181,13 +181,19 @@ header.header-hidden {
 }
 
 .btn-change-languege {
-    display: none !important;
+    display: flex !important;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.8rem;
+    transition: background 0.2s ease;
+    position: relative; /* Thêm để menu con position absolute đúng */
 }
 
 .menu-change-langue {
     position: absolute;
     width: 15rem;
-    height: auto;
     top: 100%;
     right: 0;
     margin-top: 0.8rem;
@@ -196,7 +202,6 @@ header.header-hidden {
     border: 0.1rem solid #EAECF0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-0.5rem);
@@ -207,36 +212,33 @@ header.header-hidden {
     pointer-events: none;
 }
 
-.menu-change-langue.show {
+.btn-change-languege:hover .menu-change-langue {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-.btn-change-languege svg {
-    width: 6.4rem;
-    height: 3.6rem;
-}
-
 .flag {
-    width: 3.2rem;
-    height: 2.4rem;
+    width: 2.8rem;
+    height: 2rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
-    border-radius: 0.3rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 0.1rem 0.2rem rgba(0,0,0,0.1);
 }
 
 .flag svg {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
-.drop-dow svg {
-    width: 1.6rem;
-    height: 1.6rem;
-    color: #475467;
+.drop-dow i, .drop-up i {
+    font-size: 1.2rem;
+    color: #667085;
 }
 
 .btn-header-login {

@@ -189,26 +189,22 @@ const initSlider = () => {
     if (!slider) return;
 
     if (isMobileDevice) {
-        // Start on Mobile Image
+        // Mobile: STAY on Image slide ONLY. No video, no auto-slide.
         switchToMobileImage();
-        // Auto-play video after X seconds
-        autoSlideTimer = setTimeout(switchToVideo, MOBILE_INITIAL_IMAGE_DELAY);
     } else {
-        // Start on Canvas
+        // Desktop: Start on Canvas
         switchToCanvas_analytics();
+        // Start auto-play video after delay
+        autoSlideTimer = setTimeout(switchToVideo, 5000); 
     }
 
     const dots = document.querySelectorAll('.slider-dot');
     dots.forEach((dot, idx) => {
         dot.addEventListener('click', () => {
+            if (isMobileDevice) return; // No switching on mobile
             clearTimeout(autoSlideTimer);
-            if (isMobileDevice) {
-                if (idx === 0) switchToVideo();
-                else switchToMobileImage();
-            } else {
-                if (idx === 0) switchToVideo();
-                else switchToCanvas_analytics();
-            }
+            if (idx === 0) switchToVideo();
+            else switchToCanvas_analytics();
         });
     });
 
@@ -230,7 +226,9 @@ const initSlider = () => {
         }, { once: true });
     }
 
-    setTimeout(initHeroPlayer, 1500);
+    if (!isMobileDevice) {
+        setTimeout(initHeroPlayer, 2000);
+    }
 };
 
 if (document.readyState === 'loading') {
